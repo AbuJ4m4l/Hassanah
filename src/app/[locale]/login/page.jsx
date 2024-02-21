@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
+import { signIn } from "next-auth/react";
 
 const Login = ({ params: { locale } }) => {
     const [emailInputError, setEmailInputError] = useState(false);
@@ -29,12 +30,15 @@ const Login = ({ params: { locale } }) => {
     const handleForm = async (e) => {
         try {
             e.preventDefault();
+            const id = await Math.floor(Math.random() * 10000000000000000)
             await signIn('login', {
-                redirect: true,
+                redirect: false,
                 email: email,
                 password: password,
-                userAgent: navigator.userAgent
+                userAgent: navigator.userAgent,
+                userAgentID: id
             });
+            console.log(true)
         } catch (error) {
             console.error(error);
         }
@@ -108,7 +112,7 @@ const Login = ({ params: { locale } }) => {
                             </div>
                             <div className="flex flex-row mt-4">
                                 {
-                                    loginButtonStatus === true ? <button type='submit' className="w-full btn bg-primary hover:bg-transparent border-2 border-primary hover:text-primary">{t('login_button')}</button> : <button type='button' disabled className="w-full btn bg-slate-400 text-slate-500 cursor-not-allowed">{t('login_button')}</button>
+                                    loginButtonStatus === true ? <button type='submit' onClick={handleForm} className="w-full btn bg-primary hover:bg-transparent border-2 border-primary hover:text-primary">{t('login_button')}</button> : <button type='button' disabled className="w-full btn bg-slate-400 text-slate-500 cursor-not-allowed">{t('login_button')}</button>
                                 }
 
                             </div>

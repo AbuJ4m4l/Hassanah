@@ -86,6 +86,10 @@ const handler = NextAuth({
                 userAgent: {
                     label: "User Agent",
                     type: "text"
+                },
+                userAgentID: {
+                    label: "User Agent ID",
+                    type: "number"
                 }
             },
             async authorize(credentials, req) {
@@ -134,7 +138,7 @@ const handler = NextAuth({
                                     verified: false,
                                     blocked: false,
                                     devices: [{
-                                        id: await Math.floor(Math.random() * 1000000000000),
+                                        id: await parseInt(credentials.userAgentID, 10),
                                         deviceName: device.model + device.vendor,
                                         deviceType: device.type,
                                         deviceModel: device.model,
@@ -183,6 +187,10 @@ const handler = NextAuth({
                     label: "User Agent",
                     type: "text",
                     placeholder: "User Agent"
+                },
+                userAgentID: {
+                    label: "User Agent ID",
+                    type: "number"
                 }
             },
             async authorize(credentials, req) {
@@ -199,7 +207,7 @@ const handler = NextAuth({
                     } = userAgent;
                     const deviceId = await Math.floor(Math.random() * 1000000000000);
                     const newDevice = {
-                        id: await Math.floor(Math.random() * 1000000000000),
+                        id: await parseInt(credentials.userAgentID, 10),
                         deviceName: device.model + device.vendor,
                         deviceType: device.type,
                         deviceModel: device.model,

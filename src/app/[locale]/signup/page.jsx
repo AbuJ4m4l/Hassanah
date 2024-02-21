@@ -44,13 +44,15 @@ export default function Signup({ params: { locale } }) {
     const handleForm = async (e) => {
         try {
             e.preventDefault();
+            const id = await Math.floor(Math.random() * 10000000000000000);
             await signIn('signup', {
                 redirect: true,
                 username: username,
                 email: email,
                 password: password,
                 retypePassword: retypePassword,
-                userAgent: navigator.userAgent
+                userAgent: navigator.userAgent,
+                userAgentID: id
             });
         } catch (error) {
             console.error(error);
