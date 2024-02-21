@@ -30,7 +30,8 @@ const Login = ({ params: { locale } }) => {
     const handleForm = async (e) => {
         try {
             e.preventDefault();
-            const id = await Math.floor(Math.random() * 10000000000000000)
+            const id = await Math.floor(Math.random() * 10000000000000000);
+            localStorage.setItem("userAgentID", id);
             await signIn('login', {
                 redirect: false,
                 email: email,
