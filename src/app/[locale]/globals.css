@@ -16,15 +16,29 @@
   }
 }
 
+.btn {
+  @apply font-medium py-1 px-2 rounded transition ease-in-out delay-150 duration-200;
+}
+
+a {
+  @apply cursor-pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+
 body {
-  color: rgb(var(--foreground-rgb));
+  color: rgb(var(--foreground-rgb)) !important;
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)) !important;
 }
+
 
 @layer utilities {
   .text-balance {

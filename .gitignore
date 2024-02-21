@@ -27,10 +27,15 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env.local
+.env
 
 # vercel
 .vercel
 
+# encrypt files
+public_key.pem
+private_key.pem
 # typescript
 *.tsbuildinfo
 next-env.d.ts

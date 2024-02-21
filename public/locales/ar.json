@@ -1,0 +1,77 @@
+{
+    "home": {
+        "about_us": "حولنا"
+    },
+    "signup": {
+        "signup": "تسجيل حساب جديد",
+        "username": "اسم المستخدم",
+        "email": "البريد الإلكتروني",
+        "password": "كلمه السر",
+        "confirm_password": "تأكيد كلمة المرور",
+        "signup_button": "تسجيل حساب",
+        "already_have_account": "هل لديك حساب؟  ",
+        "login": "تسجيل الدخول",
+        "retype_password": "أعد كتابة كلمة المرور",
+        "password_match_required": "يجب كتابة كلمة المرور",
+        "password_required": "يجب كتابة كلمة المرور",
+        "email_required": "يجب كتابة البريد الإلكتروني",
+        "username_required": "يجب كتابة اسم المستخدم",
+        "password_doesnt_match": "لا تتطابق كلمة المرور مع حقل تطابق كلمة المرور",
+        "the_password_should_contains_special_charachters": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل وحرف كبير واحد ورقم واحد وحرف خاص واحد، وأن تكون طولها 8 أحرف."
+    },
+    "login": {
+        "login": "تسجيل الدخول إلى حسابك",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "login_button": "تسجيل الدخول",
+        "dont_have_account": "لا تمتلك حساب؟ ",
+        "signup": "إنشاء حساب",
+        "forget_password": "نسيت كلمة المرور؟  ",
+        "password_required": "كلمة المرور مطلوبة",
+        "email_required": "البريد الإلكتروني مطلوب",
+        "reset_password": "إعادة تعيين كلمة المرور"
+      },
+    "navbar": {
+        "login": "تسجيل الدخول",
+        "hadiths": "أحاديث نبوية",
+        "stories": "القصص",
+        "quran": "القرآن الكريم",
+        "rectiers": "قارئين القران الكريم",
+        "logout": "تسجيل الخروج",
+        "home":"الصفحة الرئيسية"
+    },
+    "footer": {
+        "copyright": "جميع الحقوق محفوظة لـ حسنة 2024 ©",
+        "helpfull_links": "روابط مفيدة",
+        "home": "الصفحة الرئيسية",
+        "quran": "القرآن الكريم",
+        "stories": "القصص",
+        "hadiths":"أحاديث نبوية",
+        "company": "منظمتنا",
+        "about_hasana": "حول حسنة",
+        "about_blueteam": "حول BlueTeam",
+        "news": "الأخبار",
+        "support_center": "مركز الدعم",
+        "i_have_problem":  "لدي مشكلة",
+        "i_have_question":  "لدي استفسار",
+        "policies": "السياسات",
+        "terms_of_use": "شروط الاستخدام",
+        "privacy_policy": "سياسة الخصوصية",
+        "hassanah": "حسنة"
+    },
+    "error": {
+        "error": "لقد حدث خطأ غير متوقع",
+        "try_again": "حاول مرة أخرى"
+    },
+    "not_found": {
+        "not_found": "لم يتم العثور على الصفحة",
+        "home": "العودة إلى الصفحة الرئيسية"
+    },
+    "signout": {
+        "signingout_message": "جار تسجيل خروجك..."
+      },
+      "signedout": {
+        "you_dont_have_account": "أنت لا تملك حساب لهذه العملية",
+        "signedout_successfully": "لقد قمت بتسجيل الخروج بنجاح"
+    }
+}

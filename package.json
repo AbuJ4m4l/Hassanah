@@ -9,19 +9,41 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/icon": "^3.2.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@next-auth/mongodb-adapter": "^1.1.3",
+    "axios": "^1.6.7",
+    "crypto": "^1.0.1",
+    "fs": "^0.0.1-security",
+    "jose": "^5.2.2",
+    "mongodb": "5",
+    "mongoose": "^8.1.3",
+    "next": "^13.5.6",
+    "next-auth": "^4.24.6",
+    "next-intl": "^3.7.0",
+    "node-rsa": "^1.1.1",
+    "nodemailer": "^6.9.9",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.1.0"
+    "ua-parser-js": "^1.0.37",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/node": "20.11.19",
     "autoprefixer": "^10.0.1",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
     "eslint": "^8",
-    "eslint-config-next": "14.1.0"
-  }
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0"
+  },
+  "main": "index.js",
+  "author": "Iyad Almsara <156677836+AbuJ4m4l@users.noreply.github.com>",
+  "license": "MIT"
 }

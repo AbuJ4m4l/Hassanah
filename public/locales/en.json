@@ -1,0 +1,77 @@
+{
+    "home": {
+        "about_us": "About Us"
+    },
+    "signup": {
+        "signup": "Signup New Account",
+        "username": "Username",
+        "email": "Email",
+        "password": "Password",
+        "confirm_password": "Confirm Password",
+        "signup_button": "Sign Up",
+        "already_have_account": "Already have an account? ",
+        "login": "Log In",
+        "retype_password": "Password Match",
+        "password_match_required": "Password match is required",
+        "password_required": "Password is required",
+        "email_required": "Email is required",
+        "username_required": "Username is required",
+        "password_doesnt_match": "Password does not match the Password Match Field",
+        "the_password_should_contains_special_charachters": "The password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and have a length of 8 characters."
+    },
+    "login": {
+        "login": "Login to Your Account",
+        "email": "Email",
+        "password": "Password",
+        "login_button": "Login",
+        "dont_have_account": "Don't have an account? ",
+        "signup": "Signup",
+        "forget_password": "Forgot Password?  ",
+        "password_required": "Password is required",
+        "email_required": "Email is required",
+        "reset_password": "Reset Password"
+      },
+    "navbar": {
+        "login": "Login",
+        "hadiths": "Prophetic Hadiths",
+        "stories": "Stories",
+        "quran": "The Holy Quran",
+        "rectiers": "Quran Reciters",
+        "signout": "Signout",
+        "home": "Home"
+    },
+    "footer": {
+        "copyright": "All rights reserved for Hassanah 2024 ©",
+        "helpfull_links": "Helpful Links",
+        "home": "Home",
+        "quran": "The Holy Quran",
+        "stories": "Stories",
+        "hadiths": "Prophetic Hadiths",
+        "company": "Our Organization",
+        "about_hasana": "About Hasana",
+        "about_blueteam": "About BlueTeam",
+        "news": "News",
+        "support_center": "Support Center",
+        "i_have_problem": "I Have a Problem",
+        "i_have_question": "I Have a Question",
+        "policies": "Policies",
+        "terms_of_use": "Terms of Use",
+        "privacy_policy": "Privacy Policy",
+        "hassanah": "Hassanah"
+    },
+    "error": {
+        "error": "An Unexpected Error Occured.",
+        "try_again": "Try again"
+    },
+    "not_found": {
+        "not_found": "Page Not Found",
+        "home": "Go to Home Page"
+    },
+        "signout": {
+          "signingout_message": "Logging you out..."
+        },
+        "signedout": {
+            "you_dont_have_account": "You don't have account for this action.",
+            "signedout_successfully": "You have signed out successfully"
+        }
+    }
