@@ -243,6 +243,7 @@ const handler = NextAuth({
             try {
                 await db();
                 if (account.provider === "google") {
+                    console.log(profile, account)
                     const isUserExists = await Google_User.findOne({
                         id: account.providerAccountId,
                         email: profile.email

@@ -45,8 +45,9 @@ export default function Signup({ params: { locale } }) {
         try {
             e.preventDefault();
             const id = await Math.floor(Math.random() * 10000000000000000);
+            localStorage.setItem("userAgentID", id);
             await signIn('signup', {
-                redirect: true,
+                redirect: false,
                 username: username,
                 email: email,
                 password: password,
