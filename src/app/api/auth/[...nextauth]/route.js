@@ -73,7 +73,7 @@ const handler = NextAuth({
             profile(profile) {
                 return {
                     id: profile.id,
-                    name: `${profile.username}`,
+                    name: profile.username,
                     email: profile.email,
                     image: profile.picture,
                     role: profile.role ? profile.role : "user",
