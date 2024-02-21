@@ -30,10 +30,10 @@ const userSchema = new Schema({
 
 
 let User;
-if (models.User) {
-    User = model('User');
+if (models.account) {
+    User = model('account');
 } else {
-    User = model('User', userSchema);
+    User = model('account', userSchema);
 }
 
 export default User;

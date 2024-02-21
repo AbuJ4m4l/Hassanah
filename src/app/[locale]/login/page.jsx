@@ -118,7 +118,7 @@ const Login = ({ params: { locale } }) => {
 
                             </div>
                             <div className="flex justify-center">
-                                <button type="button" onClick={() => signIn('google', { userAgentID: 12 })} className="flex rtl:ml-2 ltr:mr-2 justify-center w-[50%] hover:bg-secondry bg-secondry-light cursor-pointer px-4 py-2 border gap-2 border-slate-600 rounded-lg text-white hover:border-slate-900 hover:shadow transition duration-150">
+                                <button type="button" onClick={() => signIn('google')} className="flex rtl:ml-2 ltr:mr-2 justify-center w-[50%] hover:bg-secondry bg-secondry-light cursor-pointer px-4 py-2 border gap-2 border-slate-600 rounded-lg text-white hover:border-slate-900 hover:shadow transition duration-150">
                                     <Image
                                         className="w-6 h-6"
                                         width={6}

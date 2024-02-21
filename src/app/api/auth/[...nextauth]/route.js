@@ -10,6 +10,8 @@ import User from "../../../../models/user";
 import { v4 } from "uuid";
 import NodeRSA from "node-rsa";
 import fs from 'fs/promises'
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import clientPromise from "../../../../utils/clientPromise";
 
 
 const privateKey = `-----BEGIN RSA PRIVATE KEY-----
@@ -53,11 +55,31 @@ const handler = NextAuth({
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_ID,
-            clientSecret: process.env.GOOGLE_SECRET
+            clientSecret: process.env.GOOGLE_SECRET,
+            profile(profile) {
+                return {
+                    id: profile.sub,
+                    name: `${profile.given_name} ${profile.family_name}`,
+                    email: profile.email,
+                    image: profile.picture,
+                    role: profile.role ? profile.role : "user",
+                    locale: profile.locale ?? "ar"
+                };
+            }
         }),
         DiscordProvider({
             clientId: process.env.DISCORD_ID,
-            clientSecret: process.env.DISCORD_SECRET
+            clientSecret: process.env.DISCORD_SECRET,
+            profile(profile) {
+                return {
+                    id: profile.id,
+                    name: `${profile.username}`,
+                    email: profile.email,
+                    image: profile.picture,
+                    role: profile.role ? profile.role : "user",
+                    locale: profile.locale ?? "ar"
+                };
+            }
         }),
         CredentialsProvider({
             id: "signup",
@@ -235,10 +257,27 @@ const handler = NextAuth({
             }
         })
     ],
+    adapter: MongoDBAdapter(clientPromise),
     callbacks: {
-        async session({ session }) {
-            return session;
+        async jwt({ token, user }) {
+            return { ...token, ...user };
         },
+        async session({ session }) {
+            session.user.role = token.role;
+            return session;
+        }
+    },
+    pages: {
+        newUser: "/",
+        signIn: "/login",
+        signOut: "/signout"
+    },
+    session: {
+        strategy: "jwt"
+    }
+});
+
+/*
         async signIn({ profile, account }) {
             try {
                 await db();
@@ -339,13 +378,5 @@ const handler = NextAuth({
                 console.error(error)
                 return false
             }
-        }
-    },
-    pages: {
-        newUser: "/",
-        signIn: "/login",
-        signOut: "/signout"
-    },
-});
-
+        }*/
 export { handler as GET, handler as POST };
