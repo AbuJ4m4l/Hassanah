@@ -12,6 +12,7 @@ import NodeRSA from "node-rsa";
 import fs from 'fs/promises'
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "../../../../utils/clientPromise";
+import { generateToken } from "../../../actions/token";
 
 
 const privateKey = `-----BEGIN RSA PRIVATE KEY-----
@@ -79,6 +80,9 @@ const handler = NextAuth({
                     role: profile.role ? profile.role : "user",
                     locale: profile.locale ?? "ar"
                 };
+            },
+            async authorization(credentials, req) {
+
             }
         }),
         CredentialsProvider({
@@ -150,10 +154,14 @@ const handler = NextAuth({
                             if (userExists) {
                                 return null;
                             } else {
+                                const token = await generateToken({
+                                    id, email, username, role: 'user'
+                                });
                                 const user = {
                                     id,
                                     provider: "credentials.email",
                                     username: username,
+                                    token,
                                     email: email,
                                     password: encryptedPassword,
                                     role: 'user',
@@ -227,7 +235,6 @@ const handler = NextAuth({
                         os,
                         device
                     } = userAgent;
-                    const deviceId = await Math.floor(Math.random() * 1000000000000);
                     const newDevice = {
                         id: await parseInt(credentials.userAgentID, 10),
                         deviceName: device.model + device.vendor,
