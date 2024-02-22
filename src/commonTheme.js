@@ -55,6 +55,17 @@ const theme = extendTheme({
         baseStyle: {
             color: "primary"
         }
+    },
+    Alert: {
+        baseStyle: {
+            title: {
+                fontWeight: "bold",
+                color: "#000"
+            },
+            description: {
+                color: "#000"
+            }
+        },
     }
 });
 
