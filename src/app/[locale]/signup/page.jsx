@@ -78,9 +78,6 @@ export default function Signup({ params: { locale } }) {
 
                     if (ok) {
                         setUserMessage(t('signup_success'));
-                        setTimeout(() => {
-                            router.push('/profile');
-                        }, 1000);
                     } else if (error) {
                         setError(error);
                     }
