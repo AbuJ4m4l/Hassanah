@@ -12,6 +12,13 @@ import {
     InputRightElement,
     Stack,
     InputLeftElement,
+    Alert,
+    AlertIcon,
+    AlertDescription,
+    AlertTitle,
+    Box,
+    CloseButton,
+    useDisclosure,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,6 +28,7 @@ import theme from '../../../commonTheme';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSession, signIn, signOut } from 'next-auth/react'
+import { useRouter } from 'next/navigation';
 
 export default function Signup({ params: { locale } }) {
     const [showPassword, setShowPassword] = useState(false);
@@ -36,14 +44,23 @@ export default function Signup({ params: { locale } }) {
     const [matchPasswordInputError, setMatchPasswordInputError] = useState(false);
     const [signupButtonStatus, setSignupButtonStatus] = useState(false);
     const [passwordStatus, setPasswordStatus] = useState(null);
-
+    const [userMessage, setUserMessage] = useState('');
+    const [Error, setError] = useState('');
+    const {
+        isOpen: isVisible,
+        onClose,
+        onOpen,
+    } = useDisclosure({ defaultIsOpen: true })
     const t = useTranslations('signup');
+    const router = useRouter();
 
     const handleClickOnPassword = () => setShowPassword(!showPassword);
     const handleClickOnRetypedPassword = () => setshowRetypedPassword(!showRetypedPassword);
     const handleForm = async (e) => {
         try {
             e.preventDefault();
+            setUserMessage('');
+            setError('');
             const id = await Math.floor(Math.random() * 10000000000000000);
             localStorage.setItem("userAgentID", id);
             await signIn('signup', {
@@ -54,7 +71,20 @@ export default function Signup({ params: { locale } }) {
                 retypePassword: retypePassword,
                 userAgent: navigator.userAgent,
                 userAgentID: id
-            });
+            })
+                .then(({ ok, error }) => {
+                    console.log(ok);
+                    console.error(error);
+
+                    if (ok) {
+                        setUserMessage(t('signup_success'));
+                        setTimeout(() => {
+                            router.push('/profile');
+                        }, 1000);
+                    } else if (error) {
+                        setError(error);
+                    }
+                });
         } catch (error) {
             console.error(error);
         }
@@ -105,7 +135,52 @@ export default function Signup({ params: { locale } }) {
             <div className="flex justify-center">
                 <ChakraProvider theme={theme}>
                     <form onSubmit={handleForm}>
-                        <Stack spacing={4} className='w-[300px]'>
+                        <Stack spacing={4} className='w-[300px] sm:w-[400px]'>
+                            {
+                                userMessage && (
+                                    <Alert
+                                        status='success'
+                                        variant='subtle'
+                                        flexDirection='column'
+                                        alignItems='center'
+                                        justifyContent='center'
+                                        textAlign='center'
+                                        height='200px'
+                                        className='rounded-lg'
+                                    >
+                                        <AlertIcon boxSize='40px' mr={0} />
+                                        <AlertTitle mt={4} mb={1} fontSize='lg' className="text-black font-bold">
+                                            {t('signup_success')}
+                                        </AlertTitle>
+                                        <AlertDescription maxWidth='sm' className="text-black">
+                                            {t('signup_success_description')}
+                                        </AlertDescription>
+                                    </Alert>
+                                )
+                            }
+
+                            {
+                                Error ? (
+                                    <Alert
+                                        status='error'
+                                        variant='subtle'
+                                        flexDirection='column'
+                                        alignItems='center'
+                                        justifyContent='center'
+                                        textAlign='center'
+                                        height='200px'
+                                        className='rounded-lg'
+                                    >
+                                        <AlertIcon boxSize='40px' mr={0} />
+                                        <AlertTitle mt={4} mb={1} fontSize='lg' className="text-black font-bold">
+                                            {t('error_credentials_signin_title')}
+                                        </AlertTitle>
+                                        <AlertDescription className='text-black'>
+                                            {t('error_credentials_signin_description')}
+                                        </AlertDescription>
+                                    </Alert>
+                                ) : null
+                            }
                             <FormControl isInvalid={usernameInputError}>
                                 <Input
                                     type="text"
@@ -230,9 +305,7 @@ export default function Signup({ params: { locale } }) {
                                 <p>{t('already_have_account')}<Link href="/login" className="text-primary">{t('login')} </Link></p>
                             </div>
                             <div className="flex flex-row mt-4">
-                                {
-                                    signupButtonStatus === true ? <button type='submit' className="w-full btn bg-primary hover:bg-transparent border-2 border-primary hover:text-primary">{t('signup_button')}</button> : <button type='button' disabled className="w-full btn bg-slate-400 text-slate-500 cursor-not-allowed">{t('signup_button')}</button>
-                                }
+                                <button type='submit' className="w-full btn bg-primary hover:bg-transparent border-2 border-primary hover:text-primary">{t('signup_button')}</button>
 
                             </div>
                             <div className="flex justify-center">

@@ -141,14 +141,14 @@ const handler = NextAuth({
                         const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
                         if (validatePassword(password) === false) {
-                            throw new Error("Password must contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character");
+                            return null;
                         }
                         if ((password === retypePassword) && validatePassword(password) === true) {
                             const userExists = await User.findOne({
                                 email: email
                             });
                             if (userExists) {
-                                throw new Error("User already exists");
+                                return null;
                             } else {
                                 const user = {
                                     id,
@@ -178,12 +178,12 @@ const handler = NextAuth({
                                 return user;
                             }
                         } else if (password !== retypePassword) {
-                            throw new Error("Passwords do not match");
+                            return null;
                         } else {
-                            throw new Error("Invalid credentials");
+                            return null;
                         }
                     } else {
-                        throw new Error("Invalid credentials");
+                        return null;
                     }
                 } catch (error) {
                     console.log(error);

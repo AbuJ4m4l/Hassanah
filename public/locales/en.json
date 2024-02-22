@@ -17,7 +17,16 @@
         "email_required": "Email is required",
         "username_required": "Username is required",
         "password_doesnt_match": "Password does not match the Password Match Field",
-        "the_password_should_contains_special_charachters": "The password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and have a length of 8 characters."
+        "the_password_should_contains_special_charachters": "The password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and have a length of 8 characters.",
+        "signup_success": "Your account has been successfully created.",
+        "signup_success_description": "We have sent an email to your email address. Please check your email for the link to verify your account.",
+        "error_user_already_exists": "User already exists.",
+        "error_password_rules": "Password must contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character.",
+        "error_password_doesnt_match": "Password does not match.",
+        "invalid_credentials": "Invalid Credentials Provided.",
+        "unknown_error": "An Error Occured. Please try again later.",
+        "error_credentials_signin_title": "Invalid Credentials Provided",
+        "error_credentials_signin_description": " Please try again with anthor account."
     },
     "login": {
         "login": "Login to Your Account",
