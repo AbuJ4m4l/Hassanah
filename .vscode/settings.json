@@ -4,5 +4,7 @@
         "**/node_module": true,
         "**/node_modules": false
     },
-    "search.useIgnoreFiles": false
+    "search.useIgnoreFiles": false,
+    "git.autofetch": true,
+    "git.postCommitCommand": "sync"
 }
