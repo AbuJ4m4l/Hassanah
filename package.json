@@ -22,7 +22,6 @@
     "axios": "^1.6.7",
     "crypto": "^1.0.1",
     "fs": "^0.0.1-security",
-    "jose": "^5.2.2",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "5",
     "mongoose": "^8.1.3",

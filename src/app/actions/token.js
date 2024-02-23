@@ -1,8 +1,9 @@
+
 import jwt from 'jsonwebtoken';
 
 const secret = process.env.JWT_SECRET;
 
-export async function generateToken(data) {
+export default async function generateToken(data) {
     const token = await jwt.sign({
         ...data
     }, secret, { issuer: "BlueTeam" });

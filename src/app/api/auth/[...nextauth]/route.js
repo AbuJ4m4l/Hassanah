@@ -12,8 +12,45 @@ import NodeRSA from "node-rsa";
 import fs from 'fs/promises'
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "../../../../utils/clientPromise";
-import { generateToken } from "../../../actions/token";
+import jwt from 'jsonwebtoken';
 
+import nodemailer from 'nodemailer'
+
+async function sendVerifyCode(data) {
+    const transporter = nodemailer.createTransport({
+        service: process.env.Email_SERVICE_NAME,
+        auth: {
+            user: process.env.EMAIL_USERNAME,
+            pass: process.env.EMAIL_PASSWORD
+        }
+    });
+    // Compose the email
+    const mailOptions = {
+        from: process.env.EMAIL_FROM,
+        to: data.email,
+        subject: 'هلا',
+        html: `<h1>code</h1>`
+    };
+
+
+    // Send the email
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('\x1b[32mEmail sent: ' + info.response);
+        }
+    });
+}
+
+const secret = process.env.JWT_SECRET;
+
+async function generateToken(data) {
+    const token = await jwt.sign({
+        ...data
+    }, secret, { issuer: "BlueTeam" });
+    return token;
+}
 
 const privateKey = `-----BEGIN RSA PRIVATE KEY-----
 MIIEowIBAAKCAQEAsdCJNw4Mi3eYMHfldbTYYKY+QppalK9bXM4rd4UcsKy0HU1/
@@ -81,9 +118,7 @@ const handler = NextAuth({
                     locale: profile.locale ?? "ar"
                 };
             },
-            async authorization(credentials, req) {
 
-            }
         }),
         CredentialsProvider({
             id: "signup",
@@ -154,9 +189,12 @@ const handler = NextAuth({
                             if (userExists) {
                                 return null;
                             } else {
-                                const token = await generateToken({
+                                const token = await jwt.sign({
                                     id, email, username, role: 'user'
-                                });
+                                }, secret, { issuer: "BlueTeam" });
+                                await sendVerifyCode({
+                                    email
+                                })
                                 const user = {
                                     id,
                                     provider: "credentials.email",
@@ -264,27 +302,18 @@ const handler = NextAuth({
             }
         })
     ],
-    adapter: MongoDBAdapter(clientPromise),
+    //adapter: MongoDBAdapter(clientPromise),
     callbacks: {
         async jwt({ token, user }) {
+            if (user) {
+                token.role = user.role;
+            }
             return { ...token, ...user };
         },
-        async session({ session }) {
+        async session({ session, token }) {
             session.user.role = token.role;
             return session;
-        }
-    },
-    pages: {
-        newUser: "/",
-        signIn: "/login",
-        signOut: "/signout"
-    },
-    session: {
-        strategy: "jwt"
-    }
-});
-
-/*
+        },
         async signIn({ profile, account }) {
             try {
                 await db();
@@ -315,8 +344,15 @@ const handler = NextAuth({
                         }, { new: true });
                         return true;
                     } else {
+                        const token = await jwt.sign({
+                            id: account.providerAccountId, email: profile.email, username: profile.name, role: 'user'
+                        }, secret, { issuer: "BlueTeam" });
+                        await sendVerifyCode({
+                            email: profile.email
+                        })
                         const data = new Google_User({
                             id: account.providerAccountId,
+                            token: await token,
                             email: profile.email,
                             email_verified: profile.email_verified,
                             username: profile.name,
@@ -360,9 +396,13 @@ const handler = NextAuth({
                         }, { new: true });
                         return true;
                     }
+                    const token = await jwt.sign({
+                        id: account.providerAccountId, email: profile.email, username: profile.name, role: 'user'
+                    }, secret, { issuer: "BlueTeam" });
                     const data = new Discord_User({
                         id: profile.id,
                         username: profile.username,
+                        token,
                         avatar_url: profile.image_url,
                         banner_url: `https://cdn.discordapp.com/banners/${profile.id}/${profile.banner}.png`,
                         banner_color: profile.banner_color ? profile.banner_color : "#FFF",
@@ -385,5 +425,19 @@ const handler = NextAuth({
                 console.error(error)
                 return false
             }
-        }*/
+        }
+    },
+    pages: {
+        newUser: "/",
+        signIn: "/login",
+        signOut: "/signout",
+        error: "/error",
+        verifyRequest: "/verify"
+    },
+    session: {
+        strategy: "jwt"
+    }
+});
+
+
 export { handler as GET, handler as POST };
