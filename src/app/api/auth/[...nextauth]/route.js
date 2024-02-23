@@ -13,9 +13,8 @@ import jwt from 'jsonwebtoken';
 
 import nodemailer from 'nodemailer'
 
-async function sendVerifyCode(data) {
+async function sendEmail(data) {
     try {
-        console.log("sending email")
         const transporter = nodemailer.createTransport({
             service: process.env.Email_SERVICE_NAME,
             auth: {
@@ -23,55 +22,16 @@ async function sendVerifyCode(data) {
                 pass: process.env.EMAIL_PASSWORD
             }
         });
+
         // Compose the email
         const mailOptions = {
             from: process.env.EMAIL_FROM,
             to: data.email,
-            subject: "Verify Your Email Address for Hassanah",
-            html: `<!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            </head>
-            <body style="padding: 0; margin: 0; font-family: Arial, Helvetica, sans-serif;">
-                <nav>
-                    <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100px; background-color: #0093fd;">
-                    <img src="${process.env.URL}/images/hassanahLoggo-white.png" loading="lazy" style="width: 70px; height: 70px; margin: 5px; border-radius: 10px;">
-                </div>
-            </nav>
-            <div style="margin-left: 7.5%;margin-right: 7.5%;margin-top: 5%;">
-            <h1>
-                Dear ${data.username},
-            </h1>
-            <br><br>
-            <p style="font-weight: bold; font-size: larger;">
-            Thank you for signing up for Hassanah! To complete your registration and access all the features of our platform, please verify your email address by clicking the link below:
-            <br>
-            <br>
-            <button style="cursor: pointer; padding-top: 12px; padding-bottom: 12px; padding-left: 18px; padding-right: 18px; background-color: #0093fd; border-radius: 10px; border: none; color: white; font-size: medium; font-weight: bold;">
-            <a style="text-decoration: none; color: white;" href="${process.env.URL}/verify?code=${data.code}">Verify</a>
-            </button>
-            Or direct link:
-            <br>
-            <br>
-            <a href="${process.env.URL}/verify?code=${data.code}">${process.env.URL}/verify?code=${data.code}</a>
-            <br>
-            <br>
-            If you did not sign up for Hassanah, please disregard this email.
-            <br>
-            <br>
-            Best Regards,<br>
-            The Hassanah Team
-            </p>
-            </div>
-            </body>
-            </html>`
+            subject: data.subject,
+            html: data.html
         };
 
-
         // Send the email
-
         transporter.sendMail(mailOptions)
             .then(info => {
                 return true;
@@ -84,6 +44,97 @@ async function sendVerifyCode(data) {
     }
 }
 
+async function sendVerificationMessage(data) {
+    sendEmail({
+        email: data.email,
+        subject: "Verify Your Email Address for Hassanah",
+        html: `<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body style="padding: 0; margin: 0; font-family: Arial, Helvetica, sans-serif;">
+            <nav>
+                <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100px; background-color: #0093fd;">
+                <img src="${process.env.URL}/images/hassanahLoggo-white.png" loading="lazy" style="width: 70px; height: 70px; margin: 5px; border-radius: 10px;">
+            </div>
+        </nav>
+        <div style="margin-left: 7.5%;margin-right: 7.5%;margin-top: 5%; font-size: medium;">
+        <h1>
+            Dear <strong style="color: #0093fd;">${data.username ? data.username : data.user}</strong>,
+        </h1>
+        <br><br>
+        <p style="font-weight: bold; font-size: larger;">
+        Thank you for signing up for Hassanah! To complete your registration and access all the features of our platform, please verify your email address by clicking the link below:
+        <br>
+        <br>
+        <button style="cursor: pointer; padding-top: 12px; padding-bottom: 12px; padding-left: 18px; padding-right: 18px; background-color: #0093fd; border-radius: 10px; border: none; color: white; font-size: medium; font-weight: bold;">
+        <a style="text-decoration: none; color: white;" href="${process.env.URL}/verify?code=${data.code}">Verify</a>
+        </button>
+        <br>
+        <br>
+        Or direct link:
+        <br>
+        <br>
+        <a href="${process.env.URL}/verify?code=${data.code}">${process.env.URL}/verify?code=${data.code}</a>
+        <br>
+        <br>
+        If you did not sign up for Hassanah, please disregard this email.
+        <br>
+        <br>
+        Best Regards,<br>
+        The Hassanah Team
+        </p>
+        </div>
+        </body>
+        </html>`
+    })
+}
+
+async function sendWelcomeMessage(data) {
+    sendEmail({
+        email: data.email,
+        subject: "Welcome to Hassanah - Your Premier Source for Islamic Teachings",
+        html: `<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body style="margin: 0; font-family: Arial, Helvetica, sans-serif;">
+        <nav>
+             <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100px; background-color: #0093fd;">
+                <img src="${process.env.URL}/images/hassanahLoggo-white.png" loading="lazy" style="width: 70px; height: 70px; margin: 5px; border-radius: 10px;">
+            </div>
+        </nav>
+            <div style="margin-left: 7.5%; margin-right: 7.5%; margin-top: 5%; font-size: medium;">
+                <h1>Dear <strong style="color: #0093fd;">${data.username ? data.username : data.user}</strong>,</h1>
+                <h3>Welcome to Hassanah, your premier source for Quran Kareem readings, Islamic stories, Hadith collections, accurate prayer times, and more!</h2>
+                <h4>At <a href="${process.env.URL}" style="color: #0093fd; text-decoration: none;">Hassanah.org</a>, we strive to provide you with a rich and diverse collection of resources to help you explore the richness of Islamic teachings in both English and Arabic. Whether you're seeking spiritual growth, educational resources, or simply a sense of community, Hassanah is here to support you on your journey.</h4>
+                <h5>Here's what you can expect from our platform:</h5>
+                <ol>
+                    <li><strong>Quran Kareem Readings:</strong> Immerse yourself in the beauty of the Quran with our comprehensive collection of readings and translations.</li>
+                    <br>
+                    <li><strong>Islamic Stories:</strong> Discover inspiring stories from Islamic history and contemporary life that will uplift and motivate you.</li>
+                    <br>
+                    <li><strong>Hadith Collections:</strong> Explore the teachings of the Prophet Muhammad (peace be upon him) through our curated Hadith collections.</li>
+                    <br>
+                    <li><strong>Accurate Prayer Times:</strong> Stay informed with precise prayer times tailored to your location.</li>
+                    <br>
+                    <li><strong>Multilingual Content:</strong> Access Islamic teachings in both English and Arabic, catering to a diverse global audience.</li>
+                </ol>
+                <p>We invite you to join our community and connect with like-minded individuals who share your passion for learning and spiritual growth. Follow us on <strong style="color: #0093fd;"><a style="text-decoration: none; color: #0093fd; cursor: pointer;" href="${process.env.FACEBOOK_URL}">Facebook</a>, <a style="text-decoration: none; color: #0093fd; cursor: pointer;" href="${process.env.X_URl}">X</a>, and <a style="text-decoration: none; color: #0093fd; cursor: pointer;" href="${process.env.INSTAGRAM_URL}">Instagram</a></strong> to stay updated on the latest content and community events.</p>
+                <p>To get started, visit our website at <a href="${process.env.URL}" style="color: #0093fd; text-decoration: none;">https://hassanah.org</a> and explore the essence of Islamic teachings with Hassanah.</p>
+                <p>Thank you for choosing Hassanah as your guide on this journey of exploration and enlightenment. We look forward to accompanying you every step of the way.</p>
+                <p>Best regards,</p>
+                <p><strong style="color: #0093fd;">${data.username ? data.username : data.user}</strong><br>Hassanah Team</p>
+            </div>
+        </body>
+        </html>
+        `
+    })
+}
 
 const secret = process.env.JWT_SECRET;
 const privateKey = `-----BEGIN RSA PRIVATE KEY-----
@@ -255,11 +306,14 @@ const handler = NextAuth({
                                 const newUser = new User(user);
                                 await newUser.save()
                                     .then(async () => {
-                                        await sendVerifyCode({
-                                            email: email,
-                                            username: username,
-                                            code: verficationToken
-                                        });
+                                        await sendWelcomeMessage();
+                                        setTimeout(async () => {
+                                            await sendVerificationMessage({
+                                                email: email,
+                                                username: username,
+                                                code: verficationToken
+                                            });
+                                        }, 1500);
                                     })
                                     .catch(() => {
                                         return null;
@@ -411,11 +465,17 @@ const handler = NextAuth({
                         });
                         await data.save()
                             .then(async () => {
-                                await sendVerifyCode({
+                                await sendWelcomeMessage({
                                     email: profile.email,
-                                    username: profile.name,
-                                    code: verficationToken
+                                    username: profile.name
                                 });
+                                setTimeout(async () => {
+                                    await sendVerificationMessage({
+                                        email: profile.email,
+                                        username: profile.name,
+                                        code: verficationToken
+                                    });
+                                }, 1500);
                             })
                             .catch(() => {
                                 return null;
@@ -475,11 +535,17 @@ const handler = NextAuth({
                     });
                     await data.save()
                         .then(async () => {
-                            await sendVerifyCode({
+                            await sendWelcomeMessage({
                                 email: profile.email,
-                                username: profile.username,
-                                code: verficationToken
+                                username: profile.username
                             });
+                            setTimeout(async () => {
+                                await sendVerificationMessage({
+                                    email: profile.email,
+                                    username: profile.username,
+                                    code: verficationToken
+                                });
+                            }, 1500);
                         })
                         .catch(() => {
                             return null;
