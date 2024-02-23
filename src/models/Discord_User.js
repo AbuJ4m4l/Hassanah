@@ -73,6 +73,11 @@ const userSchema = new Schema({
     refresh_token: {
         type: String,
         required: true
+    },
+    verfication_token: {
+        type: String,
+        required: false,
+        unique: true
     }
 }, { timestamps: true });
 

@@ -9,38 +9,75 @@ import UAParser from "ua-parser-js";
 import User from "../../../../models/user";
 import { v4 } from "uuid";
 import NodeRSA from "node-rsa";
-import fs from 'fs/promises'
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-import clientPromise from "../../../../utils/clientPromise";
 import jwt from 'jsonwebtoken';
 
 import nodemailer from 'nodemailer'
 
 async function sendVerifyCode(data) {
-    const transporter = nodemailer.createTransport({
-        service: process.env.Email_SERVICE_NAME,
-        auth: {
-            user: process.env.EMAIL_USERNAME,
-            pass: process.env.EMAIL_PASSWORD
-        }
-    });
-    // Compose the email
-    const mailOptions = {
-        from: process.env.EMAIL_FROM,
-        to: data.email,
-        subject: 'هلا',
-        html: `<h1>code</h1>`
-    };
+    try {
+        console.log("sending email")
+        const transporter = nodemailer.createTransport({
+            service: process.env.Email_SERVICE_NAME,
+            auth: {
+                user: process.env.EMAIL_USERNAME,
+                pass: process.env.EMAIL_PASSWORD
+            }
+        });
+        // Compose the email
+        const mailOptions = {
+            from: process.env.EMAIL_FROM,
+            to: data.email,
+            subject: "Verify Your Email Address for Hassanah",
+            html: `<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            </head>
+            <body style="padding: 0; margin: 0; font-family: Arial, Helvetica, sans-serif;">
+                <nav>
+                    <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100px; background-color: #0093fd;">
+                    <img src="${process.env.URL}/images/hassanahLoggo-white.png" loading="lazy" style="width: 70px; height: 70px; margin: 5px; border-radius: 10px;">
+                </div>
+            </nav>
+            <div style="margin-left: 7.5%;margin-right: 7.5%;margin-top: 5%;">
+            <h1>
+                Dear ${data.username},
+            </h1>
+            <br><br>
+            <p style="font-weight: bold; font-size: larger;">
+            Thank you for signing up for Hassanah! To complete your registration and access all the features of our platform, please verify your email address by clicking the link below:
+            <br>
+            <br>
+            <button style="cursor: pointer; padding-top: 12px; padding-bottom: 12px; padding-left: 18px; padding-right: 18px; background-color: #0093fd; border-radius: 10px; border: none; color: white; font-size: medium; font-weight: bold;">
+            <a style="text-decoration: none; color: white;" href="${process.env.URL}/verify?code=${data.code}">Verify</a>
+            </button>
+            <br>
+            <br>
+            If you did not sign up for Hassanah, please disregard this email.
+            <br>
+            <br>
+            Best Regards,<br>
+            The Hassanah Team
+            </p>
+            </div>
+            </body>
+            </html>`
+        };
 
 
-    // Send the email
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('\x1b[32mEmail sent: ' + info.response);
-        }
-    });
+        // Send the email
+
+        transporter.sendMail(mailOptions)
+            .then(info => {
+                console.log(info);
+            })
+            .catch(error => {
+                console.error('Error sending message:', error)
+            });
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 const secret = process.env.JWT_SECRET;
@@ -330,7 +367,7 @@ const handler = NextAuth({
                         }, {
                             id: account.providerAccountId,
                             email: profile.email,
-                            email_verified: profile.email_verified,
+                            verified: isUserExists.verified,
                             username: profile.name,
                             avatar_url: profile.picture,
                             given_name: profile.given_name,
@@ -340,21 +377,25 @@ const handler = NextAuth({
                             access_token: account.access_token,
                             expires_at: account.expires_at,
                             token_type: account.token_type,
-                            id_token: account.id_token
+                            id_token: account.id_token,
+                            verfication_token: isUserExists.verfication_token
                         }, { new: true });
                         return true;
                     } else {
                         const token = await jwt.sign({
                             id: account.providerAccountId, email: profile.email, username: profile.name, role: 'user'
                         }, secret, { issuer: "BlueTeam" });
+                        const verficationToken = await v4();
                         await sendVerifyCode({
-                            email: profile.email
-                        })
-                        const data = new Google_User({
+                            email: profile.email,
+                            username: profile.name,
+                            code: verficationToken
+                        });
+                        let data = new Google_User({
                             id: account.providerAccountId,
                             token: await token,
                             email: profile.email,
-                            email_verified: profile.email_verified,
+                            verified: false,
                             username: profile.name,
                             avatar_url: profile.picture,
                             given_name: profile.given_name,
@@ -364,7 +405,8 @@ const handler = NextAuth({
                             access_token: account.access_token,
                             expires_at: account.expires_at,
                             token_type: account.token_type,
-                            id_token: account.id_token
+                            id_token: account.id_token,
+                            verfication_token: verficationToken
                         });
                         await data.save();
                         return true;
@@ -387,19 +429,26 @@ const handler = NextAuth({
                             mfa_enabled: profile.mfa_enabled,
                             locale: profile.locale,
                             email: profile.email,
-                            verified: profile.verified,
+                            verified: isUserExists.verified,
                             provider: account.provider,
                             token_type: account.token_type,
                             access_token: account.access_token,
                             expires_at: account.expires_at,
-                            refresh_token: account.refresh_token
+                            refresh_token: account.refresh_token,
+                            verfication_token: isUserExists.verfication_token
                         }, { new: true });
                         return true;
                     }
                     const token = await jwt.sign({
                         id: account.providerAccountId, email: profile.email, username: profile.name, role: 'user'
                     }, secret, { issuer: "BlueTeam" });
-                    const data = new Discord_User({
+                    const verficationToken = await v4();
+                    await sendVerifyCode({
+                        email: profile.email,
+                        username: profile.username,
+                        code: verficationToken
+                    });
+                    let data = new Discord_User({
                         id: profile.id,
                         username: profile.username,
                         token,
@@ -410,12 +459,13 @@ const handler = NextAuth({
                         mfa_enabled: profile.mfa_enabled,
                         locale: profile.locale,
                         email: profile.email,
-                        verified: profile.verified,
+                        verified: false,
                         provider: account.provider,
                         token_type: account.token_type,
                         access_token: account.access_token,
                         expires_at: account.expires_at,
-                        refresh_token: account.refresh_token
+                        refresh_token: account.refresh_token,
+                        verfication_token: verficationToken
                     });
                     await data.save();
                     return true;

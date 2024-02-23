@@ -16,7 +16,7 @@ const userSchema = new Schema({
         required: true,
         unique: true
     },
-    email_verified: {
+    verified: {
         type: Boolean,
         default: false
     },
@@ -62,8 +62,12 @@ const userSchema = new Schema({
     id_token: {
         type: String,
         required: true
+    },
+    verfication_token: {
+        type: String,
+        required: false,
+        unique: true
     }
-
 }, { timestamps: true });
 
 

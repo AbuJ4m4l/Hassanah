@@ -82,5 +82,14 @@
         "signedout": {
             "you_dont_have_account": "You don't have account for this action.",
             "signedout_successfully": "You have signed out successfully"
-        }
+        },
+            "emailVerification": {
+            "subject": "Verify Your Email Address for Hassanah",
+            "greeting": "Dear {username},",
+            "body": "Thank you for signing up for Hassanah! To complete your registration and access all the features of our platform, please verify your email address by clicking the link below:",
+            "verificationButton": "Verify",
+            "disclaimer": "If you did not sign up for Hassanah, please disregard this email.",
+            "closing": "Best Regards,",
+            "team": "The Hassanah Team"
+            }
     }

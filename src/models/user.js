@@ -25,7 +25,12 @@ const userSchema = new Schema({
         deviceOS: String,
         deviceOSVersion: String,
         deviceIP: String
-    }]
+    }],
+    verfication_token: {
+        type: String,
+        required: false,
+        unique: true
+    }
 }, { timestamps: true });
 
 

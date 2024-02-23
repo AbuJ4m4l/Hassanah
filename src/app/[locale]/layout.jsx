@@ -52,7 +52,7 @@ export default async function RootLayout({ children, params: { locale } }) {
                     <meta name="twitter:description" content="تفاعل مع القرآن الكريم، القصص الإسلامية، والأحاديث. اتبع أوقات الصلاة الدقيقة وانضم إلى مجتمعنا للنمو الروحي والتعلم." />
                     <meta name="twitter:image" content="[صورة URL]" />
                     <meta name="twitter:card" content="summary_large_image" />
-
+                    <meta charSet="UTF-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 </head>
                 <body dir={direction} className={`selection:bg-primary selection:text-white ${locale === "ar" ? changa.className : jetbrains_mono.className} flex flex-col min-h-screen`}>
