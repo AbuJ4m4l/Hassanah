@@ -52,6 +52,10 @@ async function sendVerifyCode(data) {
             <button style="cursor: pointer; padding-top: 12px; padding-bottom: 12px; padding-left: 18px; padding-right: 18px; background-color: #0093fd; border-radius: 10px; border: none; color: white; font-size: medium; font-weight: bold;">
             <a style="text-decoration: none; color: white;" href="${process.env.URL}/verify?code=${data.code}">Verify</a>
             </button>
+            Or direct link:
+            <br>
+            <br>
+            <a href="${process.env.URL}/verify?code=${data.code}">${process.env.URL}/verify?code=${data.code}</a>
             <br>
             <br>
             If you did not sign up for Hassanah, please disregard this email.
@@ -70,7 +74,7 @@ async function sendVerifyCode(data) {
 
         transporter.sendMail(mailOptions)
             .then(info => {
-                console.log(info);
+                return true;
             })
             .catch(error => {
                 console.error('Error sending message:', error)
@@ -80,15 +84,8 @@ async function sendVerifyCode(data) {
     }
 }
 
+
 const secret = process.env.JWT_SECRET;
-
-async function generateToken(data) {
-    const token = await jwt.sign({
-        ...data
-    }, secret, { issuer: "BlueTeam" });
-    return token;
-}
-
 const privateKey = `-----BEGIN RSA PRIVATE KEY-----
 MIIEowIBAAKCAQEAsdCJNw4Mi3eYMHfldbTYYKY+QppalK9bXM4rd4UcsKy0HU1/
 CpeN+RICQxe3NfcNpmVbyS7cm6rMU30gEm3OMRiBmg9bDR779F7lmHrgOo0sOUaq
@@ -229,9 +226,7 @@ const handler = NextAuth({
                                 const token = await jwt.sign({
                                     id, email, username, role: 'user'
                                 }, secret, { issuer: "BlueTeam" });
-                                await sendVerifyCode({
-                                    email
-                                })
+                                const verficationToken = await v4();
                                 const user = {
                                     id,
                                     provider: "credentials.email",
@@ -255,9 +250,20 @@ const handler = NextAuth({
                                     }],
                                     avatar: 'Default',
                                     previousRole: 'user',
+                                    verfication_token: verficationToken
                                 };
                                 const newUser = new User(user);
-                                await newUser.save();
+                                await newUser.save()
+                                    .then(async () => {
+                                        await sendVerifyCode({
+                                            email: email,
+                                            username: username,
+                                            code: verficationToken
+                                        });
+                                    })
+                                    .catch(() => {
+                                        return null;
+                                    });
                                 return user;
                             }
                         } else if (password !== retypePassword) {
@@ -386,11 +392,6 @@ const handler = NextAuth({
                             id: account.providerAccountId, email: profile.email, username: profile.name, role: 'user'
                         }, secret, { issuer: "BlueTeam" });
                         const verficationToken = await v4();
-                        await sendVerifyCode({
-                            email: profile.email,
-                            username: profile.name,
-                            code: verficationToken
-                        });
                         let data = new Google_User({
                             id: account.providerAccountId,
                             token: await token,
@@ -408,7 +409,17 @@ const handler = NextAuth({
                             id_token: account.id_token,
                             verfication_token: verficationToken
                         });
-                        await data.save();
+                        await data.save()
+                            .then(async () => {
+                                await sendVerifyCode({
+                                    email: profile.email,
+                                    username: profile.name,
+                                    code: verficationToken
+                                });
+                            })
+                            .catch(() => {
+                                return null;
+                            });
                         return true;
                     }
                 } else if (account.provider === "discord") {
@@ -443,11 +454,6 @@ const handler = NextAuth({
                         id: account.providerAccountId, email: profile.email, username: profile.name, role: 'user'
                     }, secret, { issuer: "BlueTeam" });
                     const verficationToken = await v4();
-                    await sendVerifyCode({
-                        email: profile.email,
-                        username: profile.username,
-                        code: verficationToken
-                    });
                     let data = new Discord_User({
                         id: profile.id,
                         username: profile.username,
@@ -467,7 +473,17 @@ const handler = NextAuth({
                         refresh_token: account.refresh_token,
                         verfication_token: verficationToken
                     });
-                    await data.save();
+                    await data.save()
+                        .then(async () => {
+                            await sendVerifyCode({
+                                email: profile.email,
+                                username: profile.username,
+                                code: verficationToken
+                            });
+                        })
+                        .catch(() => {
+                            return null;
+                        });
                     return true;
                 }
                 return true;

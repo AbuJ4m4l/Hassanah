@@ -26,7 +26,8 @@
         "invalid_credentials": "Invalid Credentials Provided.",
         "unknown_error": "An Error Occured. Please try again later.",
         "error_credentials_signin_title": "Invalid Credentials Provided",
-        "error_credentials_signin_description": " Please try again with anthor account."
+        "error_credentials_signin_description": " Please try again with anthor account.",
+        "email_invalid": "Please enter a valid email address."
     },
     "login": {
         "login": "Login to Your Account",

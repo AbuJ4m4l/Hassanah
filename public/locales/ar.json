@@ -26,7 +26,8 @@
         "invalid_credentials": "بيانات الاعتماد غير صالحة",
         "unknown_error": "حدث خطأ غير معروف. الرجاء المحاولة مرة أخرى لاحقًا.",
         "error_credentials_signin_title": "بيانات الاعتماد غير صحيحة",
-        "error_credentials_signin_description": "يرجى المحاولة مرة أخرى باستخدام حساب آخر."
+        "error_credentials_signin_description": "يرجى المحاولة مرة أخرى باستخدام حساب آخر.",
+        "email_invalid": "يرجى إدخال عنوان بريد إلكتروني صالح"
     },
     "login": {
         "login": "تسجيل الدخول إلى حسابك",

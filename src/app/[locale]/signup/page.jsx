@@ -61,6 +61,7 @@ export default function Signup({ params: { locale } }) {
             e.preventDefault();
             setUserMessage('');
             setError('');
+            if(password && email && username && (password === retypePassword)) {
             const id = await Math.floor(Math.random() * 10000000000000000);
             localStorage.setItem("userAgentID", id);
             await signIn('signup', {
@@ -82,6 +83,13 @@ export default function Signup({ params: { locale } }) {
                         setError(error);
                     }
                 });
+            } else {
+                if(password!== retypePassword) setMatchPasswordInputError(0);
+                if(!username) setUsernameInputError(true);
+                if(!password) setPasswordInputError(true);
+                if(email &&!email.includes('@')) setEmailInputError(0);
+                if(!email) setEmailInputError(true);
+            }
         } catch (error) {
             console.error(error);
         }
@@ -142,9 +150,17 @@ export default function Signup({ params: { locale } }) {
                                         alignItems='center'
                                         justifyContent='center'
                                         textAlign='center'
-                                        height='200px'
+                                        height='230px'
                                         className='rounded-lg'
                                     >
+                                        <CloseButton
+                                            alignSelf='flex-start'
+                                            position='relative'
+                                            right={-1}
+                                            top={-1}
+                                            onClick={onClose}
+                                            color="black"
+                                        />
                                         <AlertIcon boxSize='40px' mr={0} />
                                         <AlertTitle mt={4} mb={1} fontSize='lg' className="text-black font-bold">
                                             {t('signup_success')}
@@ -165,9 +181,17 @@ export default function Signup({ params: { locale } }) {
                                         alignItems='center'
                                         justifyContent='center'
                                         textAlign='center'
-                                        height='200px'
+                                        height='170px'
                                         className='rounded-lg'
                                     >
+                                        <CloseButton
+                                            alignSelf='flex-start'
+                                            position='relative'
+                                            right={-1}
+                                            top={-1}
+                                            onClick={onClose}
+                                            color="black"
+                                        />
                                         <AlertIcon boxSize='40px' mr={0} />
                                         <AlertTitle mt={4} mb={1} fontSize='lg' className="text-black font-bold">
                                             {t('error_credentials_signin_title')}
@@ -176,7 +200,7 @@ export default function Signup({ params: { locale } }) {
                                             {t('error_credentials_signin_description')}
                                         </AlertDescription>
                                     </Alert>
-                                ) : null
+                                ) : <></>
                             }
                             <FormControl isInvalid={usernameInputError}>
                                 <Input
@@ -200,7 +224,7 @@ export default function Signup({ params: { locale } }) {
                                     onChange={(e) => setEmail(e.target.value)}
                                     onBlur={(e) => setEmailInputError(e.target.value.trim() === '')}
                                 />
-                                <FormErrorMessage>{t('email_required')}</FormErrorMessage>
+                                <FormErrorMessage>{emailInputError === true ? t('email_required') : t('email_invalid')}</FormErrorMessage>
                             </FormControl>
                             <FormControl isInvalid={passwordInputError === 0 ? true : passwordInputError ? true : false}>
                                 <InputGroup size="md">
