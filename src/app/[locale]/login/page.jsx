@@ -1,5 +1,5 @@
 "use client";
-import { ChakraProvider, FormControl, FormErrorMessage, Input, InputGroup, InputLeftElement, InputRightElement, Stack } from "@chakra-ui/react";
+import { Alert, AlertDescription, AlertIcon, AlertTitle, ChakraProvider, CloseButton, FormControl, FormErrorMessage, Input, InputGroup, InputLeftElement, InputRightElement, Stack, useDisclosure } from "@chakra-ui/react";
 import theme from "../../../commonTheme";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
@@ -8,6 +8,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Login = ({ params: { locale } }) => {
     const [emailInputError, setEmailInputError] = useState(false);
@@ -16,7 +17,15 @@ const Login = ({ params: { locale } }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loginButtonStatus, setLoginButtonStatus] = useState(false);
+    const [userMessage, setUserMessage] = useState('');
+    const [Error, setError] = useState('');
     const t = useTranslations('login');
+    const router = useRouter();
+    const {
+        isOpen: isVisible,
+        onClose,
+        onOpen,
+    } = useDisclosure({ defaultIsOpen: true })
     if (password && email && password.length >= 8) {
         setTimeout(() => {
             setLoginButtonStatus(true);
@@ -27,23 +36,49 @@ const Login = ({ params: { locale } }) => {
         }, 200)
     }
     const handleClickOnPassword = () => setShowPassword(!showPassword);
+
     const handleForm = async (e) => {
         try {
             e.preventDefault();
-            const id = await Math.floor(Math.random() * 10000000000000000);
-            localStorage.setItem("userAgentID", id);
-            await signIn('login', {
-                redirect: false,
-                email: email,
-                password: password,
-                userAgent: navigator.userAgent,
-                userAgentID: id
-            });
-            console.log(true)
+            setUserMessage('');
+            setError('');
+            if (!password) setPasswordInputError(true);
+            if (email && !email.includes('@')) setEmailInputError(0);
+            if (!email) setEmailInputError(true);
+            if (password && password.length < 8) setPasswordInputError(0);
+            if (password && email) {
+                const id = await Math.floor(Math.random() * 10000000000000000);
+                localStorage.setItem("userAgentID", id);
+                await signIn('login', {
+                    redirect: false,
+                    email: email,
+                    password: password,
+                    userAgent: navigator.userAgent,
+                    userAgentID: id
+                })
+                    .then(({ ok, error }) => {
+                        console.log(ok);
+                        console.error(error);
+                        if (ok) {
+                            setUserMessage(t('login_success'));
+                            setTimeout(() => {
+                                router.push('/profile');
+                            }, 1500);
+                        } else if (error) {
+                            setError(error);
+                        }
+                    });
+            } else {
+                if (!password) setPasswordInputError(true);
+                if (email && !email.includes('@')) setEmailInputError(0);
+                if (!email) setEmailInputError(true);
+                if (password && password.length < 8) setPasswordInputError(0);
+            }
         } catch (error) {
             console.error(error);
         }
     };
+
     return (
         <>
             <div className="flex justify-center">
@@ -53,6 +88,67 @@ const Login = ({ params: { locale } }) => {
                 <ChakraProvider theme={theme}>
                     <form onSubmit={handleForm}>
                         <Stack spacing={4} className='w-[300px]'>
+                            {
+                                userMessage && (
+                                    <Alert
+                                        status='success'
+                                        variant='subtle'
+                                        flexDirection='column'
+                                        alignItems='center'
+                                        justifyContent='center'
+                                        textAlign='center'
+                                        height='230px'
+                                        className='rounded-lg'
+                                    >
+                                        <CloseButton
+                                            alignSelf='flex-start'
+                                            position='relative'
+                                            right={-1}
+                                            top={-1}
+                                            onClick={onClose}
+                                            color="black"
+                                        />
+                                        <AlertIcon boxSize='40px' mr={0} />
+                                        <AlertTitle mt={4} mb={1} fontSize='lg' className="text-black font-bold">
+                                            {t('login_success')}
+                                        </AlertTitle>
+                                        <AlertDescription maxWidth='sm' className="text-black">
+                                            {t('login_success_description')}
+                                        </AlertDescription>
+                                    </Alert>
+                                )
+                            }
+
+                            {
+                                Error ? (
+                                    <Alert
+                                        status='error'
+                                        variant='subtle'
+                                        flexDirection='column'
+                                        alignItems='center'
+                                        justifyContent='center'
+                                        textAlign='center'
+                                        height='170px'
+                                        className='rounded-lg'
+                                    >
+                                        <CloseButton
+                                            alignSelf='flex-start'
+                                            position='relative'
+                                            right={-1}
+                                            top={-1}
+                                            onClick={onClose}
+                                            color="black"
+                                        />
+                                        <AlertIcon boxSize='40px' mr={0} />
+                                        <AlertTitle mt={4} mb={1} fontSize='lg' className="text-black font-bold">
+                                            {t('error_credentials_signin_title')}
+                                        </AlertTitle>
+                                        <AlertDescription className='text-black'>
+                                            {t('error_credentials_signin_description')}
+                                        </AlertDescription>
+                                    </Alert>
+                                ) : <></>
+                            }
                             <FormControl isInvalid={emailInputError}>
                                 <Input
                                     type="email"
@@ -63,7 +159,7 @@ const Login = ({ params: { locale } }) => {
                                     onChange={(e) => setEmail(e.target.value)}
                                     onBlur={(e) => setEmailInputError(e.target.value.trim() === '')}
                                 />
-                                <FormErrorMessage>{t('email_required')}</FormErrorMessage>
+                                <FormErrorMessage>{emailInputError ? t('email_required') : t('email_invalid')}</FormErrorMessage>
                             </FormControl>
                             <FormControl isInvalid={passwordInputError ? true : false}>
                                 <InputGroup size="md">
@@ -103,7 +199,7 @@ const Login = ({ params: { locale } }) => {
                                         </>
                                     )}
                                 </InputGroup>
-                                <FormErrorMessage>{passwordInputError ? t('password_required') : null}</FormErrorMessage>
+                                <FormErrorMessage>{passwordInputError === true ? t('password_required') : t("password_length_error")}</FormErrorMessage>
                             </FormControl>
                             <div className="flex justify-center">
                                 <p>{t('forget_password')}<Link href="/reset-password" className="text-primary">{t('reset_password')}</Link></p>

@@ -59,7 +59,7 @@ const Navbar = ({ locale }) => {
                   <MenuButton style={{ fontSize: "12px" }} className='ml-[10px]'>{t('quran')}</MenuButton>
                   <MenuList>
                     <MenuItem><Link href="/quran" className="text-sm">{t('quran')}</Link></MenuItem>
-                    <MenuItem><Link href="/rectiers" className="text-sm">{t('rectiers')}</Link></MenuItem>
+                    <MenuItem><Link href="/reciters" className="text-sm">{t('reciters')}</Link></MenuItem>
                   </MenuList>
                 </Menu>
               </ChakraProvider>
@@ -107,7 +107,7 @@ const Navbar = ({ locale }) => {
                         <MenuButton>{t('quran')}</MenuButton>
                         <MenuList>
                           <MenuItem><Link href="/quran" className="text-sm">{t('quran')}</Link></MenuItem>
-                          <MenuItem><Link href="/rectiers" className="text-sm">{t('rectiers')}</Link></MenuItem>
+                          <MenuItem><Link href="/reciters" className="text-sm">{t('reciters')}</Link></MenuItem>
                         </MenuList>
                       </Menu>
                       <br />
@@ -156,7 +156,7 @@ const Navbar = ({ locale }) => {
                         <MenuButton>{t('quran')}</MenuButton>
                         <MenuList>
                           <MenuItem><Link href="/quran" className="text-sm">{t('quran')}</Link></MenuItem>
-                          <MenuItem><Link href="/rectiers" className="text-sm">{t('rectiers')}</Link></MenuItem>
+                          <MenuItem><Link href="/reciters" className="text-sm">{t('reciters')}</Link></MenuItem>
                         </MenuList>
                       </Menu>
                       <br />

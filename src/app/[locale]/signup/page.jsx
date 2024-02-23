@@ -61,34 +61,43 @@ export default function Signup({ params: { locale } }) {
             e.preventDefault();
             setUserMessage('');
             setError('');
-            if(password && email && username && (password === retypePassword)) {
-            const id = await Math.floor(Math.random() * 10000000000000000);
-            localStorage.setItem("userAgentID", id);
-            await signIn('signup', {
-                redirect: false,
-                username: username,
-                email: email,
-                password: password,
-                retypePassword: retypePassword,
-                userAgent: navigator.userAgent,
-                userAgentID: id
-            })
-                .then(({ ok, error }) => {
-                    console.log(ok);
-                    console.error(error);
-
-                    if (ok) {
-                        setUserMessage(t('signup_success'));
-                    } else if (error) {
-                        setError(error);
-                    }
-                });
+            if (password !== retypePassword) setMatchPasswordInputError(0);
+            if (!username) setUsernameInputError(true);
+            if (!password) setPasswordInputError(true);
+            if (email && !email.includes('@')) setEmailInputError(0);
+            if (!email) setEmailInputError(true);
+            if (password && password.length < 8 || !passwordStatus) setPasswordInputError(0);
+            if (password && email && username && (password === retypePassword)) {
+                const id = await Math.floor(Math.random() * 10000000000000000);
+                localStorage.setItem("userAgentID", id);
+                await signIn('signup', {
+                    redirect: false,
+                    username: username,
+                    email: email,
+                    password: password,
+                    retypePassword: retypePassword,
+                    userAgent: navigator.userAgent,
+                    userAgentID: id
+                })
+                    .then(({ ok, error }) => {
+                        console.log(ok);
+                        console.error(error);
+                        if (ok) {
+                            setUserMessage(t('signup_success'));
+                            setTimeout(() => {
+                                router.push('/profile');
+                            }, 1500);
+                        } else if (error) {
+                            setError(error);
+                        }
+                    });
             } else {
-                if(password!== retypePassword) setMatchPasswordInputError(0);
-                if(!username) setUsernameInputError(true);
-                if(!password) setPasswordInputError(true);
-                if(email &&!email.includes('@')) setEmailInputError(0);
-                if(!email) setEmailInputError(true);
+                if (password !== retypePassword) setMatchPasswordInputError(0);
+                if (!username) setUsernameInputError(true);
+                if (!password) setPasswordInputError(true);
+                if (email && !email.includes('@')) setEmailInputError(0);
+                if (!email) setEmailInputError(true);
+                if (password && password.length < 8 || !passwordStatus) setPasswordInputError(0);
             }
         } catch (error) {
             console.error(error);

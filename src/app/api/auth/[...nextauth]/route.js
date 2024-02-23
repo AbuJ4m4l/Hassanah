@@ -336,7 +336,7 @@ const handler = NextAuth({
                         await user.save();
                         return user;
                     } else {
-                        throw new Error("Invalid credentials");
+                        return null;
                     }
                 } catch (error) {
                     console.log(error);

@@ -18,19 +18,19 @@
         "username_required": "Username is required",
         "password_doesnt_match": "Password does not match the Password Match Field",
         "the_password_should_contains_special_charachters": "The password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and have a length of 8 characters.",
-        "signup_success": "Your account has been successfully created.",
+        "signup_success": "Congratulations!, Your account has been successfully created.",
         "signup_success_description": "We have sent an email to your email address. Please check your email for the link to verify your account.",
         "error_user_already_exists": "User already exists.",
         "error_password_rules": "Password must contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character.",
         "error_password_doesnt_match": "Password does not match.",
         "invalid_credentials": "Invalid Credentials Provided.",
-        "unknown_error": "An Error Occured. Please try again later.",
+        "unknown_error": "An Error Occurred. Please try again later.",
         "error_credentials_signin_title": "Invalid Credentials Provided",
-        "error_credentials_signin_description": " Please try again with anthor account.",
+        "error_credentials_signin_description": "Please try again with another account.",
         "email_invalid": "Please enter a valid email address."
     },
     "login": {
-        "login": "Login to Your Account",
+        "login": "Log in to Your Account",
         "email": "Email",
         "password": "Password",
         "login_button": "Login",
@@ -39,14 +39,20 @@
         "forget_password": "Forgot Password?  ",
         "password_required": "Password is required",
         "email_required": "Email is required",
-        "reset_password": "Reset Password"
+        "reset_password": "Reset Password",
+        "email_invalid": "Please enter a valid email address.",
+        "error_credentials_signin_title": "Invalid Credentials Provided",
+        "error_credentials_signin_description": " Please try again with another account.",
+        "password_length_error": "The Password must contain at least 8 characters.",
+        "login_success": "Welcome Back!",
+        "login_sucess_description": "You have successfully logged in."
       },
     "navbar": {
         "login": "Login",
         "hadiths": "Prophetic Hadiths",
         "stories": "Stories",
         "quran": "The Holy Quran",
-        "rectiers": "Quran Reciters",
+        "reciters": "Quran Reciters",
         "signout": "Signout",
         "home": "Home"
     },
@@ -70,7 +76,7 @@
         "hassanah": "Hassanah"
     },
     "error": {
-        "error": "An Unexpected Error Occured.",
+        "error": "An Unexpected Error Occurred.",
         "try_again": "Try again"
     },
     "not_found": {
