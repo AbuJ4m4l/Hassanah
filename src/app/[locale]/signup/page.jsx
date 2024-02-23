@@ -28,7 +28,7 @@ import theme from '../../../commonTheme';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSession, signIn, signOut } from 'next-auth/react'
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function Signup({ params: { locale } }) {
     const [showPassword, setShowPassword] = useState(false);
@@ -80,13 +80,16 @@ export default function Signup({ params: { locale } }) {
                     userAgentID: id
                 })
                     .then(({ ok, error }) => {
-                        console.log(ok);
-                        console.error(error);
                         if (ok) {
                             setUserMessage(t('signup_success'));
-                            setTimeout(() => {
-                                router.push('/profile');
-                            }, 1500);
+                            const redirect_url = query.get('redirect_url');
+                            if (redirect_url) {
+                                router.push(redirect_url);
+                            } else {
+                                setTimeout(() => {
+                                    router.push('/profile');
+                                }, 1500);
+                            }
                         } else if (error) {
                             setError(error);
                         }
@@ -141,6 +144,8 @@ export default function Signup({ params: { locale } }) {
     }
 
     const { data: session } = useSession();
+
+    const query = useSearchParams();
     return (
         <>
             <div className="flex justify-center">
@@ -339,7 +344,13 @@ export default function Signup({ params: { locale } }) {
 
                             </div>
                             <div className="flex justify-center">
-                                <button type="button" onClick={() => signIn('google')} className="flex rtl:ml-2 ltr:mr-2 justify-center w-[50%] hover:bg-secondry bg-secondry-light cursor-pointer px-4 py-2 border gap-2 border-slate-600 rounded-lg text-white hover:border-slate-900 hover:shadow transition duration-150">
+                                <button type="button" onClick={() => {
+                                    const redirect_url = query.get('redirect_url');
+                                    redirect_url ? signIn('google')
+                                        .then(() => {
+                                            router.push(redirect_url);
+                                        }) : signIn('google');
+                                }} className="flex rtl:ml-2 ltr:mr-2 justify-center w-[50%] hover:bg-secondry bg-secondry-light cursor-pointer px-4 py-2 border gap-2 border-slate-600 rounded-lg text-white hover:border-slate-900 hover:shadow transition duration-150">
                                     <Image
                                         className="w-6 h-6"
                                         width={6}
@@ -348,7 +359,13 @@ export default function Signup({ params: { locale } }) {
                                         alt="Google logo"
                                     />
                                 </button>
-                                <button type="button" onClick={() => signIn('discord')} className="flex rtl:mr-2 ltr:ml-2 justify-center w-[50%] hover:bg-secondry bg-secondry-light cursor-pointer px-4 py-2 border gap-2 border-slate-600 rounded-lg text-white hover:border-slate-900 hover:shadow transition duration-150">
+                                <button type="button" onClick={() => {
+                                    const redirect_url = query.get('redirect_url');
+                                    redirect_url ? signIn('discord')
+                                        .then(() => {
+                                            router.push(redirect_url);
+                                        }) : signIn('discord');
+                                }} className="flex rtl:mr-2 ltr:ml-2 justify-center w-[50%] hover:bg-secondry bg-secondry-light cursor-pointer px-4 py-2 border gap-2 border-slate-600 rounded-lg text-white hover:border-slate-900 hover:shadow transition duration-150">
                                     <Image
                                         className="w-6 h-6"
                                         width={6}

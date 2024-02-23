@@ -10,8 +10,7 @@ import User from "../../../../models/user";
 import { v4 } from "uuid";
 import NodeRSA from "node-rsa";
 import jwt from 'jsonwebtoken';
-
-import nodemailer from 'nodemailer'
+import nodemailer from 'nodemailer';
 
 async function sendEmail(data) {
     try {
