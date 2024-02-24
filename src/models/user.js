@@ -24,7 +24,10 @@ const userSchema = new Schema({
         deviceBrowserVersion: String,
         deviceOS: String,
         deviceOSVersion: String,
-        deviceIP: String
+        deviceIP: String,
+        deviceCountry: String,
+        deviceRegion: String,
+        deviceCity: String
     }],
     verfication_token: {
         type: String,

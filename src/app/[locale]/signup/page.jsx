@@ -142,8 +142,6 @@ export default function Signup({ params: { locale } }) {
             setMatchPasswordInputError(false);
         }, 200);
     }
-    const { data: session } = useSession();
-    session ? router.push('/profile') : null;
     const query = useSearchParams();
     return (
         <>
@@ -224,6 +222,7 @@ export default function Signup({ params: { locale } }) {
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                     onBlur={(e) => setUsernameInputError(e.target.value.trim() === '')}
+                                    autoComplete='username'
                                 />
                                 <FormErrorMessage>{t('username_required')}</FormErrorMessage>
                             </FormControl>
@@ -236,6 +235,7 @@ export default function Signup({ params: { locale } }) {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     onBlur={(e) => setEmailInputError(e.target.value.trim() === '')}
+                                    autoComplete='email'
                                 />
                                 <FormErrorMessage>{emailInputError === true ? t('email_required') : t('email_invalid')}</FormErrorMessage>
                             </FormControl>
@@ -249,7 +249,8 @@ export default function Signup({ params: { locale } }) {
                                                 validatePassword();
                                             }} onBlur={(e) => {
                                                 setPasswordInputError(e.target.value.trim() === '');
-                                            }} />
+                                            }}
+                                                autoComplete='current-password' />
                                             <InputLeftElement width="4.5rem">
                                                 <button type="button" onClick={handleClickOnPassword}>
                                                     {showPassword ? (
@@ -268,7 +269,9 @@ export default function Signup({ params: { locale } }) {
                                                 validatePassword();
                                             }} onBlur={(e) => {
                                                 setPasswordInputError(e.target.value.trim() === '');
-                                            }} />
+                                            }}
+                                                autoComplete='current-password'
+                                            />
                                             <InputRightElement width="4.5rem">
                                                 <button type="button" onClick={handleClickOnPassword}>
                                                     {showPassword ? (
@@ -297,6 +300,7 @@ export default function Signup({ params: { locale } }) {
                                                     value={retypePassword}
                                                     onChange={(e) => setRetypePassword(e.target.value)}
                                                     onBlur={(e) => setMatchPasswordInputError(e.target.value.trim() === '')}
+                                                    autoComplete='current-password'
                                                 />
                                                 <InputLeftElement width="4.5rem">
                                                     <button type="button" onClick={handleClickOnRetypedPassword}>
@@ -319,6 +323,7 @@ export default function Signup({ params: { locale } }) {
                                                     value={retypePassword}
                                                     onChange={(e) => setRetypePassword(e.target.value)}
                                                     onBlur={(e) => setMatchPasswordInputError(e.target.value.trim() === '')}
+                                                    autoComplete='current-password'
                                                 />
                                                 <InputRightElement width="4.5rem">
                                                     <button type='button' onClick={handleClickOnRetypedPassword}>

@@ -85,8 +85,6 @@ const Login = ({ params: { locale } }) => {
         }
     };
 
-    const { data: session } = useSession();
-    session ? router.push('/profile') : null;
     return (
         <>
             <div className="flex justify-center">
@@ -105,7 +103,7 @@ const Login = ({ params: { locale } }) => {
                                         alignItems='center'
                                         justifyContent='center'
                                         textAlign='center'
-                                        height='230px'
+                                        height='170px'
                                         className='rounded-lg'
                                     >
                                         <CloseButton
@@ -166,6 +164,7 @@ const Login = ({ params: { locale } }) => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     onBlur={(e) => setEmailInputError(e.target.value.trim() === '')}
+                                    autoComplete="email"
                                 />
                                 <FormErrorMessage>{emailInputError ? t('email_required') : t('email_invalid')}</FormErrorMessage>
                             </FormControl>
@@ -177,7 +176,9 @@ const Login = ({ params: { locale } }) => {
                                                 setPassword(e.target.value)
                                             }} onBlur={(e) => {
                                                 setPasswordInputError(e.target.value.trim() === '');
-                                            }} />
+                                            }}
+                                                autoComplete='current-password'
+                                            />
                                             <InputLeftElement width="4.5rem">
                                                 <button type="button" onClick={handleClickOnPassword}>
                                                     {showPassword ? (
@@ -194,7 +195,9 @@ const Login = ({ params: { locale } }) => {
                                                 setPassword(e.target.value);
                                             }} onBlur={(e) => {
                                                 setPasswordInputError(e.target.value.trim() === '');
-                                            }} />
+                                            }}
+                                                autoComplete='current-password'
+                                            />
                                             <InputRightElement width="4.5rem">
                                                 <button type="button" onClick={handleClickOnPassword}>
                                                     {showPassword ? (

@@ -12,6 +12,8 @@ import NodeRSA from "node-rsa";
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
 
+db();
+
 async function sendEmail(data) {
     try {
         const transporter = nodemailer.createTransport({
@@ -32,11 +34,12 @@ async function sendEmail(data) {
 
         // Send the email
         transporter.sendMail(mailOptions)
-            .then(info => {
-                return true;
+            .then(() => {
+                return;
             })
             .catch(error => {
-                console.error('Error sending message:', error)
+                console.error('Error sending message:', error);
+                return;
             });
     } catch (error) {
         console.log(error);
@@ -47,12 +50,13 @@ async function sendVerificationMessage(data) {
     sendEmail({
         email: data.email,
         subject: "Verify Your Email Address for Hassanah",
-        html: `<!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        </head>
+        html: `
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
         <body style="padding: 0; margin: 0; font-family: Arial, Helvetica, sans-serif;">
             <nav>
                 <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100px; background-color: #0093fd;">
@@ -95,43 +99,71 @@ async function sendWelcomeMessage(data) {
     sendEmail({
         email: data.email,
         subject: "Welcome to Hassanah - Your Premier Source for Islamic Teachings",
-        html: `<!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        </head>
-        <body style="margin: 0; font-family: Arial, Helvetica, sans-serif;">
+        html: `
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head><body style="margin: 0; font-family: Arial, Helvetica, sans-serif;">
         <nav>
-             <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100px; background-color: #0093fd;">
+                <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100px; background-color: #0093fd;">
                 <img src="${process.env.URL}/images/hassanahLoggo-white.png" loading="lazy" style="width: 70px; height: 70px; margin: 5px; border-radius: 10px;">
             </div>
         </nav>
-            <div style="margin-left: 7.5%; margin-right: 7.5%; margin-top: 5%; font-size: medium;">
-                <h1>Dear <strong style="color: #0093fd;">${data.username ? data.username : data.user}</strong>,</h1>
-                <h3>Welcome to Hassanah, your premier source for Quran Kareem readings, Islamic stories, Hadith collections, accurate prayer times, and more!</h2>
-                <h4>At <a href="${process.env.URL}" style="color: #0093fd; text-decoration: none;">Hassanah.org</a>, we strive to provide you with a rich and diverse collection of resources to help you explore the richness of Islamic teachings in both English and Arabic. Whether you're seeking spiritual growth, educational resources, or simply a sense of community, Hassanah is here to support you on your journey.</h4>
-                <h5>Here's what you can expect from our platform:</h5>
-                <ol>
-                    <li><strong>Quran Kareem Readings:</strong> Immerse yourself in the beauty of the Quran with our comprehensive collection of readings and translations.</li>
-                    <br>
-                    <li><strong>Islamic Stories:</strong> Discover inspiring stories from Islamic history and contemporary life that will uplift and motivate you.</li>
-                    <br>
-                    <li><strong>Hadith Collections:</strong> Explore the teachings of the Prophet Muhammad (peace be upon him) through our curated Hadith collections.</li>
-                    <br>
-                    <li><strong>Accurate Prayer Times:</strong> Stay informed with precise prayer times tailored to your location.</li>
-                    <br>
-                    <li><strong>Multilingual Content:</strong> Access Islamic teachings in both English and Arabic, catering to a diverse global audience.</li>
-                </ol>
-                <p>We invite you to join our community and connect with like-minded individuals who share your passion for learning and spiritual growth. Follow us on <strong style="color: #0093fd;"><a style="text-decoration: none; color: #0093fd; cursor: pointer;" href="${process.env.FACEBOOK_URL}">Facebook</a>, <a style="text-decoration: none; color: #0093fd; cursor: pointer;" href="${process.env.X_URl}">X</a>, and <a style="text-decoration: none; color: #0093fd; cursor: pointer;" href="${process.env.INSTAGRAM_URL}">Instagram</a></strong> to stay updated on the latest content and community events.</p>
-                <p>To get started, visit our website at <a href="${process.env.URL}" style="color: #0093fd; text-decoration: none;">https://hassanah.org</a> and explore the essence of Islamic teachings with Hassanah.</p>
-                <p>Thank you for choosing Hassanah as your guide on this journey of exploration and enlightenment. We look forward to accompanying you every step of the way.</p>
-                <p>Best regards,</p>
-                <p><strong style="color: #0093fd;">${data.username ? data.username : data.user}</strong><br>Hassanah Team</p>
-            </div>
+        <div style="margin-left: 7.5%; margin-right: 7.5%; margin-top: 5%; font-size: medium;">
+            <h1>Dear <strong style="color: #0093fd;">${data.username ? data.username : data.user}</strong>,</h1>
+            <h3>Welcome to Hassanah, your premier source for Quran Kareem readings, Islamic stories, Hadith collections, accurate prayer times, and more!</h3>
+            <h4>At <a href="${process.env.URL}" style="color: #0093fd; text-decoration: none;">Hassanah.org</a>, we strive to provide you with a rich and diverse collection of resources to help you explore the richness of Islamic teachings in both English and Arabic. Whether you're seeking spiritual growth, educational resources, or simply a sense of community, Hassanah is here to support you on your journey.</h4>
+            <h5>Here's what you can expect from our platform:</h5>
+            <ol>
+                <li><strong>Quran Kareem Readings:</strong> Immerse yourself in the beauty of the Quran with our comprehensive collection of readings and translations.</li>
+                <li><strong>Islamic Stories:</strong> Discover inspiring stories from Islamic history and contemporary life that will uplift and motivate you.</li>
+                <li><strong>Hadith Collections:</strong> Explore the teachings of the Prophet Muhammad (peace be upon him) through our curated Hadith collections.</li>
+                <li><strong>Accurate Prayer Times:</strong> Stay informed with precise prayer times tailored to your location.</li>
+                <li><strong>Multilingual Content:</strong> Access Islamic teachings in both English and Arabic, catering to a diverse global audience.</li>
+            </ol>
+            <p>We invite you to join our community and connect with like-minded individuals who share your passion for learning and spiritual growth. Follow us on <strong style="color: #0093fd;"><a style="text-decoration: none; color: #0093fd; cursor: pointer;" href="${process.env.FACEBOOK_URL}">Facebook</a>, <a style="text-decoration: none; color: #0093fd; cursor: pointer;" href="${process.env.X_URl}">X</a>, and <a style="text-decoration: none; color: #0093fd; cursor: pointer;" href="${process.env.INSTAGRAM_URL}">Instagram</a></strong> to stay updated on the latest content and community events.</p>
+            <p>To get started, visit our website at <a href="${process.env.URL}" style="color: #0093fd; text-decoration: none;">https://hassanah.org</a> and explore the essence of Islamic teachings with Hassanah.</p>
+            <p>Thank you for choosing Hassanah as your guide on this journey of exploration and enlightenment. We look forward to accompanying you every step of the way.</p>
+            <p>Best regards,<br><strong style="color: #0093fd;">${data.username ? data.username : data.user}</strong><br>Hassanah Team</p>
+        </div>
         </body>
-        </html>
-        `
+        </html>`
+    })
+}
+
+async function sendNewDeviceLoginAlertMessage(data) {
+    sendEmail({
+        subject: "New Device Login Alert",
+        email: data.email,
+        html: `
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+        <body style="margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: large;">
+        <nav>
+                <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100px; background-color: #0093fd;">
+                <img src="${process.env.URL}/images/hassanahLoggo-white.png" loading="lazy" style="width: 70px; height: 70px; margin: 5px; border-radius: 10px;">
+            </div>
+        </nav>
+    <div style="margin-left: 7.5%; margin-right: 7.5%; margin-top: 5%;">
+        <h1>Hello <strong style="color: #0093fd;">${data.username}</strong>,</h1>
+        <p>We noticed a new device login to your Hassanah account. If this was you, you can ignore this email. If you did not log in from this device, please take immediate action to secure your account.</p>
+        <p>Device: <strong>${(data.browserName + ` on ` + data.deviceOS + ` ` + data.deviceOSVersion)}</strong></p>
+        <p>Location: <strong>${data.location}</strong></p>
+        <p>IP Address: <strong>${data.ip}</strong></p>
+        <p>If you have any concerns or questions, please don't hesitate to contact us immediately.</p>
+        <p>Thank you for choosing Hassanah.</p>
+        <p>Best regards,</p>
+        <p><strong style="color: #0093fd;">Hassanah Team</strong></p>
+    </div>
+</body>
+        
+</html>`
     })
 }
 
@@ -289,7 +321,7 @@ const handler = NextAuth({
                                     blocked: false,
                                     devices: [{
                                         id: await parseInt(credentials.userAgentID, 10),
-                                        deviceName: device.model + device.vendor,
+                                        deviceName: device.model & device.vendor,
                                         deviceType: device.type,
                                         deviceModel: device.model,
                                         deviceOS: os.name,
@@ -313,11 +345,15 @@ const handler = NextAuth({
                                                 code: verficationToken
                                             });
                                         }, 1500);
+                                        return {
+                                            id,
+                                            email,
+                                            role: 'user'
+                                        };
                                     })
                                     .catch(() => {
                                         return null;
                                     });
-                                return user;
                             }
                         } else if (password !== retypePassword) {
                             return null;
@@ -369,25 +405,44 @@ const handler = NextAuth({
                         os,
                         device
                     } = userAgent;
-                    const newDevice = {
-                        id: await parseInt(credentials.userAgentID, 10),
-                        deviceName: device.model + device.vendor,
-                        deviceType: device.type,
-                        deviceModel: device.model,
-                        deviceOS: os.name,
-                        deviceOSVersion: os.version,
-                        deviceBrowser: browser.name,
-                        deviceBrowserVersion: browser.version,
-                        deviceIP: ip
-                    };
                     const user = await User.findOne({
                         email: credentials.email
                     })
                     const password = await decryptor.decrypt(user.password, "utf8");
                     if (password === credentials.password) {
+                        const response = await fetch(`${process.env.GEOJS_URL}/${ip}.json`)
+                        const data = await response.json();
+                        const newDevice = {
+                            id: await parseInt(credentials.userAgentID, 10),
+                            deviceName: device.model & device.vendor,
+                            deviceType: device.type,
+                            deviceModel: device.model,
+                            deviceOS: os.name,
+                            deviceOSVersion: os.version,
+                            deviceBrowser: browser.name,
+                            deviceBrowserVersion: browser.version,
+                            deviceIP: ip,
+                            deviceCountry: data.country,
+                            deviceCity: data.city,
+                            deviceRegion: data.region
+                        };
                         user.devices.push(newDevice);
                         await user.save();
-                        return user;
+
+                        await sendNewDeviceLoginAlertMessage({
+                            browserName: browser.name,
+                            deviceOS: os.name,
+                            deviceOSVersion: os.version,
+                            username: user.username ? user.username : user.name,
+                            email: credentials.email,
+                            location: `${(data.country + `, ` + (data.city ? data.city : data.region))}`,
+                            ip: ip
+                        })
+                        return {
+                            id: user.id,
+                            email: credentials.email,
+                            role: 'user'
+                        };
                     } else {
                         return null;
                     }
@@ -560,7 +615,7 @@ const handler = NextAuth({
     },
     pages: {
         newUser: "/",
-        signIn: "/login",
+        //signIn: "/login",
         signOut: "/signout",
         error: "/error",
         verifyRequest: "/verify"
