@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const Login = ({ params: { locale } }) => {
@@ -85,6 +85,8 @@ const Login = ({ params: { locale } }) => {
         }
     };
 
+    const { data: session } = useSession();
+    session ? router.push('/profile') : null;
     return (
         <>
             <div className="flex justify-center">
@@ -93,7 +95,7 @@ const Login = ({ params: { locale } }) => {
             <div className="flex justify-center">
                 <ChakraProvider theme={theme}>
                     <form onSubmit={handleForm}>
-                        <Stack spacing={4} className='w-[300px]'>
+                        <Stack spacing={4} className='w-[300px] sm:w-[400px]'>
                             {
                                 userMessage && (
                                     <Alert

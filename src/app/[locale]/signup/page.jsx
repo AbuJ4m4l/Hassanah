@@ -142,9 +142,8 @@ export default function Signup({ params: { locale } }) {
             setMatchPasswordInputError(false);
         }, 200);
     }
-
     const { data: session } = useSession();
-
+    session ? router.push('/profile') : null;
     const query = useSearchParams();
     return (
         <>
