@@ -50,23 +50,23 @@ const Navbar = ({ locale }) => {
                 {t('login')}
               </Link>
             </button>
-            <div className="flex items-center flex-row-reverse">
-              <Link href="/" className="ml-[10px] text-xs">
+            <div className="flex items-center flex-row-reverse text-sm">
+              <Link href="/" className="ml-[10px]">
                 {t('home')}
               </Link>
               <ChakraProvider theme={theme}>
                 <Menu>
-                  <MenuButton style={{ fontSize: "12px" }} className='ml-[10px]'>{t('quran')}</MenuButton>
+                  <MenuButton className='ml-[10px]'>{t('quran')}</MenuButton>
                   <MenuList>
-                    <MenuItem><Link href="/quran" className="text-sm">{t('quran')}</Link></MenuItem>
-                    <MenuItem><Link href="/reciters" className="text-sm">{t('reciters')}</Link></MenuItem>
+                    <MenuItem><Link href="/quran">{t('quran')}</Link></MenuItem>
+                    <MenuItem><Link href="/reciters">{t('reciters')}</Link></MenuItem>
                   </MenuList>
                 </Menu>
               </ChakraProvider>
-              <Link href="/stories" className="ml-[10px] text-xs">
+              <Link href="/stories" className="ml-[10px]">
                 {t('stories')}
               </Link>
-              <Link href="/hadiths" className="mx-[10px] text-xs">
+              <Link href="/hadiths" className="mx-[10px]">
                 {t('hadiths')}
               </Link>
             </div>

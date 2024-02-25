@@ -288,10 +288,85 @@ const Login = ({ params: { locale } }) => {
                             <div className="flex justify-center">
                                 <button type="button" onClick={() => {
                                     const redirect_url = query.get('redirect_url');
-                                    redirect_url ? signIn('google')
-                                        .then(() => {
-                                            router.push(redirect_url);
-                                        }) : signIn('google');
+                                    redirect_url ? signIn('discord')
+                                        .then(({ ok, error }) => {
+                                            if (ok) {
+                                                router.push(redirect_url);
+                                            }
+                                            if (error) {
+                                                if (error) {
+                                                    if (error === 'OAuthSignin') {
+                                                        setError(errors.OAuthSignin);
+                                                        setErrorDescription(errorsDescriptions.OAuthSignin);
+                                                    } else if (error === 'OAuthCallback') {
+                                                        setError(errors.OAuthCallback);
+                                                        setErrorDescription(errorsDescriptions.OAuthCallback);
+                                                    } else if (error === 'OAuthCreateAccount') {
+                                                        setError(errors.OAuthCreateAccount);
+                                                        setErrorDescription(errorsDescriptions.OAuthCreateAccount);
+                                                    } else if (error === 'EmailCreateAccount') {
+                                                        setError(errors.EmailCreateAccount);
+                                                        setErrorDescription(errorsDescriptions.EmailCreateAccount);
+                                                    } else if (error === 'Callback') {
+                                                        setError(errors.Callback);
+                                                        setErrorDescription(ErrorDescriptions.Callback)
+                                                    } else if (error === 'OAuthAccountNotLinked') {
+                                                        setError(errors.OAuthAccountNotLinked);
+                                                        setErrorDescription(errorsDescriptions.OAuthAccountNotLinked);
+                                                    } else if (error === 'EmailSignin') {
+                                                        setError(errors.EmailSignin);
+                                                        setErrorDescription(errorsDescriptions.EmailSignin);
+                                                    } else if (error === 'CredentialsSignin') {
+                                                        setError(errors.CredentialsSignin);
+                                                        setErrorDescription(errorsDescriptions.CredentialsSignin);
+                                                    } else if (error === 'SessionRequired') {
+                                                        setError(errors.SessionRequired);
+                                                        setErrorDescription(errorsDescriptions.SessionRequired);
+                                                    } else {
+                                                        setError(errors.Default);
+                                                        setErrorDescription(errorsDescriptions.Default);
+                                                    }
+                                                }
+                                            }
+                                        }) : signIn('discord')
+                                            .then(({ ok, error }) => {
+                                                if (ok) {
+                                                    router.push('/profile');
+                                                }
+                                                if (error) {
+                                                    if (error === 'OAuthSignin') {
+                                                        setError(errors.OAuthSignin);
+                                                        setErrorDescription(errorsDescriptions.OAuthSignin);
+                                                    } else if (error === 'OAuthCallback') {
+                                                        setError(errors.OAuthCallback);
+                                                        setErrorDescription(errorsDescriptions.OAuthCallback);
+                                                    } else if (error === 'OAuthCreateAccount') {
+                                                        setError(errors.OAuthCreateAccount);
+                                                        setErrorDescription(errorsDescriptions.OAuthCreateAccount);
+                                                    } else if (error === 'EmailCreateAccount') {
+                                                        setError(errors.EmailCreateAccount);
+                                                        setErrorDescription(errorsDescriptions.EmailCreateAccount);
+                                                    } else if (error === 'Callback') {
+                                                        setError(errors.Callback);
+                                                        setErrorDescription(ErrorDescriptions.Callback)
+                                                    } else if (error === 'OAuthAccountNotLinked') {
+                                                        setError(errors.OAuthAccountNotLinked);
+                                                        setErrorDescription(errorsDescriptions.OAuthAccountNotLinked);
+                                                    } else if (error === 'EmailSignin') {
+                                                        setError(errors.EmailSignin);
+                                                        setErrorDescription(errorsDescriptions.EmailSignin);
+                                                    } else if (error === 'CredentialsSignin') {
+                                                        setError(errors.CredentialsSignin);
+                                                        setErrorDescription(errorsDescriptions.CredentialsSignin);
+                                                    } else if (error === 'SessionRequired') {
+                                                        setError(errors.SessionRequired);
+                                                        setErrorDescription(errorsDescriptions.SessionRequired);
+                                                    } else {
+                                                        setError(errors.Default);
+                                                        setErrorDescription(errorsDescriptions.Default);
+                                                    }
+                                                }
+                                            })
                                 }} className="flex rtl:ml-2 ltr:mr-2 justify-center w-[50%] hover:bg-secondry bg-secondry-light cursor-pointer px-4 py-2 border gap-2 border-slate-600 rounded-lg text-white hover:border-slate-900 hover:shadow transition duration-150">
                                     <Image
                                         className="w-6 h-6"
@@ -304,9 +379,84 @@ const Login = ({ params: { locale } }) => {
                                 <button type="button" onClick={() => {
                                     const redirect_url = query.get('redirect_url');
                                     redirect_url ? signIn('discord')
-                                        .then(() => {
-                                            router.push(redirect_url);
-                                        }) : signIn('discord');
+                                        .then(({ ok, error }) => {
+                                            if (ok) {
+                                                router.push(redirect_url);
+                                            }
+                                            if (error) {
+                                                if (error) {
+                                                    if (error === 'OAuthSignin') {
+                                                        setError(errors.OAuthSignin);
+                                                        setErrorDescription(errorsDescriptions.OAuthSignin);
+                                                    } else if (error === 'OAuthCallback') {
+                                                        setError(errors.OAuthCallback);
+                                                        setErrorDescription(errorsDescriptions.OAuthCallback);
+                                                    } else if (error === 'OAuthCreateAccount') {
+                                                        setError(errors.OAuthCreateAccount);
+                                                        setErrorDescription(errorsDescriptions.OAuthCreateAccount);
+                                                    } else if (error === 'EmailCreateAccount') {
+                                                        setError(errors.EmailCreateAccount);
+                                                        setErrorDescription(errorsDescriptions.EmailCreateAccount);
+                                                    } else if (error === 'Callback') {
+                                                        setError(errors.Callback);
+                                                        setErrorDescription(ErrorDescriptions.Callback)
+                                                    } else if (error === 'OAuthAccountNotLinked') {
+                                                        setError(errors.OAuthAccountNotLinked);
+                                                        setErrorDescription(errorsDescriptions.OAuthAccountNotLinked);
+                                                    } else if (error === 'EmailSignin') {
+                                                        setError(errors.EmailSignin);
+                                                        setErrorDescription(errorsDescriptions.EmailSignin);
+                                                    } else if (error === 'CredentialsSignin') {
+                                                        setError(errors.CredentialsSignin);
+                                                        setErrorDescription(errorsDescriptions.CredentialsSignin);
+                                                    } else if (error === 'SessionRequired') {
+                                                        setError(errors.SessionRequired);
+                                                        setErrorDescription(errorsDescriptions.SessionRequired);
+                                                    } else {
+                                                        setError(errors.Default);
+                                                        setErrorDescription(errorsDescriptions.Default);
+                                                    }
+                                                }
+                                            }
+                                        }) : signIn('discord')
+                                            .then(({ ok, error }) => {
+                                                if (ok) {
+                                                    router.push('/profile');
+                                                }
+                                                if (error) {
+                                                    if (error === 'OAuthSignin') {
+                                                        setError(errors.OAuthSignin);
+                                                        setErrorDescription(errorsDescriptions.OAuthSignin);
+                                                    } else if (error === 'OAuthCallback') {
+                                                        setError(errors.OAuthCallback);
+                                                        setErrorDescription(errorsDescriptions.OAuthCallback);
+                                                    } else if (error === 'OAuthCreateAccount') {
+                                                        setError(errors.OAuthCreateAccount);
+                                                        setErrorDescription(errorsDescriptions.OAuthCreateAccount);
+                                                    } else if (error === 'EmailCreateAccount') {
+                                                        setError(errors.EmailCreateAccount);
+                                                        setErrorDescription(errorsDescriptions.EmailCreateAccount);
+                                                    } else if (error === 'Callback') {
+                                                        setError(errors.Callback);
+                                                        setErrorDescription(ErrorDescriptions.Callback)
+                                                    } else if (error === 'OAuthAccountNotLinked') {
+                                                        setError(errors.OAuthAccountNotLinked);
+                                                        setErrorDescription(errorsDescriptions.OAuthAccountNotLinked);
+                                                    } else if (error === 'EmailSignin') {
+                                                        setError(errors.EmailSignin);
+                                                        setErrorDescription(errorsDescriptions.EmailSignin);
+                                                    } else if (error === 'CredentialsSignin') {
+                                                        setError(errors.CredentialsSignin);
+                                                        setErrorDescription(errorsDescriptions.CredentialsSignin);
+                                                    } else if (error === 'SessionRequired') {
+                                                        setError(errors.SessionRequired);
+                                                        setErrorDescription(errorsDescriptions.SessionRequired);
+                                                    } else {
+                                                        setError(errors.Default);
+                                                        setErrorDescription(errorsDescriptions.Default);
+                                                    }
+                                                }
+                                            })
                                 }} className="flex rtl:mr-2 ltr:ml-2 justify-center w-[50%] hover:bg-secondry bg-secondry-light cursor-pointer px-4 py-2 border gap-2 border-slate-600 rounded-lg text-white hover:border-slate-900 hover:shadow transition duration-150">
                                     <Image
                                         className="w-6 h-6"
