@@ -56,7 +56,7 @@ export default async function RootLayout({ children, params: { locale } }) {
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 </head>
                 <body dir={direction} className={`selection:bg-primary selection:text-white ${locale === "ar" ? changa.className : jetbrains_mono.className} flex flex-col min-h-screen`}>
-                    <NextAuthProvider>
+                    <NextAuthProvider session={data}>
                         <NextIntlClientProvider messages={messages} locale={locale}>
                             <ChakraProvider>
                                 <Navbar locale={locale} />
