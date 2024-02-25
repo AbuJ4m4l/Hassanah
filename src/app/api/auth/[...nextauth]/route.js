@@ -11,6 +11,7 @@ import { v4 } from "uuid";
 import NodeRSA from "node-rsa";
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
+import { info } from "console";
 
 db();
 
@@ -34,8 +35,8 @@ async function sendEmail(data) {
 
         // Send the email
         transporter.sendMail(mailOptions)
-            .then(() => {
-                return;
+            .then(info => {
+                return info;
             })
             .catch(error => {
                 console.error('Error sending message:', error);
@@ -335,25 +336,23 @@ const handler = NextAuth({
                                     verfication_token: verficationToken
                                 };
                                 const newUser = new User(user);
-                                await newUser.save()
-                                    .then(async () => {
-                                        await sendWelcomeMessage();
-                                        setTimeout(async () => {
-                                            await sendVerificationMessage({
-                                                email: email,
-                                                username: username,
-                                                code: verficationToken
-                                            });
-                                        }, 1500);
-                                        return {
-                                            id,
-                                            email,
-                                            role: 'user'
-                                        };
-                                    })
-                                    .catch(() => {
-                                        return null;
+                                await newUser.save();
+                                await sendWelcomeMessage({
+                                    email,
+                                    username
+                                })
+                                setTimeout(async () => {
+                                    await sendVerificationMessage({
+                                        email: email,
+                                        username: username,
+                                        code: verficationToken
                                     });
+                                }, 500);
+                                return {
+                                    id,
+                                    email,
+                                    role: 'user'
+                                };
                             }
                         } else if (password !== retypePassword) {
                             return null;
@@ -364,7 +363,6 @@ const handler = NextAuth({
                         return null;
                     }
                 } catch (error) {
-                    console.log(error);
                     return null;
                 }
             }
@@ -447,7 +445,6 @@ const handler = NextAuth({
                         return null;
                     }
                 } catch (error) {
-                    console.log(error);
                     return null;
                 }
             }

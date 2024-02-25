@@ -46,6 +46,7 @@ export default function Signup({ params: { locale } }) {
     const [passwordStatus, setPasswordStatus] = useState(null);
     const [userMessage, setUserMessage] = useState('');
     const [Error, setError] = useState('');
+    const [ErrorDescription, setErrorDescription] = useState('');
     const {
         isOpen: isVisible,
         onClose,
@@ -54,6 +55,32 @@ export default function Signup({ params: { locale } }) {
     const t = useTranslations('signup');
     const router = useRouter();
 
+    const errors = {
+        OAuthSignin: t('OAuthSignin_title'),
+        OAuthCallback: t('OAuthCallback_title'),
+        OAuthCreateAccount: t('OAuthCreateAccount_title'),
+        EmailCreateAccount: t('EmailCreateAccount_title'),
+        Callback: t('Callback_title'),
+        OAuthAccountNotLinked: t('OAuthAccountNotLinked_title'),
+        EmailSignin: t('EmailSignin_title'),
+        CredentialsSignin: t('CredentialsSignin_title'),
+        SessionRequired: t('SessionRequired_title'),
+        Default: t('Default_title'),
+    };
+
+    const errorsDescriptions = {
+        OAuthSignin: t('OAuthSignin_description'),
+        OAuthCallback: t('OAuthCallback_description'),
+        OAuthCreateAccount: t('OAuthCreateAccount_description'),
+        EmailCreateAccount: t('EmailCreateAccount_description'),
+        Callback: t('Callback_description'),
+        OAuthAccountNotLinked: t('OAuthAccountNotLinked_description'),
+        EmailSignin: t('EmailSignin_description'),
+        CredentialsSignin: t('CredentialsSignin_description'),
+        SessionRequired: t('SessionRequired_description'),
+        Default: t('Default_description'),
+    };
+
     const handleClickOnPassword = () => setShowPassword(!showPassword);
     const handleClickOnRetypedPassword = () => setshowRetypedPassword(!showRetypedPassword);
     const handleForm = async (e) => {
@@ -61,6 +88,7 @@ export default function Signup({ params: { locale } }) {
             e.preventDefault();
             setUserMessage('');
             setError('');
+            setErrorDescription('');
             if (password !== retypePassword) setMatchPasswordInputError(0);
             if (!username) setUsernameInputError(true);
             if (!password) setPasswordInputError(true);
@@ -91,7 +119,37 @@ export default function Signup({ params: { locale } }) {
                                 }, 1500);
                             }
                         } else if (error) {
-                            setError(error);
+                            if (error === 'OAuthSignin') {
+                                setError(errors.OAuthSignin);
+                                setErrorDescription(errorsDescriptions.OAuthSignin);
+                            } else if (error === 'OAuthCallback') {
+                                setError(errors.OAuthCallback);
+                                setErrorDescription(errorsDescriptions.OAuthCallback);
+                            } else if (error === 'OAuthCreateAccount') {
+                                setError(errors.OAuthCreateAccount);
+                                setErrorDescription(errorsDescriptions.OAuthCreateAccount);
+                            } else if (error === 'EmailCreateAccount') {
+                                setError(errors.EmailCreateAccount);
+                                setErrorDescription(errorsDescriptions.EmailCreateAccount);
+                            } else if (error === 'Callback') {
+                                setError(errors.Callback);
+                                setErrorDescription(ErrorDescriptions.Callback)
+                            } else if (error === 'OAuthAccountNotLinked') {
+                                setError(errors.OAuthAccountNotLinked);
+                                setErrorDescription(errorsDescriptions.OAuthAccountNotLinked);
+                            } else if (error === 'EmailSignin') {
+                                setError(errors.EmailSignin);
+                                setErrorDescription(errorsDescriptions.EmailSignin);
+                            } else if (error === 'CredentialsSignin') {
+                                setError(errors.CredentialsSignin);
+                                setErrorDescription(errorsDescriptions.CredentialsSignin);
+                            } else if (error === 'SessionRequired') {
+                                setError(errors.SessionRequired);
+                                setErrorDescription(errorsDescriptions.SessionRequired);
+                            } else {
+                                setError(errors.Default);
+                                setErrorDescription(errorsDescriptions.Default);
+                            }
                         }
                     });
             } else {
@@ -192,7 +250,7 @@ export default function Signup({ params: { locale } }) {
                                         alignItems='center'
                                         justifyContent='center'
                                         textAlign='center'
-                                        height='170px'
+                                        height='230px'
                                         className='rounded-lg'
                                     >
                                         <CloseButton
@@ -205,10 +263,10 @@ export default function Signup({ params: { locale } }) {
                                         />
                                         <AlertIcon boxSize='40px' mr={0} />
                                         <AlertTitle mt={4} mb={1} fontSize='lg' className="text-black font-bold">
-                                            {t('error_credentials_signin_title')}
+                                            {Error}
                                         </AlertTitle>
                                         <AlertDescription className='text-black'>
-                                            {t('error_credentials_signin_description')}
+                                            {ErrorDescription}
                                         </AlertDescription>
                                     </Alert>
                                 ) : <></>

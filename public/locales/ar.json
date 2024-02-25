@@ -45,8 +45,28 @@
         "error_credentials_signin_description": "يرجى المحاولة مرة أخرى باستخدام حساب آخر.",
         "password_length_error": "يجب أن تحتوي كلمة المرور على ما لا يقل عن ٨ أحرف.",
         "login_success": "مرحبًا مجددًا!",
-        "login_sucess_description": "لقد قمت بتسجيل الدخول بنجاح."
-      },
+        "login_success_description": "لقد قمت بتسجيل الدخول بنجاح.",
+        "OAuthSignin_title": "خطأ في عنوان عنوان التفويض",
+        "OAuthSignin_description": "حدث خطأ أثناء إنشاء عنوان URL للتفويض.",
+        "OAuthCallback_title": "خطأ في رد الاتصال بـ OAuth",
+        "OAuthCallback_description": "حدث خطأ أثناء معالجة الاستجابة من موفر OAuth.",
+        "OAuthCreateAccount_title": "خطأ في إنشاء حساب المستخدم بـ OAuth",
+        "OAuthCreateAccount_description": "تعذر إنشاء مستخدم موفر الـ OAuth.",
+        "EmailCreateAccount_title": "خطأ في إنشاء حساب المستخدم بالبريد الإلكتروني",
+        "EmailCreateAccount_description": "تعذر إنشاء مستخدم موفر البريد الإلكتروني.",
+        "Callback_title": "خطأ في معالجة رد الاتصال بـ OAuth",
+        "Callback_description": "حدث خطأ في معالج رد الاتصال بـ OAuth.",
+        "OAuthAccountNotLinked_title": "خطأ في الحساب المرتبط",
+        "OAuthAccountNotLinked_description": "البريد الإلكتروني على الحساب مرتبط بالفعل، ولكن ليس مع هذا الحساب OAuth.",
+        "EmailSignin_title": "خطأ في تسجيل الدخول بالبريد الإلكتروني",
+        "EmailSignin_description": "فشل إرسال البريد الإلكتروني برمز التحقق.",
+        "CredentialsSignin_title": "خطأ في تسجيل الدخول ببيانات الاعتماد",
+        "CredentialsSignin_description": "عادت معالجة التفويض بخطأ.",
+        "SessionRequired_title": "خطأ في الجلسة المطلوبة",
+        "SessionRequired_description": "محتوى هذه الصفحة يتطلب تسجيل الدخول في جلسة طوال الوقت.",
+        "Default_title": "خطأ غير معروف",
+        "Default_description": "حدث خطأ غير معروف."
+        },
     "navbar": {
         "login": "تسجيل الدخول",
         "hadiths": "أحاديث نبوية",
@@ -106,7 +126,7 @@
             "user_already_verified": "المستخدم محقق بالفعل",
             "internal_server_error": "خطأ في الخادم الداخلي",
             "success_verification": "تم التحقق من حسابك بنجاح.",
-            "home": "العودة إلى الصفحة الرئيسية",
+            "home": "الذهاب إلى الصفحة الرئيسية",
             "user_is_blocked": "هذا المستخدم محظور"
           }          
 }

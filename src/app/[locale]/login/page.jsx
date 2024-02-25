@@ -19,6 +19,7 @@ const Login = ({ params: { locale } }) => {
     const [loginButtonStatus, setLoginButtonStatus] = useState(false);
     const [userMessage, setUserMessage] = useState('');
     const [Error, setError] = useState('');
+    const [ErrorDescription, setErrorDescription] = useState('');
     const t = useTranslations('login');
     const router = useRouter();
     const query = useSearchParams();
@@ -26,7 +27,35 @@ const Login = ({ params: { locale } }) => {
         isOpen: isVisible,
         onClose,
         onOpen,
-    } = useDisclosure({ defaultIsOpen: true })
+    } = useDisclosure({ defaultIsOpen: true });
+
+    const errors = {
+        OAuthSignin: t('OAuthSignin_title'),
+        OAuthCallback: t('OAuthCallback_title'),
+        OAuthCreateAccount: t('OAuthCreateAccount_title'),
+        EmailCreateAccount: t('EmailCreateAccount_title'),
+        Callback: t('Callback_title'),
+        OAuthAccountNotLinked: t('OAuthAccountNotLinked_title'),
+        EmailSignin: t('EmailSignin_title'),
+        CredentialsSignin: t('CredentialsSignin_title'),
+        SessionRequired: t('SessionRequired_title'),
+        Default: t('Default_title'),
+    };
+
+    const errorsDescriptions = {
+        OAuthSignin: t('OAuthSignin_description'),
+        OAuthCallback: t('OAuthCallback_description'),
+        OAuthCreateAccount: t('OAuthCreateAccount_description'),
+        EmailCreateAccount: t('EmailCreateAccount_description'),
+        Callback: t('Callback_description'),
+        OAuthAccountNotLinked: t('OAuthAccountNotLinked_description'),
+        EmailSignin: t('EmailSignin_description'),
+        CredentialsSignin: t('CredentialsSignin_description'),
+        SessionRequired: t('SessionRequired_description'),
+        Default: t('Default_description'),
+    };
+
+
     if (password && email && password.length >= 8) {
         setTimeout(() => {
             setLoginButtonStatus(true);
@@ -43,6 +72,7 @@ const Login = ({ params: { locale } }) => {
             e.preventDefault();
             setUserMessage('');
             setError('');
+            setErrorDescription('');
             if (!password) setPasswordInputError(true);
             if (email && !email.includes('@')) setEmailInputError(0);
             if (!email) setEmailInputError(true);
@@ -57,10 +87,10 @@ const Login = ({ params: { locale } }) => {
                     userAgent: navigator.userAgent,
                     userAgentID: id
                 })
-                    .then(({ ok, error }) => {
-                        console.log(ok);
-                        console.error(error);
-                        if (ok) {
+                    .then(result => {
+                        console.log(result.ok);
+                        console.error(result.error);
+                        if (result.ok) {
                             setUserMessage(t('login_success'));
                             const redirect_url = query.get('redirect_url');
                             if (redirect_url) {
@@ -70,8 +100,39 @@ const Login = ({ params: { locale } }) => {
                                     router.push('/profile');
                                 }, 1500);
                             }
-                        } else if (error) {
-                            setError(error);
+                        } else if (result.error) {
+                            if (result.error === 'OAuthSignin') {
+                                setError(errors.OAuthSignin);
+                                setErrorDescription(errorsDescriptions.OAuthSignin);
+                            } else if (result.error === 'OAuthCallback') {
+                                setError(errors.OAuthCallback);
+                                setErrorDescription(errorsDescriptions.OAuthCallback);
+                            } else if (result.error === 'OAuthCreateAccount') {
+                                setError(errors.OAuthCreateAccount);
+                                setErrorDescription(errorsDescriptions.OAuthCreateAccount);
+                            } else if (result.error === 'EmailCreateAccount') {
+                                setError(errors.EmailCreateAccount);
+                                setErrorDescription(errorsDescriptions.EmailCreateAccount);
+                            } else if (result.error === 'Callback') {
+                                setError(errors.Callback);
+                                setErrorDescription(ErrorDescriptions.Callback)
+                            } else if (result.error === 'OAuthAccountNotLinked') {
+                                setError(errors.OAuthAccountNotLinked);
+                                setErrorDescription(errorsDescriptions.OAuthAccountNotLinked);
+                            } else if (result.error === 'EmailSignin') {
+                                setError(errors.EmailSignin);
+                                setErrorDescription(errorsDescriptions.EmailSignin);
+                            } else if (result.error === 'CredentialsSignin') {
+                                setError(errors.CredentialsSignin);
+                                setErrorDescription(errorsDescriptions.CredentialsSignin);
+                            } else if (result.error === 'SessionRequired') {
+                                setError(errors.SessionRequired);
+                                setErrorDescription(errorsDescriptions.SessionRequired);
+                            } else {
+                                setError(errors.Default);
+                                setErrorDescription(errorsDescriptions.Default);
+                            }
+
                         }
                     });
             } else {
@@ -134,7 +195,7 @@ const Login = ({ params: { locale } }) => {
                                         alignItems='center'
                                         justifyContent='center'
                                         textAlign='center'
-                                        height='170px'
+                                        height='230px'
                                         className='rounded-lg'
                                     >
                                         <CloseButton
@@ -147,10 +208,10 @@ const Login = ({ params: { locale } }) => {
                                         />
                                         <AlertIcon boxSize='40px' mr={0} />
                                         <AlertTitle mt={4} mb={1} fontSize='lg' className="text-black font-bold">
-                                            {t('error_credentials_signin_title')}
+                                            {Error}
                                         </AlertTitle>
                                         <AlertDescription className='text-black'>
-                                            {t('error_credentials_signin_description')}
+                                            {ErrorDescription}
                                         </AlertDescription>
                                     </Alert>
                                 ) : <></>
