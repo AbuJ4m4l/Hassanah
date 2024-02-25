@@ -12,7 +12,6 @@ export default function Verify() {
     const [err, setErr] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const router = useSearchParams();
-    const { data: session, status } = useSession();
     const t = useTranslations('verify');
 
     useEffect(() => {
