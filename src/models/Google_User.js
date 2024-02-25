@@ -20,6 +20,11 @@ const userSchema = new Schema({
         type: Boolean,
         default: false
     },
+    blocked: {
+        type: Boolean,
+        required: false,
+        default: false
+    },
     username: {
         type: String,
         required: true

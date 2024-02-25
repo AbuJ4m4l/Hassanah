@@ -52,6 +52,11 @@ const userSchema = new Schema({
         required: false,
         default: false
     },
+    blocked: {
+        type: Boolean,
+        required: false,
+        default: false
+    },
     provider: {
         type: String,
         required: false,

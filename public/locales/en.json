@@ -98,5 +98,15 @@
             "disclaimer": "If you did not sign up for Hassanah, please disregard this email.",
             "closing": "Best Regards,",
             "team": "The Hassanah Team"
-            }
+            },
+            "verify": {
+                "invalid_request": "Invalid Request",
+                "invalid_provider": "Invalid provider",
+                "verification_token_not_found": "Verification Token not found",
+                "user_already_verified": "User already verified",
+                "internal_server_error": "Internal Server Error",
+                "success_verification": "Your account has been successfully verified.",
+                "home": "Go to Home Page",
+                "user_is_blocked": "This User is blocked"
+              }              
     }

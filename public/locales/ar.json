@@ -98,5 +98,15 @@
         "disclaimer": "إذا لم تقم بالتسجيل في حسنة يرجى تجاهل هذا البريد الإلكتروني.",
         "closing": "أطيب التحيات،",
         "team": "فريق حسنة"
-        }
+        },
+        "verify": {
+            "invalid_request": "طلب غير صالح",
+            "invalid_provider": "مزود غير صالح",
+            "verification_token_not_found": "رمز التحقق غير موجود",
+            "user_already_verified": "المستخدم محقق بالفعل",
+            "internal_server_error": "خطأ في الخادم الداخلي",
+            "success_verification": "تم التحقق من حسابك بنجاح.",
+            "home": "العودة إلى الصفحة الرئيسية",
+            "user_is_blocked": "هذا المستخدم محظور"
+          }          
 }

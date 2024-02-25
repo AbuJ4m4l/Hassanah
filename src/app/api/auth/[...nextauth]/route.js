@@ -481,6 +481,7 @@ const handler = NextAuth({
                         }, {
                             id: account.providerAccountId,
                             email: profile.email,
+                            blocked: isUserExists.blocked,
                             verified: isUserExists.verified,
                             username: profile.name,
                             avatar_url: profile.picture,
@@ -494,6 +495,9 @@ const handler = NextAuth({
                             id_token: account.id_token,
                             verfication_token: isUserExists.verfication_token
                         }, { new: true });
+                        if (isUserExists.blocked === true) {
+                            return false;
+                        }
                         return true;
                     } else {
                         const token = await jwt.sign({
@@ -505,6 +509,7 @@ const handler = NextAuth({
                             token: await token,
                             email: profile.email,
                             verified: false,
+                            blocked: false,
                             username: profile.name,
                             avatar_url: profile.picture,
                             given_name: profile.given_name,
@@ -548,6 +553,7 @@ const handler = NextAuth({
                             id: profile.id,
                             username: profile.username,
                             avatar_url: profile.image_url,
+                            blocked: isUserExists.blocked,
                             banner_url: `https://cdn.discordapp.com/banners/${profile.id}/${profile.banner}.png`,
                             banner_color: profile.banner_color ? profile.banner_color : "#FFF",
                             global_name: profile.global_name,
@@ -562,6 +568,9 @@ const handler = NextAuth({
                             refresh_token: account.refresh_token,
                             verfication_token: isUserExists.verfication_token
                         }, { new: true });
+                        if (isUserExists.blocked === true) {
+                            return false;
+                        }
                         return true;
                     }
                     const token = await jwt.sign({
@@ -578,6 +587,7 @@ const handler = NextAuth({
                         global_name: profile.global_name,
                         mfa_enabled: profile.mfa_enabled,
                         locale: profile.locale,
+                        blocked: false,
                         email: profile.email,
                         verified: false,
                         provider: account.provider,
@@ -614,11 +624,10 @@ const handler = NextAuth({
         }
     },
     pages: {
-        newUser: "/",
-        //signIn: "/login",
+        newUser: "/profile",
+        signIn: "/login",
         signOut: "/signout",
-        error: "/error",
-        verifyRequest: "/verify"
+        error: "/error"
     },
     session: {
         strategy: "jwt"

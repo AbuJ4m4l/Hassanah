@@ -8,7 +8,7 @@ export default function NotFound() {
         <>
             <div className="flex flex-col justify-center items-center min-h-screen">
                 <Image
-                    src="https://svgshare.com/i/12wF.svg"
+                    src="/images/page_not_found.svg"
                     alt="PageNotFound Image"
                     width={250}
                     height={250}
