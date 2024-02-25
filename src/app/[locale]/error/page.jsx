@@ -2,11 +2,15 @@
 
 import { useState } from "react"
 
-const errorPage = () => {
-    const [error, setError] = useState(null);
+const ErrorPage = () => {
+    const [Error, setError] = useState(null);
     return (
         <>
+            {
 
+            }
         </>
     )
 }
+
+export default ErrorPage;
