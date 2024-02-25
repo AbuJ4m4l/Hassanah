@@ -1,29 +1,24 @@
 "use client";
 import {
-  Drawer,
-  DrawerBody,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  useDisclosure,
   ChakraProvider,
   MenuList,
   MenuItem,
   MenuButton,
-  Menu
+  Menu,
+  useDisclosure
 } from '@chakra-ui/react';
 import theme from '../../commonTheme';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import { faFacebook, faInstagram, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { useTranslations } from 'next-intl';
+import Sidebar_ar from '../Sidebar/ar';
+import Sidebar_en from '../Sidebar/en';
+import { useRef } from 'react';
 
 const Navbar = ({ locale }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const t = useTranslations('navbar');
   return (
     <>
@@ -81,103 +76,9 @@ const Navbar = ({ locale }) => {
       <aside>
         {
           locale === "ar" ? (
-            <>
-              <ChakraProvider theme={theme}>
-                <Drawer
-                  isOpen={isOpen}
-                  placement='right'
-                  onClose={onClose}
-                  finalFocusRef={btnRef}
-                  size={'xs'}
-                >
-                  <DrawerOverlay />
-                  <DrawerContent
-                    dir='ltr'>
-                    <DrawerCloseButton />
-                    <br />
-                    <br />
-                    <DrawerBody className='select-none'>
-                      <Link href="/login" className="text-sm">{t('login')}</Link>
-                      <br />
-                      <br />
-                      <Link href="/" className="text-sm">{t('home')}</Link>
-                      <br />
-                      <br />
-                      <Menu>
-                        <MenuButton>{t('quran')}</MenuButton>
-                        <MenuList>
-                          <MenuItem><Link href="/quran" className="text-sm">{t('quran')}</Link></MenuItem>
-                          <MenuItem><Link href="/reciters" className="text-sm">{t('reciters')}</Link></MenuItem>
-                        </MenuList>
-                      </Menu>
-                      <br />
-                      <br />
-                      <Link href="/stories" className="text-sm">{t('stories')}</Link>
-                      <br />
-                      <br />
-                      <Link href="/hadiths" className="text-sm">{t('hadiths')}</Link>
-                      <br />
-                      <br />
-                      <br />
-                      <div className="items-center justify-center space-x-5 flex flex-row">
-                        <Link href="https://example.com"><FontAwesomeIcon icon={faFacebook} size="xl" /></Link>
-                        <Link href="https://example.com"><FontAwesomeIcon icon={faInstagram} size="xl" /></Link>
-                        <Link href="https://example.com"><FontAwesomeIcon icon={faXTwitter} size="xl" /></Link>
-                      </div>
-                    </DrawerBody>
-                  </DrawerContent>
-                </Drawer>
-              </ChakraProvider>
-            </>
+            <Sidebar_ar isOpen={isOpen} onClose={onClose} />
           ) : (
-            <>
-              <ChakraProvider theme={theme}>
-                <Drawer
-                  isOpen={isOpen}
-                  placement='left'
-                  onClose={onClose}
-                  finalFocusRef={btnRef}
-                  size={'xs'}
-                >
-                  <DrawerOverlay />
-                  <DrawerContent
-                    dir='ltr'>
-                    <DrawerCloseButton />
-                    <br />
-                    <br />
-                    <DrawerBody className='select-none'>
-                      <Link href="/login" className="text-sm">{t('login')}</Link>
-                      <br />
-                      <br />
-                      <Link href="/" className="text-sm">{t('home')}</Link>
-                      <br />
-                      <br />
-                      <Menu>
-                        <MenuButton>{t('quran')}</MenuButton>
-                        <MenuList>
-                          <MenuItem><Link href="/quran" className="text-sm">{t('quran')}</Link></MenuItem>
-                          <MenuItem><Link href="/reciters" className="text-sm">{t('reciters')}</Link></MenuItem>
-                        </MenuList>
-                      </Menu>
-                      <br />
-                      <br />
-                      <Link href="/stories" className="text-sm">{t('stories')}</Link>
-                      <br />
-                      <br />
-                      <Link href="/hadiths" className="text-sm">{t('hadiths')}</Link>
-                      <br />
-                      <br />
-                      <br />
-                      <div className="items-center justify-center space-x-5 flex flex-row">
-                        <Link href="https://example.com"><FontAwesomeIcon icon={faFacebook} size="xl" /></Link>
-                        <Link href="https://example.com"><FontAwesomeIcon icon={faInstagram} size="xl" /></Link>
-                        <Link href="https://example.com"><FontAwesomeIcon icon={faXTwitter} size="xl" /></Link>
-                      </div>
-                    </DrawerBody>
-                  </DrawerContent>
-                </Drawer>
-              </ChakraProvider>
-            </>
+            <Sidebar_en isOpen={isOpen} onClose={onClose} />
           )
         }
       </aside>
