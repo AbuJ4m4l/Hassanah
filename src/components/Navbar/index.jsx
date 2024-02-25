@@ -12,8 +12,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useTranslations } from 'next-intl';
-import Sidebar_ar from '../Sidebar/ar';
-import Sidebar_en from '../Sidebar/en';
+import Sidebar_ar from '../Navbar.Sidebar/ar';
+import Sidebar_en from '../Navbar.Sidebar/en';
 import { useRef } from 'react';
 
 const Navbar = ({ locale }) => {
