@@ -117,7 +117,13 @@
     },
     "error": {
         "error": "An Unexpected Error Occurred.",
-        "try_again": "Try again"
+        "try_again": "Try again",
+        "Configuration": "Internal Server Error",
+        "AccessDenied_title": "Account Access Denied",
+        "AccessDenied_description": "You cannot access this account. It may have been deleted, blocked, or is temporarily unavailable, Please try again later.",
+        "Default_title": "Unknown Error",
+        "Default_description": "An unknown error occurred.",
+        "internal_server_error": "Internal Server Error"
     },
     "not_found": {
         "not_found": "Page Not Found",
