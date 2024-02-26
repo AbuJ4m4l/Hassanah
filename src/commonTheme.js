@@ -1,12 +1,16 @@
 import { extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
+    initialColorMode: 'dark',
+    useSystemColorMode: true,
     colors: {
         secondary: '#242424',
         primary: '#0096FD',
         light: '#343434',
-        secondaryPrimary: '#0086e6', // Assuming "secondryPrimary" was intended to be "secondaryPrimary"
+        secondaryPrimary: '#0086e6',
         white: '#ffffff',
+        "secondry.light": "#cccccc",
+        "secondry.light-lighten": "#d9d9d9"
     },
     components: {
         Input: {

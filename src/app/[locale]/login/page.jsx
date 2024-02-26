@@ -288,7 +288,7 @@ const Login = ({ params: { locale } }) => {
                             <div className="flex justify-center">
                                 <button type="button" onClick={() => {
                                     const redirect_url = query.get('redirect_url');
-                                    redirect_url ? signIn('discord')
+                                    redirect_url ? signIn('google')
                                         .then(({ ok, error }) => {
                                             if (ok) {
                                                 router.push(redirect_url);
@@ -328,7 +328,7 @@ const Login = ({ params: { locale } }) => {
                                                     }
                                                 }
                                             }
-                                        }) : signIn('discord')
+                                        }) : signIn('google')
                                             .then(({ ok, error }) => {
                                                 if (ok) {
                                                     router.push('/profile');

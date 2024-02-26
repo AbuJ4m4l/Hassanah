@@ -11,7 +11,6 @@ import { v4 } from "uuid";
 import NodeRSA from "node-rsa";
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
-import { info } from "console";
 
 db();
 
@@ -462,11 +461,11 @@ const handler = NextAuth({
             session.user.role = token.role;
             return session;
         },
-        async signIn({ profile, account }) {
+        async signIn({ profile, account, user }) {
+            console.log(profile, account, user)
             try {
                 await db();
                 if (account.provider === "google") {
-                    console.log(profile, account)
                     const isUserExists = await Google_User.findOne({
                         id: account.providerAccountId,
                         email: profile.email
