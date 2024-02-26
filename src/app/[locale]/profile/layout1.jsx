@@ -4,11 +4,11 @@ import Navbar from "../../../components/Navbar/index.jsx";
 import { ChakraProvider } from "@chakra-ui/react";
 import Footer from "../../../components/Footer/index.jsx";
 import { NextIntlClientProvider } from 'next-intl';
-import { locales } from "../../../../navigation";
+import { locales } from "../../../../navigation.js";
 import { notFound } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { getMessages } from "next-intl/server";
-import NextAuthProvider from "../../../components/Provider";
+import NextAuthProvider from "../../../components/Provider/index.jsx";
 import ProfileNvabar from "../../../components/profile.MyAccount/index.jsx";
 
 const changa = Changa({ subsets: ["arabic"] });
