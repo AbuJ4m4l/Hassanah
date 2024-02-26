@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { getMessages } from "next-intl/server";
 import NextAuthProvider from "../../../components/Provider";
+import ProfileNvabar from "../../../components/profile.MyAccount/index.jsx";
 
 const changa = Changa({ subsets: ["arabic"] });
 const jetbrains_mono = Noto_Sans({ subsets: ["latin"], weight: ["400", "700"] });
@@ -60,7 +61,7 @@ export default async function RootLayout({ children, params: { locale } }) {
                         <NextIntlClientProvider messages={messages} locale={locale}>
                             <ChakraProvider>
                                 <Navbar locale={locale} />
-                                <main className="mb-[100px] mt-[40px] flex-1">
+                                <main className="mb-[100px] flex-1">
                                     {children}
                                 </main>
                             </ChakraProvider>

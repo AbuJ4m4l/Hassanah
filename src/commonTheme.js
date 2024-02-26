@@ -4,8 +4,8 @@ const theme = extendTheme({
     initialColorMode: 'dark',
     useSystemColorMode: true,
     colors: {
-        secondary: '#242424',
         primary: '#0096FD',
+        secondary: '#242424',
         light: '#343434',
         secondaryPrimary: '#0086e6',
         white: '#ffffff',
