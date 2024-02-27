@@ -216,8 +216,8 @@ const handler = NextAuth({
                     name: `${profile.given_name} ${profile.family_name}`,
                     email: profile.email,
                     image: profile.picture,
-                    role: profile.role ? profile.role : "user",
-                    locale: profile.locale ?? "ar"
+                    role: profile.role ?? "user",
+                    locale: profile.locale ? profile.locale : "ar"
                 };
             }
         }),
@@ -230,8 +230,8 @@ const handler = NextAuth({
                     name: profile.username,
                     email: profile.email,
                     image: profile.picture,
-                    role: profile.role ? profile.role : "user",
-                    locale: profile.locale ?? "ar"
+                    role: profile.role ?? "user",
+                    locale: profile.locale ? profile.locale : "ar"
                 };
             },
 

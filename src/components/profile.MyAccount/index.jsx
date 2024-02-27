@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const MyAccount = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const t = useTranslations('profile');
   const router = useRouter();
   session ? null : router.push('/login');
@@ -26,7 +26,7 @@ const MyAccount = () => {
       setEmail(session?.user?.email);
     }
     getDomain();
-  }, [session]);
+  }, [session, status]);
   return (
     <section role="My-Account">
       <div className="flex justify-center select-none">
