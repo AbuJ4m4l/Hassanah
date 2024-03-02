@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { getMessages } from "next-intl/server";
 import NextAuthProvider from "../../components/Provider";
+import { authOptions } from "../api/auth/[...nextauth]/route.js";
 
 const changa = Changa({ subsets: ["arabic"] });
 const jetbrains_mono = Noto_Sans({ subsets: ["latin"], weight: ["400", "700"] });
@@ -19,7 +20,7 @@ export const metadata = {
 
 export default async function RootLayout({ children, params: { locale } }) {
     const messages = await getMessages();
-    const data = await getServerSession();
+    const data = await getServerSession(authOptions);
     if (!locales.includes(locale)) {
         notFound();
     } else {

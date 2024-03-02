@@ -205,7 +205,7 @@ IqApLiu/ra4IEncDiGBY9FmZEIHk6H/VFNClQf5/qUmKWbpBxB1+LibcLW28OU6a
 ZwIDAQAB
 -----END PUBLIC KEY-----`;
 
-const handler = NextAuth({
+export const authOptions = {
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_ID,
@@ -217,7 +217,8 @@ const handler = NextAuth({
                     email: profile.email,
                     image: profile.picture,
                     role: profile.role ?? "user",
-                    locale: profile.locale ? profile.locale : "ar"
+                    locale: profile.locale ? profile.locale : "ar",
+                    provider: 'google'
                 };
             }
         }),
@@ -231,7 +232,8 @@ const handler = NextAuth({
                     email: profile.email,
                     image: profile.picture,
                     role: profile.role ?? "user",
-                    locale: profile.locale ? profile.locale : "ar"
+                    locale: profile.locale ? profile.locale : "ar",
+                    provider: 'discord'
                 };
             },
 
@@ -350,7 +352,8 @@ const handler = NextAuth({
                                 return {
                                     id,
                                     email,
-                                    role: 'user'
+                                    role: 'user',
+                                    provider: "email"
                                 };
                             }
                         } else if (password !== retypePassword) {
@@ -438,7 +441,8 @@ const handler = NextAuth({
                         return {
                             id: user.id,
                             email: credentials.email,
-                            role: 'user'
+                            role: 'user',
+                            provider: "email"
                         };
                     } else {
                         return null;
@@ -451,14 +455,15 @@ const handler = NextAuth({
     ],
     //adapter: MongoDBAdapter(clientPromise),
     callbacks: {
-        async jwt({ token, user }) {
+        async jwt({ token, user, account }) {
             if (user) {
                 token.role = user.role;
             }
-            return { ...token, ...user };
+            return { ...token, ...user, provider: account.provider };
         },
         async session({ session, token }) {
             session.user.role = token.role;
+            session.user.provider = token.provider;
             return session;
         },
         async signIn({ profile, account, user }) {
@@ -628,7 +633,9 @@ const handler = NextAuth({
     session: {
         strategy: "jwt"
     }
-});
+};
+
+const handler = NextAuth(authOptions);
 
 
 export { handler as GET, handler as POST };

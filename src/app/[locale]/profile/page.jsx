@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MyAccount from '../../../components/profile.MyAccount';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import Security from '../../../components/profile.Security';
 
 const ProfileNvabar = () => {
     const { data: session } = useSession();
@@ -25,7 +26,7 @@ const ProfileNvabar = () => {
                         <MyAccount />
                     </TabPanel>
                     <TabPanel>
-
+                        <Security />
                     </TabPanel>
                     <TabPanel>
 
