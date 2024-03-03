@@ -27,10 +27,14 @@ import { useTranslations } from 'next-intl';
 import theme from '../../../commonTheme';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useSession, signIn, signOut } from 'next-auth/react'
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { auth } from "../../../firebase";
+import { sendEmailVerification, updateProfile } from "firebase/auth";
 import { useRouter, useSearchParams } from 'next/navigation';
+import GoogleLogin from '../../../components/google.login';
+import FacebookLogin from '../../../components/facebook.login';
 
-export default function Signup({ params: { locale } }) {
+const Signup = ({ params: { locale } }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [showRetypedPassword, setshowRetypedPassword] = useState(false);
     const [username, setUsername] = useState('');
@@ -47,6 +51,9 @@ export default function Signup({ params: { locale } }) {
     const [userMessage, setUserMessage] = useState('');
     const [Error, setError] = useState('');
     const [ErrorDescription, setErrorDescription] = useState('');
+    const [msg, setMsg] = useState('')
+    const [SignInWithEmailAndPassword, user] = useSignInWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
     const {
         isOpen: isVisible,
         onClose,
@@ -54,33 +61,6 @@ export default function Signup({ params: { locale } }) {
     } = useDisclosure({ defaultIsOpen: true })
     const t = useTranslations('signup');
     const router = useRouter();
-
-    const errors = {
-        OAuthSignin: t('OAuthSignin_title'),
-        OAuthCallback: t('OAuthCallback_title'),
-        OAuthCreateAccount: t('OAuthCreateAccount_title'),
-        EmailCreateAccount: t('EmailCreateAccount_title'),
-        Callback: t('Callback_title'),
-        OAuthAccountNotLinked: t('OAuthAccountNotLinked_title'),
-        EmailSignin: t('EmailSignin_title'),
-        CredentialsSignin: t('CredentialsSignin_title'),
-        SessionRequired: t('SessionRequired_title'),
-        Default: t('Default_title'),
-    };
-
-    const errorsDescriptions = {
-        OAuthSignin: t('OAuthSignin_description'),
-        OAuthCallback: t('OAuthCallback_description'),
-        OAuthCreateAccount: t('OAuthCreateAccount_description'),
-        EmailCreateAccount: t('EmailCreateAccount_description'),
-        Callback: t('Callback_description'),
-        OAuthAccountNotLinked: t('OAuthAccountNotLinked_description'),
-        EmailSignin: t('EmailSignin_description'),
-        CredentialsSignin: t('CredentialsSignin_description'),
-        SessionRequired: t('SessionRequired_description'),
-        Default: t('Default_description'),
-    };
-
     const handleClickOnPassword = () => setShowPassword(!showPassword);
     const handleClickOnRetypedPassword = () => setshowRetypedPassword(!showRetypedPassword);
     const handleForm = async (e) => {
@@ -96,62 +76,26 @@ export default function Signup({ params: { locale } }) {
             if (!email) setEmailInputError(true);
             if (password && password.length < 8 || !passwordStatus) setPasswordInputError(0);
             if (password && email && username && (password === retypePassword)) {
-                const id = await Math.floor(Math.random() * 10000000000000000);
-                localStorage.setItem("userAgentID", id);
-                await signIn('signup', {
-                    redirect: false,
-                    username: username,
-                    email: email,
-                    password: password,
-                    retypePassword: retypePassword,
-                    userAgent: navigator.userAgent,
-                    userAgentID: id
-                })
-                    .then(({ ok, error }) => {
-                        if (ok) {
-                            setUserMessage(t('signup_success'));
-                            const redirect_url = query.get('redirect_url');
-                            if (redirect_url) {
-                                router.push(redirect_url);
-                            } else {
-                                setTimeout(() => {
-                                    router.push('/profile');
-                                }, 1500);
-                            }
-                        } else if (error) {
-                            if (error === 'OAuthSignin') {
-                                setError(errors.OAuthSignin);
-                                setErrorDescription(errorsDescriptions.OAuthSignin);
-                            } else if (error === 'OAuthCallback') {
-                                setError(errors.OAuthCallback);
-                                setErrorDescription(errorsDescriptions.OAuthCallback);
-                            } else if (error === 'OAuthCreateAccount') {
-                                setError(errors.OAuthCreateAccount);
-                                setErrorDescription(errorsDescriptions.OAuthCreateAccount);
-                            } else if (error === 'EmailCreateAccount') {
-                                setError(errors.EmailCreateAccount);
-                                setErrorDescription(errorsDescriptions.EmailCreateAccount);
-                            } else if (error === 'Callback') {
-                                setError(errors.Callback);
-                                setErrorDescription(ErrorDescriptions.Callback)
-                            } else if (error === 'OAuthAccountNotLinked') {
-                                setError(errors.OAuthAccountNotLinked);
-                                setErrorDescription(errorsDescriptions.OAuthAccountNotLinked);
-                            } else if (error === 'EmailSignin') {
-                                setError(errors.EmailSignin);
-                                setErrorDescription(errorsDescriptions.EmailSignin);
-                            } else if (error === 'CredentialsSignin') {
-                                setError(errors.CredentialsSignin);
-                                setErrorDescription(errorsDescriptions.CredentialsSignin);
-                            } else if (error === 'SessionRequired') {
-                                setError(errors.SessionRequired);
-                                setErrorDescription(errorsDescriptions.SessionRequired);
-                            } else {
-                                setError(errors.Default);
-                                setErrorDescription(errorsDescriptions.Default);
-                            }
-                        }
-                    });
+                const res = await createUserWithEmailAndPassword(email, password)
+                    .then(async userCredential => {
+                        updateProfile(userCredential.user, {
+                            displayName: username
+                        }).then(async data => {
+                            sessionStorage.removeItem('user');
+                            sessionStorage.setItem('user', JSON.stringify(data.user));
+                            setUserMessage('success');
+                            setUsername('');
+                            setEmail('');
+                            setPassword('');
+                            setRetypePassword('');
+                            await sendEmailVerification(userCredential.user);
+                            setTimeout(() => router.push('/dashboard'), 2500);
+                        })
+                    })
+                    .catch(error => {
+                        setError(t('unknown_error'));
+                    })
+                console.log(res)
             } else {
                 if (password !== retypePassword) setMatchPasswordInputError(0);
                 if (!username) setUsernameInputError(true);
@@ -200,7 +144,7 @@ export default function Signup({ params: { locale } }) {
             setMatchPasswordInputError(false);
         }, 200);
     }
-    const query = useSearchParams();
+
     return (
         <>
             <div className="flex justify-center">
@@ -406,189 +350,14 @@ export default function Signup({ params: { locale } }) {
 
                             </div>
                             <div className="flex justify-center">
-                                <button type="button" onClick={() => {
-                                    const redirect_url = query.get('redirect_url');
-                                    redirect_url ? signIn('google')
-                                        .then(({ ok, error }) => {
-                                            if (ok) {
-                                                router.push(redirect_url);
-                                            }
-                                            if (error) {
-                                                if (error === 'OAuthSignin') {
-                                                    setError(errors.OAuthSignin);
-                                                    setErrorDescription(errorsDescriptions.OAuthSignin);
-                                                } else if (error === 'OAuthCallback') {
-                                                    setError(errors.OAuthCallback);
-                                                    setErrorDescription(errorsDescriptions.OAuthCallback);
-                                                } else if (error === 'OAuthCreateAccount') {
-                                                    setError(errors.OAuthCreateAccount);
-                                                    setErrorDescription(errorsDescriptions.OAuthCreateAccount);
-                                                } else if (error === 'EmailCreateAccount') {
-                                                    setError(errors.EmailCreateAccount);
-                                                    setErrorDescription(errorsDescriptions.EmailCreateAccount);
-                                                } else if (error === 'Callback') {
-                                                    setError(errors.Callback);
-                                                    setErrorDescription(ErrorDescriptions.Callback)
-                                                } else if (error === 'OAuthAccountNotLinked') {
-                                                    setError(errors.OAuthAccountNotLinked);
-                                                    setErrorDescription(errorsDescriptions.OAuthAccountNotLinked);
-                                                } else if (error === 'EmailSignin') {
-                                                    setError(errors.EmailSignin);
-                                                    setErrorDescription(errorsDescriptions.EmailSignin);
-                                                } else if (error === 'CredentialsSignin') {
-                                                    setError(errors.CredentialsSignin);
-                                                    setErrorDescription(errorsDescriptions.CredentialsSignin);
-                                                } else if (error === 'SessionRequired') {
-                                                    setError(errors.SessionRequired);
-                                                    setErrorDescription(errorsDescriptions.SessionRequired);
-                                                } else {
-                                                    setError(errors.Default);
-                                                    setErrorDescription(errorsDescriptions.Default);
-                                                }
-                                            }
-                                        }) : signIn('google')
-                                            .then(({ ok, error }) => {
-                                                if (ok) {
-                                                    router.push('/profile');
-                                                }
-                                                if (error) {
-                                                    if (error === 'OAuthSignin') {
-                                                        setError(errors.OAuthSignin);
-                                                        setErrorDescription(errorsDescriptions.OAuthSignin);
-                                                    } else if (error === 'OAuthCallback') {
-                                                        setError(errors.OAuthCallback);
-                                                        setErrorDescription(errorsDescriptions.OAuthCallback);
-                                                    } else if (error === 'OAuthCreateAccount') {
-                                                        setError(errors.OAuthCreateAccount);
-                                                        setErrorDescription(errorsDescriptions.OAuthCreateAccount);
-                                                    } else if (error === 'EmailCreateAccount') {
-                                                        setError(errors.EmailCreateAccount);
-                                                        setErrorDescription(errorsDescriptions.EmailCreateAccount);
-                                                    } else if (error === 'Callback') {
-                                                        setError(errors.Callback);
-                                                        setErrorDescription(ErrorDescriptions.Callback)
-                                                    } else if (error === 'OAuthAccountNotLinked') {
-                                                        setError(errors.OAuthAccountNotLinked);
-                                                        setErrorDescription(errorsDescriptions.OAuthAccountNotLinked);
-                                                    } else if (error === 'EmailSignin') {
-                                                        setError(errors.EmailSignin);
-                                                        setErrorDescription(errorsDescriptions.EmailSignin);
-                                                    } else if (error === 'CredentialsSignin') {
-                                                        setError(errors.CredentialsSignin);
-                                                        setErrorDescription(errorsDescriptions.CredentialsSignin);
-                                                    } else if (error === 'SessionRequired') {
-                                                        setError(errors.SessionRequired);
-                                                        setErrorDescription(errorsDescriptions.SessionRequired);
-                                                    } else {
-                                                        setError(errors.Default);
-                                                        setErrorDescription(errorsDescriptions.Default);
-                                                    }
-                                                }
-                                            })
-                                }} className="flex rtl:ml-2 ltr:mr-2 justify-center w-[50%] hover:bg-secondry bg-secondry-light cursor-pointer px-4 py-2 border gap-2 border-slate-600 rounded-lg text-white hover:border-slate-900 hover:shadow transition duration-150">
-                                    <Image
-                                        className="w-6 h-6"
-                                        width={6}
-                                        height={6} src="/images/google.svg"
-                                        loading="lazy"
-                                        alt="Google logo"
-                                    />
-                                </button>
-                                <button type="button" onClick={() => {
-                                    const redirect_url = query.get('redirect_url');
-                                    redirect_url ? signIn('discord')
-                                        .then(({ ok, error }) => {
-                                            if (ok) {
-                                                router.push(redirect_url);
-                                            }
-                                            if (error) {
-                                                if (error) {
-                                                    if (error === 'OAuthSignin') {
-                                                        setError(errors.OAuthSignin);
-                                                        setErrorDescription(errorsDescriptions.OAuthSignin);
-                                                    } else if (error === 'OAuthCallback') {
-                                                        setError(errors.OAuthCallback);
-                                                        setErrorDescription(errorsDescriptions.OAuthCallback);
-                                                    } else if (error === 'OAuthCreateAccount') {
-                                                        setError(errors.OAuthCreateAccount);
-                                                        setErrorDescription(errorsDescriptions.OAuthCreateAccount);
-                                                    } else if (error === 'EmailCreateAccount') {
-                                                        setError(errors.EmailCreateAccount);
-                                                        setErrorDescription(errorsDescriptions.EmailCreateAccount);
-                                                    } else if (error === 'Callback') {
-                                                        setError(errors.Callback);
-                                                        setErrorDescription(ErrorDescriptions.Callback)
-                                                    } else if (error === 'OAuthAccountNotLinked') {
-                                                        setError(errors.OAuthAccountNotLinked);
-                                                        setErrorDescription(errorsDescriptions.OAuthAccountNotLinked);
-                                                    } else if (error === 'EmailSignin') {
-                                                        setError(errors.EmailSignin);
-                                                        setErrorDescription(errorsDescriptions.EmailSignin);
-                                                    } else if (error === 'CredentialsSignin') {
-                                                        setError(errors.CredentialsSignin);
-                                                        setErrorDescription(errorsDescriptions.CredentialsSignin);
-                                                    } else if (error === 'SessionRequired') {
-                                                        setError(errors.SessionRequired);
-                                                        setErrorDescription(errorsDescriptions.SessionRequired);
-                                                    } else {
-                                                        setError(errors.Default);
-                                                        setErrorDescription(errorsDescriptions.Default);
-                                                    }
-                                                }
-                                            }
-                                        }) : signIn('discord')
-                                            .then(({ ok, error }) => {
-                                                if (ok) {
-                                                    router.push('/profile');
-                                                }
-                                                if (error) {
-                                                    if (error === 'OAuthSignin') {
-                                                        setError(errors.OAuthSignin);
-                                                        setErrorDescription(errorsDescriptions.OAuthSignin);
-                                                    } else if (error === 'OAuthCallback') {
-                                                        setError(errors.OAuthCallback);
-                                                        setErrorDescription(errorsDescriptions.OAuthCallback);
-                                                    } else if (error === 'OAuthCreateAccount') {
-                                                        setError(errors.OAuthCreateAccount);
-                                                        setErrorDescription(errorsDescriptions.OAuthCreateAccount);
-                                                    } else if (error === 'EmailCreateAccount') {
-                                                        setError(errors.EmailCreateAccount);
-                                                        setErrorDescription(errorsDescriptions.EmailCreateAccount);
-                                                    } else if (error === 'Callback') {
-                                                        setError(errors.Callback);
-                                                        setErrorDescription(ErrorDescriptions.Callback)
-                                                    } else if (error === 'OAuthAccountNotLinked') {
-                                                        setError(errors.OAuthAccountNotLinked);
-                                                        setErrorDescription(errorsDescriptions.OAuthAccountNotLinked);
-                                                    } else if (error === 'EmailSignin') {
-                                                        setError(errors.EmailSignin);
-                                                        setErrorDescription(errorsDescriptions.EmailSignin);
-                                                    } else if (error === 'CredentialsSignin') {
-                                                        setError(errors.CredentialsSignin);
-                                                        setErrorDescription(errorsDescriptions.CredentialsSignin);
-                                                    } else if (error === 'SessionRequired') {
-                                                        setError(errors.SessionRequired);
-                                                        setErrorDescription(errorsDescriptions.SessionRequired);
-                                                    } else {
-                                                        setError(errors.Default);
-                                                        setErrorDescription(errorsDescriptions.Default);
-                                                    }
-                                                }
-                                            })
-                                }} className="flex rtl:mr-2 ltr:ml-2 justify-center w-[50%] hover:bg-secondry bg-secondry-light cursor-pointer px-4 py-2 border gap-2 border-slate-600 rounded-lg text-white hover:border-slate-900 hover:shadow transition duration-150">
-                                    <Image
-                                        className="w-6 h-6"
-                                        width={6}
-                                        height={6} src="/images/discord.svg"
-                                        loading="lazy"
-                                        alt="Discord logo"
-                                    />
-                                </button>
+                                <GoogleLogin />
+                                <FacebookLogin />
                             </div>
                         </Stack>
                     </form>
                 </ChakraProvider>
             </div>
         </>
-    );
+    )
 }
+export default Signup;

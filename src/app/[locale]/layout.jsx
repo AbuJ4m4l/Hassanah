@@ -6,10 +6,7 @@ import Footer from "../../components/Footer/index.jsx";
 import { NextIntlClientProvider } from 'next-intl';
 import { locales } from "../../../navigation";
 import { notFound } from "next/navigation";
-import { getServerSession } from "next-auth";
 import { getMessages } from "next-intl/server";
-import NextAuthProvider from "../../components/Provider";
-import { authOptions } from "../api/auth/[...nextauth]/route.js";
 
 const changa = Changa({ subsets: ["arabic"] });
 const jetbrains_mono = Noto_Sans({ subsets: ["latin"], weight: ["400", "700"] });
@@ -20,7 +17,6 @@ export const metadata = {
 
 export default async function RootLayout({ children, params: { locale } }) {
     const messages = await getMessages();
-    const data = await getServerSession(authOptions);
     if (!locales.includes(locale)) {
         notFound();
     } else {
@@ -57,17 +53,15 @@ export default async function RootLayout({ children, params: { locale } }) {
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 </head>
                 <body dir={direction} className={`selection:bg-primary selection:text-white ${locale === "ar" ? changa.className : jetbrains_mono.className} flex flex-col min-h-screen`}>
-                    <NextAuthProvider session={data}>
-                        <NextIntlClientProvider messages={messages} locale={locale}>
-                            <ChakraProvider>
-                                <Navbar locale={locale} />
-                                <main className="mb-[100px] mt-[40px] flex-1">
-                                    {children}
-                                </main>
-                                <Footer locale={locale} />
-                            </ChakraProvider>
-                        </NextIntlClientProvider>
-                    </NextAuthProvider>
+                    <NextIntlClientProvider messages={messages} locale={locale}>
+                        <ChakraProvider>
+                            <Navbar locale={locale} />
+                            <main className="mb-[100px] mt-[40px] flex-1">
+                                {children}
+                            </main>
+                            <Footer locale={locale} />
+                        </ChakraProvider>
+                    </NextIntlClientProvider>
                 </body>
             </html>
         );

@@ -1,0 +1,37 @@
+{
+    "user": {
+        "uid": "GWPz1mgPdyUPSTNwnHEa2Qij0hG3",
+        "email": "eyad563@hotmail.com",
+        "emailVerified": false,
+        "isAnonymous": false,
+        "providerData": [
+            {
+                "providerId": "password",
+                "uid": "eyad563@hotmail.com",
+                "displayName": null,
+                "email": "eyad563@hotmail.com",
+                "phoneNumber": null,
+                "photoURL": null
+            }
+        ],
+        "stsTokenManager": {
+            "refreshToken": "AMf-vBxUJFw_icsA8hS7q2sYcS5IO1Gv2qI4PpSYZ9tTb1fUjwSqxjBxmAYs2dDFf4i3EsDOtMXju0Flni7yXatZvZaDvhBAv4n27YhLW5d8zhnvib7Y72cbY_Eu7pfITNJGTGoe3MG-z9xrFeDXkTKiD-RtIykCWOYiCL6j_-yPdtx1lBw--3cgNivk4bOIeLP8OUkMv6kYz62ol4cUD_seTDM9Ia6jIw",
+            "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNiYjg3ZGNhM2JjYjY5ZDcyYjZjYmExYjU5YjMzY2M1MjI5N2NhOGQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vaGFzc2FuYWgtcHJvamVjdCIsImF1ZCI6Imhhc3NhbmFoLXByb2plY3QiLCJhdXRoX3RpbWUiOjE3MDk0NjM2NDcsInVzZXJfaWQiOiJHV1B6MW1nUGR5VVBTVE53bkhFYTJRaWowaEczIiwic3ViIjoiR1dQejFtZ1BkeVVQU1ROd25IRWEyUWlqMGhHMyIsImlhdCI6MTcwOTQ2MzY0NywiZXhwIjoxNzA5NDY3MjQ3LCJlbWFpbCI6ImV5YWQ1NjNAaG90bWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiZXlhZDU2M0Bob3RtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.UKYtJPCuLBqOvBWes8X4J70xh4dZKEI5-ruj93SVobBMyTMU5Ok3hsLHqJ-pe1qZahjEWb2o7XgIgYTZB8scOI0R2QBvN_dh00un6KP1Gl_P9DSTuSVPXTpFypRk1lwi76t024BHH4oPo3ERJlYk_QvuPXWOAljNSLDSKIGd14v5HLJIlmXUX2CafEQ37YdjYKuvJIMvYAuJxNF-dttXQn3euUvliHCyOeEkqG4g3LV73ET3F4PQlqUKR0yrijM2uz4BBRSgCjE01pTbRXwYb9z4cmabrOvLcBIUHoa3heWxoW2rQbAHLMVSb7Y7q6YkRs-sVtDca4zLOPfoJTNS-A",
+            "expirationTime": 1709467248433
+        },
+        "createdAt": "1709463647252",
+        "lastLoginAt": "1709463647252",
+        "apiKey": "AIzaSyBykQvricJJEKvk9DAukkNk9E1K_pIvV-s",
+        "appName": "[DEFAULT]"
+    },
+    "providerId": null,
+    "_tokenResponse": {
+        "kind": "identitytoolkit#SignupNewUserResponse",
+        "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNiYjg3ZGNhM2JjYjY5ZDcyYjZjYmExYjU5YjMzY2M1MjI5N2NhOGQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vaGFzc2FuYWgtcHJvamVjdCIsImF1ZCI6Imhhc3NhbmFoLXByb2plY3QiLCJhdXRoX3RpbWUiOjE3MDk0NjM2NDcsInVzZXJfaWQiOiJHV1B6MW1nUGR5VVBTVE53bkhFYTJRaWowaEczIiwic3ViIjoiR1dQejFtZ1BkeVVQU1ROd25IRWEyUWlqMGhHMyIsImlhdCI6MTcwOTQ2MzY0NywiZXhwIjoxNzA5NDY3MjQ3LCJlbWFpbCI6ImV5YWQ1NjNAaG90bWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiZXlhZDU2M0Bob3RtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.UKYtJPCuLBqOvBWes8X4J70xh4dZKEI5-ruj93SVobBMyTMU5Ok3hsLHqJ-pe1qZahjEWb2o7XgIgYTZB8scOI0R2QBvN_dh00un6KP1Gl_P9DSTuSVPXTpFypRk1lwi76t024BHH4oPo3ERJlYk_QvuPXWOAljNSLDSKIGd14v5HLJIlmXUX2CafEQ37YdjYKuvJIMvYAuJxNF-dttXQn3euUvliHCyOeEkqG4g3LV73ET3F4PQlqUKR0yrijM2uz4BBRSgCjE01pTbRXwYb9z4cmabrOvLcBIUHoa3heWxoW2rQbAHLMVSb7Y7q6YkRs-sVtDca4zLOPfoJTNS-A",
+        "email": "eyad563@hotmail.com",
+        "refreshToken": "AMf-vBxUJFw_icsA8hS7q2sYcS5IO1Gv2qI4PpSYZ9tTb1fUjwSqxjBxmAYs2dDFf4i3EsDOtMXju0Flni7yXatZvZaDvhBAv4n27YhLW5d8zhnvib7Y72cbY_Eu7pfITNJGTGoe3MG-z9xrFeDXkTKiD-RtIykCWOYiCL6j_-yPdtx1lBw--3cgNivk4bOIeLP8OUkMv6kYz62ol4cUD_seTDM9Ia6jIw",
+        "expiresIn": "3600",
+        "localId": "GWPz1mgPdyUPSTNwnHEa2Qij0hG3"
+    },
+    "operationType": "signIn"
+}

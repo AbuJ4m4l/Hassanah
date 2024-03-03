@@ -28,26 +28,30 @@
         "error_credentials_signin_title": "Invalid Credentials Provided",
         "error_credentials_signin_description": "Please try again with another account.",
         "email_invalid": "Please enter a valid email address.",
-        "OAuthSignin_title": "Authorization URL Error",
-        "OAuthSignin_description": "Error occurred while constructing the authorization URL.",
-        "OAuthCallback_title": "OAuth Callback Error",
-        "OAuthCallback_description": "Error occurred while handling the response from the OAuth provider.",
-        "OAuthCreateAccount_title": "OAuth User Creation Error",
-        "OAuthCreateAccount_description": "Could not create OAuth provider user.",
-        "EmailCreateAccount_title": "Email User Creation Error",
-        "EmailCreateAccount_description": "Could not create email provider user.",
-        "Callback_title": "OAuth Callback Handler Error",
-        "Callback_description": "Error occurred in the OAuth callback handler.",
-        "OAuthAccountNotLinked_title": "Linked Account Error",
-        "OAuthAccountNotLinked_description": "Email on the account is already linked, but not with this OAuth account.",
-        "EmailSignin_title": "Email Sign-in Error",
-        "EmailSignin_description": "Sending the e-mail with the verification token failed.",
-        "CredentialsSignin_title": "Credentials Sign-in Error",
-        "CredentialsSignin_description": "The authorize callback returned error.",
-        "SessionRequired_title": "Session Required Error",
-        "SessionRequired_description": "The content of this page requires you to be signed in at all times.",
-        "Default_title": "Unknown Error",
-        "Default_description": "An unknown error occurred."
+        "MISSING_PASSWORD": {
+            "title": "Missing Password",
+            "description": "Please enter a password for your account."
+          },
+          "INVALID_EMAIL": {
+            "title": "Invalid Email",
+            "description": "Please double-check your email address and make sure it's typed correctly."
+          },
+          "EMAIL_EXISTS": {
+            "title": "Email Already Exists",
+            "description": "This email is already in use. Try signing in or use a different email."
+          },
+          "WEAK_PASSWORD": {
+            "title": "Weak Password",
+            "description": "Please choose a stronger password (at least 6 characters) for better security."
+          },
+          "INVALID_API_KEY": {
+            "title": "API Key Error",
+            "description": "There's a problem with your API key. Please check it and try again."
+          },
+          "OPERATION_NOT_ALLOWED": {
+            "title": "Sign-up Not Allowed",
+            "description": "Sign-up is currently disabled. Contact support for assistance."
+          }
     },
     "login": {
         "login": "Log in to Your Account",

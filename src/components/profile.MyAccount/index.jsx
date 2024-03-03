@@ -3,43 +3,44 @@
 import { Avatar, Tooltip, useToast } from "@chakra-ui/react";
 import { faEye, faEyeSlash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase";
 
 const MyAccount = () => {
-  const { data: session, status } = useSession();
   const t = useTranslations('profile');
   const router = useRouter();
-  session ? null : router.push('/login');
+  const [user] = useAuthState(auth);
   const [domain, setDomain] = useState('');
-  const [email, setEmail] = useState(session?.user?.email)
   const [revealEmail, setRevealEmail] = useState(true);
+  const [email, setEmail] = useState('');
   const toast = useToast();
 
   useEffect(() => {
     const getDomain = () => {
-      const revealedEmail = session?.user?.email.split('@')[1];
+      const revealedEmail = user.email.split('@')[1];
       setDomain(revealedEmail);
-      setEmail(session?.user?.email);
+      setEmail(user.email);
     }
     getDomain();
-  }, [session, status]);
+  }, []);
+  console.log(user);
   return (
     <section role="My-Account">
       <div className="flex justify-center select-none">
         <div className="outline-offset-2 outline-4 outline-primary rounded-full outline max-w-[8.2rem] p-1">
           <Avatar
-            src={session?.user?.image}
-            name={session?.user?.name}
+            src={user.photoURL}
+            name={user.displayName}
             size="xl"
           />
         </div>
       </div>
       <div className="flex justify-center mt-4 select-none">
-        <p className="text-2xl">{t('welcome')}, {session?.user?.name}</p>
+        <p className="text-2xl">{t('welcome')}, {user.displayName}</p>
       </div>
 
       <div>
@@ -54,7 +55,7 @@ const MyAccount = () => {
             <Tooltip hasArrow label={t('copy')} bg='#343434' color='white'>
               <p dir="ltr" onClick={
                 () => {
-                  navigator.clipboard.writeText(session?.user?.email)
+                  navigator.clipboard.writeText(email)
                     .then(() => {
                       toast({
                         title: t('copied'),
@@ -87,7 +88,7 @@ const MyAccount = () => {
               </button>
               <p onClick={
                 () => {
-                  navigator.clipboard.writeText(session?.user?.name)
+                  navigator.clipboard.writeText(user.displayName)
                     .then(() => {
                       toast({
                         title: t('copied'),
@@ -105,7 +106,7 @@ const MyAccount = () => {
                       })
                     });
                 }
-              } className="w-[200px] truncate">{session?.user?.name}</p>
+              } className="w-[200px] truncate">{user.displayName}</p>
             </div>
           </Tooltip>
           <h2 className="mt-4">Password:</h2>

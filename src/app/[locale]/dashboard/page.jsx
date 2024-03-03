@@ -4,13 +4,10 @@ import { faClockRotateLeft, faGear, faMobileScreen, faShield, faUser } from '@fo
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MyAccount from '../../../components/profile.MyAccount';
 import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
 import Security from '../../../components/profile.Security';
 
 const ProfileNvabar = () => {
-    const { data: session } = useSession();
     const router = useRouter();
-    session ? null : router.push('/login');
     return (
         <>
             <Tabs variant='unstyled' align='center' className='-mt-[40px]'>
