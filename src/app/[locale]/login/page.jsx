@@ -1,12 +1,11 @@
 "use client";
 import { Alert, AlertDescription, AlertIcon, AlertTitle, ChakraProvider, CloseButton, FormControl, FormErrorMessage, Input, InputGroup, InputLeftElement, InputRightElement, Stack, useDisclosure } from "@chakra-ui/react";
 import theme from "../../../commonTheme";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase";
@@ -24,8 +23,6 @@ const Login = ({ params: { locale } }) => {
     const [Error, setError] = useState('');
     const [ErrorDescription, setErrorDescription] = useState('');
     const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle] = useSignInWithGoogle(auth);
-    const [signInWithFacebook] = useSignInWithFacebook(auth);
     const t = useTranslations('login');
     const {
         isOpen: isVisible,
@@ -75,7 +72,9 @@ const Login = ({ params: { locale } }) => {
             console.error(error);
         }
     };
-
+    useEffect(() => {
+        user ?? router.push("/dashboard")
+    })
     return (
         <>
             <div className="flex justify-center">

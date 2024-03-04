@@ -20,7 +20,7 @@ import {
     CloseButton,
     useDisclosure,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useTranslations } from 'next-intl';
@@ -52,6 +52,7 @@ const Signup = ({ params: { locale } }) => {
     const [Error, setError] = useState('');
     const [ErrorDescription, setErrorDescription] = useState('');
     const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
+    const [user] = useAuthState(auth);
     const {
         isOpen: isVisible,
         onClose,
@@ -142,7 +143,9 @@ const Signup = ({ params: { locale } }) => {
             setMatchPasswordInputError(false);
         }, 200);
     }
-
+    useEffect(() => {
+        user ?? router.push("/dashboard")
+    })
     return (
         <>
             <div className="flex justify-center">

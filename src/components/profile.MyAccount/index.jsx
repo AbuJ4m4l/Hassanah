@@ -28,7 +28,7 @@ const MyAccount = () => {
     getDomain();
   }, [user?.email]);
   return (
-    <section role="My-Account">
+    <section role="section" className="-mb-[40px]">
       <div className="flex justify-center select-none">
         <div className="outline-offset-2 outline-4 outline-primary rounded-full outline max-w-[8.2rem] p-1">
           <Avatar
