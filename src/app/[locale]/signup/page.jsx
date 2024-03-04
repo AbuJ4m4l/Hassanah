@@ -51,8 +51,6 @@ const Signup = ({ params: { locale } }) => {
     const [userMessage, setUserMessage] = useState('');
     const [Error, setError] = useState('');
     const [ErrorDescription, setErrorDescription] = useState('');
-    const [msg, setMsg] = useState('')
-    const [SignInWithEmailAndPassword, user] = useSignInWithEmailAndPassword(auth);
     const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
     const {
         isOpen: isVisible,

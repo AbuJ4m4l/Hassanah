@@ -21,26 +21,25 @@ const MyAccount = () => {
 
   useEffect(() => {
     const getDomain = () => {
-      const revealedEmail = user.email.split('@')[1];
+      const revealedEmail = user?.email.split('@')[1];
       setDomain(revealedEmail);
-      setEmail(user.email);
+      setEmail(user?.email);
     }
     getDomain();
-  }, []);
-  console.log(user);
+  }, [user?.email]);
   return (
     <section role="My-Account">
       <div className="flex justify-center select-none">
         <div className="outline-offset-2 outline-4 outline-primary rounded-full outline max-w-[8.2rem] p-1">
           <Avatar
-            src={user.photoURL}
-            name={user.displayName}
+            src={user?.photoURL}
+            name={user?.displayName}
             size="xl"
           />
         </div>
       </div>
       <div className="flex justify-center mt-4 select-none">
-        <p className="text-2xl">{t('welcome')}, {user.displayName}</p>
+        <p className="text-2xl">{t('welcome')}, {user?.displayName}</p>
       </div>
 
       <div>
@@ -88,7 +87,7 @@ const MyAccount = () => {
               </button>
               <p onClick={
                 () => {
-                  navigator.clipboard.writeText(user.displayName)
+                  navigator.clipboard.writeText(user?.displayName)
                     .then(() => {
                       toast({
                         title: t('copied'),
@@ -106,18 +105,37 @@ const MyAccount = () => {
                       })
                     });
                 }
-              } className="w-[200px] truncate">{user.displayName}</p>
+              } className="w-[200px] truncate">{user?.displayName}</p>
             </div>
           </Tooltip>
-          <h2 className="mt-4">Password:</h2>
-          <div className="flex justify-center mt-4 select-none w-[300px] bg-secondry rounded-lg py-2 border-primary border-2">
-            <button className="ltr:right-6 rtl:left-6 relative">
-              <Tooltip hasArrow label={t('edit_password_tooltip')} bg='#343434' color='white'>
-                <Link href="/reset-password"><FontAwesomeIcon icon={faPenToSquare} /></Link>
-              </Tooltip>
-            </button>
-            <p className="w-[200px]">************</p>
-          </div>
+
+          {
+            user?.providerData?.map(pData => (
+              <div key={pData.providerId}>
+                {
+                  pData.providerId === "facebook.com" ? (
+                    <></>
+                  ) : pData.providerId === "google.com" ? (
+                    <></>
+                  ) : pData.providerId === "password" ? (
+                    <>
+                      <h2 className="mt-4">Password:</h2>
+                      <div className="flex justify-center mt-4 select-none w-[300px] bg-secondry rounded-lg py-2 border-primary border-2">
+                        <button className="ltr:right-6 rtl:left-6 relative">
+                          <Tooltip hasArrow label={t('edit_password_tooltip')} bg='#343434' color='white'>
+                            <Link href="/reset-password"><FontAwesomeIcon icon={faPenToSquare} /></Link>
+                          </Tooltip>
+                        </button>
+                        <p className="w-[200px]">************</p>
+                      </div>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+              </div>
+            ))
+          }
+
         </div>
       </div>
     </section>
