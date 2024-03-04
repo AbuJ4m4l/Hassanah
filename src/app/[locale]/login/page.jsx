@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useAuthState, useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase";
 import GoogleLogin from "../../../components/google.login";
 import FacebookLogin from "../../../components/facebook.login";
@@ -23,6 +23,7 @@ const Login = ({ params: { locale } }) => {
     const [Error, setError] = useState('');
     const [ErrorDescription, setErrorDescription] = useState('');
     const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+    const [user] = useAuthState(auth);
     const t = useTranslations('login');
     const {
         isOpen: isVisible,
