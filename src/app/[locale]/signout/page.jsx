@@ -1,21 +1,25 @@
 "use client"
 import { useEffect } from 'react';
-import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
+import { auth } from '../../../firebase';
+
 const SignOutPage = () => {
-  const { status } = useSession();
   const router = useRouter();
+  const [Signout] = useSignOut(auth);
   const t = useTranslations('signout');
+  const [user] = useAuthState(auth);
   useEffect(() => {
-    if (status === 'authenticated') {
-      signOut({ redirect: false }).then(() => {
-        router.push('/signedout');
-      });
+    if (user) {
+      Signout()
+        .then(() => {
+          router.push('/signedout');
+        });
     } else {
-      router.push('/signedout');
+      router.push('/signedout')
     }
-  }, [status, router]);
+  }, [Signout, user, router]);
 
   return (
     <>

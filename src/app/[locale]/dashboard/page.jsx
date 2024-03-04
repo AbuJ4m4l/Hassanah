@@ -5,9 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MyAccount from '../../../components/profile.MyAccount';
 import { useRouter } from 'next/navigation';
 import Security from '../../../components/profile.Security';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../../firebase';
+import { useEffect } from 'react';
 
 const ProfileNvabar = () => {
     const router = useRouter();
+    const [user] = useAuthState(auth);
+    useEffect(() => {
+        if (!user) {
+            router.push("/signup")
+        }
+    }, [user, router])
     return (
         <>
             <Tabs variant='unstyled' align='center' className='-mt-[40px]'>

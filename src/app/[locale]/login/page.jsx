@@ -74,7 +74,9 @@ const Login = ({ params: { locale } }) => {
         }
     };
     useEffect(() => {
-        user ?? router.push("/dashboard")
+        if (user) {
+            router.push("/dashboard")
+        }
     })
     return (
         <>

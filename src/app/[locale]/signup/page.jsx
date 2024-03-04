@@ -144,7 +144,9 @@ const Signup = ({ params: { locale } }) => {
         }, 200);
     }
     useEffect(() => {
-        user ?? router.push("/dashboard")
+        if (user) {
+            router.push("/dashboard")
+        }
     })
     return (
         <>

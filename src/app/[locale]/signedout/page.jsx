@@ -1,25 +1,25 @@
 "use client";
 import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { signOut, useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
+import { auth } from '../../../firebase';
 
 const Signedout = () => {
     const t = useTranslations('signedout');
-    const { status } = useSession();
     const router = useRouter();
+    const [Signout] = useSignOut(auth);
+    const [user] = useAuthState(auth);
     useEffect(() => {
-        if (status === 'authenticated') {
-            signOut({ redirect: false })
+        if (user) {
+            Signout()
                 .then(() => {
                     router.push('/signedout');
                 });
-        } else {
-            router.push('/signedout');
         }
-    }, [status, router]);
+    }, [Signout, user, router]);
     return (
         <>
             <div className="flex justify-center">
