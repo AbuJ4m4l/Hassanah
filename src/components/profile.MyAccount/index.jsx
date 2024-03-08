@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
+import Signout from "../signout";
 
 const MyAccount = () => {
   const t = useTranslations('profile');
@@ -36,6 +37,7 @@ const MyAccount = () => {
             name={user?.displayName}
             size="xl"
           />
+
         </div>
       </div>
       <div className="flex justify-center mt-4 select-none">
