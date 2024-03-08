@@ -7,7 +7,7 @@ import { auth } from "../../../firebase";
 import { Avatar, ChakraProvider, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import theme from "../../../commonTheme";
 
-const Login = () => {
+const Login = ({ AvtrSize }) => {
     const t = useTranslations(`navbar`);
     const [user, loading] = useAuthState(auth)
     if (!loading) {
@@ -21,7 +21,7 @@ const Login = () => {
                                     <Avatar
                                         src={user?.photoURL}
                                         name={user?.displayName}
-                                        size="sm"
+                                        size={AvtrSize}
                                     />
                                 </MenuButton>
                                 <MenuList>

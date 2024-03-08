@@ -1,12 +1,8 @@
 "use client"
 import {
-    Button,
     ChakraProvider,
-    extendTheme,
     FormControl,
-    FormLabel,
     FormErrorMessage,
-    FormHelperText,
     Input,
     InputGroup,
     InputRightElement,
@@ -16,7 +12,6 @@ import {
     AlertIcon,
     AlertDescription,
     AlertTitle,
-    Box,
     CloseButton,
     useDisclosure,
 } from '@chakra-ui/react';
@@ -26,7 +21,6 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useTranslations } from 'next-intl';
 import theme from '../../../commonTheme';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { auth } from "../../../firebase";
 import { sendEmailVerification, updateProfile } from "firebase/auth";
@@ -46,12 +40,14 @@ const Signup = ({ params: { locale } }) => {
     const [emailInputError, setEmailInputError] = useState(false);
     const [passwordInputError, setPasswordInputError] = useState(false);
     const [matchPasswordInputError, setMatchPasswordInputError] = useState(false);
-    const [signupButtonStatus, setSignupButtonStatus] = useState(false);
     const [passwordStatus, setPasswordStatus] = useState(null);
     const [userMessage, setUserMessage] = useState('');
     const [Error, setError] = useState('');
     const [ErrorDescription, setErrorDescription] = useState('');
-    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword,
+        _user,
+        loading,
+        error,] = useCreateUserWithEmailAndPassword(auth);
     const [user] = useAuthState(auth);
     const {
         isOpen: isVisible,
@@ -124,15 +120,6 @@ const Signup = ({ params: { locale } }) => {
         return result;
     };
 
-    if (passwordStatus === false || usernameInputError || passwordInputError || emailInputError || matchPasswordInputError) {
-        setTimeout(() => {
-            setSignupButtonStatus(false);
-        }, 200)
-    } else if (passwordStatus && usernameInputError === false && passwordInputError === false && emailInputError === false && matchPasswordInputError === false && (username && email && password && retypePassword) && (password === retypePassword)) {
-        setTimeout(() => {
-            setSignupButtonStatus(true);
-        }, 200)
-    }
 
     if (password !== retypePassword) {
         setTimeout(() => {
@@ -148,6 +135,10 @@ const Signup = ({ params: { locale } }) => {
             router.push("/dashboard")
         }
     })
+    if (error?.message === 'Firebase: Error (auth/email-already-in-use).') {
+        console.log(error?.message)
+    }
+
     return (
         <>
             <div className="flex justify-center">

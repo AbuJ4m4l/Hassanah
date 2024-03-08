@@ -41,7 +41,7 @@ const Navbar = ({ locale }) => {
             </li>
           </ul>
           <div className="hidden sm:flex flex-row">
-            <Login />
+            <Login AvtrSize="sm" />
             <div className="flex items-center flex-row-reverse text-sm">
               <Link href="/" className="ml-[10px]">
                 {t('home')}
@@ -69,7 +69,7 @@ const Navbar = ({ locale }) => {
             </li>
           </ul>
         </nav>
-      </header>
+      </header >
       <aside>
         {
           locale === "ar" ? (

@@ -39,7 +39,7 @@ const Sidebar_ar = ({ isOpen, onClose }) => {
                         <br />
                         <br />
                         <DrawerBody className='select-none'>
-                            <Login />
+                            <Login AvtrSize="md"/>
                             <br />
                             <br />
                             <Link href="/">{t('home')}</Link>
