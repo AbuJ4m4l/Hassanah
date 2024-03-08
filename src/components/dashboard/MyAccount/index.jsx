@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase";
-import Signout from "../../authentication/signout";
 
 const MyAccount = () => {
   const t = useTranslations('profile');

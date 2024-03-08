@@ -12,9 +12,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useTranslations } from 'next-intl';
-import Sidebar_ar from '../Navbar.Sidebar/ar';
-import Sidebar_en from '../Navbar.Sidebar/en';
+import Sidebar_ar from '../Sidebar/ar';
+import Sidebar_en from '../Sidebar/en';
 import { useRef } from 'react';
+import Login from '../Login';
 
 const Navbar = ({ locale }) => {
   const btnRef = useRef();
@@ -40,11 +41,7 @@ const Navbar = ({ locale }) => {
             </li>
           </ul>
           <div className="hidden sm:flex flex-row">
-            <button className="btn bg-white hover:bg-transparent border-2 border-white text-black hover:text-white">
-              <Link href="/login" className="text-xs">
-                {t('login')}
-              </Link>
-            </button>
+            <Login />
             <div className="flex items-center flex-row-reverse text-sm">
               <Link href="/" className="ml-[10px]">
                 {t('home')}
