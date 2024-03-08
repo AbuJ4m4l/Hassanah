@@ -17,6 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
+import Login from '../Login';
 
 const Sidebar_ar = ({ isOpen, onClose }) => {
     const btnRef = useRef();
@@ -38,7 +39,7 @@ const Sidebar_ar = ({ isOpen, onClose }) => {
                         <br />
                         <br />
                         <DrawerBody className='select-none'>
-                            <Link href="/login">{t('login')}</Link>
+                            <Login />
                             <br />
                             <br />
                             <Link href="/">{t('home')}</Link>
