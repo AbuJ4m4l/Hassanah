@@ -31,8 +31,8 @@ import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithEmailAndP
 import { auth } from "../../../firebase";
 import { sendEmailVerification, updateProfile } from "firebase/auth";
 import { useRouter, useSearchParams } from 'next/navigation';
-import GoogleLogin from '../../../components/google.login';
-import FacebookLogin from '../../../components/facebook.login';
+import GoogleLogin from '../../../components/authentication/google.login';
+import FacebookLogin from '../../../components/authentication/facebook.login';
 
 const Signup = ({ params: { locale } }) => {
     const [showPassword, setShowPassword] = useState(false);

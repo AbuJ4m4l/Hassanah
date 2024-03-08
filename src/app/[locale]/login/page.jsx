@@ -9,8 +9,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuthState, useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase";
-import GoogleLogin from "../../../components/google.login";
-import FacebookLogin from "../../../components/facebook.login";
+import GoogleLogin from "../../../components/authentication/google.login";
+import FacebookLogin from "../../../components/authentication/facebook.login";
 
 const Login = ({ params: { locale } }) => {
     const [emailInputError, setEmailInputError] = useState(false);

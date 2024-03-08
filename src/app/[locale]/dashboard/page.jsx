@@ -2,9 +2,9 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import { faClockRotateLeft, faGear, faMobileScreen, faShield, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import MyAccount from '../../../components/profile.MyAccount';
+import MyAccount from '../../../components/dashboard/profile.MyAccount';
 import { useRouter } from 'next/navigation';
-import Security from '../../../components/profile.Security';
+import Security from '../../../components/dashboard/profile.Security';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../../firebase';
 import { useEffect } from 'react';

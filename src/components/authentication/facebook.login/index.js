@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useSignInWithFacebook } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase";
+import { auth } from "../../../firebase";
 import { useRouter } from "next/navigation";
 
 const FacebookLogin = () => {

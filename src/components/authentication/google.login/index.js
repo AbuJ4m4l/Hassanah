@@ -1,6 +1,6 @@
 "use client"
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase";
+import { auth } from "../../../firebase";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 

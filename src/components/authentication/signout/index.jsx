@@ -1,6 +1,6 @@
 "use client"
 import { useSignOut } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase";
+import { auth } from "../../../firebase";
 
 const Signout = ({ style }) => {
 

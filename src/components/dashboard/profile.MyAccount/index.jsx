@@ -8,8 +8,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase";
-import Signout from "../signout";
+import { auth } from "../../../firebase";
+import Signout from "../../authentication/signout";
 
 const MyAccount = () => {
   const t = useTranslations('profile');
@@ -22,8 +22,8 @@ const MyAccount = () => {
 
   useEffect(() => {
     const getDomain = () => {
-      const revealedEmail = user?.email.split('@')[1];
-      setDomain(revealedEmail);
+      const domain = user?.email.split('@')[1];
+      setDomain(domain);
       setEmail(user?.email);
     }
     getDomain();
@@ -37,7 +37,6 @@ const MyAccount = () => {
             name={user?.displayName}
             size="xl"
           />
-
         </div>
       </div>
       <div className="flex justify-center mt-4 select-none">
@@ -75,7 +74,7 @@ const MyAccount = () => {
                     })
                 }
               } className="w-[200px] truncate">{
-                  revealEmail ? `*********@${domain}` : email
+                  revealEmail ? `********@${domain}` : email
                 }</p>
             </Tooltip>
           </div>

@@ -1,4 +1,3 @@
-"use client"
 import {
     Drawer,
     DrawerBody,
@@ -12,14 +11,14 @@ import {
     MenuButton,
     Menu
 } from '@chakra-ui/react';
-import theme from "../../commonTheme"
+import theme from "../../../commonTheme"
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faXTwitter } from '@fortawesome/free-brands-svg-icons';
-import { useTranslations } from 'next-intl';
 import { useRef } from 'react';
+import { useTranslations } from 'next-intl';
 
-const Sidebar_en = ({ isOpen, onClose }) => {
+const Sidebar_ar = ({ isOpen, onClose }) => {
     const btnRef = useRef();
     const t = useTranslations('navbar');
     return (
@@ -27,7 +26,7 @@ const Sidebar_en = ({ isOpen, onClose }) => {
             <ChakraProvider theme={theme}>
                 <Drawer
                     isOpen={isOpen}
-                    placement='left'
+                    placement='right'
                     onClose={onClose}
                     finalFocusRef={btnRef}
                     size={'xs'}
@@ -74,4 +73,4 @@ const Sidebar_en = ({ isOpen, onClose }) => {
     )
 }
 
-export default Sidebar_en;
+export default Sidebar_ar;
