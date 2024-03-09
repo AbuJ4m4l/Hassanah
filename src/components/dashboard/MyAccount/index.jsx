@@ -139,8 +139,8 @@ const MyAccount = () => {
 
         </div>
       </div>
-      <div className="flex justify-center mt-4">
-        <Signout />
+      <div className="flex justify-center mt-10">
+        <Signout iconSize="sm" />
       </div>
     </section>
   )
