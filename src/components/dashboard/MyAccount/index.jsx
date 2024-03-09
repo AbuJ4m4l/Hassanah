@@ -5,7 +5,6 @@ import { faEye, faEyeSlash, faPenToSquare } from "@fortawesome/free-solid-svg-ic
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase";
@@ -13,7 +12,6 @@ import Signout from "../../authentication/signout";
 
 const MyAccount = () => {
   const t = useTranslations('profile');
-  const router = useRouter();
   const [user] = useAuthState(auth);
   const [domain, setDomain] = useState('');
   const [revealEmail, setRevealEmail] = useState(true);
@@ -45,7 +43,7 @@ const MyAccount = () => {
 
       <div>
         <div>
-          <h2 className="mt-4">Email:</h2>
+          <h2 className="mt-4">{t('email')}:</h2>
           <div className="flex items-center justify-items-center justify-center mt-4 select-none w-[300px] bg-secondry rounded-lg py-2 border-primary border-2">
             <button onClick={() => setRevealEmail(revealEmail !== true)} className="ltr:right-6 rtl:left-6 relative">
               <Tooltip hasArrow label={t('reveal_tooltip')} bg='#343434' color='white'>
@@ -78,7 +76,7 @@ const MyAccount = () => {
                 }</p>
             </Tooltip>
           </div>
-          <h2 className="mt-4">Username:</h2>
+          <h2 className="mt-4">{t('username')}:</h2>
           <Tooltip hasArrow label={t('copy')} bg='#343434' color='white'>
             <div className="flex justify-center mt-4 select-none w-[300px] bg-secondry rounded-lg py-2 border-primary border-2">
               <button className="ltr:right-6 rtl:left-6 relative">
@@ -120,7 +118,7 @@ const MyAccount = () => {
                     <></>
                   ) : pData.providerId === "password" ? (
                     <>
-                      <h2 className="mt-4">Password:</h2>
+                      <h2 className="mt-4">{t('password')}:</h2>
                       <div className="flex justify-center mt-4 select-none w-[300px] bg-secondry rounded-lg py-2 border-primary border-2">
                         <button className="ltr:right-6 rtl:left-6 relative">
                           <Tooltip hasArrow label={t('edit_password_tooltip')} bg='#343434' color='white'>

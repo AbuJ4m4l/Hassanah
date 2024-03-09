@@ -7,10 +7,13 @@ import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../../firebase';
 import { useEffect } from 'react';
+import { useTranslations } from 'next-intl';
+import Activity from '../../../components/dashboard/activity';
 
 const ProfileNvabar = () => {
     const router = useRouter();
     const [user] = useAuthState(auth);
+    const t = useTranslations('dashboard');
     useEffect(() => {
         if (!user) {
             router.push("/signup")
@@ -20,16 +23,16 @@ const ProfileNvabar = () => {
         <>
             <Tabs variant='unstyled' align='center' className='-mt-[40px]'>
                 <TabList bgColor="#242424" height="60px" className="overflow-x-auto overflow-y-hidden w-full">
-                    <Tab _selected={{ color: 'white', bg: '#343434' }} _hover={{ color: 'white', bg: '#343434' }}><FontAwesomeIcon icon={faUser} className='ltr:mr-2 rtl:ml-2' />My Account</Tab>
-                    <Tab _selected={{ color: 'white', bg: '#343434' }} _hover={{ color: 'white', bg: '#343434' }}><FontAwesomeIcon icon={faClockRotateLeft} className='ltr:mr-2 rtl:ml-2' />Activity</Tab>
-                    <Tab _selected={{ color: 'white', bg: '#343434' }} _hover={{ color: 'white', bg: '#343434' }}><FontAwesomeIcon icon={faGear} className='ltr:mr-2 rtl:ml-2' />Settings</Tab>
+                    <Tab _selected={{ color: 'white', bg: '#343434' }} _hover={{ color: 'white', bg: '#343434' }}><FontAwesomeIcon icon={faUser} className='ltr:mr-2 rtl:ml-2' />{t('myAccount')}</Tab>
+                    <Tab _selected={{ color: 'white', bg: '#343434' }} _hover={{ color: 'white', bg: '#343434' }}><FontAwesomeIcon icon={faClockRotateLeft} className='ltr:mr-2 rtl:ml-2' />{t('activity')}</Tab>
+                    <Tab _selected={{ color: 'white', bg: '#343434' }} _hover={{ color: 'white', bg: '#343434' }}><FontAwesomeIcon icon={faGear} className='ltr:mr-2 rtl:ml-2' />{t('settings')}</Tab>
                 </TabList>
                 <TabPanels className='mt-[40px]'>
                     <TabPanel>
                         <MyAccount />
                     </TabPanel>
                     <TabPanel>
-
+                        <Activity />
                     </TabPanel>
                 </TabPanels>
             </Tabs>
