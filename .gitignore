@@ -33,9 +33,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# encrypt files
-public_key.pem
-private_key.pem
 # typescript
 *.tsbuildinfo
 next-env.d.ts
@@ -43,4 +40,4 @@ next-env.d.ts
 # IDEs
 .vs
 .vscode
-.jetbrains
+.fleet
