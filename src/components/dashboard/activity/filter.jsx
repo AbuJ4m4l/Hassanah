@@ -1,48 +1,24 @@
 "use client";
 
-import { Button, ChakraProvider, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import { Button, ChakraProvider, Menu, MenuButton, MenuItem, MenuList, Select } from "@chakra-ui/react";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import theme from '../../../commonTheme'
 import { useTranslations } from "next-intl";
+import Viewed from "./viewed";
+import Link from "next/link";
 
-const Filter = ({ dir }) => {
+const Filter = () => {
     const t = useTranslations('activity')
     return (
         <>
-            {
-                dir === "rtl" ? (
-                    <>
-                        <ChakraProvider theme={theme}>
-                            <Menu>
-                                <MenuButton bgColor="#343434" _active={{ bgColor: "#242424" }} _focus={{ bgColor: "#242424" }} _hover={{ bgColor: "#242424" }} textColor="white" as={Button} leftIcon={<FontAwesomeIcon icon={faChevronDown} />}>
-                                    {t('filter')}
-                                </MenuButton>
-                                <MenuList>
-                                    <MenuItem>{t('viewed')}</MenuItem>
-                                    <MenuItem>{t('listened')}</MenuItem>
-                                    <MenuItem>{t('playlists')}</MenuItem>
-                                </MenuList>
-                            </Menu>
-                        </ChakraProvider>
-                    </>
-                ) : (
-                    <>
-                        <ChakraProvider theme={theme}>
-                            <Menu>
-                                <MenuButton bgColor="#343434" _active={{ bgColor: "#242424" }} _focus={{ bgColor: "#242424" }} _hover={{ bgColor: "#242424" }} textColor="white" as={Button} rightIcon={<FontAwesomeIcon icon={faChevronDown} />}>
-                                    {t('filter')}
-                                </MenuButton>
-                                <MenuList>
-                                    <MenuItem>{t('viewed')}</MenuItem>
-                                    <MenuItem>{t('listened')}</MenuItem>
-                                    <MenuItem>{t('playlists')}</MenuItem>
-                                </MenuList>
-                            </Menu>
-                        </ChakraProvider>
-                    </>
-                )
-            }
+            <ChakraProvider theme={theme}>
+                <Select variant='filled'>
+                    <option>{t('viewed')}</option>
+                    <option>{t('listned')}</option>
+                    <option>{t('playlists')}</option>
+                </Select>
+            </ChakraProvider>
         </>
     )
 }

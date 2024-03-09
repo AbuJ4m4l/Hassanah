@@ -26,6 +26,19 @@ const theme = extendTheme({
                 },
             },
         },
+        Select: {
+            variants: {
+                filled: {
+                    field: {
+                        _focus: { backgroundColor: 'light' },
+                        _hover: { backgroundColor: 'light' },
+                        backgroundColor: 'secondary',
+                        borderColor: 'primary',
+                        borderWidth: '2px',
+                    },
+                },
+            },
+        },
         Drawer: {
             baseStyle: {
                 dialog: {

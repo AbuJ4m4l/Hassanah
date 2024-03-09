@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import Activity from '../../../components/dashboard/activity';
 
-const ProfileNvabar = ({ params: { locale } }) => {
+const ProfileNvabar = () => {
     const router = useRouter();
     const [user] = useAuthState(auth);
     const t = useTranslations('dashboard');
@@ -32,7 +32,7 @@ const ProfileNvabar = ({ params: { locale } }) => {
                         <MyAccount />
                     </TabPanel>
                     <TabPanel>
-                        <Activity locale={locale} />
+                        <Activity />
                     </TabPanel>
                 </TabPanels>
             </Tabs>
