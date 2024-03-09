@@ -9,7 +9,8 @@ import {
     MenuList,
     MenuItem,
     MenuButton,
-    Menu
+    Menu,
+    Button
 } from '@chakra-ui/react';
 import theme from "../../../commonTheme"
 import Link from 'next/link';
@@ -18,6 +19,7 @@ import { faFacebook, faInstagram, faXTwitter } from '@fortawesome/free-brands-sv
 import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import Login from '../Login';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const Sidebar_ar = ({ isOpen, onClose }) => {
     const btnRef = useRef();
@@ -39,14 +41,14 @@ const Sidebar_ar = ({ isOpen, onClose }) => {
                         <br />
                         <br />
                         <DrawerBody className='select-none'>
-                            <Login AvtrSize="md"/>
+                            <Login AvtrSize="md" />
                             <br />
                             <br />
                             <Link href="/">{t('home')}</Link>
                             <br />
                             <br />
                             <Menu>
-                                <MenuButton>{t('quran')}</MenuButton>
+                                <MenuButton fontWeight="400" className="-mr-[18px]" bgColor="#343434" _active={{ bgColor: "#242424" }} _focus={{ bgColor: "#242424" }} _hover={{ bgColor: "#242424" }} textColor="white" as={Button} leftIcon={<FontAwesomeIcon icon={faChevronDown} />}>{t('quran')}</MenuButton>
                                 <MenuList>
                                     <MenuItem><Link href="/quran">{t('quran')}</Link></MenuItem>
                                     <MenuItem><Link href="/reciters">{t('reciters')}</Link></MenuItem>

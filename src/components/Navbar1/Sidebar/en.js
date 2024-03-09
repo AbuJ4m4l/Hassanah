@@ -10,7 +10,8 @@ import {
     MenuList,
     MenuItem,
     MenuButton,
-    Menu
+    Menu,
+    Button
 } from '@chakra-ui/react';
 import theme from "../../../commonTheme"
 import Link from 'next/link';
@@ -19,6 +20,7 @@ import { faFacebook, faInstagram, faXTwitter } from '@fortawesome/free-brands-sv
 import { useTranslations } from 'next-intl';
 import { useRef } from 'react';
 import Login from '../Login';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const Sidebar_en = ({ isOpen, onClose }) => {
     const btnRef = useRef();
@@ -47,7 +49,7 @@ const Sidebar_en = ({ isOpen, onClose }) => {
                             <br />
                             <br />
                             <Menu>
-                                <MenuButton>{t('quran')}</MenuButton>
+                                <MenuButton fontWeight="400" className="-ml-[18px]" bgColor="#343434" _active={{ bgColor: "#242424" }} _focus={{ bgColor: "#242424" }} _hover={{ bgColor: "#242424" }} textColor="white" as={Button} rightIcon={<FontAwesomeIcon icon={faChevronDown} />}>{t('quran')}</MenuButton>
                                 <MenuList>
                                     <MenuItem><Link href="/quran">{t('quran')}</Link></MenuItem>
                                     <MenuItem><Link href="/reciters">{t('reciters')}</Link></MenuItem>

@@ -16,6 +16,9 @@ a {
   @apply cursor-pointer;
 }
 
+button {
+  @apply select-none;
+}
 .none-border {
   border: none !important;
 }
