@@ -39,6 +39,7 @@ const Activity = () => {
                                                     <div className="ltr:-ml-[25px] ltr:float-right rtl:float-left">
                                                         <button className="rounded-full bg-red-600 p-4">
                                                             <FontAwesomeIcon icon={faTrashCan} size='2xl' />
+
                                                         </button>
                                                     </div>
                                                     <Image
