@@ -42,7 +42,7 @@ const Navbar = ({ locale }) => {
           </ul>
           <div className="hidden sm:flex flex-row">
             <Login AvtrSize="sm" />
-            <div className="flex items-center flex-row-reverse text-sm">
+            <div className="flex items-center flex-row-reverse sm:text-sm md:text-[16px]">
               <Link href="/" className="ml-[10px]">
                 {t('home')}
               </Link>
