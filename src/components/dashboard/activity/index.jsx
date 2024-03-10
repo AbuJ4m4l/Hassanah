@@ -27,7 +27,7 @@ const Activity = () => {
     const [selectedOption, setSelectedOption] = useState('viewed');
     const [playlistName, setPlaylistNameInput] = useState('');
     const [playlistDescription, setPlaylistDesciptionInput] = useState('');
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { ModalIsOpen, ModalOnOpen, ModalOnClose } = useDisclosure();
     const initialRef = useRef(null);
     const finalRef = useRef(null);
 
@@ -145,14 +145,14 @@ const Activity = () => {
                         <>
                             <div className="mt-14 flex flex-col">
                                 <div>
-                                    <button onClick={onOpen} className="rounded-full bg-secondry px-6 py-4 rtl:float-right ltr:float-left"><FontAwesomeIcon icon={faPlus} /></button>
+                                    <button onClick={ModalOnOpen} className="rounded-full bg-secondry px-6 py-4 rtl:float-right ltr:float-left"><FontAwesomeIcon icon={faPlus} /></button>
                                 </div>
                                 <ChakraProvider theme={theme}>
                                     <Modal
                                         initialFocusRef={initialRef}
                                         finalFocusRef={finalRef}
-                                        isOpen={isOpen}
-                                        onClose={onClose}
+                                        isOpen={ModalModalIsOpen}
+                                        onClose={ModalOnClose}
                                     >
                                         <ModalOverlay />
                                         <ModalContent>
@@ -174,7 +174,7 @@ const Activity = () => {
                                                 <button onClick={createNewPlaylist} className="btn mr-3 bg-primary">
                                                     {t('create')}
                                                 </button>
-                                                <button onClick={onClose}>{t('cancel')}</button>
+                                                <button onClick={ModalOnClose}>{t('cancel')}</button>
                                             </ModalFooter>
                                         </ModalContent>
                                     </Modal>
