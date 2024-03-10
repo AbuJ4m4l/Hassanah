@@ -46,6 +46,13 @@ const theme = extendTheme({
                 },
             },
         },
+        Modal: {
+            baseStyle: {
+                dialog: {
+                    bg: 'secondary',
+                },
+            }
+        },
         Menu: {
             baseStyle: {
                 list: {

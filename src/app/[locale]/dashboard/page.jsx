@@ -15,10 +15,10 @@ const ProfileNvabar = () => {
     const [user] = useAuthState(auth);
     const t = useTranslations('dashboard');
     useEffect(() => {
-        if (!user) {
+        if (!auth?.currentUser) {
             router.push("/signup")
         }
-    }, [user, router])
+    })
     return (
         <>
             <Tabs variant='unstyled' align='center' className='-mt-[40px]'>

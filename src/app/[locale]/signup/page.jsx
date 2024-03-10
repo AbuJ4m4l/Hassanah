@@ -135,9 +135,6 @@ const Signup = ({ params: { locale } }) => {
             router.push("/dashboard")
         }
     })
-    if (error?.message === 'Firebase: Error (auth/email-already-in-use).') {
-        console.log(error?.message)
-    }
 
     return (
         <>
