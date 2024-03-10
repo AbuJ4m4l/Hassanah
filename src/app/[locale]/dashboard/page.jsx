@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import Activity from '../../../components/dashboard/activity';
 import Playlists from '../../../components/dashboard/playlists';
+import Settings from '../../../components/dashboard/settings';
 
 const ProfileNvabar = () => {
     const router = useRouter();
@@ -38,6 +39,9 @@ const ProfileNvabar = () => {
                     </TabPanel>
                     <TabPanel>
                         <Activity />
+                    </TabPanel>
+                    <TabPanel>
+                        <Settings />
                     </TabPanel>
                 </TabPanels>
             </Tabs>
