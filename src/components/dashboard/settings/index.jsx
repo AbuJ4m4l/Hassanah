@@ -1,6 +1,6 @@
+"use client";
+
 const Settings = () => {
-
-
     return (
         <>
 
