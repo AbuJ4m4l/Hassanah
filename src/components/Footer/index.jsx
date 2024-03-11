@@ -7,7 +7,8 @@ const Footer = ({ locale }) => {
   const t = useTranslations("footer");
 
   return (
-    <footer className="select-none bg-secondry w-full h-[540px] sm:h-[350px]">
+    <footer className="select-none backdrop-blur-lg backdrop-saturate-150 bg-background/70 w-full h-[560px] sm:h-[370px]">
+    
       <div className="flex flex-row">
         <Image
           src="/images/hassanahLoggo-white.png"

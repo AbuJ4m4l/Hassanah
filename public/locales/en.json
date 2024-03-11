@@ -98,7 +98,10 @@
         "quran": "The Holy Quran",
         "reciters": "Quran Reciters",
         "signout": "Signout",
-        "home": "Home"
+        "home": "Home",
+        "type_to_search": "Type to search...",
+        "signedin_as": "Signed in as",
+        "dashboard": "Dashboard"
     },
     "footer": {
         "copyright": "All rights reserved for Hassanah 2024 ©",

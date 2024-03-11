@@ -7,6 +7,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { locales } from "../../../navigation";
 import { notFound } from "next/navigation";
 import { getMessages } from "next-intl/server";
+import NextUiProvider from "../../components/Providers/NextUiProvider.jsx";
+import Image from 'next/image'
 
 const changa = Changa({ subsets: ["arabic"] });
 const jetbrains_mono = Noto_Sans({ subsets: ["latin"], weight: ["400", "700"] });
@@ -52,14 +54,20 @@ export default async function RootLayout({ children, params: { locale } }) {
                     <meta charSet="UTF-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 </head>
-                <body dir={direction} className={`selection:bg-primary selection:text-white ${locale === "ar" ? changa.className : jetbrains_mono.className} flex flex-col min-h-screen`}>
+                <body dir={direction} className={`dark overflow-x-hidden selection:bg-primary m-0 p-0 selection:text-white ${locale === "ar" ? changa.className : jetbrains_mono.className} flex flex-col min-h-screen`}>
                     <NextIntlClientProvider messages={messages} locale={locale}>
                         <ChakraProvider>
-                            <Navbar locale={locale} />
-                            <main className="mb-[100px] mt-[40px] flex-1">
-                                {children}
-                            </main>
-                            <Footer locale={locale} />
+                            <NextUiProvider>
+                                <Navbar locale={locale} />
+                                <div className="container">
+                                    <main className="content -mb-[100px] mt-[40px] flex-1">
+                                        <div aria-hidden="true" className="fixed hidden dark:md:block dark:opacity-70 -top-[80%] -right-[60%] 2xl:-top-[60%] 2xl:-right-[45%] z-0 rotate-12"><img src="/gradients/docs-right.png" className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large" alt="right background" data-loaded="true" /></div>
+                                        <div aria-hidden="true" className="fixed hidden dark:md:block dark:opacity-70 -bottom-[40%] -left-[20%] z-0"><img src="/gradients/docs-left.png" className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large" alt="left background" data-loaded="true" /></div>
+                                        {children}
+                                    </main>
+                                    <Footer locale={locale} />
+                                </div>
+                            </NextUiProvider>
                         </ChakraProvider>
                     </NextIntlClientProvider>
                 </body>

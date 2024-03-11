@@ -8,7 +8,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase";
-import Signout from "../../authentication/signout";
 
 const MyAccount = () => {
   const t = useTranslations('profile');
@@ -138,7 +137,7 @@ const MyAccount = () => {
         </div>
       </div>
       <div className="flex justify-center mt-10">
-        <Signout iconSize="sm" />
+       {/* <Signout iconSize="sm" />*/}
       </div>
     </section>
   )

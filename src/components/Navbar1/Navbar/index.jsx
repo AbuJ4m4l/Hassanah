@@ -1,84 +1,202 @@
 "use client";
-import {
-  ChakraProvider,
-  MenuList,
-  MenuItem,
-  MenuButton,
-  Menu,
-  useDisclosure
-} from '@chakra-ui/react';
-import theme from '../../../commonTheme';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
+
+import { Navbar as NextUiNavbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuItem, NavbarMenu, NavbarMenuToggle } from "@nextui-org/navbar";
+import { Link } from '@nextui-org/link';
+import { Input } from '@nextui-org/input'
+import { DropdownItem, DropdownTrigger, Dropdown, DropdownMenu } from '@nextui-org/dropdown'
+import { Avatar } from '@nextui-org/avatar'
+import { Button } from '@nextui-org/button'
 import { useTranslations } from 'next-intl';
-import Sidebar_ar from '../Sidebar/ar';
-import Sidebar_en from '../Sidebar/en';
-import { useRef } from 'react';
-import Login from '../Login';
+import { useState } from 'react';
+import SearchIcon from '../../icons/searchIcon';
+import { auth } from '../../../firebase';
 
 const Navbar = ({ locale }) => {
-  const btnRef = useRef();
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const t = useTranslations('navbar');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <>
       <header>
-        <nav className="select-none justify-between w-full bg-primary flex items-center">
-          <ul className="flex sm:hidden">
-            <li className="ltr:ml-[10px] rtl:mr-[10px]">
-              <FontAwesomeIcon ref={btnRef} onClick={onOpen} icon={faBars} style={{ color: "white", width: '20px' }} className="cursor-pointer" />
-            </li>
-          </ul>
-          <ul className="sm:hidden flex w-screen justify-center items-center h-[50px]">
-            <li className="flex justify-center items-center">
-              <h3>Hassanah.org</h3>
-            </li>
-          </ul>
-          <ul className="hidden sm:flex">
-            <li className="ltr:ml-[10px] rtl:mr-[10px]">
-              <FontAwesomeIcon ref={btnRef} onClick={onOpen} icon={faBars} style={{ color: "white", width: '20px' }} className="cursor-pointer lg:hidden" />
-            </li>
-          </ul>
-          <div className="hidden sm:flex flex-row">
-            <Login AvtrSize="sm" />
-            <div className="flex items-center flex-row-reverse sm:text-sm md:text-[16px]">
-              <Link href="/" className="ml-[10px]">
+        <NextUiNavbar
+          isBordered
+          isMenuOpen={isMenuOpen}
+          onMenuOpenChange={setIsMenuOpen}>
+          <NavbarContent justify="start">
+            <NavbarMenuToggle className='md:hidden' aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
+            <NavbarBrand className="mr-4">
+              <p className="font-bold text-inherit">Hassanah.org</p>
+            </NavbarBrand>
+            <NavbarContent className="hidden sm:flex gap-3">
+              <NavbarItem className='hidden sm:block'>
+                <Link color="foreground" href="/">
+                  {t('home')}
+                </Link>
+              </NavbarItem>
+              <NavbarItem className='hidden sm:block'>
+                <Link href="/stories" color="foreground">
+                  {t('stories')}
+                </Link>
+              </NavbarItem>
+              <NavbarItem className='hidden sm:block'>
+                <Link color="foreground" href="/hadiths">
+                  {t('hadiths')}
+                </Link>
+              </NavbarItem>
+              <NavbarItem className='hidden sm:block'>
+                <Dropdown>
+                  <NavbarItem>
+                    <DropdownTrigger>
+                      <Button
+                        disableRipple
+                        className="p-0 bg-transparent data-[hover=true]:bg-transparent"
+                        radius="sm"
+                        variant="light"
+                      >
+                        {t('quran')}
+                      </Button>
+                    </DropdownTrigger>
+                  </NavbarItem>
+                  <DropdownMenu
+                    aria-label={t('quran')}
+                    className="w-[340px]"
+                    itemClasses={{
+                      base: "gap-4",
+                    }}
+                  >
+                    <DropdownItem
+                      key="quran"
+                    >
+                      <Link href='/quran' color='foreground'>{t('quran')}</Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link key="reciters" href='/reciters' color='foreground'>
+                        {t('reciters')}
+                      </Link>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+
+              </NavbarItem>
+            </NavbarContent>
+          </NavbarContent>
+
+          <NavbarContent as="div" className="items-center" justify="end">
+            <Input
+              classNames={{
+                base: "max-w-full sm:max-w-[10rem] h-10",
+                mainWrapper: "h-full",
+                input: "text-small",
+                inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+              }}
+              className='hidden md:block'
+              placeholder={t('type_to_search')}
+              size="sm"
+              startContent={<SearchIcon width={18} height={18} className="text-white" />}
+              type="search"
+            />
+            {
+              auth?.currentUser?(<>
+              <Dropdown placement="bottom-end">
+              <DropdownTrigger>
+                <Avatar
+                  isBordered
+                  as="button"
+                  className="transition-transform"
+                  color="primary"
+                  name={auth?.currentUser?.displayName}
+                  size="sm"
+                  src={auth?.currentUser?.photoURL}
+                />
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Profile Actions" variant="flat">
+                <DropdownItem key="profile" className="h-14 gap-2">
+                  <p className="font-semibold">{t('signedin_as')}</p>
+                  <p className="font-semibold">{auth?.currentUser?.displayName}</p>
+                </DropdownItem>
+                <DropdownItem key="settings"> <Link key="reciters" href='/dashboard' color='foreground'>{t('dashboard')}</Link></DropdownItem>
+                <DropdownItem key="logout" color="danger" onClick={() => Signout()}>
+                  <Link key="reciters" href='/logout' color='foreground'>{t('signout')}</Link>
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+            </>):(
+              <>
+              <Button variant='flat' color='primary'><Link href='/login'>{t('login')}</Link></Button>
+              </>
+            )
+            }
+          </NavbarContent>
+
+          <NavbarMenu>
+            <NavbarMenuItem>
+              <Input
+                classNames={{
+                  base: "max-w-full sm:max-w-[10rem] h-10",
+                  mainWrapper: "h-full",
+                  input: "text-small",
+                  inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+                }}
+                className='block'
+                placeholder={t('type_to_search')}
+                size="sm"
+                startContent={<SearchIcon width={18} height={18} className="text-white" />}
+                type="search"
+              />
+            </NavbarMenuItem>
+            <NavbarMenuItem className='mt-4'>
+              <Link
+                className="w-full"
+                href="/"
+                size="lg"
+                color="foreground"
+              >
                 {t('home')}
               </Link>
-              <ChakraProvider theme={theme}>
-                <Menu>
-                  <MenuButton className='ml-[10px]'>{t('quran')}</MenuButton>
-                  <MenuList>
-                    <MenuItem><Link href="/quran">{t('quran')}</Link></MenuItem>
-                    <MenuItem><Link href="/reciters">{t('reciters')}</Link></MenuItem>
-                  </MenuList>
-                </Menu>
-              </ChakraProvider>
-              <Link href="/stories" className="ml-[10px]">
-                {t('stories')}
-              </Link>
-              <Link href="/hadiths" className="mx-[10px]">
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <Link
+                className="w-full"
+                href="/hadiths"
+                size="lg"
+                color="foreground"
+              >
                 {t('hadiths')}
               </Link>
-            </div>
-          </div>
-          <ul className="hidden sm:flex sm:ltr:mr-[20px] sm:rtl:ml-[20px] sm:items-center sm:h-[50px]">
-            <li className="sm:flex sm:justify-end sm:items-center">
-              <h3>Hassanah.org</h3>
-            </li>
-          </ul>
-        </nav>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <Link
+                className="w-full"
+                href="/quran"
+                size="lg"
+                color="foreground"
+              >
+                {t('quran')}
+              </Link>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <Link
+                className="w-full"
+                href="/stories"
+                size="lg"
+                color="foreground"
+              >
+                {t('stories')}
+              </Link>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <Link
+                className="w-full"
+                href="/logout"
+                size="lg"
+                color='danger'
+              >
+                {t('signout')}
+              </Link>
+            </NavbarMenuItem>
+          </NavbarMenu>
+        </NextUiNavbar>
       </header >
-      <aside>
-        {
-          locale === "ar" ? (
-            <Sidebar_ar isOpen={isOpen} onClose={onClose} />
-          ) : (
-            <Sidebar_en isOpen={isOpen} onClose={onClose} />
-          )
-        }
-      </aside>
     </>
   );
 };
