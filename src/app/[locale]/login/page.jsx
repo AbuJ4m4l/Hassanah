@@ -11,6 +11,7 @@ import { useAuthState, useSignInWithEmailAndPassword, useSignInWithFacebook, use
 import { auth } from "../../../firebase";
 import GoogleLogin from "../../../components/authentication/google.login";
 import FacebookLogin from "../../../components/authentication/facebook.login";
+import { Button } from "@nextui-org/react";
 
 const Login = ({ params: { locale } }) => {
     const [emailInputError, setEmailInputError] = useState(false);
@@ -213,7 +214,7 @@ const Login = ({ params: { locale } }) => {
                             </div>
                             <div className="flex flex-row mt-4">
                                 {
-                                    loginButtonStatus === true ? <button type='submit' onClick={handleForm} className="w-full btn bg-primary hover:bg-transparent border-2 border-primary hover:text-primary">{t('login_button')}</button> : <button type='button' disabled className="w-full btn bg-slate-400 text-slate-500 cursor-not-allowed">{t('login_button')}</button>
+                                    loginButtonStatus === true ? <Button variant="solid" type='submit' onClick={handleForm} className="w-full btn bg-primary hover:bg-transparent border-2 border-primary hover:text-primary">{t('login_button')}</Button> : <button type='button' disabled className="w-full btn bg-slate-400 text-slate-500 cursor-not-allowed">{t('login_button')}</button>
                                 }
 
                             </div>
