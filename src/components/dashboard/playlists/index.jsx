@@ -31,11 +31,11 @@ const PlayLists = () => {
                 </TableHeader>
                 <TableBody emptyContent={t('empty_data')}>
                     <TableRow key="1">
-                        <TableCell className="flex-row flex items-center space-x-2">
+                        <TableCell className="md:flex-row md:flex md:items-center md:space-x-2">
                             <Image
                                 width={96}
                                 height={96}
-                                className="rounded-lg"
+                                className="rounded-lg md:block hidden"
                                 alt="Playlist Image"
                                 loading="lazy"
                                 src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
