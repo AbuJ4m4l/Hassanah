@@ -2,9 +2,9 @@
 
 ## Hassanah Project
 
-[![GitHub license](https://img.shields.io/github/license/abuj4m4l/Hassanah)](https://github.com/abuj4m4l/Hassanah/blob/main/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/abuj4m4l/Hassanah)](https://github.com/abuj4m4l/Hassanah/issues)
-[![GitHub stars](https://img.shields.io/github/stars/username/repository)](https://github.com/abuj4m4l/Hassanah/stargazers)
+[![GitHub license](https://img.shields.io/github/license/abuj4m4l/Hassanah?style=flat-square)](https://github.com/abuj4m4l/Hassanah/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/abuj4m4l/Hassanah?style=flat-square)](https://github.com/abuj4m4l/Hassanah/issues)
+[![GitHub stars](https://img.shields.io/github/stars/abuj4m4l/Hassanah?style=flat-square)](https://github.com/abuj4m4l/Hassanah/stargazers)
 [![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white)](https://firebase.google.com/)
 [![Typesense](https://img.shields.io/badge/-Typesense-00B0FF?style=flat-square&logo=typescript&logoColor=white)](https://typesense.org/)
 [![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)
