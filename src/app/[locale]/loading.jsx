@@ -1,17 +1,28 @@
-import { Box, SkeletonText } from "@chakra-ui/react";
+import { Skeleton } from "@nextui-org/react";
 
 const Loading = () => {
   return (
     <main>
-      <Box padding='6' boxShadow='lg'>
-        <SkeletonText startColor='#242424' endColor='#545454' mt='4' noOfLines={8} spacing='4' skeletonHeight='2' />
-        <br />
-        <br />
-        <SkeletonText startColor='#242424' endColor='#545454' mt='4' noOfLines={8} spacing='4' skeletonHeight='2' />
-        <br />
-        <br />
-        <SkeletonText startColor='#242424' endColor='#545454' mt='4' noOfLines={8} spacing='4' skeletonHeight='2' />
-      </Box>
+      <div className="space-y-3">
+        <Skeleton className="w-4/5 rounded-lg">
+          <div className="h-3 w-4/5 rounded-lg bg-default-200"></div>
+        </Skeleton>
+        <Skeleton className="w-3/5 rounded-lg">
+          <div className="h-3 w-3/5 rounded-lg bg-default-200"></div>
+        </Skeleton>
+        <Skeleton className="w-2/6 rounded-lg">  
+          <div className="h-3 w-2/6 rounded-lg bg-default-300"></div>
+        </Skeleton>
+        <Skeleton className="w-3/12 rounded-lg">
+          <div className="h-3 w-3/12 rounded-lg bg-default-200"></div>
+        </Skeleton>
+        <Skeleton className="w-1/5 rounded-lg">  
+          <div className="h-3 w-1/5 rounded-lg bg-default-300"></div>
+        </Skeleton>
+        <Skeleton className="w-2/12 rounded-lg">
+          <div className="h-3 w-2/12 rounded-lg bg-default-200"></div>
+        </Skeleton>
+      </div>
     </main>
   );
 };

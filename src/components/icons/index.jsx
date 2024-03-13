@@ -2,15 +2,17 @@
 
 import { Image } from "@nextui-org/react";
 import nextImage from 'next/image'
-const BookIcon = ({ width, height, className }) => {
+const HassanahIcon = ({ width, height, className, icon }) => {
+    const src = `/images/svg/icons/${icon}.svg`;
+    const alt = `${icon} Icon`
     return (
         <>
             <Image
                 as={nextImage}
-                src="/images/svg/icons/book.svg"
+                src={src}
                 width={width}
                 height={height}
-                alt="Search Icon"
+                alt={alt}
                 loading="lazy"
                 className={className ?? className}
             />
@@ -18,4 +20,4 @@ const BookIcon = ({ width, height, className }) => {
     )
 }
 
-export default BookIcon;
+export default HassanahIcon;

@@ -1,23 +1,25 @@
 'use client';
+
+import { Button, Image } from '@nextui-org/react';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
+import nextImage from 'next/image';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
 
 function Error() {
     const router = useRouter();
 
     const t = useTranslations("error");
     return (
-        <div className="flex flex-col justify-center items-center min-h-screen">
+        <div className="flex flex-col justify-center items-center">
             <Image
-                src="https://svgshare.com/i/12w7.svg"
+                as={nextImage}
+                src="/images/svg/server_down.svg"
                 alt="PageNotFound Image"
                 width={250}
                 height={250}
-                loading='lazy'></Image>
+                loading='eager' />
             <h2 className="mt-4">{t('error')}</h2>
-            <button className="btn bg-primary hover:bg-transparent border-2 border-primary hover:text-primary mt-4" onClick={() => router.refresh()}>{t('try_again')}</button>
+            <Button color='primary' className='mt-4' variant='flat' onClick={() => router.refresh()}>{t('try_again')}</Button>
         </div>
     );
 }

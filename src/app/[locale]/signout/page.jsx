@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
 import { auth } from '../../../firebase';
+import { CircularProgress } from '@nextui-org/react';
 
 const SignOutPage = () => {
   const router = useRouter();

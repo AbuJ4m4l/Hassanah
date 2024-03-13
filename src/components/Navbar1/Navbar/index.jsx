@@ -4,84 +4,96 @@ import { Navbar as NextUiNavbar, NavbarBrand, NavbarContent, NavbarItem, NavbarM
 import { Link } from '@nextui-org/link';
 import { Input } from '@nextui-org/input'
 import { DropdownItem, DropdownTrigger, Dropdown, DropdownMenu } from '@nextui-org/dropdown'
-import { Avatar } from '@nextui-org/avatar'
 import { Button } from '@nextui-org/button'
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import SearchIcon from '../../icons/searchIcon';
-import { auth } from '../../../firebase';
+import LoginButton from "../../authentication/loginButton";
 
 const Navbar = ({ locale }) => {
   const t = useTranslations('navbar');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
     <>
-      <header>
-        <NextUiNavbar
-          isBordered
-          isMenuOpen={isMenuOpen}
-          onMenuOpenChange={setIsMenuOpen}>
-          <NavbarContent justify="start">
-            <NavbarMenuToggle className='md:hidden' aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
-            <NavbarBrand className="mr-4">
-              <p className="font-bold text-inherit">Hassanah.org</p>
-            </NavbarBrand>
-            <NavbarContent className="hidden sm:flex gap-3">
-              <NavbarItem className='hidden sm:block'>
-                <Link color="foreground" href="/">
-                  {t('home')}
-                </Link>
-              </NavbarItem>
-              <NavbarItem className='hidden sm:block'>
-                <Link href="/stories" color="foreground">
-                  {t('stories')}
-                </Link>
-              </NavbarItem>
-              <NavbarItem className='hidden sm:block'>
-                <Link color="foreground" href="/hadiths">
-                  {t('hadiths')}
-                </Link>
-              </NavbarItem>
-              <NavbarItem className='hidden sm:block'>
-                <Dropdown>
-                  <NavbarItem>
-                    <DropdownTrigger>
-                      <Button
-                        disableRipple
-                        className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                        radius="sm"
-                        variant="light"
-                      >
-                        {t('quran')}
-                      </Button>
-                    </DropdownTrigger>
-                  </NavbarItem>
-                  <DropdownMenu
-                    aria-label={t('quran')}
-                    className="w-[340px]"
-                    itemClasses={{
-                      base: "gap-4",
-                    }}
-                  >
-                    <DropdownItem
-                      key="quran"
+      <NextUiNavbar
+        isBordered
+        isMenuOpen={isMenuOpen}
+        onMenuOpenChange={setIsMenuOpen}>
+        <NavbarContent justify="start">
+          <NavbarMenuToggle className='md:hidden' aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
+          <NavbarBrand className="mr-4">
+            <p className="font-bold text-inherit">Hassanah.org</p>
+          </NavbarBrand>
+          <NavbarContent className="hidden sm:flex gap-3">
+            <NavbarItem as={Link} href="/" color="foreground" className='hidden sm:block'>
+              {t('home')}
+            </NavbarItem>
+            <NavbarItem as={Link} href="/stories" color="foreground" className='hidden sm:block'>
+              {t('stories')}
+            </NavbarItem>
+            <NavbarItem as={Link} href="/hadiths" color="foreground" className='hidden sm:block'>
+              {t('hadiths')}
+            </NavbarItem>
+            <NavbarItem className='hidden sm:block'>
+              <Dropdown>
+                <NavbarItem>
+                  <DropdownTrigger>
+                    <Button
+                      disableRipple
+                      className="p-0 bg-transparent data-[hover=true]:bg-transparent"
+                      radius="sm"
+                      variant="light"
                     >
-                      <Link href='/quran' color='foreground'>{t('quran')}</Link>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <Link key="reciters" href='/reciters' color='foreground'>
-                        {t('reciters')}
-                      </Link>
-                    </DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
+                      {t('quran')}
+                    </Button>
+                  </DropdownTrigger>
+                </NavbarItem>
+                <DropdownMenu
+                  aria-label={t('quran')}
+                  className="w-[340px]"
+                  itemClasses={{
+                    base: "gap-4",
+                  }}
+                  as={Link}
+                  href="/quran"
+                  color="foreground"
+                >
+                  <DropdownItem
+                    key="quran"
+                  >
+                    {t('quran')}
+                  </DropdownItem>
+                  <DropdownItem as={Link} href="/reciters" color="foreground">
+                    {t('reciters')}
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
 
-              </NavbarItem>
-            </NavbarContent>
+            </NavbarItem>
           </NavbarContent>
+        </NavbarContent>
 
-          <NavbarContent as="div" className="items-center" justify="end">
+        <NavbarContent as="div" className="items-center" justify="end">
+          <Input
+            classNames={{
+              base: "max-w-full sm:max-w-[10rem] h-10",
+              mainWrapper: "h-full",
+              input: "text-small",
+              inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+            }}
+            className='hidden md:block'
+            placeholder={t('type_to_search')}
+            size="sm"
+            startContent={
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            }
+            type="search"
+          />
+          <LoginButton AvatarClassName="mt-4" variant="flat" />
+        </NavbarContent>
+
+
+        <NavbarMenu>
+          <NavbarMenuItem>
             <Input
               classNames={{
                 base: "max-w-full sm:max-w-[10rem] h-10",
@@ -89,114 +101,62 @@ const Navbar = ({ locale }) => {
                 input: "text-small",
                 inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
               }}
-              className='hidden md:block'
+              className='block'
               placeholder={t('type_to_search')}
               size="sm"
-              startContent={<SearchIcon width={18} height={18} className="text-white" />}
+              startContent={
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              }
               type="search"
             />
-            {
-              auth?.currentUser?(<>
-              <Dropdown placement="bottom-end">
+          </NavbarMenuItem>
+          <NavbarMenuItem className="mt-4">
+            <LoginButton variant="flat" />
+          </NavbarMenuItem>
+          <NavbarMenuItem as={Link} href="/" color="foreground" className='mt-4 text-medium'>
+            {t('home')}
+          </NavbarMenuItem>
+          <NavbarMenuItem as={Link} href="/hadiths" color="foreground" className="text-medium">
+            {t('hadiths')}
+          </NavbarMenuItem>
+          <Dropdown>
+            <NavbarItem>
               <DropdownTrigger>
-                <Avatar
-                  isBordered
-                  as="button"
-                  className="transition-transform"
-                  color="primary"
-                  name={auth?.currentUser?.displayName}
-                  size="sm"
-                  src={auth?.currentUser?.photoURL}
-                />
+                <Button
+                  disableRipple
+                  className="p-0 bg-transparent data-[hover=true]:bg-transparent text-medium"
+                  radius="sm"
+                  variant="light"
+                >
+                  {t('quran')}
+                </Button>
               </DropdownTrigger>
-              <DropdownMenu aria-label="Profile Actions" variant="flat">
-                <DropdownItem key="profile" className="h-14 gap-2">
-                  <p className="font-semibold">{t('signedin_as')}</p>
-                  <p className="font-semibold">{auth?.currentUser?.displayName}</p>
-                </DropdownItem>
-                <DropdownItem key="settings"> <Link key="reciters" href='/dashboard' color='foreground'>{t('dashboard')}</Link></DropdownItem>
-                <DropdownItem key="logout" color="danger" onClick={() => Signout()}>
-                  <Link key="reciters" href='/logout' color='foreground'>{t('signout')}</Link>
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-            </>):(
-              <>
-              <Button variant='flat' color='primary'><Link href='/login'>{t('login')}</Link></Button>
-              </>
-            )
-            }
-          </NavbarContent>
-
-          <NavbarMenu>
-            <NavbarMenuItem>
-              <Input
-                classNames={{
-                  base: "max-w-full sm:max-w-[10rem] h-10",
-                  mainWrapper: "h-full",
-                  input: "text-small",
-                  inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-                }}
-                className='block'
-                placeholder={t('type_to_search')}
-                size="sm"
-                startContent={<SearchIcon width={18} height={18} className="text-white" />}
-                type="search"
-              />
-            </NavbarMenuItem>
-            <NavbarMenuItem className='mt-4'>
-              <Link
-                className="w-full"
-                href="/"
-                size="lg"
-                color="foreground"
-              >
-                {t('home')}
-              </Link>
-            </NavbarMenuItem>
-            <NavbarMenuItem>
-              <Link
-                className="w-full"
-                href="/hadiths"
-                size="lg"
-                color="foreground"
-              >
-                {t('hadiths')}
-              </Link>
-            </NavbarMenuItem>
-            <NavbarMenuItem>
-              <Link
-                className="w-full"
-                href="/quran"
-                size="lg"
-                color="foreground"
+            </NavbarItem>
+            <DropdownMenu
+              aria-label={t('quran')}
+              className="w-[280px]"
+              itemClasses={{
+                base: "gap-4",
+              }}
+              as={Link}
+              href="/quran"
+              color="foreground"
+            >
+              <DropdownItem
+                key="quran"
               >
                 {t('quran')}
-              </Link>
-            </NavbarMenuItem>
-            <NavbarMenuItem>
-              <Link
-                className="w-full"
-                href="/stories"
-                size="lg"
-                color="foreground"
-              >
-                {t('stories')}
-              </Link>
-            </NavbarMenuItem>
-            <NavbarMenuItem>
-              <Link
-                className="w-full"
-                href="/logout"
-                size="lg"
-                color='danger'
-              >
-                {t('signout')}
-              </Link>
-            </NavbarMenuItem>
-          </NavbarMenu>
-        </NextUiNavbar>
-      </header >
+              </DropdownItem>
+              <DropdownItem as={Link} href="/reciters" color="default">
+                {t('reciters')}
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+          <NavbarMenuItem as={Link} href="/stories" color="default" className="text-medium">
+            {t('stories')}
+          </NavbarMenuItem>
+        </NavbarMenu>
+      </NextUiNavbar>
     </>
   );
 };

@@ -17,6 +17,7 @@
         "email_required": "Email is required",
         "username_required": "Username is required",
         "password_doesnt_match": "Password does not match the Password Match Field",
+        "match_password_doesnt_match": "Password Match does not match the Password Field",
         "the_password_should_contains_special_charachters": "The password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and have a length of 8 characters.",
         "signup_success": "Congratulations!, Your account has been successfully created.",
         "signup_success_description": "We have sent an email to your email address. Please check your email for the link to verify your account.",
@@ -24,34 +25,26 @@
         "error_password_rules": "Password must contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number, 1 special character.",
         "error_password_doesnt_match": "Password does not match.",
         "invalid_credentials": "Invalid Credentials Provided.",
-        "unknown_error": "An Error Occurred. Please try again later.",
         "error_credentials_signin_title": "Invalid Credentials Provided",
         "error_credentials_signin_description": "Please try again with another account.",
         "email_invalid": "Please enter a valid email address.",
-        "MISSING_PASSWORD": {
-            "title": "Missing Password",
-            "description": "Please enter a password for your account."
-          },
-          "INVALID_EMAIL": {
-            "title": "Invalid Email",
-            "description": "Please double-check your email address and make sure it's typed correctly."
-          },
-          "EMAIL_EXISTS": {
-            "title": "Email Already Exists",
-            "description": "This email is already in use. Try signing in or use a different email."
-          },
-          "WEAK_PASSWORD": {
-            "title": "Weak Password",
-            "description": "Please choose a stronger password (at least 6 characters) for better security."
-          },
-          "INVALID_API_KEY": {
-            "title": "API Key Error",
-            "description": "There's a problem with your API key. Please check it and try again."
-          },
-          "OPERATION_NOT_ALLOWED": {
-            "title": "Sign-up Not Allowed",
-            "description": "Sign-up is currently disabled. Contact support for assistance."
-          }
+        "claimsTooLarge": "The data provided is too large.",
+        "emailAlreadyExists": "This email is already in use.",
+        "idTokenExpired": "Your session has expired.",
+        "idTokenRevoked": "Your session has been revoked.",
+        "insufficientPermission": "You do not have sufficient permission.",
+        "internalError": "An unexpected error occurred.",
+        "invalidArgument": "An invalid argument was provided.",
+        "invalidClaims": "The provided attributes are invalid.",
+        "invalidContinueUri": "The provided URL must be valid.",
+        "invalidCreationTime": "The provided time must be a valid UTC date string.",
+        "invalidCredential": "The provided credential cannot be used for this action.",
+        "unknown_error": "An Error Occurred. Please try again later.",
+        "close": "Close",
+        "re_enter_your_password": "Re-Enter Your Password",
+        "enter_your_password": "Enter Your Password",
+        "enter_your_email": "Enter Your Email",
+        "enter_your_username": "Enter Your Username"
     },
     "login": {
         "login": "Log in to Your Account",
@@ -69,27 +62,22 @@
         "error_credentials_signin_description": " Please try again with another account.",
         "password_length_error": "The Password must contain at least 8 characters.",
         "login_success": "Welcome Back!",
-        "login_success_description": "You have successfully logged in.",
-        "OAuthSignin_title": "Authorization URL Error",
-        "OAuthSignin_description": "Error occurred while constructing the authorization URL.",
-        "OAuthCallback_title": "OAuth Callback Error",
-        "OAuthCallback_description": "Error occurred while handling the response from the OAuth provider.",
-        "OAuthCreateAccount_title": "OAuth User Creation Error",
-        "OAuthCreateAccount_description": "Could not create OAuth provider user.",
-        "EmailCreateAccount_title": "Email User Creation Error",
-        "EmailCreateAccount_description": "Could not create email provider user.",
-        "Callback_title": "OAuth Callback Handler Error",
-        "Callback_description": "Error occurred in the OAuth callback handler.",
-        "OAuthAccountNotLinked_title": "Linked Account Error",
-        "OAuthAccountNotLinked_description": "Email on the account is already linked, but not with this OAuth account.",
-        "EmailSignin_title": "Email Sign-in Error",
-        "EmailSignin_description": "Sending the e-mail with the verification token failed.",
-        "CredentialsSignin_title": "Credentials Sign-in Error",
-        "CredentialsSignin_description": "The authorize callback returned error.",
-        "SessionRequired_title": "Session Required Error",
-        "SessionRequired_description": "The content of this page requires you to be signed in at all times.",
-        "Default_title": "Unknown Error",
-        "Default_description": "An unknown error occurred."
+        "login_success_description": "You have successfully logged in. You will be redirected to the dashboard in 3s",
+        "enter_your_password": "Enter Your Password",
+        "enter_your_email": "Enter Your Email",
+        "claimsTooLarge": "The data provided is too large.",
+        "emailAlreadyExists": "This email is already in use.",
+        "idTokenExpired": "Your session has expired.",
+        "idTokenRevoked": "Your session has been revoked.",
+        "insufficientPermission": "You do not have sufficient permission.",
+        "internalError": "An unexpected error occurred.",
+        "invalidArgument": "An invalid argument was provided.",
+        "invalidClaims": "The provided attributes are invalid.",
+        "invalidContinueUri": "The provided URL must be valid.",
+        "invalidCreationTime": "The provided time must be a valid UTC date string.",
+        "invalidCredential": "The provided credential cannot be used for this action.",
+        "unknown_error": "An Error Occurred. Please try again later.",
+        "close": "Close"
       },
     "navbar": {
         "login": "Login",
@@ -122,16 +110,6 @@
         "privacy_policy": "Privacy Policy",
         "hassanah": "Hassanah"
     },
-    "error": {
-        "error": "An Unexpected Error Occurred.",
-        "try_again": "Try again",
-        "Configuration": "Internal Server Error",
-        "AccessDenied_title": "Account Access Denied",
-        "AccessDenied_description": "You cannot access this account. It may have been deleted, blocked, or is temporarily unavailable, Please try again later.",
-        "Default_title": "Unknown Error",
-        "Default_description": "An unknown error occurred.",
-        "internal_server_error": "Internal Server Error"
-    },
     "not_found": {
         "not_found": "Page Not Found",
         "home": "Go to Home Page"
@@ -140,7 +118,6 @@
           "signingout_message": "Logging you out..."
         },
         "signedout": {
-            "you_dont_have_account": "You don't have account for this action.",
             "signedout_successfully": "You have signed out successfully"
         },
             "emailVerification": {
@@ -161,5 +138,23 @@
                 "success_verification": "Your account has been successfully verified.",
                 "home": "Go to Home Page",
                 "user_is_blocked": "This User is blocked"
-              }              
+              },
+              "dashboard": {
+                "myAccount": "My Account",
+                "activity": "Activity",
+                "settings": "Settings",
+                "playlists": "Playlists"
+              },
+              "user-form": {
+                "login":"Login",
+                "signup": "Signup"
+              },
+              "profile": {
+                "welcome": "Welcome",
+                "email": "Email",
+                "username":"Username",
+                "password":"Password",
+                "signout": "Signout",
+                "change_account_information": "Change Account details"
+              }
     }
