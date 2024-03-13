@@ -150,6 +150,7 @@ const SignupForm = ({ locale }) => {
                         locale === "ar" ? (
                             <>
                                 <Input
+                                isRequired
                                     type="text"
                                     name="username"
                                     variant="filled"
@@ -166,6 +167,7 @@ const SignupForm = ({ locale }) => {
                                     errorMessage={usernameInputError && t('username_required')}
                                 />
                                 <Input
+                                isRequired
                                     type="email"
                                     name="email"
                                     label={t('email')}
@@ -181,6 +183,7 @@ const SignupForm = ({ locale }) => {
                                     }
                                 />
                                 <Input
+                                isRequired
                                     name="password"
                                     label={t('password')}
                                     placeholder={t('enter_your_password')}
@@ -204,6 +207,7 @@ const SignupForm = ({ locale }) => {
                                     type={showPassword ? "text" : "password"}
                                 />
                                 <Input
+                                isRequired
                                     name="retypePassword"
                                     label={t('password')}
                                     placeholder={t('re_enter_your_password')}
@@ -230,6 +234,7 @@ const SignupForm = ({ locale }) => {
                         ) : (
                             <>
                                 <Input
+                                isRequired
                                     type="text"
                                     name="username"
                                     variant="filled"
@@ -246,6 +251,7 @@ const SignupForm = ({ locale }) => {
                                     errorMessage={usernameInputError && t('username_required')}
                                 />
                                 <Input
+                                isRequired
                                     type="email"
                                     name="email"
                                     label={t('email')}
@@ -261,6 +267,7 @@ const SignupForm = ({ locale }) => {
                                     }
                                 />
                                 <Input
+                                isRequired
                                     name="password"
                                     label={t('password')}
                                     placeholder={t('enter_your_password')}
@@ -284,6 +291,7 @@ const SignupForm = ({ locale }) => {
                                     type={showPassword ? "text" : "password"}
                                 />
                                 <Input
+                                isRequired
                                     name="retypePassword"
                                     label={t('password')}
                                     placeholder={t('re_enter_your_password')}
