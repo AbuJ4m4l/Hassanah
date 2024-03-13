@@ -7,7 +7,7 @@ import { DropdownItem, DropdownTrigger, Dropdown, DropdownMenu } from '@nextui-o
 import { Button } from '@nextui-org/button'
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import LoginButton from "../../authentication/loginButton";
+import LoginButton from "../authentication/loginButton";
 
 const Navbar = ({ locale }) => {
   const t = useTranslations('navbar');

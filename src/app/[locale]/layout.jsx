@@ -1,6 +1,6 @@
 import { Changa, Noto_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "../../components/Navbar1/Navbar/index.jsx";
+import Navbar from "../../components/Navbar/index.jsx";
 import { ChakraProvider } from "@chakra-ui/react";
 import Footer from "../../components/Footer/index.jsx";
 import { NextIntlClientProvider } from 'next-intl';
