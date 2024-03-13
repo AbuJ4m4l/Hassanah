@@ -1,23 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-<body style="margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: large;">
-    <nav style="background-color: #0093fd; height: 100px; display: flex; justify-content: center; align-items: center;">
-        <img src="${process.env.URL}/images/hassanahLoggo-white.png" loading="lazy" style="width: 70px; height: 70px; margin: 5px; border-radius: 10px;">
-    </nav>
-    <div style="margin-left: 7.5%; margin-right: 7.5%; margin-top: 5%;">
-        <p style="font-weight: bold; color: #0093fd;">New Device Login Alert</p>
-        <h1>Hello <strong style="color: #0093fd;">${data.username}</strong>,</h1>
-        <p>We noticed a new device login to your Hassanah account. If this was you, you can ignore this email. If you did not log in from this device, please take immediate action to secure your account.</p>
-        <p>Device: <strong>${data.deviceName === undefiend ? data.browserName + data.deviceOS + data.deviceOSVersion : data.deviceName}</strong></p>
-        <p>Location: <strong>${data.location}</strong></p>
-        <p>If you have any concerns or questions, please don't hesitate to contact us immediately.</p>
-        <p>Thank you for choosing Hassanah.</p>
-        <p>Best regards,</p>
-        <p><strong style="color: #0093fd;">Hassanah Team</strong></p>
-    </div>
+
+<body style="
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: large;
+    ">
+  <nav style="
+        background-color: #0093fd;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      ">
+    <img src="${process.env.URL}/images/hassanahLoggo-white.png" loading="lazy"
+      style="width: 70px; height: 70px; margin: 5px; border-radius: 10px" />
+  </nav>
+  <div style="margin-left: 7.5%; margin-right: 7.5%; margin-top: 5%">
+    <p style="font-weight: bold; color: #0093fd">New Device Login Alert</p>
+    <h1>Hello <strong style="color: #0093fd">${data.username}</strong>,</h1>
+    <p>
+      We noticed a new device login to your Hassanah account. If this was you,
+      you can ignore this email. If you did not log in from this device,
+      please take immediate action to secure your account.
+    </p>
+    <p>
+      Device:
+      <strong>${data.deviceName === undefiend ? data.browserName + data.deviceOS +
+        data.deviceOSVersion : data.deviceName}</strong>
+    </p>
+    <p>Location: <strong>${data.location}</strong></p>
+    <p>
+      If you have any concerns or questions, please don't hesitate to contact
+      us immediately.
+    </p>
+    <p>Thank you for choosing Hassanah.</p>
+    <p>Best regards,</p>
+    <p><strong style="color: #0093fd">Hassanah Team</strong></p>
+  </div>
 </body>
+
 </html>

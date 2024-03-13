@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 
 const UserForm = ({ locale, tab }) => {
     const [selected, setSelected] = useState(tab);
-const t = useTranslations('user-form');
+    const t = useTranslations('user-form');
     return (
         <div className="flex flex-col w-full mx-auto items-center">
             <Card className={`max-w-full w-[340px] h-auto`}>

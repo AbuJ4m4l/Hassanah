@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
 
 .btn {
   @apply font-medium py-1 px-2 rounded transition ease-in-out delay-150 duration-200;
@@ -19,20 +19,17 @@ a {
 button {
   @apply select-none cursor-pointer;
 }
+
 .none-border {
   border: none !important;
 }
 
 body {
   color: rgb(var(--foreground-rgb)) !important;
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)) !important;
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)) !important;
 }
-
 
 @layer utilities {
   .text-balance {
@@ -40,54 +37,54 @@ body {
   }
 }
 
-  @media only screen and (max-width: 320px) {
-    .chip {
-      transform: translate(50%, 50%);
-    }
+@media only screen and (max-width: 320px) {
+  .chip {
+    transform: translate(50%, 50%);
   }
+}
 
-  @media only screen and (max-width: 380px) {
-    .chip {
-      transform: translate(30%, 50%);
-    }
+@media only screen and (max-width: 380px) {
+  .chip {
+    transform: translate(30%, 50%);
   }
+}
 
-  @media only screen and (max-width: 404px) {
-    .chip {
-      transform: translate(30%, 50%);
-    }
+@media only screen and (max-width: 404px) {
+  .chip {
+    transform: translate(30%, 50%);
   }
+}
 
-  ::-webkit-scrollbar {
-    width: 10px;
+::-webkit-scrollbar {
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #545454;  
+  background-color: #545454;
 }
 
 ::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      background-color: #454545; 
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-    background-color: #393939; 
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    min-width: 100vw;
-    min-height: 100vh; 
-  }
-  
-  .content {
-    flex-grow: 1;
-  }
-  
-  footer { 
-     bottom: 0;
-     width: 100%;
-     margin-top: auto;
-  } 
+  border-radius: 10px;
+  background-color: #454545;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #393939;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  margin-top: auto;
+}

@@ -10,7 +10,7 @@ export default function Home({ params: { locale } }) {
   console.log(user);
   return (
     <main>
-      
+
     </main>
   );
 }

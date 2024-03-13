@@ -8,7 +8,7 @@ const Footer = ({ locale }) => {
 
   return (
     <footer className="select-none backdrop-blur-lg backdrop-saturate-150 bg-background/70 w-full h-[560px] sm:h-[370px]">
-    
+
       <div className="flex flex-row">
         <Image
           src="/images/hassanahLoggo-white.png"
