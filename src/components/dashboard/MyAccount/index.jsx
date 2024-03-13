@@ -42,6 +42,7 @@ const MyAccount = ({ locale }) => {
           <h2 className="mt-4">{t('email')}:</h2>
           <Skeleton isLoaded={loading === false ? true : false} className="rounded-lg mt-2">
             <Input
+            isReadOnly
               className="truncate"
               name="email"
               label={t('email')}
@@ -56,6 +57,7 @@ const MyAccount = ({ locale }) => {
           <h2 className="mt-4">{t('username')}:</h2>
           <Skeleton isLoaded={loading === false ? true : false} className="rounded-lg mt-2">
             <Input
+            isReadOnly
               className="truncate mt-2"
               name="username"
               label={t('username')}
@@ -80,7 +82,7 @@ const MyAccount = ({ locale }) => {
                     <Skeleton isLoaded={loading === false ? true : false} className="rounded-lg mt-2">
                       <Link className="w-[300px] md:w-[400px]" href="/change-password">
                         <Input
-                          isDisabled
+                          isReadOnly
                           className="truncate mt-2"
                           name="password"
                           label={t('password')}
