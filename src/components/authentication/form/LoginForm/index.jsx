@@ -126,6 +126,7 @@ const LoginForm = ({ locale }) => {
               <>
                 <Input
                   isClearable
+                  isRequired
                   type="email"
                   name="email"
                   label={t('email')}
@@ -142,6 +143,7 @@ const LoginForm = ({ locale }) => {
                   }
                 />
                 <Input
+                isRequired
                   name="password"
                   label={t('password')}
                   placeholder={t('enter_your_password')}
@@ -169,6 +171,7 @@ const LoginForm = ({ locale }) => {
             ) : (
               <>
                 <Input
+                isRequired
                   isClearable
                   type="email"
                   name="email"
@@ -186,6 +189,7 @@ const LoginForm = ({ locale }) => {
                   }
                 />
                 <Input
+                isRequired
                   name="password"
                   label={t('password')}
                   placeholder={t('enter_your_password')}

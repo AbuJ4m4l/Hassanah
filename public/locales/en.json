@@ -166,5 +166,14 @@
     "Default_title": "Unknown Error",
     "Default_description": "An unknown error occurred.",
     "internal_server_error": "Internal Server Error"
+  },
+  "playlists": {
+    "playlist_name": "Playlist Name",
+    "actions": "Actions",
+    "total_surahs": "Total Avilabale Surahs",
+    "created_At": "Created at",
+    "view": "View Playlist",
+    "edit": "Edit Playlist",
+    "delete_playlist": "Delete Playlist"
   }
 }

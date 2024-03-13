@@ -3,176 +3,179 @@
     "about_us": "حولنا"
   },
   "signup": {
-    "signup": "تسجيل حساب جديد",
+    "signup": "انشاء حساب جديد",
     "username": "اسم المستخدم",
     "email": "البريد الإلكتروني",
-    "password": "كلمه السر",
+    "password": "كلمة المرور",
     "confirm_password": "تأكيد كلمة المرور",
-    "signup_button": "تسجيل حساب",
-    "already_have_account": "هل لديك حساب؟  ",
+    "signup_button": "تسجيل",
+    "already_have_account": "هل لديك حساب؟ ",
     "login": "تسجيل الدخول",
-    "retype_password": "أعد كتابة كلمة المرور",
-    "password_match_required": "يجب كتابة كلمة المرور",
-    "password_required": "يجب كتابة كلمة المرور",
-    "email_required": "يجب كتابة البريد الإلكتروني",
-    "username_required": "يجب كتابة اسم المستخدم",
-    "password_doesnt_match": "لا تتطابق كلمة المرور مع حقل تطابق كلمة المرور",
-    "the_password_should_contains_special_charachters": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل وحرف كبير واحد ورقم واحد وحرف خاص واحد، وأن تكون طولها 8 أحرف.",
+    "retype_password": "تأكيد كلمة المرور",
+    "password_match_required": "تأكيد كلمة المرور مطلوب",
+    "password_required": "كلمة المرور مطلوبة",
+    "email_required": "البريد الإلكتروني مطلوب",
+    "username_required": "اسم المستخدم مطلوب",
+    "password_doesnt_match": "كلمة المرور غير متطابقة مع حقل تأكيد كلمة المرور",
+    "match_password_doesnt_match": "تأكيد كلمة المرور لا يتطابق مع حقل كلمة المرور",
+    "the_password_should_contains_special_charachters": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل، وحرف كبير واحد على الأقل، ورقم واحد، وحرف خاص واحد، وأن تكون طولها 8 أحرف على الأقل.",
     "signup_success": "تهانينا!, تم إنشاء حسابك بنجاح.",
-    "signup_success_description": "لقد أرسلنا بريدًا إلكترونيًا إلى عنوان بريدك الإلكتروني. يرجى التحقق من بريدك الإلكتروني للحصول على الرابط لتأكيد حسابك",
-    "auth/invalid-email": {
-      "title": "عنوان البريد الإلكتروني غير صالح",
-      "description": "يرجى التحقق من بريدك الإلكتروني والتأكد من كتابته بشكل صحيح."
-    },
-    "auth/user-disabled": {
-      "title": "الحساب معطل",
-      "description": "قد يكون حسابك قد تم تعطيله. يرجى الاتصال بالدعم للحصول على المساعدة."
-    },
-    "auth/user-not-found": {
-      "title": "الحساب غير موجود",
-      "description": "لا يوجد حساب مرتبط بهذا البريد الإلكتروني. يرجى التحقق من بريدك الإلكتروني أو إنشاء حساب جديد."
-    },
-    "auth/wrong-password": {
-      "title": "كلمة مرور غير صحيحة",
-      "description": "كلمة المرور غير صحيحة. حاول مرة أخرى أو انقر فوق 'نسيت كلمة المرور؟' لإعادة تعيينها."
-    },
-    "auth/too-many-requests": {
-      "title": "العديد من المحاولات",
-      "description": "الرجاء المحاولة مرة اخرى بعد دقائق قليلة."
-    },
-    "auth/network-request-failed": {
-      "title": "خطأ في الشبكة",
-      "description": "يبدو أن هناك مشكلة في اتصال الإنترنت الخاص بك. يرجى التحقق والمحاولة مرة أخرى."
-    },
-    "auth/email-already-in-use": {
-      "title": "البريد الإلكتروني موجود بالفعل",
-      "description": "هذا البريد الإلكتروني مستخدم بالفعل. يرجى محاولة تسجيل الدخول أو استخدام بريد إلكتروني مختلف."
-    },
-    "auth/weak-password": {
-      "title": "قوة كلمة المرور",
-      "description": "لأمنك، يرجى اختيار كلمة مرور أقوى."
-    },
-    "auth/popup-closed-by-user": {
-      "title": "تم مقاطعة تسجيل الدخول",
-      "description": "الرجاء محاولة تسجيل الدخول مرة أخرى. لا تغلق النافذة حتى تنتهي."
-    },
-    "auth/account-exists-with-different-credential": {
-      "title": "تم العثور على حساب",
-      "description": "يوجد حساب مرتبط بهذا البريد الإلكتروني. جرب طريقة تسجيل دخول مختلفة، أو اتصل بالدعم إذا كنت بحاجة إلى ربط الحسابات."
-    },
-    "auth/invalid-custom-token": {
-      "title": "خطأ في تسجيل الدخول",
-      "description": "حدثت مشكلة أثناء تسجيل الدخول. يرجى المحاولة مرة أخرى أو الاتصال بالدعم."
-    },
-    "auth/custom-token-mismatch": {
-      "title": "خطأ في تسجيل الدخول",
-      "description": "حدثت مشكلة أثناء تسجيل الدخول. يرجى المحاولة مرة أخرى أو الاتصال بالدعم."
-    },
-    "auth/internal-error": {
-      "title": "خطأ غير متوقع",
-      "description": "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا أو الاتصال بالدعم."
-    },
-    "auth/operation-not-allowed": {
-      "title": "خطأ في تسجيل الدخول",
-      "description": "حدثت مشكلة أثناء تسجيل الدخول. يرجى المحاولة مرة أخرى لاحقًا أو الاتصال بالدعم."
-    }
+    "signup_success_description": "لقد قمنا بإرسال بريد إلكتروني إلى عنوان بريدك الإلكتروني. يرجى التحقق من بريدك الإلكتروني للحصول على الرابط للتحقق من حسابك.",
+    "error_user_already_exists": "المستخدم موجود بالفعل.",
+    "error_password_rules": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل، وحرف كبير واحد على الأقل، وحرف صغير واحد على الأقل، ورقم واحد، وحرف خاص واحد.",
+    "error_password_doesnt_match": "كلمة المرور غير متطابقة.",
+    "invalid_credentials": "بيانات اعتماد غير صالحة.",
+    "error_credentials_signin_title": "بيانات اعتماد غير صالحة",
+    "error_credentials_signin_description": "يرجى المحاولة مرة أخرى بحساب آخر.",
+    "email_invalid": "الرجاء إدخال عنوان بريد إلكتروني صالح.",
+    "claimsTooLarge": "البيانات المقدمة كبيرة جدًا.",
+    "emailAlreadyExists": "هذا البريد الإلكتروني مستخدم بالفعل.",
+    "idTokenExpired": "انتهت صلاحية جلستك.",
+    "idTokenRevoked": "تم إلغاء جلستك.",
+    "insufficientPermission": "ليس لديك الصلاحية الكافية.",
+    "internalError": "حدث خطأ غير متوقع.",
+    "invalidArgument": "تم تقديم معامل غير صالح.",
+    "invalidClaims": "السمات المقدمة غير صالحة.",
+    "invalidContinueUri": "يجب أن يكون عنوان URL المقدم صالحًا.",
+    "invalidCreationTime": "يجب أن يكون الوقت المقدم سلسلة تاريخية UTC صالحة.",
+    "invalidCredential": "لا يمكن استخدام الاعتماد المقدم لهذا الإجراء.",
+    "unknown_error": "حدث خطأ. يرجى المحاولة مرة أخرى لاحقًا.",
+    "close": "إغلاق",
+    "re_enter_your_password": "أعد إدخال كلمة المرور الخاصة بك",
+    "enter_your_password": "ادخل كلمة المرور الخاصة بك",
+    "enter_your_email": "ادخل بريدك الإلكتروني",
+    "enter_your_username": "أدخل اسم المستخدم الخاص بك"
   },
   "login": {
     "login": "تسجيل الدخول إلى حسابك",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
     "login_button": "تسجيل الدخول",
-    "dont_have_account": "لا تمتلك حساب؟ ",
-    "signup": "إنشاء حساب",
-    "forget_password": "نسيت كلمة المرور؟  ",
+    "dont_have_account": "لا تملك حساب؟ ",
+    "signup": "تسجيل",
+    "forget_password": "هل نسيت كلمة المرور؟  ",
     "password_required": "كلمة المرور مطلوبة",
     "email_required": "البريد الإلكتروني مطلوب",
     "reset_password": "إعادة تعيين كلمة المرور",
-    "email_invalid": "يرجى إدخال عنوان بريد إلكتروني صالح",
-    "error_credentials_signin_title": "بيانات الاعتماد غير صحيحة",
-    "error_credentials_signin_description": "يرجى المحاولة مرة أخرى باستخدام حساب آخر.",
-    "password_length_error": "يجب أن تحتوي كلمة المرور على ما لا يقل عن ٨ أحرف.",
+    "email_invalid": "الرجاء إدخال عنوان بريد إلكتروني صالح.",
+    "error_credentials_signin_title": "بيانات اعتماد غير صالحة",
+
+
+    "error_credentials_signin_description": " يرجى المحاولة مرة أخرى بحساب آخر.",
+    "password_length_error": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل.",
     "login_success": "مرحبًا مجددًا!",
-    "login_success_description": "لقد قمت بتسجيل الدخول بنجاح.",
-    "claimsTooLarge": "البيانات المقدمة كبيرة جدا.",
+    "login_success_description": "لقد قمت بتسجيل الدخول بنجاح. سيتم توجيهك إلى لوحة التحكم في غضون 3 ثوانٍ",
+    "enter_your_password": "ادخل كلمة المرور الخاصة بك",
+    "enter_your_email": "ادخل بريدك الإلكتروني",
+    "claimsTooLarge": "البيانات المقدمة كبيرة جدًا.",
     "emailAlreadyExists": "هذا البريد الإلكتروني مستخدم بالفعل.",
     "idTokenExpired": "انتهت صلاحية جلستك.",
     "idTokenRevoked": "تم إلغاء جلستك.",
-    "insufficientPermission": "ليس لديك إذن كاف.",
+    "insufficientPermission": "ليس لديك الصلاحية الكافية.",
     "internalError": "حدث خطأ غير متوقع.",
-    "invalidArgument": "تم تقديم وسيطة غير صالحة.",
+    "invalidArgument": "تم تقديم معامل غير صالح.",
     "invalidClaims": "السمات المقدمة غير صالحة.",
-    "invalidContinueUri": "يجب أن يكون الرابط المقدم صالحا.",
-    "invalidCreationTime": "يجب أن يكون الوقت المقدم سلسلة تاريخ UTC صالحة.",
-    "invalidCredential": "لا يمكن استخدام الشهادة المقدمة لهذا الإجراء.",
-    "unknown_error": "حدث خطأ. الرجاء معاودة المحاولة في وقت لاحق."
+    "invalidContinueUri": "يجب أن يكون عنوان URL المقدم صالحًا.",
+    "invalidCreationTime": "يجب أن يكون الوقت المقدم سلسلة تاريخية UTC صالحة.",
+    "invalidCredential": "لا يمكن استخدام الاعتماد المقدم لهذا الإجراء.",
+    "unknown_error": "حدث خطأ. يرجى المحاولة مرة أخرى لاحقًا.",
+    "close": "إغلاق"
   },
   "navbar": {
     "login": "تسجيل الدخول",
-    "hadiths": "أحاديث نبوية",
+    "hadiths": "الأحاديث النبوية",
     "stories": "القصص",
     "quran": "القرآن الكريم",
-    "reciters": "قارئين القران الكريم",
-    "logout": "تسجيل الخروج",
-    "home": "الصفحة الرئيسية"
+    "reciters": "قراء القرآن",
+    "signout": "تسجيل الخروج",
+    "home": "الرئيسية",
+    "type_to_search": "اكتب للبحث...",
+    "signedin_as": "مسجل الدخول باسم",
+    "dashboard": "لوحة التحكم"
   },
   "footer": {
     "copyright": "جميع الحقوق محفوظة لـ حسنة 2024 ©",
     "helpfull_links": "روابط مفيدة",
-    "home": "الصفحة الرئيسية",
+    "home": "الرئيسية",
     "quran": "القرآن الكريم",
     "stories": "القصص",
-    "hadiths": "أحاديث نبوية",
+    "hadiths": "الأحاديث النبوية",
     "company": "منظمتنا",
     "about_hasana": "حول حسنة",
     "about_blueteam": "حول BlueTeam",
-    "news": "الأخبار",
+    "news": "أخبار",
     "support_center": "مركز الدعم",
     "i_have_problem": "لدي مشكلة",
-    "i_have_question": "لدي استفسار",
+    "i_have_question": "لدي سؤال",
     "policies": "السياسات",
     "terms_of_use": "شروط الاستخدام",
     "privacy_policy": "سياسة الخصوصية",
     "hassanah": "حسنة"
   },
-  "error": {
-    "error": "لقد حدث خطأ غير متوقع",
-    "try_again": "حاول مرة أخرى",
-    "Configuration": "خطأ في الخادم الداخلي",
-    "AccessDenied_title": "رفض الوصول إلى الحساب",
-    "AccessDenied_description": "لا يمكنك الوصول إلى هذا الحساب. قد يكون قد تم حذفه أو حظره، أو أنه غير متوفر مؤقتًا. يرجى المحاولة مرة أخرى في وقت لاحق.",
-    "Default_title": "خطأ غير معروف",
-    "Default_description": "حدث خطأ غير معروف.",
-    "internal_server_error": "خطأ في الخادم الداخلي"
-  },
   "not_found": {
-    "not_found": "لم يتم العثور على الصفحة",
-    "home": "العودة إلى الصفحة الرئيسية"
+    "not_found": "الصفحة غير موجودة",
+    "home": "الذهاب إلى الصفحة الرئيسية"
   },
   "signout": {
-    "signingout_message": "جار تسجيل خروجك..."
+    "signingout_message": "تسجيل الخروج..."
   },
   "signedout": {
-    "you_dont_have_account": "أنت لا تملك حساب لهذه العملية",
     "signedout_successfully": "لقد قمت بتسجيل الخروج بنجاح"
   },
   "emailVerification": {
     "subject": "تحقق من عنوان بريدك الإلكتروني لـ حسنة",
     "greeting": "عزيزي {username},",
-    "body": "شكرًا لتسجيلك في حسنة! لإكمال التسجيل الخاص بك والوصول إلى جميع ميزات منصتنا، يرجى التحقق من عنوان بريدك الإلكتروني عن طريق النقر على الرابط أدناه:",
+    "body": "شكرًا لتسجيلك في حسنة! لإكمال تسجيلك والوصول إلى جميع ميزات منصتنا، يرجى التحقق من عنوان بريدك الإلكتروني عن طريق النقر على الرابط أدناه:",
     "verificationButton": "التحقق",
-    "disclaimer": "إذا لم تقم بالتسجيل في حسنة يرجى تجاهل هذا البريد الإلكتروني.",
-    "closing": "أطيب التحيات،",
+    "disclaimer": "إذا لم تقم بالتسجيل في حسنة، يرجى تجاهل هذا البريد الإلكتروني.",
+    "closing": "مع أطيب التحيات،",
     "team": "فريق حسنة"
   },
   "verify": {
     "invalid_request": "طلب غير صالح",
     "invalid_provider": "مزود غير صالح",
-    "verification_token_not_found": "رمز التحقق غير موجود",
-    "user_already_verified": "المستخدم محقق بالفعل",
-    "internal_server_error": "خطأ في الخادم الداخلي",
+    "verification_token_not_found": "الرمز المميز للتحقق غير موجود",
+    "user_already_verified": "المستخدم تم التحقق منه بالفعل",
+    "internal_server_error": "خطأ داخلي في الخادم",
     "success_verification": "تم التحقق من حسابك بنجاح.",
     "home": "الذهاب إلى الصفحة الرئيسية",
-    "user_is_blocked": "هذا المستخدم محظور"
+    "user_is_blocked": "تم حظر هذا المستخدم"
+  },
+  "dashboard": {
+    "myAccount": "حسابي",
+    "activity": "النشاط",
+    "settings": "الإعدادات",
+    "playlists": "قوائم التشغيل"
+  },
+  "user-form": {
+    "login": "تسجيل الدخول",
+    "signup": "تسجيل"
+  },
+  "profile": {
+    "welcome": "مرحبًا",
+    "email": "البريد الإلكتروني",
+    "username": "اسم المستخدم",
+    "password": "كلمة المرور",
+    "signout": "تسجيل الخروج",
+    "change_account_information": "تغيير تفاصيل الحساب"
+  },
+  "error": {
+    "error": "حدث خطأ غير متوقع.",
+    "try_again": "حاول مرة أخرى",
+    "Configuration": "خطأ داخلي في الخادم",
+    "AccessDenied_title": "تم رفض الوصول إلى الحساب",
+    "AccessDenied_description": "لا يمكنك الوصول إلى هذا الحساب. قد يكون قد تم حذفه أو حظره أو غير متاح مؤقتًا، يرجى المحاولة مرة أخرى لاحقًا.",
+    "Default_title": "خطأ غير معروف",
+    "Default_description": "حدث خطأ غير معروف.",
+    "internal_server_error": "خطأ داخلي في الخادم"
+  },
+  "playlists": {
+    "playlist_name": "اسم القائمة",
+    "actions": "الإجراءات",
+    "total_surahs": "إجمالي السور المتوفرة",
+    "created_At": "تم الإنشاء في",
+    "view": "عرض القائمة",
+    "edit": "تعديل القائمة",
+    "delete_playlist": "حذف القائمة"
   }
 }
