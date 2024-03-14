@@ -2,6 +2,7 @@
 
 import { Button, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Select, SelectItem } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 
 const CreateNewPlaylistModal = ({ isOpen, onOpenChange }) => {
   const t = useTranslations('createNewPlaylistModal');

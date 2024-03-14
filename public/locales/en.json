@@ -179,7 +179,12 @@
   },
   "createNewPlaylistModal": {
     "title": "Create New Playlist",
-    "body": {},
+    "enter_playlist_name": "Enter playlist name",
+    "select_visibility": "Select playlist visibility",
+    "visibility": "Visibility",
+    "playlist_name": "Playlist Name",
+    "public": "Public",
+    "private": "Private",
     "create": "Create",
     "cancel": "Cancel"
   },
