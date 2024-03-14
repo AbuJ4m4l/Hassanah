@@ -1,12 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useTranslations } from "next-intl";
-import theme from "../../../commonTheme";
 import Viewed from "./viewed";
 import Listned from "./listned";
 import { useState } from "react";
-import { Select, SelectItem } from "@nextui-org/react";
+import Filter from "./filter";
 
 const Activity = () => {
     const t = useTranslations('activity');
@@ -15,10 +13,7 @@ const Activity = () => {
     return (
         <section role="tab">
             <div className="sm:ml-5">
-                <Select value={selectedOption} onChange={(e) => setSelectedOption(e?.target?.value)} variant='filled' className="max-w-[180px]">
-                    <SelectItem className="text-black" value="viewed">{t('viewed')}</SelectItem>
-                    <SelectItem className="text-black" value="listned">{t('listned')}</SelectItem>
-                </Select>
+                <Filter selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
                 {
                     selectedOption === "viewed" ? (
                         <Viewed />
