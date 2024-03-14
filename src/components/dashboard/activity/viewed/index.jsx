@@ -59,7 +59,9 @@ const Viewed = () => {
                                     </p>
                                 </TableCell>
                                 <TableCell>
-                                    <p className="flex justify-center">114</p>
+                                    <p className="flex justify-center">
+                                        7
+                                    </p>
                                 </TableCell>
                                 <TableCell>
                                     <div className="flex justify-center">
