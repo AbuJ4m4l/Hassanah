@@ -9,7 +9,13 @@ const GoogleLogin = () => {
     const [signInWithGoogle] = useSignInWithGoogle(auth);
     const router = useRouter();
     return (
-        <Button color="default" variant="solid" type="button" onClick={() => { signInWithGoogle().then(() => { router.push('/dashboard') }) }} className="rtl:mr-2 ltr:ml-2 min-w-[50%] cursor-pointer">
+        <Button color="default" variant="solid" type="button" onClick={() => {
+            signInWithGoogle().then(data => {
+                sessionStorage.removeItem('user')
+                sessionStorage.setItem('user', JSON.stringify(data?.user));
+                router.push('/dashboard')
+            })
+        }} className="rtl:mr-2 ltr:ml-2 min-w-[50%] cursor-pointer">
             <Image
                 className="w-6 h-6"
                 width={6}

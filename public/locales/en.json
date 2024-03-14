@@ -175,5 +175,28 @@
     "view": "View Playlist",
     "edit": "Edit Playlist",
     "delete_playlist": "Delete Playlist"
+  },
+  "createNewPlaylistModal": {
+    "title": "Create New Playlist",
+    "body": {},
+    "create": "Create",
+    "cancel": "Cancel"
+  },
+  "editPlaylistModal": {
+    "title": "Edit {name} Playlist",
+    "enter_playlist_name": "Enter new playlist name",
+    "select_visibility": "Select playlist visibility",
+    "visibility": "Visibility",
+    "playlist_name": "Playlist Name",
+    "public": "Public",
+    "private": "Private",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "deletePlaylistModal": {
+    "title": "Delete {name} Playlist",
+    "attention": "Are you sure you want to delete the {name} playlist ?",
+    "delete": "Delete",
+    "cancel": "Cancel"
   }
 }

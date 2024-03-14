@@ -2,13 +2,13 @@
 import { useTranslations } from "next-intl"
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase";
-import { Avatar, Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Link } from "@nextui-org/react";
+import { Avatar, Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Link, Skeleton } from "@nextui-org/react";
 
 const LoginButton = ({ LoginButtonClassName, AvatarClassName, variant }) => {
     const t = useTranslations('navbar');
-    const [user] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     return (
-        <>
+        <Skeleton className="rounded-lg p-1" isLoaded={loading === true ? false : true} aria-label="Loading ...">
             {
                 user?.email ? (
                     <>
@@ -32,7 +32,7 @@ const LoginButton = ({ LoginButtonClassName, AvatarClassName, variant }) => {
                                 <DropdownItem key="reciters" href='/dashboard' color='foreground'>
                                     {t('dashboard')}
                                 </DropdownItem>
-                                <DropdownItem as={Link} href="/signout" key="signout" color="danger">
+                                <DropdownItem as={Link} className="text-red-600" href="/signout" key="signout" color="danger">
                                     {t('signout')}
                                 </DropdownItem>
                             </DropdownMenu>
@@ -44,7 +44,7 @@ const LoginButton = ({ LoginButtonClassName, AvatarClassName, variant }) => {
                     </Button>
                 )
             }
-        </>
+        </Skeleton>
     );
 }
 

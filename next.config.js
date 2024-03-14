@@ -3,6 +3,20 @@ const withNextIntl = require('next-intl/plugin')();
 module.exports = withNextIntl({
   reactStrictMode: false,
   images: {
-    domains: ['lh3.googleusercontent.com', 'picsum.photos', 'i.pravatar.cc']
-  }
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '443',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'graph.facebook.com',
+        port: '443',
+        pathname: '/**',
+      },
+    ],
+  },
+  poweredByHeader: false
 });
