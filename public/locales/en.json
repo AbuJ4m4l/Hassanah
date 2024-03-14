@@ -174,7 +174,8 @@
     "created_At": "Created at",
     "view": "View Playlist",
     "edit": "Edit Playlist",
-    "delete_playlist": "Delete Playlist"
+    "delete_playlist": "Delete Playlist",
+    "visibility": "Visibility"
   },
   "createNewPlaylistModal": {
     "title": "Create New Playlist",

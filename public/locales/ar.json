@@ -169,12 +169,36 @@
     "internal_server_error": "خطأ داخلي في الخادم"
   },
   "playlists": {
-    "playlist_name": "اسم القائمة",
+    "playlist_name": "اسم القائمة التشغيلية",
     "actions": "الإجراءات",
-    "total_surahs": "إجمالي السور المتوفرة",
+    "total_surahs": "إجمالي السور المتاحة",
     "created_At": "تم الإنشاء في",
-    "view": "عرض القائمة",
-    "edit": "تعديل القائمة",
-    "delete_playlist": "حذف القائمة"
+    "view": "عرض القائمة التشغيلية",
+    "edit": "تعديل القائمة التشغيلية",
+    "delete_playlist": "حذف القائمة التشغيلية",
+    "visibility": "الرؤية"
+  },
+  "createNewPlaylistModal": {
+    "title": "إنشاء قائمة تشغيل جديدة",
+    "body": {},
+    "create": "إنشاء",
+    "cancel": "إلغاء"
+  },
+  "editPlaylistModal": {
+    "title": "تعديل قائمة التشغيل {name}",
+    "enter_playlist_name": "أدخل اسم قائمة التشغيل الجديد",
+    "select_visibility": "حدد رؤية قائمة التشغيل",
+    "visibility": "الرؤية",
+    "playlist_name": "اسم القائمة التشغيلية",
+    "public": "عام",
+    "private": "خاص",
+    "save": "حفظ",
+    "cancel": "إلغاء"
+  },
+  "deletePlaylistModal": {
+    "title": "حذف قائمة التشغيل {name}",
+    "attention": "هل أنت متأكد أنك تريد حذف قائمة التشغيل {name}؟",
+    "delete": "حذف",
+    "cancel": "إلغاء"
   }
 }

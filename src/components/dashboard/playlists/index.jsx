@@ -42,6 +42,11 @@ const PlayLists = () => {
                             </TableColumn>
                             <TableColumn>
                                 <p className="flex justify-center">
+                                    {t('visibility')}
+                                </p>
+                            </TableColumn>
+                            <TableColumn>
+                                <p className="flex justify-center">
                                     {t('actions')}
                                 </p>
                             </TableColumn>
@@ -60,6 +65,11 @@ const PlayLists = () => {
                                 </TableCell>
                                 <TableCell>
                                     <p className="flex justify-center">114</p>
+                                </TableCell>
+                                <TableCell>
+                                    <div className="flex justify-center">
+                                        <Chip variant="flat" color="success">Public</Chip>
+                                    </div>
                                 </TableCell>
                                 <TableCell>
                                     <div className="relative flex justify-center items-center gap-2">
