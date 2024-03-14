@@ -18,7 +18,7 @@ const MyAccount = ({ locale }) => {
             {t('myAccount')}
             </h1>
             </div>
-      <div className="flex justify-center select-none">
+      <div className="flex justify-center select-none mt-6">
         <Skeleton isLoaded={loading === false ? true : false} className="p-1 rounded-full">
           <Avatar
             isBordered

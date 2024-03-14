@@ -150,6 +150,7 @@
     "signup": "Signup"
   },
   "profile": {
+    "myAccount": "My Account",
     "welcome": "Welcome",
     "email": "Email",
     "username": "Username",
@@ -167,7 +168,11 @@
     "Default_description": "An unknown error occurred.",
     "internal_server_error": "Internal Server Error"
   },
+  "activity": {
+    "activity": "Activity"
+  },
   "playlists": {
+    "playlists": "Playlists",
     "playlist_name": "Playlist Name",
     "actions": "Actions",
     "total_surahs": "Total Avilabale Surahs",
@@ -176,6 +181,9 @@
     "edit": "Edit Playlist",
     "delete_playlist": "Delete Playlist",
     "visibility": "Visibility"
+  },
+  "settings": {
+    "settings": "Settings"
   },
   "createNewPlaylistModal": {
     "title": "Create New Playlist",
