@@ -49,10 +49,10 @@ const EditPlaylistModal = ({ isOpen, onOpenChange, Playlist }) => {
                             </form>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="danger" variant="light" onPress={onClose}>
+                            <Button color="danger" type="button" variant="light" onPress={onClose}>
                                 {t('cancel')}
                             </Button>
-                            <Button color="primary" onPress={onClose}>
+                            <Button color="primary" type="submit" onClick={editPlaylist} onPress={onClose}>
                                 {t('save')}
                             </Button>
                         </ModalFooter>

@@ -15,10 +15,10 @@ const CreateNewPlaylistModal = ({ isOpen, onOpenChange }) => {
 
             </ModalBody>
             <ModalFooter>
-              <Button color="danger" variant="light" onPress={onClose}>
+              <Button color="danger" type="button" variant="light" onPress={onClose}>
                 {t('cancel')}
               </Button>
-              <Button color="primary" onPress={onClose}>
+              <Button color="primary" type="submit" onClick={editPlaylist} onPress={onClose}>
                 {t('create')}
               </Button>
             </ModalFooter>
