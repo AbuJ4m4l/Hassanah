@@ -14,9 +14,9 @@ const DeletePlaylistModal = ({ isOpen, onOpenChange, Playlist }) => {
                             name: Playlist.name
                         })}</ModalHeader>
                         <ModalBody>
-{t('attention', {
-    name: Playlist.name
-})}
+                            {t('attention', {
+                                name: Playlist.name
+                            })}
                         </ModalBody>
                         <ModalFooter>
                             <Button color="default" variant="light" onPress={onClose}>

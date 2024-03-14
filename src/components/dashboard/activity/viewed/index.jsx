@@ -21,7 +21,7 @@ const Viewed = () => {
 
                 <div>
                     <h1 className="text-xl">{t('viewed_stories')}:</h1>
-                   
+
                 </div>
             </div>
         </>
