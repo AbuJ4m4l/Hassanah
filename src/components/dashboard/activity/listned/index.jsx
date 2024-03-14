@@ -37,7 +37,7 @@ const Listned = () => {
                             </TableColumn>
                             <TableColumn>
                                 <p className="flex justify-center">
-                                    {t('viewed_At')}
+                                    {t('listned_At')}
                                 </p>
                             </TableColumn>
                         </TableHeader>

@@ -169,7 +169,29 @@
     "internal_server_error": "Internal Server Error"
   },
   "activity": {
-    "activity": "Activity"
+    "activity": "Activity",
+    "listned": "Listned",
+    "viewed": "Viewed by you",
+    "number": "Number",
+    "viewed_At": "Viewed At",
+    "listned_At": "Listned At",
+    "quran": {
+"viewed_surahs": "Viewed Surahs",
+"name": "Name",
+"total_ayahs": "Total Ayahs",
+"revelationType": "Revelation Type"
+    },
+    "stories": {
+"title": "Title",
+"description": "Description",
+"publisher": "Publisher name",
+"provider": "Provider"
+    },
+    "hadiths": {
+"bookSlug": "Book Slug",
+"chapterNumber": "Chapter Number",
+"status": "Status"
+    }
   },
   "playlists": {
     "playlists": "Playlists",
