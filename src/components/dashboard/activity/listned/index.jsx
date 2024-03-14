@@ -6,7 +6,7 @@ const Listned = () => {
     const t = useTranslations('activity');
     return (
         <>
-            
+
         </>
     );
 }

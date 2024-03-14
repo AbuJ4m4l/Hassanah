@@ -60,7 +60,6 @@
     "email_invalid": "الرجاء إدخال عنوان بريد إلكتروني صالح.",
     "error_credentials_signin_title": "بيانات اعتماد غير صالحة",
 
-
     "error_credentials_signin_description": " يرجى المحاولة مرة أخرى بحساب آخر.",
     "password_length_error": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل.",
     "login_success": "مرحبًا مجددًا!",

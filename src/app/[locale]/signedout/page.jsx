@@ -22,7 +22,7 @@ const Signedout = () => {
         <>
             <div className="flex justify-center">
                 <div className="px-16 py-16 rounded-full outline-offset-2 outline-4 outline-green-600 outline">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"className="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </div>
             </div>
             <div className='flex justify-center mt-6'>

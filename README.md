@@ -13,10 +13,13 @@
 [![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 
 ## Introduction 🌟
+
 🕌 This project is an Islamic website that provides various features including Quran reciters, Quran read-only mode, Hadiths, prayer times, Islamic stories, and more.
 
 ## Setup ⚙️
+
 To set up the project, follow these steps:
+
 1. Fill in the fields in `.env.sample` with the appropriate values.
 2. Rename `.env.sample` to `.env`.
 3. Create a project on Firebase Console and set up MongoDB.
@@ -29,14 +32,18 @@ To set up the project, follow these steps:
    - `NEXT_PUBLIC_FIREBASE_APP_ID`
 
 ## Login Options 🛡
+
 🔒 The project supports login options provided by Firebase, including Google, Facebook, and email.
 
 ## Building and Running 🛠
+
 After setting up the environment variables in the `.env` file, follow these commands:
+
 - Build the project: `npx next build`
 - Run the project: `npx next start`
 
 ## Language Support 🌐
+
 🌐 The website supports multiple languages, including Arabic and English.
 
 ---
@@ -44,10 +51,13 @@ After setting up the environment variables in the `.env` file, follow these comm
 ## مشروع حسنة
 
 ## المقدمة 🌟
+
 🕌 هذا المشروع هو موقع إسلامي يوفر مجموعة من الميزات بما في ذلك مقرئي القرآن، وضع قراءة القرآن فقط، الأحاديث النبوية، أوقات الصلاة، قصص إسلامية، والمزيد.
 
 ## الإعداد ⚙️
+
 لإعداد المشروع، اتبع الخطوات التالية:
+
 1. قم بملء الحقول في ملف `.env.sample` بالقيم المناسبة.
 2. أعد تسمية `.env.sample` إلى `.env`.
 3. قم بإنشاء مشروع على Firebase Console وأعد تهيئة MongoDB.
@@ -60,12 +70,16 @@ After setting up the environment variables in the `.env` file, follow these comm
    - `NEXT_PUBLIC_FIREBASE_APP_ID`
 
 ## خيارات تسجيل الدخول 🛡
+
 🔒 يدعم المشروع خيارات تسجيل الدخول المقدمة بواسطة Firebase، بما في ذلك Google، Facebook، والبريد الإلكتروني.
 
 ## بناء وتشغيل 🛠
+
 بعد تكوين المتغيرات البيئية في ملف `.env`، اتبع هذه الأوامر:
+
 - بناء المشروع: `npx next build`
 - تشغيل المشروع: `npx next start`
 
 ## دعم اللغات 🌐
+
 🌐 يدعم الموقع لغات متعددة، بما في ذلك العربية والإنجليزية.
