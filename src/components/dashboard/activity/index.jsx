@@ -12,8 +12,14 @@ const Activity = () => {
 
     return (
         <section role="tab">
-            <div className="sm:ml-5">
-                <Filter selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+            <div className="mt-6 flex justify-center">
+                <h1 className="text-xl md:text-2xl">
+                    {t('activity')}
+                    </h1>
+                    </div>
+                <div className="flex justify-center mt-6">
+                <Filter className="max-w-[180px]" selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+                </div>
                 {
                     selectedOption === "viewed" ? (
                         <Viewed />
@@ -21,7 +27,6 @@ const Activity = () => {
                         <Listned />
                     ) : <></>
                 }
-            </div>
         </section>
     )
 }

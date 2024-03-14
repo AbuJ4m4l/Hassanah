@@ -16,6 +16,12 @@ module.exports = withNextIntl({
         port: '443',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.ytimg.com',
+        port: '',
+        pathname: '/vi/**',
+      }
     ],
   },
   poweredByHeader: false

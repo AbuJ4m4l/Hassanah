@@ -13,18 +13,23 @@ const MyAccount = ({ locale }) => {
 
   return (
     <section role="section" className="mt-8">
+    <div className="mt-6 flex justify-center">
+        <h1 className="text-xl md:text-2xl">
+            {t('myAccount')}
+            </h1>
+            </div>
       <div className="flex justify-center select-none">
         <Skeleton isLoaded={loading === false ? true : false} className="p-1 rounded-full">
           <Avatar
             isBordered
             showFallback
-            className="transition-transform"
+            className="transition-transform text-"
             color="primary"
             name={user?.displayName}
             classNames={{
               img: "w-32 h-32",
               icon: "w-16 h-16",
-              name: "text-xl",
+              name: "text-2xl",
               base: "w-32 h-32"
             }}
             src={user?.photoURL}
