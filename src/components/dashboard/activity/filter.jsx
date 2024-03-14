@@ -1,8 +1,6 @@
 "use client";
 
 import { Button, ChakraProvider, Menu, MenuButton, MenuItem, MenuList, Select } from "@chakra-ui/react";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import theme from '../../../commonTheme'
 import { useTranslations } from "next-intl";
 import Viewed from "./viewed";
