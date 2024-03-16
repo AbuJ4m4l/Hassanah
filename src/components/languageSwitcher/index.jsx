@@ -30,7 +30,7 @@ const LanguageSwitcher = ({ location }) => {
                         English
                     </DropdownItem>
                     <DropdownItem className='flex flex-row text-white' as={Link} href={`/tr/${location}`} key="Turkish" endContent={<Image src="/images/flags/tur.png" width={25} height={25} loading='lazy' alt='Flag' className='rounded-sm rtl:ml-2 ltr:mr-2' />} color="default">
-                    Türkçe
+                        Türkçe
                     </DropdownItem>
                 </DropdownMenu>
             </Dropdown>
