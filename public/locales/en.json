@@ -170,7 +170,7 @@
   },
   "activity": {
     "activity": "Activity",
-    "listned": "Listned",
+    "listned": "Listned by you",
     "viewed": "Viewed by you",
     "number": "Number",
     "viewed_At": "Viewed At",
@@ -179,7 +179,9 @@
 "viewed_surahs": "Viewed Surahs",
 "name": "Name",
 "total_ayahs": "Total Ayahs",
-"revelationType": "Revelation Type"
+"revelationType": "Revelation Type",
+"listned_surahs": "Listned surahs",
+"reciter": "Reciter"
     },
     "stories": {
       "viewed_stories": "Viewed stories",
