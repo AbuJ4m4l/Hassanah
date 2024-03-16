@@ -1,14 +1,12 @@
 import { Changa, Noto_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "../../components/Navbar/index.jsx";
-import { ChakraProvider } from "@chakra-ui/react";
 import Footer from "../../components/Footer/index.jsx";
 import { NextIntlClientProvider } from 'next-intl';
 import { locales } from "../../../navigation";
 import { notFound } from "next/navigation";
 import { getMessages } from "next-intl/server";
 import NextUiProvider from "../../components/Providers/NextUiProvider.jsx";
-import Image from 'next/image'
 
 const changa = Changa({ subsets: ["arabic"] });
 const jetbrains_mono = Noto_Sans({ subsets: ["latin"], weight: ["400", "700"] });
@@ -56,7 +54,6 @@ export default async function RootLayout({ children, params: { locale } }) {
                 </head>
                 <body dir={direction} className={`dark overflow-x-hidden selection:bg-primary m-0 p-0 selection:text-white ${locale === "ar" ? changa.className : jetbrains_mono.className} flex flex-col min-h-screen`}>
                     <NextIntlClientProvider messages={messages} locale={locale}>
-                        <ChakraProvider>
                             <NextUiProvider>
                                 <Navbar locale={locale} />
                                 <div className="container">
@@ -68,7 +65,6 @@ export default async function RootLayout({ children, params: { locale } }) {
                                     <Footer locale={locale} />
                                 </div>
                             </NextUiProvider>
-                        </ChakraProvider>
                     </NextIntlClientProvider>
                 </body>
             </html>
