@@ -141,7 +141,7 @@ const Viewed = () => {
                 </div>
 
                 <div className="mx-2 md:mx-8 space-y-6">
-                    <h1 className="text-xl">{t('viewed_stories')}:</h1>
+                    <h1 className="text-xl">{t('stories.viewed_stories')}:</h1>
                     <Table aria-label="viewed stories" selectionMode="single" color="default">
                         <TableHeader>
                             <TableColumn>

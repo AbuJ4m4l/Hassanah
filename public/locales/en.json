@@ -182,12 +182,14 @@
 "revelationType": "Revelation Type"
     },
     "stories": {
+      "viewed_stories": "Viewed stories",
 "title": "Title",
 "description": "Description",
 "publisher": "Publisher name",
 "provider": "Provider"
     },
     "hadiths": {
+      "viewed_hadiths": "Viewed hadiths",
 "bookSlug": "Book Slug",
 "chapterNumber": "Chapter Number",
 "status": "Status"
