@@ -9,15 +9,13 @@ import { Avatar, Button, Input, Link, Skeleton } from "@nextui-org/react";
 const MyAccount = ({ locale }) => {
   const t = useTranslations('profile');
   const [user, loading] = useAuthState(auth);
-  console.log(loading)
-
   return (
     <section role="section" className="mt-8">
-    <div className="mt-6 flex justify-center">
+      <div className="mt-6 flex justify-center">
         <h1 className="text-xl md:text-2xl">
-            {t('myAccount')}
-            </h1>
-            </div>
+          {t('myAccount')}
+        </h1>
+      </div>
       <div className="flex justify-center select-none mt-6">
         <Skeleton isLoaded={loading === false ? true : false} className="p-1 rounded-full">
           <Avatar
