@@ -3,9 +3,9 @@
 import Image from 'next/image';
 import { Link, Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@nextui-org/react';
 
-const LanguageSwitcher = ({ location }) => {
+const LanguageSwitcher = ({ location, className }) => {
     return (
-        <>
+        <div className={className ?? className}>
             <Dropdown>
                 <DropdownTrigger>
                     <Button
@@ -34,7 +34,7 @@ const LanguageSwitcher = ({ location }) => {
                     </DropdownItem>
                 </DropdownMenu>
             </Dropdown>
-        </>
+        </div>
     )
 }
 

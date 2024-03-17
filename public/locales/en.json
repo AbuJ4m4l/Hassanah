@@ -176,25 +176,25 @@
     "viewed_At": "Viewed At",
     "listned_At": "Listned At",
     "quran": {
-"viewed_surahs": "Viewed Surahs",
-"name": "Name",
-"total_ayahs": "Total Ayahs",
-"revelationType": "Revelation Type",
-"listned_surahs": "Listned surahs",
-"reciter": "Reciter"
+      "viewed_surahs": "Viewed Surahs",
+      "name": "Name",
+      "total_ayahs": "Total Ayahs",
+      "revelationType": "Revelation Type",
+      "listned_surahs": "Listned surahs",
+      "reciter": "Reciter"
     },
     "stories": {
       "viewed_stories": "Viewed stories",
-"title": "Title",
-"description": "Description",
-"publisher": "Publisher name",
-"provider": "Provider"
+      "title": "Title",
+      "description": "Description",
+      "publisher": "Publisher name",
+      "provider": "Provider"
     },
     "hadiths": {
       "viewed_hadiths": "Viewed hadiths",
-"bookSlug": "Book Slug",
-"chapterNumber": "Chapter Number",
-"status": "Status"
+      "bookSlug": "Book Slug",
+      "chapterNumber": "Chapter Number",
+      "status": "Status"
     }
   },
   "playlists": {
@@ -209,7 +209,8 @@
     "visibility": "Visibility"
   },
   "settings": {
-    "settings": "Settings"
+    "settings": "Settings",
+    "accessibility_settings": "Accessibility Settings"
   },
   "createNewPlaylistModal": {
     "title": "Create New Playlist",
@@ -238,5 +239,10 @@
     "attention": "Are you sure you want to delete the {name} playlist ?",
     "delete": "Delete",
     "cancel": "Cancel"
+  },
+  "WebsiteThemeChanger": {
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light"
   }
 }

@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import NextUiProvider from "../../components/Providers/NextUiProvider.jsx";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from 'next-intl/server'
+import BodyTheme from "../../components/BodyTheme/index.jsx";
 const changa = Changa({ subsets: ["arabic"] });
 const jetbrains_mono = Noto_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -33,10 +34,10 @@ export default async function RootLayout({ children, params: { locale } }) {
                     <meta property="og:description" content="Discover Quran readings, Islamic stories, Hadiths, and accurate prayer times. Dive into Islamic teachings in both English and Arabic with Hassanah.org." />
                     <meta property="og:url" content="https://hassanah.org" />
                     <meta property="og:type" content="website" />
-                    <meta property="og:image" content="https:/hassana.org/favicon.ico" />
+                    <meta property="og:image" content="https://hassanah.org/favicon.ico" />
                     <meta name="twitter:title" content="Hassanah - Your Gateway to Islamic Wisdom" />
                     <meta name="twitter:description" content="Engage with the Quran Kareem, Islamic stories, and Hadiths. Follow accurate prayer times and join our community for spiritual growth and learning." />
-                    <meta name="twitter:image" content="[IMAGE URL]" />
+                    <meta name="twitter:image" content="https://hassanah.org/favicon.ico" />
                     <meta name="twitter:card" content="summary_large_image" />
 
                     <meta name="description" content="حسنة.أورج: مصدرك الأول لقراءات القرآن الكريم، القصص الإسلامية، مجموعات الحديث، أوقات الصلاة الدقيقة، والمزيد. انضم إلى مجتمعنا لاستكشاف غنى التعاليم الإسلامية باللغتين الإنجليزية والعربية. تابعنا على فيسبوك، اكس، وانستغرام." />
@@ -54,7 +55,7 @@ export default async function RootLayout({ children, params: { locale } }) {
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
 
                 </head>
-                <body dir={direction} className={`dark overflow-x-hidden selection:bg-primary m-0 p-0 selection:text-white ${locale === "ar" ? changa.className : jetbrains_mono.className} flex flex-col min-h-screen`}>
+                <BodyTheme dir={direction} className={`overflow-x-hidden selection:bg-primary m-0 p-0 selection:text-white ${locale === "ar" ? changa.className : jetbrains_mono.className} flex flex-col min-h-screen`}>
                     <NextIntlClientProvider messages={messages} locale={locale}>
                         <NextUiProvider>
                             <Navbar locale={locale} />
@@ -68,7 +69,7 @@ export default async function RootLayout({ children, params: { locale } }) {
                             </div>
                         </NextUiProvider>
                     </NextIntlClientProvider>
-                </body>
+                </BodyTheme>
             </html>
         );
     }
