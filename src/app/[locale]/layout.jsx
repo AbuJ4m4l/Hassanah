@@ -10,6 +10,12 @@ import { getMessages } from 'next-intl/server'
 const changa = Changa({ subsets: ["arabic"] });
 const jetbrains_mono = Noto_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 
+export const metadata = {
+    title: "حسنة",
+    description: "موقع حسنة للأمور دينية",
+};
+
+
 export default async function RootLayout({ children, params: { locale } }) {
     const messages = await getMessages();
     if (!locales.includes(locale)) {
