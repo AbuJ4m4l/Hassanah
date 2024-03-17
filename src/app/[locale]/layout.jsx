@@ -1,4 +1,3 @@
-import { Changa, Noto_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "../../components/Navbar/index.jsx";
 import Footer from "../../components/Footer/index.jsx";
@@ -8,8 +7,6 @@ import NextUiProvider from "../../components/Providers/NextUiProvider.jsx";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from 'next-intl/server'
 import BodyTheme from "../../components/BodyTheme/index.jsx";
-const changa = Changa({ subsets: ["arabic"] });
-const jetbrains_mono = Noto_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata = {
     title: "حسنة",
@@ -55,7 +52,7 @@ export default async function RootLayout({ children, params: { locale } }) {
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
 
                 </head>
-                <BodyTheme dir={direction} className={`overflow-x-hidden selection:bg-primary m-0 p-0 selection:text-white ${locale === "ar" ? changa.className : jetbrains_mono.className} flex flex-col min-h-screen`}>
+                <BodyTheme dir={direction} className={`overflow-x-hidden selection:bg-primary m-0 p-0 selection:text-white flex flex-col min-h-screen`}>
                     <NextIntlClientProvider messages={messages} locale={locale}>
                         <NextUiProvider>
                             <Navbar locale={locale} />
