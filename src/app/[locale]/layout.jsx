@@ -2,18 +2,13 @@ import { Changa, Noto_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "../../components/Navbar/index.jsx";
 import Footer from "../../components/Footer/index.jsx";
-import { NextIntlClientProvider } from 'next-intl';
 import { locales } from "../../../navigation";
 import { notFound } from "next/navigation";
-import { getMessages } from "next-intl/server";
 import NextUiProvider from "../../components/Providers/NextUiProvider.jsx";
-
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from 'next-intl/server'
 const changa = Changa({ subsets: ["arabic"] });
 const jetbrains_mono = Noto_Sans({ subsets: ["latin"], weight: ["400", "700"] });
-export const metadata = {
-    title: "حسنة",
-    description: "موقع حسنة للأمور دينية",
-};
 
 export default async function RootLayout({ children, params: { locale } }) {
     const messages = await getMessages();
@@ -51,6 +46,7 @@ export default async function RootLayout({ children, params: { locale } }) {
                     <meta name="twitter:card" content="summary_large_image" />
                     <meta charSet="UTF-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
                 </head>
                 <body dir={direction} className={`dark overflow-x-hidden selection:bg-primary m-0 p-0 selection:text-white ${locale === "ar" ? changa.className : jetbrains_mono.className} flex flex-col min-h-screen`}>
                     <NextIntlClientProvider messages={messages} locale={locale}>
