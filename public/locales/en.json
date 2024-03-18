@@ -210,7 +210,14 @@
   },
   "settings": {
     "settings": "Settings",
-    "accessibility_settings": "Accessibility Settings"
+    "accessibility_settings": "Accessibility Settings",
+    "mansour-al-zahrani": "Mansour Al Zahrani",
+    "ahmad-al-nafees": "Ahmad Al Nafees",
+    "hafiz-mustafa-ozcan-turkey": "Hafiz Mustafa Ozcan Turkey",
+    "karl-jenkins-mass": "Karl Jenkins Mass",
+    "mishary-rashed-afassy": "Mishary Rashed Afassy",
+    "dubai-one-mishary-rashed-afassy": "Dubai One Mishary Rashed Afassy",
+    "anthor-mishary-rashed-afassy": "Another Mishary Rashed Afassy"
   },
   "createNewPlaylistModal": {
     "title": "Create New Playlist",

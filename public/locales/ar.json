@@ -158,6 +158,15 @@
     "signout": "تسجيل الخروج",
     "change_account_information": "تغيير تفاصيل الحساب"
   },
+  "settings": {
+    "mansour-al-zahrani": "منصور الزهراني",
+    "ahmad-al-nafees": "أحمد النفيس",
+    "hafiz-mustafa-ozcan-turkey": "حافظ مصطفى أوزكان تركيا",
+    "karl-jenkins-mass": "كارل جينكينز ماس",
+    "mishary-rashed-afassy": "مشاري راشد العفاسي",
+    "dubai-one-mishary-rashed-afassy": "دبي واحد مشاري راشد العفاسي",
+    "anthor-mishary-rashed-afassy": "آخر مشاري راشد العفاسي"
+  },
   "error": {
     "error": "حدث خطأ غير متوقع.",
     "try_again": "حاول مرة أخرى",
