@@ -39,6 +39,7 @@ yarn-error.log*
 next-env.d.ts
 
 # IDEs
-.vs
-.vscode
-.fleet
+.vs # Visual Studio
+.vscode # Visual Studio Code
+.fleet # Jetbrains fleet
+.idx # Google IDX
