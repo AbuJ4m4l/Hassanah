@@ -146,7 +146,7 @@ const Settings = () => {
               placeholder={t("select_your_city_when_prayer_starts")}
               className="max-w-xs"
               isRequired
-              defaultSelectedKeys={["0"]}
+              defaultSelectedKey="0"
             >
               <AutocompleteItem key="0">
                 Country/City (Timezone)
