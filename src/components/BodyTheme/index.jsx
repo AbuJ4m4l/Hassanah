@@ -9,12 +9,13 @@ export default function BodyTheme({ children, className, dir }) {
     if (!storedTheme) {
       localStorage?.setItem('theme', 'dark')
       setTheme('dark')
+    } else {
+      setTheme(storedTheme)
     }
-    setTheme(storedTheme)
   }, [])
   return (
-    <body dir={dir} className={`${className ?? className} ${localStorage?.getItem('font') ? localStorage?.getItem('font') : "__className_73938b"} ${theme === "dark" ? "dark" : ""}`}>
+    <body dir={dir} className={`${className ?? className} ${localStorage?.getItem('font') ? localStorage?.getItem('font') : "__className_73938b"} ${theme}`} >
       {children}
-    </body>
+    </body >
   );
 }
