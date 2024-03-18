@@ -151,7 +151,7 @@
   },
   "profile": {
     "myAccount": "My Account",
-    "welcome": "Welcome",
+    "welcome": "Welcome,",
     "email": "Email",
     "username": "Username",
     "password": "Password",
@@ -205,19 +205,25 @@
     "created_At": "Created at",
     "view": "View Playlist",
     "edit": "Edit Playlist",
+    "public": "Public",
+    "private": "Private",
     "delete_playlist": "Delete Playlist",
     "visibility": "Visibility"
   },
   "settings": {
     "settings": "Settings",
     "accessibility_settings": "Accessibility Settings",
-    "mansour-al-zahrani": "Mansour Al Zahrani",
-    "ahmad-al-nafees": "Ahmad Al Nafees",
-    "hafiz-mustafa-ozcan-turkey": "Hafiz Mustafa Ozcan Turkey",
-    "karl-jenkins-mass": "Karl Jenkins Mass",
-    "mishary-rashed-afassy": "Mishary Rashed Afassy",
-    "dubai-one-mishary-rashed-afassy": "Dubai One Mishary Rashed Afassy",
-    "anthor-mishary-rashed-afassy": "Another Mishary Rashed Afassy"
+    "change_theme": "Change Theme",
+    "change_language": "Change Language",
+    "change_font": "Change Font",
+    "notification_settings": "Notification Settings",
+    "send_notification_for_islam_festivals": "Send notification for Islamic festivals",
+    "autoplay_adhan": "Autoplay Adhan",
+    "select_reciter": "Select Reciter",
+    "select_the_default_reciter_when_adhan_starts": "Select the default reciter when Adhan starts",
+    "prayer_notifier": "Prayer Notifier",
+    "your_city": "Your City",
+    "send_notification_when_new_story_uploads": "Send notification when a new story uploads"
   },
   "createNewPlaylistModal": {
     "title": "Create New Playlist",

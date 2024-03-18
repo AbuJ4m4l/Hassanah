@@ -17,15 +17,15 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        "primary": "#0093fd",
-        "secondry": "#242424",
+        primary: "#0093fd",
+        secondry: "#242424",
         "secondry-light": "#343434",
         "primary-dark": "#0086e6",
         "secondry.light": "#cccccc",
-        "secondry.light-lighten": "#d9d9d9"
+        "secondry.light-lighten": "#d9d9d9",
       },
     },
   },
-  darkMode: 'class',
+  darkMode: "class",
   plugins: [nextui()],
 };

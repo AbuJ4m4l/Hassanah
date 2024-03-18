@@ -73,7 +73,7 @@ const PlayLists = () => {
                                 </TableCell>
                                 <TableCell>
                                     <div className="flex justify-center">
-                                        <Chip variant="flat" color="success">Public</Chip>
+                                        <Chip variant="flat" color="success">{t('public')}</Chip>
                                     </div>
                                 </TableCell>
                                 <TableCell>

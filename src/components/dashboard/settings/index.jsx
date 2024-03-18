@@ -4,12 +4,24 @@ import { useTranslations } from "next-intl";
 import LanguageSwitcher from "../../languageSwitcher";
 import WebsiteThemeChanger from "../../WebsiteThemeChanger";
 import FontSwitcher from "../../authentication/FontChanger";
-import { Checkbox, Select, SelectItem } from "@nextui-org/react";
+import {
+  Autocomplete,
+  AutocompleteItem,
+  Checkbox,
+  Select,
+  SelectItem,
+} from "@nextui-org/react";
 import { useState } from "react";
 
 const Settings = () => {
   const t = useTranslations("settings");
   const [isAutoPlayAdhanSelected, setIsAutoPlayAdhanSelected] = useState(false);
+  const [isPrayerNotifierSelected, setIsPrayerNotifierSelected] =
+    useState(false);
+  const [
+    isSendNotificationWhenNewStoryUploads,
+    setIsSendNotificationWhenNewStoryUploads,
+  ] = useState(false);
   const [selectedReciter, setSelectedReciter] = useState(0);
   const [
     isSendIslamicFestivalsNotificationSelected,
@@ -82,14 +94,16 @@ const Settings = () => {
             onValueChange={setIsSendIslamicFestivalsNotificationIsSelected}
             size="md"
           >
-            {t("send_notification_for_islam_festivals")}
+            <p className="rtl:mr-2">
+              {t("send_notification_for_islam_festivals")}
+            </p>
           </Checkbox>
           <Checkbox
             isSelected={isAutoPlayAdhanSelected}
             onValueChange={setIsAutoPlayAdhanSelected}
             size="md"
           >
-            {t("autoplay_adhan")}
+            <p className="rtl:mr-2"> {t("autoplay_adhan")}</p>
           </Checkbox>
 
           {isAutoPlayAdhanSelected && (
@@ -100,6 +114,7 @@ const Settings = () => {
               value={selectedReciter}
               onChange={(e) => setSelectedReciter(e.target?.value)}
               defaultSelectedKeys={["0"]}
+              isRequired
             >
               {reciters.map((reciter) => (
                 <SelectItem key={reciter.id} value={reciter.id}>
@@ -108,7 +123,7 @@ const Settings = () => {
               ))}
             </Select>
           )}
-          {selectedReciter && isAutoPlayAdhanSelected ? (
+          {isAutoPlayAdhanSelected ? (
             <audio
               src={reciters[selectedReciter]?.audio}
               autoPlay
@@ -117,6 +132,38 @@ const Settings = () => {
           ) : (
             ""
           )}
+          <Checkbox
+            isSelected={isPrayerNotifierSelected}
+            onValueChange={setIsPrayerNotifierSelected}
+            size="md"
+          >
+            <p className="rtl:mr-2">{t("prayer_notifier")}</p>
+          </Checkbox>
+          {isPrayerNotifierSelected ? (
+            <Autocomplete
+              size="md"
+              label={t("your_city")}
+              placeholder={t("select_your_city_when_prayer_starts")}
+              className="max-w-xs"
+            >
+              <AutocompleteItem key="city">
+                Country/City (Timezone)
+              </AutocompleteItem>
+            </Autocomplete>
+          ) : (
+            ""
+          )}
+
+          <Checkbox
+            isSelected={isSendNotificationWhenNewStoryUploads}
+            onValueChange={setIsSendNotificationWhenNewStoryUploads}
+            size="md"
+          >
+            <p className="rtl:mr-2">
+              {" "}
+              {t("send_notification_when_new_story_uploads")}
+            </p>
+          </Checkbox>
         </div>
       </div>
     </section>

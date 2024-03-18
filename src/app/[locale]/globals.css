@@ -26,9 +26,12 @@ button {
 
 body {
   color: rgb(var(--foreground-rgb)) !important;
-  background: linear-gradient(to bottom,
+  background: linear-gradient(
+      to bottom,
       transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)) !important;
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)) !important;
 }
 
 @layer utilities {
