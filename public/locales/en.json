@@ -257,5 +257,11 @@
     "theme": "Theme",
     "dark": "Dark",
     "light": "Light"
+  },
+  "SignoutModal": {
+    "title": "Signout From Your Account",
+    "attention": "Are you sure you want to signout from your account ?",
+    "signout": "Signout",
+    "cancel": "Cancel"
   }
 }
