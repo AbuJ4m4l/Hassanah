@@ -4,12 +4,55 @@ import { useTranslations } from "next-intl";
 import LanguageSwitcher from "../../languageSwitcher";
 import WebsiteThemeChanger from "../../WebsiteThemeChanger";
 import FontSwitcher from "../../authentication/FontChanger";
-import { Checkbox } from "@nextui-org/react";
+import { Checkbox, Select, SelectItem } from "@nextui-org/react";
 import { useState } from "react";
 
 const Settings = () => {
   const t = useTranslations("settings");
-  const [isSelected, setIsSelected] = useState(false);
+  const [isAutoPlayAdhanSelected, setIsAutoPlayAdhanSelected] = useState(false);
+  const [
+    isSendIslamicFestivalsNotificationSelected,
+    setIsSendIslamicFestivalsNotificationIsSelected,
+  ] = useState(false);
+  const reciters = [
+    {
+      "mansour-al-zahrani": {
+        id: 1,
+        name: t("mansour-al-zahrani"),
+        audio: "/audios/a11-mansour-al-zahrani.mp3",
+      },
+      "ahmad-al-nafees": {
+        id: 2,
+        name: t("ahmad-al-nafees"),
+        audio: "/audios/Ahmad al-Nafees.mp3",
+      },
+      "hafiz-mustafa-ozcan-turkey": {
+        id: 3,
+        name: t("hafiz-mustafa-ozcan-turkey"),
+        audio: "/audios/HafizMustafaOzcanTurkey.mp3",
+      },
+      "karl-jenkins-mass": {
+        id: 4,
+        name: t("karl-jenkins-mass"),
+        audio: "/audios/Karl Jenkins Mass.mp3",
+      },
+      "mishary-rashed-afassy": {
+        id: 5,
+        name: t("mishary-rashed-afassy"),
+        audio: "/audios/MisharyRashedAfassy.mp3",
+      },
+      "dubai-one-mishary-rashed-afassy": {
+        id: 6,
+        name: t("dubai-one-mishary-rashed-afassy"),
+        audio: "/audios/DubaiOneMisharyRashedAfassy.mp3",
+      },
+      "anthor-mishary-rashed-afassy": {
+        id: 7,
+        name: t("anthor-mishary-rashed-afassy"),
+        audio: "/audios/AnthorAdhanMisharyRashedAfassy.mp3",
+      },
+    },
+  ];
   return (
     <section role="tab">
       <div className="mt-6 flex justify-center">
@@ -34,12 +77,33 @@ const Settings = () => {
       <div>
         <Checkbox
           className="ltr:ml-8 rtl:mr-8 mt-4"
-          isSelected={isSelected}
-          onValueChange={setIsSelected}
+          isSelected={isSendIslamicFestivalsNotificationSelected}
+          onValueChange={setIsSendIslamicFestivalsNotificationIsSelected}
           size="md"
         >
           {t("send_notification_for_islam_festivals")}
         </Checkbox>
+        <Checkbox
+          className="ltr:ml-8 rtl:mr-8 mt-4"
+          isSelected={isAutoPlayAdhanSelected}
+          onValueChange={setIsAutoPlayAdhanSelected}
+          size="md"
+        >
+          {t("autoplay_adhan")}
+        </Checkbox>
+        {isAutoPlayAdhanSelected && (
+          <Select
+            label={t("select_reciter")}
+            className="max-w-xs"
+            placeholder={t("select_the_default_reciter_when_adhan_starts")}
+          >
+            {reciters.forEach((reciter) => {
+              <SelectItem key={reciter.id} value={reciter.id}>
+                {reciter.name}
+              </SelectItem>;
+            })}
+          </Select>
+        )}
       </div>
     </section>
   );
