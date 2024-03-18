@@ -62,7 +62,7 @@
     "error_credentials_signin_description": " Please try again with another account.",
     "password_length_error": "The Password must contain at least 8 characters.",
     "login_success": "Welcome Back!",
-    "login_success_description": "You have successfully logged in. You will be redirected to the dashboard in 3s",
+    "login_success_description": "You have successfully logged in. You will be redirected to the dashboard in 3 seconds",
     "enter_your_password": "Enter Your Password",
     "enter_your_email": "Enter Your Email",
     "claimsTooLarge": "The data provided is too large.",

@@ -11,7 +11,7 @@ import {
 } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 
-const SignoutModal = ({ isOpen, onOpenChange, Playlist }) => {
+const SignoutModal = ({ isOpen, onOpenChange }) => {
   const t = useTranslations("SignoutModal");
   return (
     <Modal className="rtl:ltr" isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -28,7 +28,7 @@ const SignoutModal = ({ isOpen, onOpenChange, Playlist }) => {
               <Button color="default" variant="light" onPress={onClose}>
                 {t("cancel")}
               </Button>
-              <Button href="/signout" as={Link} className="!text-white" color="danger" onPress={onClose}>
+              <Button href="/signout" as={Link} className="!text-white" color="danger">
                 {t("signout")}
               </Button>
             </ModalFooter>
