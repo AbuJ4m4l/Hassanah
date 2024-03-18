@@ -3,11 +3,24 @@
 import { useTranslations } from "next-intl";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../firebase";
-import { Avatar, Button, Input, Link, Skeleton } from "@nextui-org/react";
+import {
+  Avatar,
+  Button,
+  Input,
+  Link,
+  Skeleton,
+  useDisclosure,
+} from "@nextui-org/react";
+import SignoutModal from "./SignoutModal/SignoutModal";
 
 const MyAccount = ({ locale }) => {
   const t = useTranslations("profile");
   const [user, loading] = useAuthState(auth);
+  const {
+    isOpen: isSignoutModalOpen,
+    onOpen: onSignoutModalOpen,
+    onOpenChange: onSignoutOpenChange,
+  } = useDisclosure();
   return (
     <section role="section" className="mt-8">
       <div className="mt-6 flex justify-center">
@@ -172,7 +185,7 @@ const MyAccount = ({ locale }) => {
           isLoaded={loading === false ? true : false}
           className="rounded-lg"
         >
-          <Button as={Link} href="/signout" color="danger" variant="flat">
+          <Button onClick={onSignoutModalOpen} color="danger" variant="flat">
             {t("signout")}
           </Button>
         </Skeleton>
@@ -180,11 +193,27 @@ const MyAccount = ({ locale }) => {
           isLoaded={loading === false ? true : false}
           className={locale === "ar" ? "mr-4 rounded-lg" : "ml-4 rounded-lg"}
         >
-          <Button color="primary" variant="flat">
-            {t("change_account_information")}
-          </Button>
+          {user?.providerData?.map((pData) => (
+            <div key={pData.providerId}>
+              {pData.providerId === "facebook.com" ? (
+                <></>
+              ) : pData.providerId === "google.com" ? (
+                <></>
+              ) : pData.providerId === "password" ? (
+                <Button color="primary" variant="flat">
+                  {t("change_account_information")}
+                </Button>
+              ) : (
+                <></>
+              )}
+            </div>
+          ))}
         </Skeleton>
       </div>
+      <SignoutModal
+        isOpen={isSignoutModalOpen}
+        onOpenChange={onSignoutOpenChange}
+      />
     </section>
   );
 };

@@ -383,7 +383,12 @@ const LoginForm = ({ locale }) => {
           </div>
         </form>
       </div>
-      <Modal backdrop="opaque" isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal
+        className="rtl:ltr"
+        backdrop="opaque"
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+      >
         <ModalContent>
           {(onClose) => (
             <>
@@ -398,7 +403,7 @@ const LoginForm = ({ locale }) => {
                 </p>
               </ModalBody>
               <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
+                <Button color="success" variant="light" onPress={onClose}>
                   {t("close")}
                 </Button>
               </ModalFooter>
