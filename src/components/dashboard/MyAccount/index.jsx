@@ -32,7 +32,7 @@ const MyAccount = ({ locale }) => {
     if (user?.emailVerified === false) {
       onAccessDeniedModalOpen();
     }
-  }, [user]);
+  }, [user?.emailVerified]);
   return (
     <section role="section" className="mt-8">
       <div className="mt-6 flex justify-center">

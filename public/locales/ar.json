@@ -263,5 +263,13 @@
     "attention": "هل أنت متأكد أنك تريد تسجيل الخروج من حسابك؟",
     "signout": "تسجيل الخروج",
     "cancel": "إلغاء"
+  },
+  "AccessDeniedModal": {
+    "title": "رفض الوصول",
+    "messages": {
+      "account_not_verified": "لم يتم التحقق من حسابك عن طريق البريد الإلكتروني بعد"
+    },
+    "signout": "تسجيل الخروج",
+    "resend_verification_email": "إعادة إرسال رابط التحقق"
   }
 }
