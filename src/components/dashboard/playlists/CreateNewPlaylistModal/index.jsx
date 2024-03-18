@@ -20,7 +20,7 @@ const CreateNewPlaylistModal = ({ isOpen, onOpenChange }) => {
   const [playlistName, setPlaylistName] = useState("");
   const [visibility, setVisibility] = useState("");
   return (
-    <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+    <Modal className="rtl:ltr" isOpen={isOpen} onOpenChange={onOpenChange}>
       <ModalContent>
         {(onClose) => (
           <>
