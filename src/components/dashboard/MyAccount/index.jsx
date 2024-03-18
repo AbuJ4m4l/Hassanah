@@ -33,6 +33,7 @@ const MyAccount = ({ locale }) => {
       onAccessDeniedModalOpen();
     }
   }, [user?.emailVerified]);
+  console.log(user);
   return (
     <section role="section" className="mt-8">
       <div className="mt-6 flex justify-center">
