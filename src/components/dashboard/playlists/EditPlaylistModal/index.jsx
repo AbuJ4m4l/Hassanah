@@ -20,7 +20,7 @@ const EditPlaylistModal = ({ isOpen, onOpenChange, Playlist }) => {
   const [playlistName, setPlaylistName] = useState(Playlist?.name);
   const [visibility, setVisibility] = useState(Playlist?.visibility);
   return (
-    <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+    <Modal className="rtl:ltr" isOpen={isOpen} onOpenChange={onOpenChange}>
       <ModalContent>
         {(onClose) => (
           <>
