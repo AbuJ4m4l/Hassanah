@@ -228,7 +228,7 @@
   "createNewPlaylistModal": {
     "title": "إنشاء قائمة تشغيل جديدة",
     "enter_playlist_name": "أدخل اسم القائمة التشغيلية",
-    "select_visibility": "حدد رؤية القائمة التشغيلية",
+    "select_visibility": "حدد رؤية القائمة التشغيل",
     "visibility": "الرؤية",
     "playlist_name": "اسم القائمة التشغيل",
     "public": "عام",
