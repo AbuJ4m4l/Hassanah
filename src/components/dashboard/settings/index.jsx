@@ -16,37 +16,49 @@ const Settings = () => {
   ] = useState(false);
   const reciters = [
     {
-      "mansour-al-zahrani": {
+      mansourAlZahrani: {
         id: 1,
         name: t("mansour-al-zahrani"),
         audio: "/audios/a11-mansour-al-zahrani.mp3",
       },
-      "ahmad-al-nafees": {
+    },
+    {
+      ahmadAlNafees: {
         id: 2,
         name: t("ahmad-al-nafees"),
         audio: "/audios/Ahmad al-Nafees.mp3",
       },
-      "hafiz-mustafa-ozcan-turkey": {
+    },
+    {
+      hafizMustafaOzcanTurkey: {
         id: 3,
         name: t("hafiz-mustafa-ozcan-turkey"),
         audio: "/audios/HafizMustafaOzcanTurkey.mp3",
       },
-      "karl-jenkins-mass": {
+    },
+    {
+      karlJenkinsMass: {
         id: 4,
         name: t("karl-jenkins-mass"),
         audio: "/audios/Karl Jenkins Mass.mp3",
       },
-      "mishary-rashed-afassy": {
+    },
+    {
+      misharyRashedAfassy: {
         id: 5,
         name: t("mishary-rashed-afassy"),
         audio: "/audios/MisharyRashedAfassy.mp3",
       },
-      "dubai-one-mishary-rashed-afassy": {
+    },
+    {
+      dubaiOneMisharyRashedAfassy: {
         id: 6,
         name: t("dubai-one-mishary-rashed-afassy"),
         audio: "/audios/DubaiOneMisharyRashedAfassy.mp3",
       },
-      "anthor-mishary-rashed-afassy": {
+    },
+    {
+      anotherMisharyRashedAfassy: {
         id: 7,
         name: t("anthor-mishary-rashed-afassy"),
         audio: "/audios/AnthorAdhanMisharyRashedAfassy.mp3",
@@ -97,11 +109,11 @@ const Settings = () => {
             className="max-w-xs"
             placeholder={t("select_the_default_reciter_when_adhan_starts")}
           >
-            {reciters.forEach((reciter) => {
+            {reciters.map((reciter) => (
               <SelectItem key={reciter.id} value={reciter.id}>
                 {reciter.name}
-              </SelectItem>;
-            })}
+              </SelectItem>
+            ))}
           </Select>
         )}
       </div>
