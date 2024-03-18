@@ -29,7 +29,7 @@ const AccessDeniedModal = ({ isOpen, onOpenChange }) => {
             <ModalHeader className="flex flex-col gap-1">
               {t("title")}
             </ModalHeader>
-            <ModalBody>{t("attention")}</ModalBody>
+            <ModalBody>{t("messages.account_not_verified")}</ModalBody>
             <ModalFooter>
               <Button
                 href="/signout"

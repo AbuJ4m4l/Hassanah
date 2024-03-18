@@ -263,5 +263,13 @@
     "attention": "Are you sure you want to signout from your account ?",
     "signout": "Signout",
     "cancel": "Cancel"
+  },
+  "AccessDeniedModal": {
+    "title": "Access Denied",
+    "messages": {
+      "account_not_verified": "Your account are not verified by email message"
+    },
+    "signout": "Signout",
+    "resend_verification_email": "Resend verification url"
   }
 }
