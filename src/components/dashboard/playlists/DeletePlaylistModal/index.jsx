@@ -13,7 +13,7 @@ import { useTranslations } from "next-intl";
 const DeletePlaylistModal = ({ isOpen, onOpenChange, Playlist }) => {
   const t = useTranslations("deletePlaylistModal");
   return (
-    <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+    <Modal className="rtl:ltr" isOpen={isOpen} onOpenChange={onOpenChange}>
       <ModalContent>
         {(onClose) => (
           <>
