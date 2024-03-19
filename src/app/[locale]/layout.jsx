@@ -1,4 +1,3 @@
-import NextNProgress from 'nextjs-progressbar';
 import "./globals.css";
 import Navbar from "../../components/Navbar/index.jsx";
 import Footer from "../../components/Footer/index.jsx";
@@ -8,6 +7,7 @@ import NextUiProvider from "../../components/Providers/NextUiProvider.jsx";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import BodyTheme from "../../components/BodyTheme/index.jsx";
+import NextNProgressProvider from '../../components/Providers/NextNProgress.jsx';
 
 export const metadata = {
   title: "حسنة",
@@ -104,7 +104,7 @@ export default async function RootLayout({ children, params: { locale } }) {
           dir={direction}
           className={`overflow-x-hidden selection:bg-primary m-0 p-0 selection:text-white flex flex-col min-h-screen`}
         >
-          <NextNProgress color='#0093FD' startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true} />
+          <NextNProgressProvider />
           <NextIntlClientProvider messages={messages} locale={locale}>
             <NextUiProvider>
               <Navbar locale={locale} />
