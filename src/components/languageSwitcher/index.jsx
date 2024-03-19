@@ -102,7 +102,7 @@ const LanguageSwitcher = ({ location, className }) => {
             }
             color="default"
           >
-            Türkçe
+            Türkçe (Yakında gelecek)
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>
