@@ -273,5 +273,18 @@
     },
     "signout": "تسجيل الخروج",
     "resend_verification_email": "إعادة إرسال رابط التحقق"
+  },
+  "resetPassword": {
+    "resetPassword": "إعادة تعيين كلمة المرور",
+    "email": "البريد الإلكتروني",
+    "enter_your_email": "أدخل بريدك الإلكتروني",
+    "email_invalid": "البريد الإلكتروني غير صالح",
+    "sendResetPasswordVerification": "إرسال التحقق من إعادة تعيين كلمة المرور"
+  },
+  "SuccessModal": {
+    "title": "تم إرسال البريد الإلكتروني بنجاح",
+    "body": "تم إرسال رسالة إعادة تعيين كلمة المرور بنجاح",
+    "close": "اغلاق",
+    "login": "تسجيل الدخول"
   }
 }

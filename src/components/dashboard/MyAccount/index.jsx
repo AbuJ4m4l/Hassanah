@@ -151,7 +151,7 @@ const MyAccount = ({ locale }) => {
                 >
                   <Link
                     className="w-[300px] md:w-[400px]"
-                    href="/change-password"
+                    href="/reset-password"
                   >
                     <Input
                       isReadOnly

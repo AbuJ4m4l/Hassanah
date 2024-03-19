@@ -8,9 +8,9 @@
     "email": "Email",
     "password": "Password",
     "confirm_password": "Confirm Password",
-    "signup_button": "Sign Up",
+    "signup_button": "Signup",
     "already_have_account": "Already have an account? ",
-    "login": "Log In",
+    "login": "Login",
     "retype_password": "Password Match",
     "password_match_required": "Password match is required",
     "password_required": "Password is required",
@@ -47,7 +47,7 @@
     "enter_your_username": "Enter Your Username"
   },
   "login": {
-    "login": "Log in to Your Account",
+    "login": "Login to Your Account",
     "email": "Email",
     "password": "Password",
     "login_button": "Login",
@@ -125,7 +125,7 @@
     "greeting": "Dear {username},",
     "body": "Thank you for signing up for Hassanah! To complete your registration and access all the features of our platform, please verify your email address by clicking the link below:",
     "verificationButton": "Verify",
-    "disclaimer": "If you did not sign up for Hassanah, please disregard this email.",
+    "disclaimer": "If you did not signup for Hassanah, please disregard this email.",
     "closing": "Best Regards,",
     "team": "The Hassanah Team"
   },
@@ -273,5 +273,18 @@
     },
     "signout": "Signout",
     "resend_verification_email": "Resend verification url"
+  },
+  "resetPassword": {
+    "resetPassword": "Reset Password",
+    "email": "Email",
+    "enter_your_email": "Enter your email",
+    "email_invalid": "Email is invalid",
+    "sendResetPasswordVerification": "Send Reset Password Verification"
+  },
+  "SuccessModal": {
+    "title": "Email has been sent successfully",
+    "body": "The Reset Password Email has been sent successfully",
+    "close": "Close",
+    "login": "Login"
   }
 }
