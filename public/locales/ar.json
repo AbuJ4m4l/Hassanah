@@ -175,6 +175,7 @@
     "number": "الرقم",
     "viewed_At": "شوهد في",
     "listned_At": "استمع في",
+    "empty_data": "لا توجد بيانات لعرضها",
     "quran": {
       "viewed_surahs": "السور المشاهدة",
       "name": "الاسم",
@@ -208,7 +209,8 @@
     "private": "خاص",
     "edit": "تحرير القائمة",
     "delete_playlist": "حذف القائمة",
-    "visibility": "الرؤية"
+    "visibility": "الرؤية",
+    "empty_data": "لا توجد بيانات لعرضها"
   },
   "settings": {
     "settings": "الإعدادات",

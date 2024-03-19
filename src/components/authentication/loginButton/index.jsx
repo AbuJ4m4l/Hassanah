@@ -1,7 +1,7 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../../firebase";
+import { auth } from "../../../lib/firebase";
 import {
   Avatar,
   Button,

@@ -15,7 +15,7 @@ import {
   ModalHeader,
   useDisclosure,
 } from "@nextui-org/react";
-import { auth } from "../../../../firebase";
+import { auth } from "../../../../lib/firebase";
 import GoogleLogin from "../../google.login";
 import FacebookLogin from "../../facebook.login";
 
@@ -197,8 +197,8 @@ const SignupForm = ({ locale }) => {
                   isEmailInvalid === true
                     ? "danger"
                     : isEmailInvalid === 0
-                    ? "danger"
-                    : "default"
+                      ? "danger"
+                      : "default"
                 }
                 errorMessage={
                   isEmailInvalid === true
@@ -235,14 +235,14 @@ const SignupForm = ({ locale }) => {
                   isPasswordInvalid === true
                     ? "danger"
                     : isPasswordInvalid === 1
-                    ? "danger"
-                    : "default"
+                      ? "danger"
+                      : "default"
                 }
                 errorMessage={
                   isPasswordInvalid === true
                     ? t("password_required")
                     : isPasswordInvalid === 1 &&
-                      t("the_password_should_contains_special_charachters")
+                    t("the_password_should_contains_special_charachters")
                 }
                 onValueChange={setPassword}
                 startContent={
@@ -321,14 +321,14 @@ const SignupForm = ({ locale }) => {
                   isMatchPasswordInvalid === true
                     ? "danger"
                     : isMatchPasswordInvalid === 0
-                    ? "danger"
-                    : "default"
+                      ? "danger"
+                      : "default"
                 }
                 errorMessage={
                   isMatchPasswordInvalid === true
                     ? t("password_match_required")
                     : isMatchPasswordInvalid === 0 &&
-                      t("match_password_doesnt_match")
+                    t("match_password_doesnt_match")
                 }
                 onValueChange={setRetypePassword}
                 endContent={
@@ -443,8 +443,8 @@ const SignupForm = ({ locale }) => {
                   isEmailInvalid === true
                     ? "danger"
                     : isEmailInvalid === 0
-                    ? "danger"
-                    : "default"
+                      ? "danger"
+                      : "default"
                 }
                 errorMessage={
                   isEmailInvalid === true
@@ -481,14 +481,14 @@ const SignupForm = ({ locale }) => {
                   isPasswordInvalid === true
                     ? "danger"
                     : isPasswordInvalid === 1
-                    ? "danger"
-                    : "default"
+                      ? "danger"
+                      : "default"
                 }
                 errorMessage={
                   isPasswordInvalid === true
                     ? t("password_required")
                     : isPasswordInvalid === 1 &&
-                      t("the_password_should_contains_special_charachters")
+                    t("the_password_should_contains_special_charachters")
                 }
                 onValueChange={setPassword}
                 endContent={
@@ -569,14 +569,14 @@ const SignupForm = ({ locale }) => {
                   isMatchPasswordInvalid === true
                     ? "danger"
                     : isMatchPasswordInvalid === 0
-                    ? "danger"
-                    : "default"
+                      ? "danger"
+                      : "default"
                 }
                 errorMessage={
                   isMatchPasswordInvalid === true
                     ? t("password_match_required")
                     : isMatchPasswordInvalid === 0 &&
-                      t("match_password_doesnt_match")
+                    t("match_password_doesnt_match")
                 }
                 onValueChange={setRetypePassword}
                 startContent={

@@ -49,7 +49,7 @@ const Viewed = () => {
                 <p className="flex justify-center">{t("viewed_At")}</p>
               </TableColumn>
             </TableHeader>
-            <TableBody emptyContent={t("quran.empty_data")}>
+            <TableBody emptyContent={t("empty_data")}>
               <TableRow href="/quran/surah/1" key="1">
                 <TableCell>
                   <p className="flex justify-center">1</p>

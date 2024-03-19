@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "../../languageSwitcher";
 import WebsiteThemeChanger from "../../WebsiteThemeChanger";
-import FontSwitcher from "../../authentication/FontChanger";
+import FontSwitcher from "../../FontChanger";
 import {
   Autocomplete,
   AutocompleteItem,

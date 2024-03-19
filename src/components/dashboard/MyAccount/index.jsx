@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../../firebase";
+import { auth } from "../../../lib/firebase";
 import {
   Avatar,
   Button,
@@ -213,7 +213,7 @@ const MyAccount = ({ locale }) => {
               ) : pData.providerId === "google.com" ? (
                 <></>
               ) : pData.providerId === "password" ? (
-                <Button color="primary" variant="flat">
+                <Button color="primary" variant="flat" href="/change-account-details" as={Link}>
                   {t("change_account_information")}
                 </Button>
               ) : (
