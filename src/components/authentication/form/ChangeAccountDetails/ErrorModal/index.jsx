@@ -9,11 +9,8 @@ import {
   Link,
 } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
-
-import React from "react";
-
 function SuccessModal({ isOpen, onOpenChange }) {
-  const t = useTranslations("SuccessModal");
+  const t = useTranslations("ChangeAccountDetailsErrorModal");
   return (
     <>
       <Modal className="rtl:ltr" isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -29,14 +26,6 @@ function SuccessModal({ isOpen, onOpenChange }) {
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
                   {t("close")}
-                </Button>
-                <Button
-                  color="primary"
-                  as={Link}
-                  href="/dashboard"
-                  onPress={onClose}
-                >
-                  {t("dashboard")}
                 </Button>
               </ModalFooter>
             </>

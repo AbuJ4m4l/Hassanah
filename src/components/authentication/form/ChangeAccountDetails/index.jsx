@@ -8,6 +8,8 @@ import SuccessModal from "./SuccessModal";
 import {
   useAuthState,
   useSignInWithEmailAndPassword,
+  useUpdateEmail,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import Link from "next/link";
 
@@ -18,12 +20,22 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
     onOpen: onSuccessModalOpen,
     onOpenChange: onSuccessModalOpenChange,
   } = useDisclosure();
+  const {
+    isOpen: isErrorModalOpen,
+    onOpen: onErrorModalOpen,
+    onOpenChange: onErrorModalOpenChange,
+  } = useDisclosure();
   const [isAccessGranted, setIsAccessGranted] = useState(false);
   const [signInWithEmailAndPassword, _user, SignInLoading, error] =
     useSignInWithEmailAndPassword(auth);
   const [user, loading] = useAuthState(auth);
+  const [updateEmail, updateEmailLoading, updateEmailError] =
+    useUpdateEmail(auth);
+  const [updateProfile, updateProfileLoading, updateProfileError] =
+    useUpdateProfile(auth);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState(user?.email);
+  const [username, setUsername] = useState(user?.displayName);
   const [password, setPassword] = useState("");
   const isPasswordInvalid = useMemo(() => {
     if (password === "") return true;
@@ -33,16 +45,12 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
     try {
       e.preventDefault();
       if (email && password) {
-        signInWithEmailAndPassword(email, password)
-          .then((data) => {
-            if (error) {
-              setIsAccessGranted(false);
-            }
-            setIsAccessGranted(true);
-          })
-          .catch(() => {
+        signInWithEmailAndPassword(email, password).then((data) => {
+          if (error) {
             setIsAccessGranted(false);
-          });
+          }
+          setIsAccessGranted(true);
+        });
       }
     } catch (error) {
       setIsAccessGranted(false);
@@ -52,6 +60,24 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
   const handleForm = (e) => {
     try {
       e.preventDefault();
+      if (email !== user?.email) {
+        updateEmail(email).then(() => {
+          if (error) {
+            onErrorModalOpen();
+          }
+          onSuccessModalOpen();
+        });
+      }
+      if (username !== user?.displayName) {
+        updateProfile({
+          displayName: username,
+        }).then(() => {
+          if (error) {
+            onErrorModalOpen();
+          }
+          onSuccessModalOpen();
+        });
+      }
     } catch (error) {
       console.error(error);
     }
@@ -59,7 +85,7 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
 
   return (
     <div className={className}>
-      {isAccessGranted === true ? (
+      {SignInLoading === false && isAccessGranted === true ? (
         <>
           <form onSubmit={handleForm} className="space-y-6">
             <h2 className="mt-4">{t("email")}:</h2>
@@ -73,7 +99,8 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
                 className="truncate"
                 name="email"
                 label={t("email")}
-                value={user?.email}
+                value={email}
+                onValueChange={setEmail}
                 endContent={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +132,8 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
                 className="truncate mt-2"
                 name="username"
                 label={t("username")}
-                value={user?.displayName}
+                value={username}
+                onValueChange={setUsername}
                 endContent={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

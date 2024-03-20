@@ -14,7 +14,7 @@ const Footer = ({ locale }) => {
     setPath(path[1]);
   }, [pathname, locale]);
   return (
-    <footer className="border-t border-divider select-none backdrop-blur-lg backdrop-saturate-150 bg-background/70 w-full h-[560px] md:h-[370px]">
+    <footer className="border-t border-divider select-none backdrop-blur-lg backdrop-saturate-150 bg-background/70 w-full h-[650px] md:h-[400px]">
       <div className="flex flex-row">
         <Image
           src="/images/hassanahLoggo-white.png"
@@ -173,11 +173,7 @@ const Footer = ({ locale }) => {
             </Link>
           </div>
           <div className="md:block hidden mt-6">
-            <LanguageSwitcher
-              color="default"
-              variant="flat"
-              location={path}
-            />
+            <LanguageSwitcher color="default" variant="flat" location={path} />
           </div>
         </div>
       </div>
