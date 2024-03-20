@@ -1,10 +1,8 @@
-import React from 'react'
-import ChangeAccountDetailsClientPage from '../../../components/authentication/pages/change-account-details'
+import React from "react";
+import ChangeAccountDetailsClientPage from "../../../components/authentication/pages/change-account-details";
 
-const ChangeAccountDetails = () => {
-    return (
-        <ChangeAccountDetailsClientPage />
-    )
-}
+const ChangeAccountDetails = ({ params: { locale } }) => {
+  return <ChangeAccountDetailsClientPage locale={locale} />;
+};
 
-export default ChangeAccountDetails
+export default ChangeAccountDetails;
