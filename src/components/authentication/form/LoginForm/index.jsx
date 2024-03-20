@@ -28,10 +28,9 @@ const LoginForm = ({ locale }) => {
   const [password, setPassword] = useState("");
   const [userMessage, setUserMessage] = useState("");
   const [message, setMessage] = useState("");
-  var { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [signInWithEmailAndPassword, _user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-  const [user] = useAuthState(auth);
   const t = useTranslations("login");
   const validateEmail = (email) =>
     email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
