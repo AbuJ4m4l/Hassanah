@@ -19,8 +19,9 @@ const SendResetPasswordEmailClientComponent = ({ locale, className, emailFromQue
 
         return validateEmail(email) ? false : true;
     }, [email]);
-    const handleForm = () => {
+    const handleForm = (e) => {
         try {
+            e.preventDefault();
             sendPasswordResetEmail(auth, email).then(data => {
                 onOpen();
             })
@@ -34,7 +35,7 @@ const SendResetPasswordEmailClientComponent = ({ locale, className, emailFromQue
     }
     return (
         <div className={className}>
-            <form className="space-y-6">
+            <form onSubmit={handleForm} className="space-y-6">
                 {locale === "ar" ? (
                     <>
                         <Input
