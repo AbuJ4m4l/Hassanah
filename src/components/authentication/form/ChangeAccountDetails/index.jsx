@@ -16,7 +16,7 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
   const {
     isOpen: isSuccessModalOpen,
     onOpen: onSuccessModalOpen,
-    onOpenChange: on,
+    onOpenChange: onSuccessModalOpenChange,
   } = useDisclosure();
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
   const [user, loading] = useAuthState(auth);
