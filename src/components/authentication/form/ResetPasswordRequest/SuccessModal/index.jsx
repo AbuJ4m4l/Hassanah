@@ -1,4 +1,4 @@
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Link } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 
 import React from 'react'
@@ -21,7 +21,7 @@ function SuccessModal({ isOpen, onOpenChange }) {
                                 <Button color="danger" variant="light" onPress={onClose}>
                                     {t('close')}
                                 </Button>
-                                <Button color="primary" onPress={onClose}>
+                                <Button color="primary" as={Link} href="/login" onPress={onClose}>
                                     {t('login')}
                                 </Button>
                             </ModalFooter>
