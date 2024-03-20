@@ -10,7 +10,7 @@ const ResetPasswordClientComponent = ({ locale }) => {
     return (
         <>
             <div className="flex justify-center">
-                <h1>{t('resetPassword')}</h1>
+                <h1 className="text-xl md:text-2xl">{t('resetPassword')}</h1>
             </div>
             <SendResetPasswordEmailClientComponent emailFromQuery={params.get('email') ? params.get('email') : ""} locale={locale} className="flex flex-col mt-10 mx-auto items-center w-[340px]" />
         </>
