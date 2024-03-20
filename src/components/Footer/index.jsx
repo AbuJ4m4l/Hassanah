@@ -4,10 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import LanguageSwitcher from "../languageSwitcher";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 const Footer = ({ locale }) => {
-  const t = useTranslations("footer");
   const pathname = usePathname();
-  const path = pathname.split(locale === "ar" ? "/ar/" : "/en/");
+  const t = useTranslations("footer");
+  const [path, setPath] = useState("");
+  useEffect(() => {
+    let path = pathname.split(locale === "ar" ? "/ar/" : "/en/");
+    setPath(path[1]);
+  }, [pathname, locale]);
   return (
     <footer className="border-t border-divider select-none backdrop-blur-lg backdrop-saturate-150 bg-background/70 w-full h-[560px] md:h-[370px]">
       <div className="flex flex-row">
@@ -171,7 +176,7 @@ const Footer = ({ locale }) => {
             <LanguageSwitcher
               color="default"
               variant="flat"
-              location={path[2]}
+              location={path}
             />
           </div>
         </div>
