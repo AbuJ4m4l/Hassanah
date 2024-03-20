@@ -48,6 +48,7 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
         signInWithEmailAndPassword(email, password).then((data) => {
           if (error) {
             setIsAccessGranted(false);
+            onErrorModalOpen();
           }
           setIsAccessGranted(true);
         });
