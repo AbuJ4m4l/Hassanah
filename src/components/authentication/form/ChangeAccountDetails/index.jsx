@@ -12,6 +12,7 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import Link from "next/link";
+import ErrorModal from "./ErrorModal";
 
 const ChangeAccountDetailsForm = ({ locale, className }) => {
   const t = useTranslations("changeAccountDetails");
@@ -348,6 +349,10 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
       <SuccessModal
         isOpen={isSuccessModalOpen}
         onOpenChange={onSuccessModalOpenChange}
+      />
+      <ErrorModal
+        isOpen={isErrorModalOpen}
+        onOpenChange={onErrorModalOpenChange}
       />
     </div>
   );
