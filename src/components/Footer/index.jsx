@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 const Footer = ({ locale }) => {
   const t = useTranslations("footer");
   const pathname = usePathname();
+  const path = pathname.split(locale === "ar" ? "/ar/" : "/en/");
   return (
     <footer className="border-t border-divider select-none backdrop-blur-lg backdrop-saturate-150 bg-background/70 w-full h-[560px] md:h-[370px]">
       <div className="flex flex-row">
@@ -167,7 +168,11 @@ const Footer = ({ locale }) => {
             </Link>
           </div>
           <div className="md:block hidden mt-6">
-            <LanguageSwitcher color="default" variant="flat" location={pathname} />
+            <LanguageSwitcher
+              color="default"
+              variant="flat"
+              location={path[2]}
+            />
           </div>
         </div>
       </div>
