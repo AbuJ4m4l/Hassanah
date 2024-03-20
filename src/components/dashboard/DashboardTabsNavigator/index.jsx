@@ -30,7 +30,7 @@ const DashboardTabsNavigator = ({ locale }) => {
                     aria-label="Options"
                     selectedKey={selected}
                     onSelectionChange={setSelected}
-                    className="flex justify-center mx-4 sm:mx-0"
+                    className="flex justify-center mx-4 md:mx-0"
                 >
                     <Tab
                         key="myAccount"

@@ -149,7 +149,7 @@ const SignupForm = ({ locale }) => {
       <div className="flex justify-center">
         <form
           onSubmit={handleForm}
-          className="w-[300px] sm:w-[400px] space-y-6"
+          className="w-[300px] md:w-[400px] space-y-6"
         >
           {locale === "ar" ? (
             <>

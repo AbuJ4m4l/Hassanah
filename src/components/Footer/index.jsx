@@ -8,7 +8,7 @@ const Footer = ({ locale }) => {
   const t = useTranslations("footer");
   const pathname = usePathname();
   return (
-    <footer className="border-t border-divider select-none backdrop-blur-lg backdrop-saturate-150 bg-background/70 w-full h-[560px] sm:h-[370px]">
+    <footer className="border-t border-divider select-none backdrop-blur-lg backdrop-saturate-150 bg-background/70 w-full h-[560px] md:h-[370px]">
       <div className="flex flex-row">
         <Image
           src="/images/hassanahLoggo-white.png"
@@ -21,7 +21,7 @@ const Footer = ({ locale }) => {
         <h2 className="mt-11 text-primary">{t("hassanah")}</h2>
       </div>
       <hr className="w-[95%] m-[2.5%] my-4 border-primary lg:w-[70%] lg:mx-[15%]" />
-      <div className="sm:hidden flex-row justify-center flex my-[10px]">
+      <div className="md:hidden flex-row justify-center flex my-[10px]">
         <Link href="https://example.com" className="mx-3">
           <svg
             stroke="white"
@@ -63,11 +63,11 @@ const Footer = ({ locale }) => {
           </svg>
         </Link>
       </div>
-      <div className="flex justify-center">
+      <div className="md:hidden flex justify-center mt-6">
         <LanguageSwitcher variant="flat" location={pathname} />
       </div>
       <div className="flex flex-row space-x-3 px-3 justify-evenly my-[10px] lg:w-[800px] lg:mx-[10%] 2xl:mx-[15%]">
-        <div className="sm:block hidden">
+        <div className="md:block hidden">
           <h3 className="text-primary text-lg">{t("helpfull_links")}</h3>
           <ul className="space-y-3 mt-4">
             <li className="text-xs">
@@ -84,7 +84,7 @@ const Footer = ({ locale }) => {
             </li>
           </ul>
         </div>
-        <div className="sm:block hidden">
+        <div className="md:block hidden">
           <h3 className="text-primary text-lg">{t("company")}</h3>
           <ul className="space-y-3 mt-4">
             <li className="text-xs">
@@ -98,7 +98,7 @@ const Footer = ({ locale }) => {
             </li>
           </ul>
         </div>
-        <div className="hidden sm:block">
+        <div className="hidden md:block">
           <h3 className="text-primary text-lg">{t("support_center")}</h3>
           <ul className="space-y-3 mt-4">
             <li className="text-xs">
@@ -124,54 +124,56 @@ const Footer = ({ locale }) => {
             </li>
           </ul>
         </div>
-        <div className="hidden md:flex sm:flex-row">
-          <Link href="https://example.com" className="mx-3">
-            <svg
-              stroke="white"
-              fill="white"
-              strokeWidth="0"
-              viewBox="0 0 512 512"
-              height="28"
-              width="28"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path>
-            </svg>
-          </Link>
-          <Link href="https://example.com" className="mx-3">
-            <svg
-              stroke="white"
-              fill="white"
-              strokeWidth="0"
-              viewBox="0 0 448 512"
-              height="28"
-              width="28"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
-            </svg>
-          </Link>
-          <Link href="https://example.com" className="mx-3">
-            <svg
-              stroke="white"
-              fill="white"
-              strokeWidth="0"
-              viewBox="0 0 512 512"
-              height="28"
-              width="28"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
-            </svg>
-          </Link>
-        </div>
-        <div className="md:block hidden">
-          <LanguageSwitcher variant="flat" location={pathname} />
+        <div className="flex flex-col">
+          <div className="hidden md:flex md:flex-row">
+            <Link href="https://example.com" className="mx-3">
+              <svg
+                stroke="white"
+                fill="white"
+                strokeWidth="0"
+                viewBox="0 0 512 512"
+                height="28"
+                width="28"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path>
+              </svg>
+            </Link>
+            <Link href="https://example.com" className="mx-3">
+              <svg
+                stroke="white"
+                fill="white"
+                strokeWidth="0"
+                viewBox="0 0 448 512"
+                height="28"
+                width="28"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+              </svg>
+            </Link>
+            <Link href="https://example.com" className="mx-3">
+              <svg
+                stroke="white"
+                fill="white"
+                strokeWidth="0"
+                viewBox="0 0 512 512"
+                height="28"
+                width="28"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
+              </svg>
+            </Link>
+          </div>
+          <div className="md:block hidden mt-6">
+            <LanguageSwitcher color="default" variant="flat" location={pathname} />
+          </div>
         </div>
       </div>
-      <div className="px-3 space-x-5 sm:hidden flex justify-evenly my-[10px]">
+      <div className="px-3 space-x-5 md:hidden flex justify-evenly my-[10px]">
         <div className="space-y-5">
-          <div className="block sm:hidden">
+          <div className="block md:hidden">
             <h3 className="text-primary text-lg">{t("helpfull_links")}</h3>
             <ul className="space-y-3 mt-4">
               <li className="text-xs">
@@ -188,7 +190,7 @@ const Footer = ({ locale }) => {
               </li>
             </ul>
           </div>
-          <div className="block sm:hidden">
+          <div className="block md:hidden">
             <h3 className="text-primary text-lg">{t("company")}</h3>
             <ul className="space-y-3 mt-4">
               <li className="text-xs">

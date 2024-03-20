@@ -40,12 +40,12 @@ const Navbar = ({ locale }) => {
           <NavbarBrand className="mr-4">
             <p className="font-bold text-inherit">Hassanah.org</p>
           </NavbarBrand>
-          <NavbarContent className="hidden sm:flex gap-3">
+          <NavbarContent className="hidden md:flex gap-3">
             <NavbarItem
               as={Link}
               href="/"
               color="foreground"
-              className="hidden sm:block"
+              className="hidden md:block"
             >
               {t("home")}
             </NavbarItem>
@@ -53,7 +53,7 @@ const Navbar = ({ locale }) => {
               as={Link}
               href="/stories"
               color="foreground"
-              className="hidden sm:block"
+              className="hidden md:block"
             >
               {t("stories")}
             </NavbarItem>
@@ -61,11 +61,11 @@ const Navbar = ({ locale }) => {
               as={Link}
               href="/hadiths"
               color="foreground"
-              className="hidden sm:block"
+              className="hidden md:block"
             >
               {t("hadiths")}
             </NavbarItem>
-            <NavbarItem className="hidden sm:block">
+            <NavbarItem className="hidden md:block">
               <Dropdown>
                 <NavbarItem>
                   <DropdownTrigger>
@@ -102,7 +102,7 @@ const Navbar = ({ locale }) => {
         <NavbarContent as="div" className="items-center" justify="end">
           <Input
             classNames={{
-              base: "max-w-full sm:max-w-[10rem] h-10",
+              base: "max-w-full md:max-w-[10rem] h-10",
               mainWrapper: "h-full",
               input: "text-small",
               inputWrapper:
@@ -137,7 +137,7 @@ const Navbar = ({ locale }) => {
           <NavbarMenuItem>
             <Input
               classNames={{
-                base: "max-w-full sm:max-w-[10rem] h-10",
+                base: "max-w-full md:max-w-[10rem] h-10",
                 mainWrapper: "h-full",
                 input: "text-small",
                 inputWrapper:
