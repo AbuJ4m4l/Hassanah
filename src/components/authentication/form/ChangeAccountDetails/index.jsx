@@ -18,6 +18,12 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
     onOpen: onSuccessModalOpen,
     onOpenChange: onSuccessModalOpenChange,
   } = useDisclosure();
+  const {
+    isOpen: isPasswordVerificationModalOpen,
+    onOpen: onPasswordVerificationModalOpen,
+    onOpenChange: onPasswordVerificationModalOpenChange,
+  } = useDisclosure();
+  const [isAccessGranted, setIsAccessGranted] = useState(false);
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
   const [user, loading] = useAuthState(auth);
   const [email, setEmail] = useState(loading === false ?? user?.email);

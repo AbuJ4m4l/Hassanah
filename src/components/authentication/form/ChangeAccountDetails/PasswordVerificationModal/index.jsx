@@ -20,7 +20,15 @@ function PasswordVerificationModal({
   const t = useTranslations("PasswordVerificationModal");
   return (
     <>
-      <Modal className="rtl:ltr" isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal
+        className="rtl:ltr"
+        isDismissable={false}
+        hideCloseButton={true}
+        backdrop="blur"
+        isKeyboardDismissDisabled={true}
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+      >
         <ModalContent>
           {(onClose) => (
             <>
