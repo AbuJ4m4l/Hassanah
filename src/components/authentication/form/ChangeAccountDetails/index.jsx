@@ -64,7 +64,7 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
       e.preventDefault();
       if (email !== user?.email) {
         updateEmail(email).then(() => {
-          if (error) {
+          if (updateEmailError) {
             onErrorModalOpen();
           }
           onSuccessModalOpen();
@@ -74,7 +74,7 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
         updateProfile({
           displayName: username,
         }).then(() => {
-          if (error) {
+          if (updateProfileError) {
             onErrorModalOpen();
           }
           onSuccessModalOpen();
