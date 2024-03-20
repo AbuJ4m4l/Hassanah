@@ -18,10 +18,11 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
     onOpenChange: onSuccessModalOpenChange,
   } = useDisclosure();
   const [isAccessGranted, setIsAccessGranted] = useState(false);
-  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, _user, SignInLoading, error] =
+    useSignInWithEmailAndPassword(auth);
   const [user, loading] = useAuthState(auth);
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState(loading === false ?? user?.email);
+  const [email, setEmail] = useState(user?.email);
   const [password, setPassword] = useState("");
   const isPasswordInvalid = useMemo(() => {
     if (password === "") return true;
@@ -33,6 +34,9 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
       if (email && password) {
         signInWithEmailAndPassword(email, password)
           .then((data) => {
+            if (error) {
+              setIsAccessGranted(false);
+            }
             setIsAccessGranted(true);
           })
           .catch(() => {
@@ -41,6 +45,13 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
       }
     } catch (error) {
       setIsAccessGranted(false);
+      console.error(error);
+    }
+  };
+  const handleForm = (e) => {
+    try {
+      e.preventDefault();
+    } catch (error) {
       console.error(error);
     }
   };
@@ -121,7 +132,7 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
           </form>
         </>
       ) : locale === "ar" ? (
-        <>
+        <form onSubmit={handleVerificationPasswordForm}>
           <Input
             isRequired
             name="password"
@@ -200,9 +211,9 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
           >
             {t("verify_password")}
           </Button>
-        </>
+        </form>
       ) : (
-        <>
+        <form onSubmit={handleVerificationPasswordForm}>
           <Input
             isRequired
             name="password"
@@ -281,7 +292,7 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
           >
             {t("verify_password")}
           </Button>
-        </>
+        </form>
       )}
 
       <SuccessModal
