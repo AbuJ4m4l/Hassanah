@@ -1,11 +1,6 @@
-import React from 'react'
-
+"use client";
 const ChangeAccountDetailsForm = () => {
-    return (
-        <>
-
-        </>
-    )
-}
+  return <></>;
+};
 
 export default ChangeAccountDetailsForm;
