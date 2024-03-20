@@ -10,7 +10,7 @@ import {
   DropdownTrigger,
 } from "@nextui-org/react";
 
-const LanguageSwitcher = ({ location, className }) => {
+const LanguageSwitcher = ({ color, variant, location, className }) => {
   return (
     <div className={className ?? className}>
       <Dropdown>
@@ -43,8 +43,8 @@ const LanguageSwitcher = ({ location, className }) => {
         </DropdownTrigger>
         <DropdownMenu
           aria-label="Language switcher"
-          color="primary"
-          variant="solid"
+          color={color ? color : "primary"}
+          variant={variant ? variant : "solid"}
           disabledKeys={["Turkish"]}
         >
           <DropdownItem

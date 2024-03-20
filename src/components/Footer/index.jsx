@@ -2,9 +2,11 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import LanguageSwitcher from "../languageSwitcher";
+import { usePathname } from "next/navigation";
 const Footer = ({ locale }) => {
   const t = useTranslations("footer");
-
+  const pathname = usePathname();
   return (
     <footer className="border-t border-divider select-none backdrop-blur-lg backdrop-saturate-150 bg-background/70 w-full h-[560px] sm:h-[370px]">
       <div className="flex flex-row">
@@ -61,6 +63,9 @@ const Footer = ({ locale }) => {
           </svg>
         </Link>
       </div>
+      <div className="flex justify-center">
+        <LanguageSwitcher variant="flat" location={pathname} />
+      </div>
       <div className="flex flex-row space-x-3 px-3 justify-evenly my-[10px] lg:w-[800px] lg:mx-[10%] 2xl:mx-[15%]">
         <div className="sm:block hidden">
           <h3 className="text-primary text-lg">{t("helpfull_links")}</h3>
@@ -108,7 +113,7 @@ const Footer = ({ locale }) => {
             </li>
           </ul>
         </div>
-        <div className="hidden sm:block">
+        <div className="hidden md:block">
           <h3 className="text-primary text-lg">{t("policies")}</h3>
           <ul className="space-y-3 mt-4">
             <li className="text-xs">
@@ -119,7 +124,7 @@ const Footer = ({ locale }) => {
             </li>
           </ul>
         </div>
-        <div className="hidden sm:flex sm:flex-row">
+        <div className="hidden md:flex sm:flex-row">
           <Link href="https://example.com" className="mx-3">
             <svg
               stroke="white"
@@ -159,6 +164,9 @@ const Footer = ({ locale }) => {
               <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
             </svg>
           </Link>
+        </div>
+        <div className="md:block hidden">
+          <LanguageSwitcher variant="flat" location={pathname} />
         </div>
       </div>
       <div className="px-3 space-x-5 sm:hidden flex justify-evenly my-[10px]">
