@@ -9,7 +9,7 @@ import {
   Link,
 } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
-function SuccessModal({ isOpen, onOpenChange }) {
+function ErrorModal({ isOpen, onOpenChange }) {
   const t = useTranslations("ChangeAccountDetailsErrorModal");
   return (
     <>
@@ -36,4 +36,4 @@ function SuccessModal({ isOpen, onOpenChange }) {
   );
 }
 
-export default SuccessModal;
+export default ErrorModal;
