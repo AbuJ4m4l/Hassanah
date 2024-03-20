@@ -16,9 +16,9 @@ const LanguageSwitcher = ({ color, variant, location, className }) => {
       <Dropdown>
         <DropdownTrigger>
           <Button
-            color="default"
-            variant="solid"
             className="capitalize"
+            color={color ? color : "default"}
+            variant={variant ? variant : "solid"}
             endContent={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -43,8 +43,6 @@ const LanguageSwitcher = ({ color, variant, location, className }) => {
         </DropdownTrigger>
         <DropdownMenu
           aria-label="Language switcher"
-          color={color ? color : "primary"}
-          variant={variant ? variant : "solid"}
           disabledKeys={["Turkish"]}
         >
           <DropdownItem
