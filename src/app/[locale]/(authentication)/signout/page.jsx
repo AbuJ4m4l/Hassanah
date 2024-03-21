@@ -12,6 +12,7 @@ const SignOutPage = () => {
   const t = useTranslations("signout");
   const [user] = useAuthState(auth);
   useEffect(() => {
+    sessionStorage.removeItem("user");
     if (user) {
       Signout().then(() => {
         router.push("/signedout");
