@@ -1,4 +1,4 @@
-import UserForm from "../../../components/authentication/form/index.jsx";
+import UserForm from "../../../../components/authentication/form/index.jsx";
 
 const Signup = ({ params: { locale } }) => {
   return <UserForm locale={locale} tab="signup" />;

@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
-import { auth } from "../../../lib/firebase";
+import { auth } from "../../../../lib/firebase";
 
 const Signedout = () => {
   const t = useTranslations("signedout");
