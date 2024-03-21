@@ -10,6 +10,7 @@ import {
   Checkbox,
   Select,
   SelectItem,
+  Switch,
 } from "@nextui-org/react";
 import { useState } from "react";
 
@@ -89,7 +90,7 @@ const Settings = () => {
 
       <div>
         <div className="ltr:ml-8 rtl:mr-8 mt-4 flex-col flex space-y-4">
-          <Checkbox
+          <Switch
             isSelected={isSendIslamicFestivalsNotificationSelected}
             onValueChange={setIsSendIslamicFestivalsNotificationIsSelected}
             size="md"
@@ -97,14 +98,14 @@ const Settings = () => {
             <p className="rtl:mr-2">
               {t("send_notification_for_islam_festivals")}
             </p>
-          </Checkbox>
-          <Checkbox
+          </Switch>
+          <Switch
             isSelected={isAutoPlayAdhanSelected}
             onValueChange={setIsAutoPlayAdhanSelected}
             size="md"
           >
             <p className="rtl:mr-2"> {t("autoplay_adhan")}</p>
-          </Checkbox>
+          </Switch>
 
           {isAutoPlayAdhanSelected && (
             <Select
@@ -132,13 +133,13 @@ const Settings = () => {
           ) : (
             ""
           )}
-          <Checkbox
+          <Switch
             isSelected={isPrayerNotifierSelected}
             onValueChange={setIsPrayerNotifierSelected}
             size="md"
           >
             <p className="rtl:mr-2">{t("prayer_notifier")}</p>
-          </Checkbox>
+          </Switch>
           {isPrayerNotifierSelected ? (
             <Autocomplete
               size="md"
@@ -156,7 +157,7 @@ const Settings = () => {
             ""
           )}
 
-          <Checkbox
+          <Switch
             isSelected={isSendNotificationWhenNewStoryUploads}
             onValueChange={setIsSendNotificationWhenNewStoryUploads}
             size="md"
@@ -165,7 +166,7 @@ const Settings = () => {
               {" "}
               {t("send_notification_when_new_story_uploads")}
             </p>
-          </Checkbox>
+          </Switch>
         </div>
       </div>
     </section>

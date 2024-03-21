@@ -225,7 +225,14 @@
     "select_the_default_reciter_when_adhan_starts": "Select the default reciter when Adhan starts",
     "prayer_notifier": "Prayer Notifier",
     "your_city": "Your City",
-    "send_notification_when_new_story_uploads": "Send notification when a new story uploads"
+    "send_notification_when_new_story_uploads": "Send notification when a new story uploads",
+    "mansour-al-zahrani": "Mansour Al-Zahrani",
+    "ahmad-al-nafees": "Ahmad Al-Nafees",
+    "hafiz-mustafa-ozcan-turkey": "Hafiz Mustafa Ozcan (Turkey)",
+    "karl-jenkins-mass": "Karl Jenkins (Mass)",
+    "mishary-rashed-afassy": "Mishary Rashed Alafasy",
+    "dubai-one-mishary-rashed-afassy": "Dubai One Mishary Rashed Alafasy",
+    "anthor-mishary-rashed-afassy": "Another Adhan by Mishary Rashed Alafasy"
   },
   "createNewPlaylistModal": {
     "title": "Create New Playlist",

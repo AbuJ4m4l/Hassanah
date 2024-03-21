@@ -225,7 +225,14 @@
     "select_the_default_reciter_when_adhan_starts": "حدد القارئ الافتراضي عند بدء الأذان",
     "prayer_notifier": "منبه الصلاة",
     "your_city": "مدينتك",
-    "send_notification_when_new_story_uploads": "إرسال إشعار عند تحميل قصة جديدة"
+    "send_notification_when_new_story_uploads": "إرسال إشعار عند تحميل قصة جديدة",
+    "mansour-al-zahrani": "منصور الزهراني",
+    "ahmad-al-nafees": "أحمد النفيس",
+    "hafiz-mustafa-ozcan-turkey": "حافظ مصطفى أوزجان (تركيا)",
+    "karl-jenkins-mass": "كارل جنكينز (ماس)",
+    "mishary-rashed-afassy": "مشاري راشد العفاسي",
+    "dubai-one-mishary-rashed-afassy": "دبي ون مشاري راشد العفاسي",
+    "anthor-mishary-rashed-afassy": "أذان آخر بصوت مشاري راشد العفاسي"
   },
   "createNewPlaylistModal": {
     "title": "إنشاء قائمة تشغيل جديدة",

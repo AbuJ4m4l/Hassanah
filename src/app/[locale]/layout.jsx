@@ -11,6 +11,7 @@ import BodyTheme from "../../components/BodyTheme/index.jsx";
 
 import { Suspense } from "react";
 import { Skeleton } from "@nextui-org/react";
+import Middleware from "../../components/Middleware/index.jsx";
 
 export const metadata = {
   title: "حسنة",
@@ -107,52 +108,54 @@ export default async function RootLayout({ children, params: { locale } }) {
           dir={direction}
           className={`overflow-x-hidden selection:bg-primary m-0 p-0 selection:text-white flex flex-col min-h-screen`}
         >
-          <NextTopLoader
-            color="#0093FD"
-            initialPosition={0.08}
-            crawlSpeed={200}
-            height={3}
-            crawl={true}
-            showSpinner={false}
-            easing="ease"
-            speed={200}
-            shadow="0 0 10px #2299DD,0 0 5px #2299DD"
-          />
-          <NextIntlClientProvider messages={messages} locale={locale}>
-            <NextUiProvider>
-              <Navbar locale={locale} />
-              <div className="container">
-                <main className="content mb-[60px] mt-[40px] flex-1">
-                  <div
-                    aria-hidden="true"
-                    className="select-none fixed hidden dark:md:block dark:opacity-70 -top-[80%] -right-[60%] 2xl:-top-[60%] 2xl:-right-[45%] z-0 rotate-12"
-                  >
-                    <img
-                      src="/gradients/docs-right.png"
-                      className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large"
-                      alt="right background"
-                      data-loaded="true"
-                    />
-                  </div>
-                  <div
-                    aria-hidden="true"
-                    className="select-none fixed hidden dark:md:block dark:opacity-70 -bottom-[40%] -left-[20%] z-0"
-                  >
-                    <img
-                      src="/gradients/docs-left.png"
-                      className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large"
-                      alt="left background"
-                      data-loaded="true"
-                    />
-                  </div>
-                  <Suspense fallback={<Skeleton>{children}</Skeleton>}>
-                    {children}
-                  </Suspense>
-                </main>
-                <Footer locale={locale} />
-              </div>
-            </NextUiProvider>
-          </NextIntlClientProvider>
+          <Middleware>
+            <NextTopLoader
+              color="#0093FD"
+              initialPosition={0.08}
+              crawlSpeed={200}
+              height={3}
+              crawl={true}
+              showSpinner={false}
+              easing="ease"
+              speed={200}
+              shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+            />
+            <NextIntlClientProvider messages={messages} locale={locale}>
+              <NextUiProvider>
+                <Navbar locale={locale} />
+                <div className="container">
+                  <main className="content mb-[60px] mt-[40px] flex-1">
+                    <div
+                      aria-hidden="true"
+                      className="select-none fixed hidden dark:md:block dark:opacity-70 -top-[80%] -right-[60%] 2xl:-top-[60%] 2xl:-right-[45%] z-0 rotate-12"
+                    >
+                      <img
+                        src="/gradients/docs-right.png"
+                        className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large"
+                        alt="right background"
+                        data-loaded="true"
+                      />
+                    </div>
+                    <div
+                      aria-hidden="true"
+                      className="select-none fixed hidden dark:md:block dark:opacity-70 -bottom-[40%] -left-[20%] z-0"
+                    >
+                      <img
+                        src="/gradients/docs-left.png"
+                        className="relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large"
+                        alt="left background"
+                        data-loaded="true"
+                      />
+                    </div>
+                    <Suspense fallback={<Skeleton>{children}</Skeleton>}>
+                      {children}
+                    </Suspense>
+                  </main>
+                  <Footer locale={locale} />
+                </div>
+              </NextUiProvider>
+            </NextIntlClientProvider>
+          </Middleware>
         </BodyTheme>
       </html>
     );
