@@ -12,8 +12,8 @@ import { useTranslations } from "next-intl";
 
 import React from "react";
 
-function SuccessModal({ isOpen, onOpenChange }) {
-  const t = useTranslations("SuccessModal");
+function SuccessModal({ isOpen, onOpenChange, usernameChanged, emailChanged }) {
+  const t = useTranslations("EmailDetailsUpdatedSuccessModal");
   return (
     <>
       <Modal className="rtl:ltr" isOpen={isOpen} onOpenChange={onOpenChange}>

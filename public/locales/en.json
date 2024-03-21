@@ -286,5 +286,11 @@
     "body": "The Reset Password Email has been sent successfully",
     "close": "Close",
     "login": "Login"
+  },
+  "EmailDetailsUpdatedSuccessModal": {
+    "title": "Your email details has been updated",
+    "body": "Your email details has been successfully updated, the email takes up to 24H to take effects",
+    "close": "Close",
+    "dashboard": "Dashboard"
   }
 }

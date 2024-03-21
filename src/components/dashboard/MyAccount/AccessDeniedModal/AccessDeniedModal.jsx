@@ -10,9 +10,13 @@ import {
   ModalHeader,
 } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../../lib/firebase";
+import { sendEmailVerification } from "firebase/auth";
 
 const AccessDeniedModal = ({ isOpen, onOpenChange }) => {
   const t = useTranslations("AccessDeniedModal");
+  const [user] = useAuthState(auth);
   return (
     <Modal
       isDismissable={false}
@@ -39,7 +43,13 @@ const AccessDeniedModal = ({ isOpen, onOpenChange }) => {
               >
                 {t("signout")}
               </Button>
-              <Button color="warning" variant="light">
+              <Button
+                color="warning"
+                variant="light"
+                onClick={() => {
+                  sendEmailVerification(user);
+                }}
+              >
                 {t("resend_verification_email")}
               </Button>
             </ModalFooter>
