@@ -213,7 +213,12 @@ const MyAccount = ({ locale }) => {
               ) : pData.providerId === "google.com" ? (
                 <></>
               ) : pData.providerId === "password" ? (
-                <Button color="primary" variant="flat" href="/change-account-details" as={Link}>
+                <Button
+                  color="primary"
+                  variant="flat"
+                  href="/change-account-details"
+                  as={Link}
+                >
                   {t("change_account_information")}
                 </Button>
               ) : (
