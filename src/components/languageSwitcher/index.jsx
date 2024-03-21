@@ -41,10 +41,7 @@ const LanguageSwitcher = ({ color, variant, location, className }) => {
             Language
           </Button>
         </DropdownTrigger>
-        <DropdownMenu
-          aria-label="Language switcher"
-          disabledKeys={["Turkish"]}
-        >
+        <DropdownMenu aria-label="Language switcher" disabledKeys={["Turkish"]}>
           <DropdownItem
             className="flex flex-row text-white"
             key="Arabic"
