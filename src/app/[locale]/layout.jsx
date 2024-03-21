@@ -1,5 +1,5 @@
 import "./globals.css";
-import NextTopLoader from 'nextjs-toploader';
+import NextTopLoader from "nextjs-toploader";
 import Navbar from "../../components/Navbar/index.jsx";
 import Footer from "../../components/Footer/index.jsx";
 import { locales } from "../../../navigation";
@@ -123,7 +123,6 @@ export default async function RootLayout({ children, params: { locale } }) {
               <Navbar locale={locale} />
               <div className="container">
                 <main className="content mb-[60px] mt-[40px] flex-1">
-
                   <div
                     aria-hidden="true"
                     className="select-none fixed hidden dark:md:block dark:opacity-70 -top-[80%] -right-[60%] 2xl:-top-[60%] 2xl:-right-[45%] z-0 rotate-12"
@@ -146,9 +145,7 @@ export default async function RootLayout({ children, params: { locale } }) {
                       data-loaded="true"
                     />
                   </div>
-                  <Suspense fallback={
-                    <Skeleton>{children}</Skeleton>
-                  }>
+                  <Suspense fallback={<Skeleton>{children}</Skeleton>}>
                     {children}
                   </Suspense>
                 </main>
