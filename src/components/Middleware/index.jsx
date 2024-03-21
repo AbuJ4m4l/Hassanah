@@ -9,7 +9,7 @@ const Middleware = ({ children }) => {
   useEffect(() => {
     if (loading === false) {
       if (user) {
-        sessionStorage?.setItem("user", user);
+        sessionStorage?.setItem("user", JSON.stringify(user));
       } else {
         sessionStorage?.removeItem("user");
       }

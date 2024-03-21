@@ -90,7 +90,6 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
       console.error(error);
     }
   };
-  console.log(error?.code, password, email, updateEmailError);
   return (
     <>
       <div className={className}>

@@ -69,7 +69,6 @@ const SignupForm = ({ locale }) => {
           .catch(() => {
             setError(t("unknown_error"));
           });
-        console.log(res);
       } else {
         if (!username) setUsernameInputError(true);
       }
