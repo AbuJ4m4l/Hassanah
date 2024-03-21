@@ -21,14 +21,17 @@ const SignoutModal = ({ isOpen, onOpenChange }) => {
             <ModalHeader className="flex flex-col gap-1">
               {t("title")}
             </ModalHeader>
-            <ModalBody>
-              {t("attention")}
-            </ModalBody>
+            <ModalBody>{t("attention")}</ModalBody>
             <ModalFooter>
               <Button color="default" variant="light" onPress={onClose}>
                 {t("cancel")}
               </Button>
-              <Button href="/signout" as={Link} className="!text-white" color="danger">
+              <Button
+                href="/signout"
+                as={Link}
+                className="!text-white"
+                color="danger"
+              >
                 {t("signout")}
               </Button>
             </ModalFooter>
