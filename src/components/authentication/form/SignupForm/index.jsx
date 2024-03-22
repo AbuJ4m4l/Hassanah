@@ -377,7 +377,7 @@ const SignupForm = ({ locale }) => {
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ? (
+                    {showRetypedPassword ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="18"
@@ -607,7 +607,7 @@ const SignupForm = ({ locale }) => {
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ? (
+                    {showRetypedPassword ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="18"
@@ -687,7 +687,8 @@ const SignupForm = ({ locale }) => {
                 <p>
                   {message
                     ? message
-                    : userMessage === "success" ?? t("signup_success_description")}
+                    : userMessage === "success" ??
+                      t("signup_success_description")}
                 </p>
               </ModalBody>
               <ModalFooter>
