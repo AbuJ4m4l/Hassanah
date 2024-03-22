@@ -2,8 +2,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { sendEmailVerification, updateProfile } from "firebase/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
+import { sendEmailVerification } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import {
   Button,
@@ -33,6 +36,7 @@ const SignupForm = ({ locale }) => {
   const [message, setMessage] = useState("");
   const [createUserWithEmailAndPassword, _user, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile] = useUpdateProfile(auth);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const t = useTranslations("signup");
   const router = useRouter();
@@ -46,7 +50,7 @@ const SignupForm = ({ locale }) => {
         createUserWithEmailAndPassword(email, password)
           .then(async (userCredential) => {
             onOpen();
-            updateProfile(userCredential?.user, {
+            updateProfile({
               displayName: username,
             }).then(async () => {
               sessionStorage.removeItem("user");
