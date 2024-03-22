@@ -375,7 +375,7 @@ const SignupForm = ({ locale }) => {
                   <button
                     className="focus:outline-none"
                     type="button"
-                    onClick={() => setShowPassword(!showPassword)}
+                    onClick={() => setshowRetypedPassword(!showPassword)}
                   >
                     {showRetypedPassword ? (
                       <svg
@@ -605,7 +605,7 @@ const SignupForm = ({ locale }) => {
                   <button
                     className="focus:outline-none"
                     type="button"
-                    onClick={() => setShowPassword(!showPassword)}
+                    onClick={() => setshowRetypedPassword(!showPassword)}
                   >
                     {showRetypedPassword ? (
                       <svg
