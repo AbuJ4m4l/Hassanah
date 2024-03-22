@@ -14,10 +14,34 @@ const GoogleLogin = () => {
       variant="solid"
       type="button"
       onClick={() => {
-        signInWithGoogle().then((data) => {
-          sessionStorage.removeItem("user");
-          sessionStorage.setItem("user", JSON.stringify(data?.user));
-          router.push("/dashboard");
+        signInWithGoogle().then(async (userCredential) => {
+          const body = {
+            provider: "google.com",
+            id: userCredential?.user?.uid,
+            email: userCredential?.user?.email,
+            username: userCredential?.user?.displayName,
+            photoURL: userCredential?.user?.photoURL,
+            emailVerified: userCredential?.user?.emailVerified,
+          };
+          const response = await fetch(
+            "http://38.242.214.31:3002/api/v1/register",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(body),
+            }
+          );
+
+          const data = await response.json();
+          if (data) {
+            if (response.ok) {
+              localStorage?.setItem("token", data?.token);
+              sessionStorage?.setItem("user", JSON.stringify(data?.user));
+              router.push("/dashboard");
+            }
+          }
         });
       }}
       className="rtl:mr-2 ltr:ml-2 min-w-[50%] cursor-pointer"

@@ -48,26 +48,55 @@ const SignupForm = ({ locale }) => {
             onOpen();
             updateProfile(userCredential?.user, {
               displayName: username,
-            }).then(async (data) => {
+            }).then(async () => {
               sessionStorage.removeItem("user");
               sessionStorage.setItem(
                 "user",
                 JSON.stringify(userCredential?.user)
               );
-              setUserMessage("success");
-              setUsername("");
-              setEmail("");
-              setPassword("");
-              setRetypePassword("");
-              await sendEmailVerification(userCredential?.user).then(
-                async () => {
-                  setTimeout(() => router.push("/dashboard"), 3000);
+              const body = {
+                provider: "password",
+                id: userCredential?.user?.uid,
+                email: userCredential?.user?.email,
+                username: userCredential?.user?.displayName,
+                password,
+                photoURL: userCredential?.user?.photoURL,
+                emailVerified: userCredential?.user?.emailVerified,
+              };
+              const response = await fetch(
+                "http://38.242.214.31:3002/api/v1/register",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(body),
                 }
               );
+
+              const data = await response.json();
+              if (data) {
+                if (response.ok) {
+                  setUserMessage("success");
+                  setUsername("");
+                  setEmail("");
+                  setPassword("");
+                  setRetypePassword("");
+                  localStorage?.setItem("token", data?.token);
+                  await sendEmailVerification(userCredential?.user).then(
+                    async () => {
+                      setTimeout(() => router.push("/dashboard"), 3000);
+                    }
+                  );
+                } else {
+                  userCredential?.user?.delete();
+                  setMessage(t("unknown_error"));
+                }
+              }
             });
           })
           .catch(() => {
-            setError(t("unknown_error"));
+            setMessage(t("unknown_error"));
           });
       } else {
         if (!username) setUsernameInputError(true);
