@@ -44,7 +44,8 @@
     "re_enter_your_password": "Re-Enter Your Password",
     "enter_your_password": "Enter Your Password",
     "enter_your_email": "Enter Your Email",
-    "enter_your_username": "Enter Your Username"
+    "enter_your_username": "Enter Your Username",
+    "error": "An Error Occurred."
   },
   "login": {
     "login": "Login to Your Account",

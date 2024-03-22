@@ -256,6 +256,7 @@ const SignupForm = ({ locale }) => {
                 label={t("password")}
                 placeholder={t("enter_your_password")}
                 value={password}
+                autoComplete="current-password"
                 isInvalid={isPasswordInvalid}
                 errorMessage={
                   isPasswordInvalid === true
@@ -333,6 +334,7 @@ const SignupForm = ({ locale }) => {
               />
               <Input
                 isRequired
+                autoComplete="current-password"
                 name="retypePassword"
                 label={t("password")}
                 placeholder={t("re_enter_your_password")}
@@ -449,10 +451,10 @@ const SignupForm = ({ locale }) => {
                 isRequired
                 type="email"
                 name="email"
+                autoComplete="email"
                 label={t("email")}
                 placeholder={t("enter_your_email")}
                 value={email}
-                autoComplete="email"
                 isInvalid={isEmailInvalid}
                 errorMessage={
                   isEmailInvalid === true
@@ -484,6 +486,7 @@ const SignupForm = ({ locale }) => {
                 label={t("password")}
                 placeholder={t("enter_your_password")}
                 value={password}
+                autoComplete="current-password"
                 isInvalid={isPasswordInvalid}
                 errorMessage={
                   isPasswordInvalid === true
@@ -565,6 +568,7 @@ const SignupForm = ({ locale }) => {
                 label={t("password")}
                 placeholder={t("re_enter_your_password")}
                 value={retypePassword}
+                autoComplete="current-password"
                 isInvalid={isMatchPasswordInvalid}
                 errorMessage={
                   isMatchPasswordInvalid === true
@@ -683,7 +687,7 @@ const SignupForm = ({ locale }) => {
                 <p>
                   {message
                     ? message
-                    : userMessage ?? t("signup_success_description")}
+                    : userMessage === "success" ?? t("signup_success_description")}
                 </p>
               </ModalBody>
               <ModalFooter>
