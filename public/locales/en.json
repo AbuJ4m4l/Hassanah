@@ -78,7 +78,8 @@
     "invalidCreationTime": "The provided time must be a valid UTC date string.",
     "invalidCredential": "The provided credential cannot be used for this action.",
     "unknown_error": "An Error Occurred. Please try again later.",
-    "close": "Close"
+    "close": "Close",
+    "error": "An Error Occurred."
   },
   "navbar": {
     "login": "Login",
