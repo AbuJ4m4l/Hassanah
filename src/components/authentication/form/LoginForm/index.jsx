@@ -135,7 +135,6 @@ const LoginForm = ({ locale }) => {
                 autoComplete="email"
                 onClear={() => setEmail("")}
                 isInvalid={isEmailInvalid}
-                color={isEmailInvalid ? "danger" : "default"}
                 errorMessage={isEmailInvalid && t("email_invalid")}
                 onValueChange={setEmail}
                 endContent={
@@ -163,7 +162,6 @@ const LoginForm = ({ locale }) => {
                 placeholder={t("enter_your_password")}
                 value={password}
                 isInvalid={isPasswordInvalid}
-                color={isPasswordInvalid ? "danger" : "default"}
                 errorMessage={isPasswordInvalid && t("password_required")}
                 onValueChange={setPassword}
                 autoComplete="current-password"
@@ -248,7 +246,6 @@ const LoginForm = ({ locale }) => {
                 autoComplete="email"
                 onClear={() => setEmail("")}
                 isInvalid={isEmailInvalid}
-                color={isEmailInvalid ? "danger" : "default"}
                 errorMessage={isEmailInvalid && t("email_invalid")}
                 onValueChange={setEmail}
                 startContent={
@@ -276,7 +273,6 @@ const LoginForm = ({ locale }) => {
                 placeholder={t("enter_your_password")}
                 value={password}
                 isInvalid={isPasswordInvalid}
-                color={isPasswordInvalid ? "danger" : "default"}
                 errorMessage={isPasswordInvalid && t("password_required")}
                 onValueChange={setPassword}
                 autoComplete="current-password"

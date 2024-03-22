@@ -67,34 +67,36 @@ const SignupForm = ({ locale }) => {
                 photoURL: userCredential?.user?.photoURL,
                 emailVerified: userCredential?.user?.emailVerified,
               };
-              const response = await fetch(
-                "http://38.242.214.31:3002/api/v1/register",
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(body),
-                }
-              );
+              if (!error) {
+                const response = await fetch(
+                  "http://38.242.214.31:3002/api/v1/register",
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(body),
+                  }
+                );
 
-              const data = await response.json();
-              if (data) {
-                if (response.ok) {
-                  setUserMessage("success");
-                  setUsername("");
-                  setEmail("");
-                  setPassword("");
-                  setRetypePassword("");
-                  localStorage?.setItem("token", data?.token);
-                  await sendEmailVerification(userCredential?.user).then(
-                    async () => {
-                      setTimeout(() => router.push("/dashboard"), 3000);
-                    }
-                  );
-                } else {
-                  userCredential?.user?.delete();
-                  setMessage(t("unknown_error"));
+                const data = await response.json();
+                if (data) {
+                  if (response.ok) {
+                    setUserMessage("success");
+                    setUsername("");
+                    setEmail("");
+                    setPassword("");
+                    setRetypePassword("");
+                    localStorage?.setItem("token", data?.token);
+                    await sendEmailVerification(userCredential?.user).then(
+                      async () => {
+                        setTimeout(() => router.push("/dashboard"), 3000);
+                      }
+                    );
+                  } else {
+                    userCredential?.user?.delete();
+                    setMessage(t("unknown_error"));
+                  }
                 }
               }
             });
@@ -213,7 +215,6 @@ const SignupForm = ({ locale }) => {
                   </svg>
                 }
                 isInvalid={usernameInputError}
-                color={usernameInputError ? "danger" : "default"}
                 errorMessage={usernameInputError && t("username_required")}
               />
               <Input
@@ -225,13 +226,6 @@ const SignupForm = ({ locale }) => {
                 value={email}
                 autoComplete="email"
                 isInvalid={isEmailInvalid}
-                color={
-                  isEmailInvalid === true
-                    ? "danger"
-                    : isEmailInvalid === 0
-                    ? "danger"
-                    : "default"
-                }
                 errorMessage={
                   isEmailInvalid === true
                     ? t("email_required")
@@ -263,13 +257,6 @@ const SignupForm = ({ locale }) => {
                 placeholder={t("enter_your_password")}
                 value={password}
                 isInvalid={isPasswordInvalid}
-                color={
-                  isPasswordInvalid === true
-                    ? "danger"
-                    : isPasswordInvalid === 1
-                    ? "danger"
-                    : "default"
-                }
                 errorMessage={
                   isPasswordInvalid === true
                     ? t("password_required")
@@ -286,6 +273,8 @@ const SignupForm = ({ locale }) => {
                     {showPassword ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="white"
@@ -349,13 +338,6 @@ const SignupForm = ({ locale }) => {
                 placeholder={t("re_enter_your_password")}
                 value={retypePassword}
                 isInvalid={isMatchPasswordInvalid}
-                color={
-                  isMatchPasswordInvalid === true
-                    ? "danger"
-                    : isMatchPasswordInvalid === 0
-                    ? "danger"
-                    : "default"
-                }
                 errorMessage={
                   isMatchPasswordInvalid === true
                     ? t("password_match_required")
@@ -391,11 +373,13 @@ const SignupForm = ({ locale }) => {
                   <button
                     className="focus:outline-none"
                     type="button"
-                    onClick={() => setshowRetypedPassword(!showRetypedPassword)}
+                    onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showRetypedPassword ? (
+                    {showPassword ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="white"
@@ -459,7 +443,6 @@ const SignupForm = ({ locale }) => {
                   </svg>
                 }
                 isInvalid={usernameInputError}
-                color={usernameInputError ? "danger" : "default"}
                 errorMessage={usernameInputError && t("username_required")}
               />
               <Input
@@ -471,13 +454,6 @@ const SignupForm = ({ locale }) => {
                 value={email}
                 autoComplete="email"
                 isInvalid={isEmailInvalid}
-                color={
-                  isEmailInvalid === true
-                    ? "danger"
-                    : isEmailInvalid === 0
-                    ? "danger"
-                    : "default"
-                }
                 errorMessage={
                   isEmailInvalid === true
                     ? t("email_required")
@@ -509,13 +485,6 @@ const SignupForm = ({ locale }) => {
                 placeholder={t("enter_your_password")}
                 value={password}
                 isInvalid={isPasswordInvalid}
-                color={
-                  isPasswordInvalid === true
-                    ? "danger"
-                    : isPasswordInvalid === 1
-                    ? "danger"
-                    : "default"
-                }
                 errorMessage={
                   isPasswordInvalid === true
                     ? t("password_required")
@@ -597,13 +566,6 @@ const SignupForm = ({ locale }) => {
                 placeholder={t("re_enter_your_password")}
                 value={retypePassword}
                 isInvalid={isMatchPasswordInvalid}
-                color={
-                  isMatchPasswordInvalid === true
-                    ? "danger"
-                    : isMatchPasswordInvalid === 0
-                    ? "danger"
-                    : "default"
-                }
                 errorMessage={
                   isMatchPasswordInvalid === true
                     ? t("password_match_required")
@@ -639,9 +601,9 @@ const SignupForm = ({ locale }) => {
                   <button
                     className="focus:outline-none"
                     type="button"
-                    onClick={() => setshowRetypedPassword(!showRetypedPassword)}
+                    onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showRetypedPassword ? (
+                    {showPassword ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="18"
