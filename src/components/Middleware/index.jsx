@@ -10,10 +10,6 @@ const Middleware = ({ children }) => {
   useEffect(() => {
     if (loading === false) {
       if (user) {
-        const token = localStorage?.getItem("token");
-        if (!token) {
-          Signout();
-        }
         sessionStorage?.setItem("user", JSON.stringify(user));
       } else {
         sessionStorage?.removeItem("user");

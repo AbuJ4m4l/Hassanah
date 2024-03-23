@@ -1,6 +1,10 @@
 {
     "liveServer.settings.port": 5501,
-    "search.useIgnoreFiles": true,
+    "search.useIgnoreFiles": false,
     "git.autofetch": true,
-    "git.postCommitCommand": "sync"
+    "git.postCommitCommand": "sync",
+    "search.exclude": {
+        "**/node_module": true,
+        "**/node_modules": false
+    }
 }
