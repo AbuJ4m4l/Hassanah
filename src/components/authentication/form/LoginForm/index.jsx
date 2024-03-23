@@ -59,7 +59,7 @@ const LoginForm = ({ locale }) => {
             setUserMessage(t("login_success_description"));
             sessionStorage.removeItem("user");
             sessionStorage.setItem("user", JSON.stringify(data.user));
-            router.push("/dashboard");
+            setTimeout(() => router.push("/dashboard"), 3000);
           }
           onOpen();
         });
