@@ -1,14 +1,13 @@
-import "./globals.css";
+import "../../globals.css";
 import NextTopLoader from "nextjs-toploader";
-import Navbar from "../../components/Navbar/index.jsx";
-import Footer from "../../components/Footer/index.jsx";
-import { locales } from "../../../navigation";
+import Navbar from "../../../../components/Navbar/index.jsx";
+import { locales } from "../../../../../navigation.js";
 import { notFound } from "next/navigation";
-import NextUiProvider from "../../components/Providers/NextUiProvider.jsx";
+import NextUiProvider from "../../../../components/Providers/NextUiProvider.jsx";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import BodyTheme from "../../components/BodyTheme/index.jsx";
-import Middleware from "../../components/Middleware/index.jsx";
+import BodyTheme from "../../../../components/BodyTheme/index.jsx";
+import Middleware from "../../../../components/Middleware/index.jsx";
 
 export const metadata = {
   title: "حسنة",
@@ -146,7 +145,6 @@ export default async function RootLayout({ children, params: { locale } }) {
                     </div>
                     {children}
                   </main>
-                  <Footer locale={locale} />
                 </div>
               </NextUiProvider>
             </NextIntlClientProvider>
