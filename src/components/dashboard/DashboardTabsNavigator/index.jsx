@@ -14,7 +14,7 @@ import AccessDeniedModal from "../MyAccount/AccessDeniedModal/AccessDeniedModal"
 const DashboardTabsNavigator = ({ locale }) => {
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
-  const [isAccessGranted, setIsAccessGranted] = useState();
+  const [isAccessGranted, setIsAccessGranted] = useState(false);
   const t = useTranslations("dashboard");
   const {
     isOpen: isAccessDeniedModalOpen,
