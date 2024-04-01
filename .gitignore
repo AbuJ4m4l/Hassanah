@@ -43,3 +43,5 @@ next-env.d.ts
 .vscode # Visual Studio Code
 .fleet # Jetbrains fleet
 .idx # Google IDX
+
+/src/emails

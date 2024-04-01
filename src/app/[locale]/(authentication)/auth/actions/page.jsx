@@ -7,18 +7,18 @@ const Actions = () => {
   const query = useSearchParams();
   const mode = query?.get("mode");
   const continueUrl = query?.get("continueUrl");
-  const obbCode = query?.get("obbCode");
+  const oobCode = query?.get("oobCode");
   return (
     <>
-      {obbCode && mode && mode === "resetPassword" ? (
+      {mode === "resetPassword" ? (
         <ResetPasswordComponent
           continueUrl={continueUrl ? continueUrl : "/login"}
-          actionCode={obbCode}
+          actionCode={oobCode}
         />
       ) : mode === "verifyEmail" ? (
         <VerifyEmailComponent
           continueUrl={continueUrl ? continueUrl : ""}
-          actionCode={obbCode}
+          actionCode={oobCode}
         />
       ) : (
         <></>

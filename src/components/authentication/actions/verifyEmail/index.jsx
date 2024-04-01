@@ -4,14 +4,14 @@ import { useTranslations } from "next-intl";
 import { auth } from "../../../../lib/firebase";
 import { useEffect, useState } from "react";
 
-const VerifyEmailComponent = ({ actionCode, continueUrl }) => {
+const VerifyEmailComponent = ({ actionCode }) => {
   const t = useTranslations("VerifyEmailComponent");
-  const [verified, setVerified] = useState(null);
+  const [verified, setVerified] = useState();
   const [message, setMessage] = useState("");
   useEffect(() => {
     const verifyEmail = () => {
       try {
-        if (actionCode && continueUrl) {
+        if (actionCode) {
           applyActionCode(auth, actionCode)
             .then(() => {
               setVerified(true);
@@ -40,11 +40,12 @@ const VerifyEmailComponent = ({ actionCode, continueUrl }) => {
             });
         }
       } catch (error) {
+        setVerified(false);
         console.error(error);
       }
     };
     verifyEmail();
-  }, [actionCode, continueUrl, t, setMessage]);
+  }, [actionCode, t, setVerified, setMessage]);
 
   return (
     <>
