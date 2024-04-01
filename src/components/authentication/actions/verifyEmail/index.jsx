@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 const VerifyEmailComponent = ({ actionCode, continueUrl }) => {
   const t = useTranslations("VerifyEmailComponent");
-  const [verified, setVerified] = useState(false);
+  const [verified, setVerified] = useState(null);
   const [message, setMessage] = useState("");
   useEffect(() => {
     const verifyEmail = () => {
@@ -72,7 +72,7 @@ const VerifyEmailComponent = ({ actionCode, continueUrl }) => {
             <h2>{t("email_verified_successfully")}</h2>
           </div>
         </>
-      ) : (
+      ) : verified === false ? (
         <>
           <div className="flex justify-center">
             <div className="px-16 py-16 rounded-full outline-offset-2 outline-4 outline-red-600 outline">
@@ -97,6 +97,8 @@ const VerifyEmailComponent = ({ actionCode, continueUrl }) => {
             <h2>{message}</h2>
           </div>
         </>
+      ) : (
+        <></>
       )}
     </>
   );
