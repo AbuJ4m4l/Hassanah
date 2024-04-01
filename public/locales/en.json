@@ -301,5 +301,24 @@
     "body": "Your email details has been successfully updated, the email takes up to 24H to take effects",
     "close": "Close",
     "dashboard": "Dashboard"
+  },
+  "ResetPasswordComponent": {
+    "SuccessModal": {
+      "title": "Password has been updated",
+      "body": "Your password has been updated successfully. we will redirect you in 2 secondss",
+      "close": "Close"
+    },
+    "input": {
+      "MatchLabel": "Match Password",
+      "MatchPlaceholder": "Enter your password again",
+      "label": "Password",
+      "placholder": "Enter your password"
+    },
+    "password_match_required": "Password match is required",
+    "password_doesnt_match": "Password does not match the Password Match Field",
+    "password_required": "Password is required",
+    "the_password_should_contains_special_charachters": "The password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and have a length of 8 characters.",
+    "resetPassword": "Reset Password",
+    "change_password": "Change Password"
   }
 }
