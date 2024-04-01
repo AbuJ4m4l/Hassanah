@@ -5,6 +5,18 @@ import { auth } from "../../../../lib/firebase";
 
 const VerifyEmailComponent = ({ actionCode, continueUrl }) => {
   const t = useTranslations("VerifyEmailComponent");
+
+  const [message, setMessage] = useState("");
+  const {
+    isOpen: isSuccessModalOpen,
+    onOpen: onSuccessModalOpen,
+    onOpenChange: onSuccessModalOpenChange,
+  } = useDisclosure();
+  const {
+    isOpen: isErrorModalOpen,
+    onOpen: onErrorModalOpen,
+    onOpenChange: onErrorModalOpenChange,
+  } = useDisclosure();
   useEffect(() => {
     const verifyEmail = () => {
       try {
