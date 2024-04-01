@@ -13,8 +13,11 @@ const VerifyEmailComponent = ({ actionCode, continueUrl }) => {
       try {
         if (actionCode && continueUrl) {
           applyActionCode(auth, actionCode)
-            .then(() => {})
+            .then(() => {
+              setVerified(true);
+            })
             .catch((error) => {
+              setVerified(false);
               switch (error?.code) {
                 case "auth/expired-action-code":
                   setMessage(t("expiredActionCode"));
