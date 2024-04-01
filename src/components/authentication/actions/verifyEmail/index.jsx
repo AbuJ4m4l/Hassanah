@@ -2,7 +2,7 @@
 import { applyActionCode } from "firebase/auth";
 import { useTranslations } from "next-intl";
 import { auth } from "../../../../lib/firebase";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const VerifyEmailComponent = ({ actionCode, continueUrl }) => {
   const t = useTranslations("VerifyEmailComponent");
