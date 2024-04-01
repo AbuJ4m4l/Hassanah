@@ -1,5 +1,9 @@
 "use client";
-import { verifyPasswordResetCode, confirmPasswordReset } from "firebase/auth";
+import {
+  verifyPasswordResetCode,
+  confirmPasswordReset,
+  checkActionCode,
+} from "firebase/auth";
 import { Button, Input, useDisclosure } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
@@ -29,15 +33,38 @@ const ResetPasswordComponent = ({ actionCode, continueUrl }) => {
       e.preventDefault();
       if (value && confirmValue && value === confirmValue) {
         verifyPasswordResetCode(auth, actionCode)
-          .then(() => {
-            confirmPasswordReset(auth, actionCode, value)
-              .then(() => {
-                onSuccessModalOpen();
-                setTimeout(() => {
-                  router.push(continueUrl);
-                }, 2000);
-              })
-              .catch(() => setMessage(t("unknownError")));
+          .then(async () => {
+            const response = await fetch(
+              "http://38.242.214.31:3002/api/v1/reset-password",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  oobCode: actionCode,
+                  password: value,
+                }),
+              }
+            );
+            const data = await response?.json();
+            console.log(data);
+            if (data.error) {
+              setMessage(t("unknownError"));
+              onErrorModalOpen();
+            } else {
+              confirmPasswordReset(auth, actionCode, value)
+                .then(async () => {
+                  onSuccessModalOpen();
+                  setTimeout(() => {
+                    router.push(continueUrl);
+                  }, 2000);
+                })
+                .catch((err) => {
+                  setMessage(t("unknownError"));
+                  onErrorModalOpen();
+                });
+            }
           })
           .catch((error) => {
             onErrorModalOpen();
@@ -63,7 +90,7 @@ const ResetPasswordComponent = ({ actionCode, continueUrl }) => {
           });
       }
     } catch (error) {
-        setMessage(t("unknownError"));
+      setMessage(t("unknownError"));
     }
   };
   const validatePassword = (password) =>
