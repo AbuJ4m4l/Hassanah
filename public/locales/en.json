@@ -305,7 +305,7 @@
   "ResetPasswordComponent": {
     "SuccessModal": {
       "title": "Password has been updated",
-      "body": "Your password has been updated successfully. we will redirect you in 2 secondss",
+      "body": "Your password has been updated successfully. We will redirect you in 2 seconds",
       "close": "Close"
     },
     "input": {
