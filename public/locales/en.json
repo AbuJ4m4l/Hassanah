@@ -312,13 +312,22 @@
       "MatchLabel": "Match Password",
       "MatchPlaceholder": "Enter your password again",
       "label": "Password",
-      "placholder": "Enter your password"
+      "placeholder": "Enter your password"
     },
     "password_match_required": "Password match is required",
     "password_doesnt_match": "Password does not match the Password Match Field",
     "password_required": "Password is required",
     "the_password_should_contains_special_charachters": "The password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and have a length of 8 characters.",
     "resetPassword": "Reset Password",
-    "change_password": "Change Password"
+    "change_password": "Change Password",
+    "expiredActionCode": "The action code has expired. Please request a new one.",
+    "invalidActionCode": "The action code is invalid. Please check the link and try again.",
+    "userDisabled": "This user account has been disabled.",
+    "userNotFound": "The user account associated with this email was not found.",
+    "weakPassword": "The password must be at least 8 characters long and contain a mix of letters, numbers, and symbols.",
+    "unknownError": "An unknown error occurred. Please try again later.",
+    "recoverEmailError": "An error occurred while recovering your email address.",
+    "resetPasswordError": "An error occurred while resetting your password.",
+    "verifyEmailError": "An error occurred while verifying your email address."
   }
 }

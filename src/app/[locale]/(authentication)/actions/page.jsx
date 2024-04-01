@@ -9,15 +9,15 @@ const Actions = () => {
   const obbCode = query?.get("obbCode");
   return (
     <>
-      {mode === "resetPassword" ? (
+      {obbCode && mode && continueUrl && mode === "resetPassword" ? (
         <ResetPasswordComponent
           continueUrl={continueUrl}
           actionCode={obbCode}
         />
-      ) : mode === "recoverEmail" ? (
+      ) : mode === "verifyEmail" ? (
         <></>
       ) : (
-        mode === "verifyEmail" ?? <></>
+        <></>
       )}
     </>
   );

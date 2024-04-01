@@ -6,15 +6,22 @@ import { useMemo, useState } from "react";
 import { auth } from "../../../../lib/firebase";
 import { useRouter } from "next/navigation";
 import SuccessModal from "./SuccessModal";
+import ErrorModal from "../ErrorModal";
 
 const ResetPasswordComponent = ({ actionCode, continueUrl }) => {
   const t = useTranslations("ResetPasswordComponent");
   const [value, setValue] = useState("");
   const router = useRouter();
+  const [message, setMessage] = useState("");
   const {
     isOpen: isSuccessModalOpen,
     onOpen: onSuccessModalOpen,
     onOpenChange: onSuccessModalOpenChange,
+  } = useDisclosure();
+  const {
+    isOpen: isErrorModalOpen,
+    onOpen: onErrorModalOpen,
+    onOpenChange: onErrorModalOpenChange,
   } = useDisclosure();
   const [confirmValue, setConfirmValue] = useState("");
   const handleForm = (e) => {
@@ -32,7 +39,28 @@ const ResetPasswordComponent = ({ actionCode, continueUrl }) => {
               })
               .catch(console.error);
           })
-          .catch(console.error);
+          .catch((error) => {
+            onErrorModalOpen();
+            switch (error?.code) {
+              case "auth/expired-action-code":
+                setMessage(t("expiredActionCode"));
+                break;
+              case "auth/invalid-action-code":
+                setMessage(t("invalidActionCode"));
+                break;
+              case "auth/user-disabled":
+                setMessage(t("userDisabled"));
+                break;
+              case "auth/user-not-found":
+                setMessage(t("userNotFound"));
+                break;
+              case "auth/weak-password":
+                setMessage(t("weakPassword"));
+                break;
+              default:
+                setMessage(t("unknownError"));
+            }
+          });
       }
     } catch (error) {
       console.error(error);
@@ -133,6 +161,11 @@ const ResetPasswordComponent = ({ actionCode, continueUrl }) => {
         <SuccessModal
           isOpen={isSuccessModalOpen}
           onOpenChange={onSuccessModalOpenChange}
+        />
+        <ErrorModal
+          isOpen={isErrorModalOpen}
+          onOpenChange={onErrorModalOpenChange}
+          message={message}
         />
       </div>
     </div>
