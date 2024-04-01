@@ -2,6 +2,9 @@
 import { applyActionCode } from "firebase/auth";
 import { useTranslations } from "next-intl";
 import { auth } from "../../../../lib/firebase";
+import { useDisclosure } from "@nextui-org/react";
+import { useState } from "react";
+import ErrorModal from "../ErrorModal";
 
 const VerifyEmailComponent = ({ actionCode, continueUrl }) => {
   const t = useTranslations("VerifyEmailComponent");
@@ -53,7 +56,15 @@ const VerifyEmailComponent = ({ actionCode, continueUrl }) => {
     verifyEmail();
   }, [actionCode, continueUrl]);
 
-  return <></>;
+  return (
+    <>
+      <ErrorModal
+        isOpen={isErrorModalOpen}
+        onOpenChange={onErrorModalOpenChange}
+        message={message}
+      />
+    </>
+  );
 };
 
 export default VerifyEmailComponent;
