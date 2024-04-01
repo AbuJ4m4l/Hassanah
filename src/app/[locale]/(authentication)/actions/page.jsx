@@ -1,6 +1,7 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import ResetPasswordComponent from "../../../../components/authentication/actions/resetPassword";
+import VerifyEmailComponent from "../../../../components/authentication/actions/verifyEmail";
 
 const Actions = () => {
   const query = useSearchParams();
@@ -9,13 +10,16 @@ const Actions = () => {
   const obbCode = query?.get("obbCode");
   return (
     <>
-      {obbCode && mode && continueUrl && mode === "resetPassword" ? (
+      {obbCode && mode && mode === "resetPassword" ? (
         <ResetPasswordComponent
-          continueUrl={continueUrl}
+          continueUrl={continueUrl ? continueUrl : "/login"}
           actionCode={obbCode}
         />
       ) : mode === "verifyEmail" ? (
-        <></>
+        <VerifyEmailComponent
+          continueUrl={continueUrl ? continueUrl : ""}
+          actionCode={obbCode}
+        />
       ) : (
         <></>
       )}

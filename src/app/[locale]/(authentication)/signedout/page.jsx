@@ -11,7 +11,6 @@ const Signedout = () => {
   const [Signout] = useSignOut(auth);
   const [user] = useAuthState(auth);
   useEffect(() => {
-    sessionStorage.removeItem("user");
     if (user) {
       Signout().then(() => {
         router.push("/signedout");
@@ -24,8 +23,8 @@ const Signedout = () => {
         <div className="px-16 py-16 rounded-full outline-offset-2 outline-4 outline-green-600 outline">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="44"
+            height="44"
             viewBox="0 0 24 24"
             fill="none"
             stroke="#16a34a"
