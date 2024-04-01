@@ -54,7 +54,6 @@ const DashboardTabsNavigator = ({ locale }) => {
     onAccessDeniedModalClose,
   ]);
   const [selected, setSelected] = useState(t("myAccount"));
-  console.log(isAccessGranted);
   return (
     <>
       {isAccessGranted === true ? (
