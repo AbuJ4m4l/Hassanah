@@ -54,7 +54,14 @@ const VerifyEmailComponent = ({ actionCode, continueUrl }) => {
       }
     };
     verifyEmail();
-  }, [actionCode, continueUrl]);
+  }, [
+    actionCode,
+    continueUrl,
+    t,
+    setMessage,
+    onErrorModalOpen,
+    onSuccessModalOpen,
+  ]);
 
   return (
     <>

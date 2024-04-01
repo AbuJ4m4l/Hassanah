@@ -2,6 +2,7 @@
 
 import {
   Button,
+  Link,
   Modal,
   ModalBody,
   ModalContent,
@@ -10,8 +11,8 @@ import {
 } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 
-const ErrorModal = ({ isOpen, onOpenChange, message }) => {
-  const t = useTranslations("actions.ErrorModal");
+const SuccessModal = ({ isOpen, onOpenChange }) => {
+  const t = useTranslations("VerifyEmailComponent.SuccessModal");
   return (
     <Modal className="rtl:ltr" isOpen={isOpen} onOpenChange={onOpenChange}>
       <ModalContent>
@@ -20,7 +21,7 @@ const ErrorModal = ({ isOpen, onOpenChange, message }) => {
             <ModalHeader className="flex flex-col gap-1">
               {t("title")}
             </ModalHeader>
-            <ModalBody>{message}</ModalBody>
+            <ModalBody>{t("body")}</ModalBody>
             <ModalFooter>
               <Button color="danger" variant="light" onPress={onClose}>
                 {t("close")}
@@ -33,4 +34,4 @@ const ErrorModal = ({ isOpen, onOpenChange, message }) => {
   );
 };
 
-export default ErrorModal;
+export default SuccessModal;

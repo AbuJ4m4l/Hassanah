@@ -329,5 +329,22 @@
     "recoverEmailError": "An error occurred while recovering your email address.",
     "resetPasswordError": "An error occurred while resetting your password.",
     "verifyEmailError": "An error occurred while verifying your email address."
+  },
+  "verifyEmailComponent": {
+    "expiredActionCode": "The action code has expired. Please request a new one.",
+    "invalidActionCode": "The action code is invalid. Please check the link and try again.",
+    "userDisabled": "This user account has been disabled.",
+    "userNotFound": "The user account associated with this email was not found.",
+    "weakPassword": "The password must be at least 8 characters long and contain a mix of letters, numbers, and symbols.",
+    "unknownError": "An unknown error occurred. Please try again later.",
+    "recoverEmailError": "An error occurred while recovering your email address.",
+    "resetPasswordError": "An error occurred while resetting your password.",
+    "verifyEmailError": "An error occurred while verifying your email address."
+  },
+  "actions": {
+    "ErrorModal": {
+      "title": "Error",
+      "close": "Close"
+    }
   }
 }
