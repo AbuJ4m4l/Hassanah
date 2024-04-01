@@ -37,7 +37,7 @@ const ResetPasswordComponent = ({ actionCode, continueUrl }) => {
                   router.push(continueUrl);
                 }, 2000);
               })
-              .catch(console.error);
+              .catch(() => setMessage(t("unknownError")));
           })
           .catch((error) => {
             onErrorModalOpen();
@@ -63,7 +63,7 @@ const ResetPasswordComponent = ({ actionCode, continueUrl }) => {
           });
       }
     } catch (error) {
-      console.error(error);
+        setMessage(t("unknownError"));
     }
   };
   const validatePassword = (password) =>

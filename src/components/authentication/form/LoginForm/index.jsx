@@ -68,6 +68,7 @@ const LoginForm = ({ locale }) => {
         if (!email) setEmailInputError(true);
       }
     } catch (error) {
+      setMessage(t("unknown_error"));
       console.error(error);
     }
   };

@@ -41,7 +41,7 @@ const VerifyEmailComponent = ({ actionCode }) => {
         }
       } catch (error) {
         setVerified(false);
-        console.error(error);
+        setMessage(t("unknownError"));
       }
     };
     verifyEmail();
