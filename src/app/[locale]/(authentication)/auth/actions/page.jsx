@@ -1,7 +1,7 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import ResetPasswordComponent from "../../../../components/authentication/actions/resetPassword";
-import VerifyEmailComponent from "../../../../components/authentication/actions/verifyEmail";
+import ResetPasswordComponent from "../../../../../components/authentication/actions/resetPassword";
+import VerifyEmailComponent from "../../../../../components/authentication/actions/verifyEmail";
 
 const Actions = () => {
   const query = useSearchParams();
