@@ -60,12 +60,12 @@ const SignupForm = ({ locale }) => {
               );
               const body = {
                 provider: "password",
-                id: userCredential?.user?.uid,
-                email: userCredential?.user?.email,
-                username: userCredential?.user?.displayName,
+                id: await userCredential?.user?.uid,
+                email: await userCredential?.user?.email,
+                username: await userCredential?.user?.displayName,
                 password,
-                photoURL: userCredential?.user?.photoURL,
-                emailVerified: userCredential?.user?.emailVerified,
+                photoURL: await userCredential?.user?.photoURL,
+                emailVerified: await userCredential?.user?.emailVerified,
               };
               if (!error) {
                 const response = await fetch(
