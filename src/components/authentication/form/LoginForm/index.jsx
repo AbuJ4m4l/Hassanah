@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import {
   useAuthState,
   useSignInWithEmailAndPassword,
+  useSignOut,
 } from "react-firebase-hooks/auth";
 import { auth } from "../../../../lib/firebase";
 import {
@@ -28,6 +29,7 @@ const LoginForm = ({ locale }) => {
   const [password, setPassword] = useState("");
   const [userMessage, setUserMessage] = useState("");
   const [message, setMessage] = useState("");
+  const [Signout] = useSignOut(auth);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [signInWithEmailAndPassword, _user, loading, error] =
     useSignInWithEmailAndPassword(auth);
@@ -54,12 +56,32 @@ const LoginForm = ({ locale }) => {
       setUserMessage("");
       setMessage("");
       if (password && email) {
-        signInWithEmailAndPassword(email, password).then((data) => {
+        signInWithEmailAndPassword(email, password).then(async (data) => {
           if (data?.user?.email) {
-            setUserMessage(t("login_success_description"));
-            sessionStorage.removeItem("user");
-            sessionStorage.setItem("user", JSON.stringify(data.user));
-            setTimeout(() => router.push("/dashboard"), 3000);
+            const body = {
+              email,
+              password,
+            };
+            const response = await fetch(
+              "http://38.242.214.31:3002/api/v1/login",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(body),
+              }
+            );
+
+            const data = await response.json();
+            if (data && response.ok) {
+              localStorage.setItem("token", data.token);
+              setUserMessage(t("login_success_description"));
+              setTimeout(() => router.push("/dashboard"), 3000);
+            } else {
+              setMessage(t("unknown_error"));
+              Signout();
+            }
           }
           onOpen();
         });
