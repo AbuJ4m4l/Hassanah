@@ -317,6 +317,7 @@
     "password_match_required": "Password match is required",
     "password_doesnt_match": "Password does not match the Password Match Field",
     "password_required": "Password is required",
+    "match_password_doesnt_match": "Password Match does not match the Password Field",
     "the_password_should_contains_special_charachters": "The password must contain at least one lowercase letter, one uppercase letter, one number, one special character, and have a length of 8 characters.",
     "resetPassword": "Reset Password",
     "change_password": "Change Password",

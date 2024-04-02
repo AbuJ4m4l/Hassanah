@@ -318,6 +318,7 @@
     "password_doesnt_match": "كلمة المرور غير متطابقة مع حقل تطابق كلمة المرور",
     "password_required": "كلمة المرور مطلوبة",
     "the_password_should_contains_special_charachters": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل، وحرف كبير واحد، ورقم واحد، ورمز خاص واحد، وأن يكون طولها 8 أحرف على الأقل.",
+    "match_password_doesnt_match": "تأكيد كلمة المرور غير متطابق مع كلمة المرور",
     "resetPassword": "إعادة تعيين كلمة المرور",
     "change_password": "تغيير كلمة المرور",
     "expiredActionCode": "انتهت صلاحية رمز الإجراء. يرجى طلب رمز جديد.",
