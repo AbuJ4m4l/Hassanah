@@ -27,8 +27,8 @@ const AboutPage = ({ params: { locale } }) => {
           <div className="flex justify-center md:block md:justify">
             <Image
               as={nextImage}
-              width={280}
-              height={280}
+              width={300}
+              height={300}
               alt="Connected"
               loading="lazy"
               src="/images/svg/connected.svg"
