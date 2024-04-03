@@ -1,5 +1,5 @@
 "use client";
-import { useSearchParams } from "next/navigation";
+import { notFound, useSearchParams } from "next/navigation";
 import ResetPasswordComponent from "../../../../../components/authentication/actions/resetPassword";
 import VerifyEmailComponent from "../../../../../components/authentication/actions/verifyEmail";
 
@@ -21,7 +21,7 @@ const Actions = () => {
           actionCode={oobCode}
         />
       ) : (
-        <></>
+        notFound()
       )}
     </>
   );
