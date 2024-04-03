@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "@nextui-org/react";
+import { Button, Image } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { Changa, Russo_One } from "next/font/google";
-import Image from "next/image";
+import nextImage from "next/image";
 const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
 const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
 
@@ -24,6 +24,14 @@ const AboutPage = ({ params: { locale } }) => {
             </h1>
             <p className="mt-4">{t("heroSection.text")}</p>
           </div>
+          <Image
+            as={nextImage}
+            width={300}
+            height={300}
+            alt="Connected"
+            loading="lazy"
+            src="/images/svg/connected"
+          />
         </div>
       </section>
     </div>
