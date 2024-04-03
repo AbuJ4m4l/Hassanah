@@ -85,12 +85,21 @@ const Navbar = ({ locale }) => {
                   itemClasses={{
                     base: "gap-4",
                   }}
-                  as={Link}
-                  href="/quran"
-                  color="foreground"
                 >
-                  <DropdownItem key="quran">{t("quran")}</DropdownItem>
-                  <DropdownItem as={Link} href="/reciters" color="foreground">
+                  <DropdownItem
+                    className="text-white"
+                    as={Link}
+                    href="/quran"
+                    color="foreground"
+                  >
+                    {t("quran")}
+                  </DropdownItem>
+                  <DropdownItem
+                    className="text-white"
+                    as={Link}
+                    href="/reciters"
+                    color="foreground"
+                  >
                     {t("reciters")}
                   </DropdownItem>
                 </DropdownMenu>

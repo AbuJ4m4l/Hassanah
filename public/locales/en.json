@@ -348,5 +348,31 @@
       "title": "Error",
       "close": "Close"
     }
+  },
+  "aboutUs": {
+    "heroSection": {
+      "heading": "Foster Connection and Spirituality",
+      "text": "Hassanah is a modern platform for exploring the Quran, Hadiths, and Islamic knowledge."
+    },
+    "title": "About Hassanah",
+    "secondHeroSection": {
+      "text": "Hassanah is an Islamic website that provides a comprehensive platform for accessing the Quran Kareem, Prophetic Hadiths, and verified Islamic YouTube videos. Our goal is to offer the best user experience and user interface, ensuring a seamless and enriching spiritual journey for our users."
+    },
+    "quranSection": {
+      "text": "Explore the Quran Kareem with ease. Our website offers listening and reading modes, supporting the most renowned reciters. Immerse yourself in the divine words and deepen your connection with the holy scripture."
+    },
+    "hadithSection": {
+      "text": "Gain profound insights into the teachings of Prophet Muhammad (peace be upon him) through our comprehensive collection of Prophetic Hadiths. Discover the wisdom and guidance that have shaped Islamic tradition for centuries."
+    },
+    "videoSection": {
+      "text": "Stay inspired and enlightened with our curated selection of verified Islamic YouTube videos from reputable sources. Explore diverse topics, from spiritual growth to practical guidance, all tailored to enrich your Islamic journey."
+    },
+    "servicesSection": {
+      "text": "At Hassanah, we strive to provide exceptional services to enhance your spiritual experience. Enjoy accurate prayer times, prayer notifications tailored to your timezone, and timely reminders for Islamic festivals, ensuring you never miss a significant moment."
+    },
+    "additionalInfo": {
+      "text1": "Hassanah was created by Blueteam. Blueteam started developing this website on 2024/02/19, and it's an open-source project. GitHub repository:",
+      "text2": "Our mission is to create a comprehensive Islamic resource that combines technology and spirituality, providing a seamless and enriching experience for our users."
+    }
   }
 }

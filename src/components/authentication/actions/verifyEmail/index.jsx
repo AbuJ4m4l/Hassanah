@@ -3,6 +3,8 @@ import { applyActionCode } from "firebase/auth";
 import { useTranslations } from "next-intl";
 import { auth } from "../../../../lib/firebase";
 import { useEffect, useState } from "react";
+import { Image } from "@nextui-org/react";
+import nextImage from "next/image";
 
 const VerifyEmailComponent = ({ actionCode }) => {
   const t = useTranslations("VerifyEmailComponent");
@@ -52,22 +54,14 @@ const VerifyEmailComponent = ({ actionCode }) => {
       {verified === true ? (
         <>
           <div className="flex justify-center">
-            <div className="px-16 py-16 rounded-full outline-offset-2 outline-4 outline-green-600 outline">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="44"
-                height="44"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#16a34a"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-check"
-              >
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
+            <Image
+              as={nextImage}
+              width={250}
+              height={250}
+              alt="Verified"
+              src="/images/svg/verified.svg"
+              loading="lazy"
+            />
           </div>
           <div className="flex justify-center mt-6">
             <h2>{t("email_verified_successfully")}</h2>
@@ -76,23 +70,14 @@ const VerifyEmailComponent = ({ actionCode }) => {
       ) : verified === false ? (
         <>
           <div className="flex justify-center">
-            <div className="px-16 py-16 rounded-full outline-offset-2 outline-4 outline-red-600 outline">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="44"
-                height="44"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="red"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-x"
-              >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </div>
+            <Image
+              as={nextImage}
+              width={250}
+              height={250}
+              alt="Verified"
+              src="/images/svg/access_denied.svg"
+              loading="lazy"
+            />
           </div>
           <div className="flex justify-center mt-6">
             <h2>{message}</h2>
