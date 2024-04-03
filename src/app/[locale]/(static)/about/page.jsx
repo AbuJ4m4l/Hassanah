@@ -53,7 +53,7 @@ const AboutPage = ({ params: { locale } }) => {
               alt="Connected"
               loading="lazy"
               src="/images/svg/connected.svg"
-              className="md:rtl:mr-28 md:ltr:ml-28 mt-9"
+              className="md:rtl:mr-28 md:ltr:ml-28 md:mt-0 mt-9"
             />
           </div>
         </div>
@@ -62,11 +62,11 @@ const AboutPage = ({ params: { locale } }) => {
         <div className="flex justify-center">
           <h1 className="text-2xl font-bold">{t("header")}</h1>
         </div>
-        <div classname="flex flex-col md:flex-row w-[360px]">
-          <div className="w-[280px]">
-            <h2 className="text-center">{t("intro")}</h2>
+        <div className="mt-14 flex flex-col md:flex-row-reverse bg-slate-950 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
+          <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
+            <p className="mt-4 md:mt-0 text-center">{t("intro")}</p>
           </div>
-          <div>
+          <div className="flex justify-center md:block md:justify">
             <Image
               as={nextImage}
               width={300}
@@ -74,6 +74,44 @@ const AboutPage = ({ params: { locale } }) => {
               alt="Website Builder"
               loading="lazy"
               src="/images/svg/website_builder.svg"
+              className="md:rtl:ml-28 md:ltr:mr-28 mt-9 md:mt-0"
+            />
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className="flex justify-center">
+          <h1 className="text-2xl font-bold">{t("features.title")}</h1>
+        </div>
+        <div className="mt-14 flex flex-col md:flex-row bg-slate-800 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
+          <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
+            <p className="mt-4 md:mt-0 text-center">{t("features.quran")}</p>
+          </div>
+          <div className="flex justify-center md:block md:justify">
+            <Image
+              as={nextImage}
+              width={300}
+              height={300}
+              alt="Website Builder"
+              loading="lazy"
+              src="/images/svg/book.svg"
+              className="md:rtl:mr-28 md:ltr:ml-28 mt-9 md:mt-0"
+            />
+          </div>
+        </div>
+        <div className="mt-14 flex flex-col md:flex-row bg-slate-950 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
+          <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
+            <p className="mt-4 md:mt-0 text-center">{t("features.hadiths")}</p>
+          </div>
+          <div className="flex justify-center md:block md:justify">
+            <Image
+              as={nextImage}
+              width={300}
+              height={300}
+              alt="Book"
+              loading="lazy"
+              src="/images/svg/book.svg"
+              className="md:rtl:mr-28 md:ltr:ml-28 mt-9 md:mt-0"
             />
           </div>
         </div>
