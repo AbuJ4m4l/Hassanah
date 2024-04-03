@@ -351,28 +351,22 @@
   },
   "aboutUs": {
     "heroSection": {
-      "heading": "Foster Connection and Spirituality",
+      "heading": "Foster Connection and Spirituality.",
       "text": "Hassanah is a modern platform for exploring the Quran, Hadiths, and Islamic knowledge."
     },
-    "title": "About Hassanah",
-    "secondHeroSection": {
-      "text": "Hassanah is an Islamic website that provides a comprehensive platform for accessing the Quran Kareem, Prophetic Hadiths, and verified Islamic YouTube videos. Our goal is to offer the best user experience and user interface, ensuring a seamless and enriching spiritual journey for our users."
+    "header": "About Hassanah (حسنة)",
+    "intro": "Hassanah is an Islamic website created to provide a comprehensive and user-friendly experience for exploring the Quran, prophetic hadiths, and inspiring Islamic content.",
+    "features": {
+      "title": "Our Core Features",
+      "quran": "Explore the Holy Quran with listening and read-only modes, featuring a wide selection of reciters.",
+      "hadiths": "Delve into the wisdom of the Prophet Muhammad (PBUH) with our collection of verified hadith books.",
+      "videos": "Discover curated Islamic YouTube videos from trusted sources for enriching knowledge and spiritual growth.",
+      "prayer": "Stay connected to your prayer times with accurate calculations tailored to your timezone and helpful reminders.",
+      "festivals": "Never miss an important Islamic festival with our comprehensive calendar and notifications."
     },
-    "quranSection": {
-      "text": "Explore the Quran Kareem with ease. Our website offers listening and reading modes, supporting the most renowned reciters. Immerse yourself in the divine words and deepen your connection with the holy scripture."
-    },
-    "hadithSection": {
-      "text": "Gain profound insights into the teachings of Prophet Muhammad (peace be upon him) through our comprehensive collection of Prophetic Hadiths. Discover the wisdom and guidance that have shaped Islamic tradition for centuries."
-    },
-    "videoSection": {
-      "text": "Stay inspired and enlightened with our curated selection of verified Islamic YouTube videos from reputable sources. Explore diverse topics, from spiritual growth to practical guidance, all tailored to enrich your Islamic journey."
-    },
-    "servicesSection": {
-      "text": "At Hassanah, we strive to provide exceptional services to enhance your spiritual experience. Enjoy accurate prayer times, prayer notifications tailored to your timezone, and timely reminders for Islamic festivals, ensuring you never miss a significant moment."
-    },
-    "additionalInfo": {
-      "text1": "Hassanah was created by Blueteam. Blueteam started developing this website on 2024/02/19, and it's an open-source project. GitHub repository:",
-      "text2": "Our mission is to create a comprehensive Islamic resource that combines technology and spirituality, providing a seamless and enriching experience for our users."
+    "blueteam": {
+      "title": "Created by the Blueteam",
+      "description": "Hassanah was born from the Blueteam's dedication to building a valuable digital resource for Muslims worldwide. We began this journey on February 19th, 2024, and are proud to offer Hassanah as an open-source project on GitHub: abuj4m4l/hassanah"
     }
   }
 }
