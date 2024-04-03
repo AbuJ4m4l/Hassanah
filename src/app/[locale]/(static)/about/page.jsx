@@ -1,11 +1,9 @@
 "use client";
 
 import { Button, Image } from "@nextui-org/react";
-import gsap from "gsap";
 import { useTranslations } from "next-intl";
 import { Changa, Russo_One } from "next/font/google";
 import nextImage from "next/image";
-import { useEffect } from "react";
 import { Typewriter } from "react-simple-typewriter";
 
 export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
@@ -13,19 +11,7 @@ export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
 
 const AboutPage = ({ params: { locale } }) => {
   const t = useTranslations("aboutUs");
-  /*useEffect(() => {
-    gsap.to(".heroSection-items", {
-      x: 0,
-      duration: 3,
-      scrollTrigger: {
-        trigger: ".heroSection-items",
-        markers: true,
-        start: "top center",
-        end: "bottom 80px",
-        scrub: true,
-      },
-    });
-  }, []);*/
+
   return (
     <div className="container !-mt-9 space-y-14">
       <section className="bg-black/70 backdrop-blur-3xl px-10 py-8 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px] lg:py-16 w-full h-auto">
@@ -84,10 +70,13 @@ const AboutPage = ({ params: { locale } }) => {
           <h1 className="text-2xl font-bold">{t("features.title")}</h1>
         </div>
         <div className="mt-14 flex flex-col md:flex-row bg-slate-900 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
-          <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
+          <div
+            id="p1"
+            className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0"
+          >
             <p className="mt-4 md:mt-0 text-center">{t("features.quran")}</p>
           </div>
-          <div className="flex justify-center md:block md:justify">
+          <div id="p1" className="flex justify-center md:block md:justify">
             <Image
               as={nextImage}
               width={300}
@@ -101,10 +90,13 @@ const AboutPage = ({ params: { locale } }) => {
         </div>
         <div className="flex flex-col md:flex-row-reverse bg-slate-950 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
           <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
-            <p className="mt-4 md:mt-0 text-center">{t("features.hadiths")}</p>
+            <p id="p2" className="mt-4 md:mt-0 text-center">
+              {t("features.hadiths")}
+            </p>
           </div>
           <div className="flex justify-center md:block md:justify">
             <Image
+              id="p2"
               as={nextImage}
               width={300}
               height={300}
@@ -117,10 +109,13 @@ const AboutPage = ({ params: { locale } }) => {
         </div>
         <div className="flex flex-col md:flex-row bg-slate-900 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
           <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
-            <p className="mt-4 md:mt-0 text-center">{t("features.videos")}</p>
+            <p id="p3" className="mt-4 md:mt-0 text-center">
+              {t("features.videos")}
+            </p>
           </div>
           <div className="flex justify-center md:block md:justify">
             <Image
+              id="p3"
               as={nextImage}
               width={300}
               height={300}
@@ -133,10 +128,13 @@ const AboutPage = ({ params: { locale } }) => {
         </div>
         <div className="flex flex-col md:flex-row-reverse bg-slate-950 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
           <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
-            <p className="mt-4 md:mt-0 text-center">{t("features.prayer")}</p>
+            <p id="p4" className="mt-4 md:mt-0 text-center">
+              {t("features.prayer")}
+            </p>
           </div>
           <div className="flex justify-center md:block md:justify">
             <Image
+              id="p4"
               as={nextImage}
               width={300}
               height={300}
@@ -149,12 +147,13 @@ const AboutPage = ({ params: { locale } }) => {
         </div>
         <div className="flex flex-col md:flex-row bg-slate-900 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
           <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
-            <p className="mt-4 md:mt-0 text-center">
+            <p id="p5" className="mt-4 md:mt-0 text-center">
               {t("features.festivals")}
             </p>
           </div>
           <div className="flex justify-center md:block md:justify">
             <Image
+              id="p5"
               as={nextImage}
               width={300}
               height={300}
@@ -164,6 +163,11 @@ const AboutPage = ({ params: { locale } }) => {
               className="md:rtl:mr-28 md:ltr:ml-28 mt-9 md:mt-0"
             />
           </div>
+        </div>
+      </section>
+      <section className="bg-black/70 backdrop-blur-3xl px-10 py-8 lg:py-16 w-full h-auto">
+        <div className="flex justify-center">
+          <h1>{t("blueteam.title")}</h1>
         </div>
       </section>
     </div>
