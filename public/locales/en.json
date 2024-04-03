@@ -365,8 +365,9 @@
       "festivals": "Never miss an important Islamic festival with our comprehensive calendar and notifications."
     },
     "blueteam": {
-      "title": "Created by the Blueteam",
-      "description": "Hassanah was born from the Blueteam's dedication to building a valuable digital resource for Muslims worldwide. We began this journey on February 19th, 2024, and are proud to offer Hassanah as an open-source project on GitHub: abuj4m4l/hassanah"
+      "title": "Created by Blueteam",
+      "description": "Hassanah was born from the Blueteam's dedication to building a valuable digital resource for Muslims worldwide. We began this journey on February 19th, 2024, and are proud to offer Hassanah as an open-source project on GitHub: abuj4m4l/hassanah",
+      "description2": " We began this journey on February 19th, 2024, and are proud to offer Hassanah as an open-source project on GitHub repo."
     }
   }
 }
