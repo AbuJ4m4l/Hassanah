@@ -281,7 +281,8 @@
       "account_not_verified": "Your account are not verified by email message"
     },
     "signout": "Signout",
-    "resend_verification_email": "Resend verification url"
+    "resend_verification_email": "Resend verification url",
+    "code_sent": "Verification url was sent"
   },
   "resetPassword": {
     "resetPassword": "Reset Password",

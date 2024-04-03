@@ -13,10 +13,12 @@ import { useTranslations } from "next-intl";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../../lib/firebase";
 import { sendEmailVerification } from "firebase/auth";
+import { useState } from "react";
 
 const AccessDeniedModal = ({ isOpen, onOpenChange }) => {
   const t = useTranslations("AccessDeniedModal");
   const [user] = useAuthState(auth);
+  const [codeSent, setCodeSent] = useState(false);
   return (
     <Modal
       isDismissable={false}
@@ -44,13 +46,17 @@ const AccessDeniedModal = ({ isOpen, onOpenChange }) => {
                 {t("signout")}
               </Button>
               <Button
-                color="warning"
-                variant="light"
+                color={codeSent === true ? "success" : "warning"}
                 onClick={() => {
                   sendEmailVerification(user);
+                  setCodeSent(true);
                 }}
+                variant="light"
+                isDisabled={codeSent}
               >
-                {t("resend_verification_email")}
+                {codeSent === true
+                  ? t("code_sent")
+                  : t("resend_verification_email")}
               </Button>
             </ModalFooter>
           </>

@@ -281,7 +281,8 @@
       "account_not_verified": "لم يتم التحقق من حسابك عن طريق البريد الإلكتروني بعد"
     },
     "signout": "تسجيل الخروج",
-    "resend_verification_email": "إعادة إرسال رابط التحقق"
+    "resend_verification_email": "إعادة إرسال رابط التحقق",
+    "code_sent": "تم إرسال رابط التحقق"
   },
   "resetPassword": {
     "resetPassword": "إعادة تعيين كلمة المرور",
