@@ -83,7 +83,7 @@ const AboutPage = ({ params: { locale } }) => {
         <div className="flex justify-center">
           <h1 className="text-2xl font-bold">{t("features.title")}</h1>
         </div>
-        <div className="mt-14 flex flex-col md:flex-row bg-slate-800 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
+        <div className="mt-14 flex flex-col md:flex-row bg-slate-900 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
           <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
             <p className="mt-4 md:mt-0 text-center">{t("features.quran")}</p>
           </div>
@@ -115,7 +115,7 @@ const AboutPage = ({ params: { locale } }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col md:flex-row bg-slate-800 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
+        <div className="flex flex-col md:flex-row bg-slate-900 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
           <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
             <p className="mt-4 md:mt-0 text-center">{t("features.videos")}</p>
           </div>
@@ -144,6 +144,24 @@ const AboutPage = ({ params: { locale } }) => {
               loading="lazy"
               src="/images/svg/notify.svg"
               className="md:rtl:ml-28 md:ltr:mr-28 mt-9 md:mt-0"
+            />
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row bg-slate-900 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
+          <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
+            <p className="mt-4 md:mt-0 text-center">
+              {t("features.festivals")}
+            </p>
+          </div>
+          <div className="flex justify-center md:block md:justify">
+            <Image
+              as={nextImage}
+              width={300}
+              height={300}
+              alt="Festival"
+              loading="lazy"
+              src="/images/svg/festival.svg"
+              className="md:rtl:mr-28 md:ltr:ml-28 mt-9 md:mt-0"
             />
           </div>
         </div>
