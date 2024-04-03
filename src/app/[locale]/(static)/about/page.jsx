@@ -14,7 +14,7 @@ const AboutPage = ({ params: { locale } }) => {
 
   return (
     <div className="container !-mt-9 space-y-14">
-      <section className="bg-black/70 backdrop-blur-3xl px-10 py-8 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px] lg:py-16 w-full h-auto">
+      <section className="select-none bg-black/70 backdrop-blur-3xl px-10 py-8 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px] lg:py-16 w-full h-auto">
         <div className="flex flex-col md:flex-row">
           <div className="w-[280px]">
             <h1
