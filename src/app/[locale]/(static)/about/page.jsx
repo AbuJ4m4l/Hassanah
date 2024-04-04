@@ -18,7 +18,7 @@ const AboutPage = ({ params: { locale } }) => {
         <div className="flex flex-col md:flex-row">
           <div className="w-[280px]">
             <h1
-              className={`bg-clip-text text-transparent bg-gradient-to-br from-white to-blue-400 text-4xl sm:text-5xl ${
+              className={`p-3 bg-clip-text text-transparent bg-gradient-to-br from-white to-blue-400 text-4xl sm:text-5xl ${
                 locale === "en" ? russo.className : changa.className
               }`}
             >
