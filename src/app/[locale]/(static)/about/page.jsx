@@ -13,16 +13,16 @@ const AboutPage = ({ params: { locale } }) => {
   const t = useTranslations("aboutUs");
 
   return (
-    <div className="container !-mt-9 space-y-14">
+    <div className="container !-mb-[60px] !-mt-9 space-y-14">
       <section className="select-none border-b border-divider bg-black/70 backdrop-blur-3xl px-10 py-8 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px] lg:py-16 w-full h-auto">
         <div className="flex flex-col md:flex-row">
           <div className="w-[280px]">
             <h1
-              className={`bg-clip-text text-transparent bg-gradient-to-br from-white to-blue-400 text-4xl sm:text-5xl ${
+              className={`inline-block bg-clip-text text-transparent bg-gradient-to-br from-white to-blue-400 text-4xl sm:text-5xl ${
                 locale === "en" ? russo.className : changa.className
               }`}
             >
-              <Typewriter words={[t("heroSection.heading")]} />
+              <Typewriter words={[t("heroSection.heading")]} typeSpeed={200} />
             </h1>
             <p className="mt-4 md:text-center">{t("heroSection.text")}</p>
           </div>
@@ -43,7 +43,7 @@ const AboutPage = ({ params: { locale } }) => {
         <div className="flex justify-center">
           <h1 className="text-2xl font-bold">{t("header")}</h1>
         </div>
-        <div className="mt-14 flex flex-col md:flex-row-reverse bg-slate-950 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
+        <div className="mt-14 flex flex-col md:flex-row-reverse border-y border-divider bg-[#080808] backdrop-blur-3xl w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
           <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
             <p className="mt-4 md:mt-0 text-center">{t("intro")}</p>
           </div>
@@ -64,7 +64,7 @@ const AboutPage = ({ params: { locale } }) => {
         <div className="flex justify-center">
           <h1 className="text-2xl font-bold">{t("features.title")}</h1>
         </div>
-        <div className="mt-14 flex flex-col md:flex-row bg-slate-900 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
+        <div className="mt-14 flex flex-col md:flex-row border-y border-divider bg-[#060606] w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
           <div
             id="p1"
             className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0"
@@ -83,7 +83,7 @@ const AboutPage = ({ params: { locale } }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col md:flex-row-reverse bg-slate-950 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
+        <div className="flex flex-col md:flex-row-reverse border-b border-divider bg-[#080808] w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
           <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
             <p id="p2" className="mt-4 md:mt-0 text-center">
               {t("features.hadiths")}
@@ -102,7 +102,7 @@ const AboutPage = ({ params: { locale } }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col md:flex-row bg-slate-900 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
+        <div className="flex flex-col md:flex-row bg-[#060606] border-b border-divider w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
           <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
             <p id="p3" className="mt-4 md:mt-0 text-center">
               {t("features.videos")}
@@ -121,7 +121,7 @@ const AboutPage = ({ params: { locale } }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col md:flex-row-reverse bg-slate-950 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
+        <div className="flex flex-col md:flex-row-reverse bg-[#080808] border-b border-divider w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
           <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
             <p id="p4" className="mt-4 md:mt-0 text-center">
               {t("features.prayer")}
@@ -140,7 +140,7 @@ const AboutPage = ({ params: { locale } }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col md:flex-row bg-slate-900 w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
+        <div className="flex flex-col md:flex-row bg-[#060606] border-b border-divider w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
           <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
             <p id="p5" className="mt-4 md:mt-0 text-center">
               {t("features.festivals")}
@@ -160,7 +160,7 @@ const AboutPage = ({ params: { locale } }) => {
           </div>
         </div>
       </section>
-      <section className="bg-black/70 backdrop-blur-3xl px-10 py-8 lg:py-16 w-full h-auto">
+      <section className="bg-black/70 border-t border-divider backdrop-blur-3xl px-10 py-8 lg:py-16 w-full h-auto">
         <div className="flex justify-center">
           <h1
             className={`${

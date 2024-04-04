@@ -351,22 +351,22 @@
   },
   "aboutUs": {
     "heroSection": {
-      "heading": "Foster Connection and Spirituality.",
-      "text": "Hassanah is a modern platform for exploring the Quran, Hadiths, and Islamic knowledge."
+      "heading": "Hassanah, Your Islamic Resource",
+      "text": "Gain access to the Quran (with tafseers), Hadiths, and Islamic knowledge on Hassanah platform."
     },
     "header": "About Hassanah (حسنة)",
     "intro": "Hassanah is an Islamic website created to provide a comprehensive and user-friendly experience for exploring the Quran, prophetic hadiths, and inspiring Islamic content.",
     "features": {
       "title": "Our Core Features",
       "quran": "Explore the Holy Quran with listening and read-only modes, featuring a wide selection of reciters.",
-      "hadiths": "Delve into the wisdom of the Prophet Muhammad (PBUH) with our collection of verified hadith books. (Sahih al-bukhari, Sahih al-muslim etc...)",
+      "hadiths": "Delve into the wisdom of the Prophet Muhammad (S.A.W) with our collection of verified hadith books. (Sahih al-bukhari, Sahih al-muslim etc...)",
       "videos": "Discover curated Islamic YouTube videos from trusted sources for enriching knowledge and spiritual growth.",
       "prayer": "Stay connected to your prayer times with accurate calculations tailored to your timezone and helpful reminders.",
       "festivals": "Never miss an important Islamic festival with our comprehensive calendar and notifications."
     },
     "blueteam": {
       "title": "Created by Blueteam",
-      "description": "Hassanah was born from the Blueteam's dedication to building a valuable digital resource for Muslims worldwide. We began this journey on February 19th, 2024, and are proud to offer Hassanah as an open-source project on GitHub: abuj4m4l/hassanah",
+      "description": "Hassanah was created from the Blueteam's dedication to building a valuable digital resource for Muslims worldwide. We began this journey on February 19th, 2024, and are proud to offer Hassanah as an open-source project on GitHub: abuj4m4l/hassanah",
       "description2": " We began this journey on February 19th, 2024, and are proud to offer Hassanah as an open-source project on GitHub repo."
     }
   }
