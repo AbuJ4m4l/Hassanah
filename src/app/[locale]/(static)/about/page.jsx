@@ -14,11 +14,11 @@ const AboutPage = ({ params: { locale } }) => {
 
   return (
     <div className="container !-mb-[60px] !-mt-9 space-y-14">
-      <section className="select-none border-b border-divider bg-black/70 backdrop-blur-3xl px-10 py-8 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px] lg:py-16 w-full h-auto">
+      <section className="select-none border-b border-divider bg-black/70 backdrop-blur-3xl px-10 py-8 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[400px] lg:py-16 w-full h-auto">
         <div className="flex flex-col md:flex-row">
           <div className="w-[280px]">
             <h1
-              className={`inline-block bg-clip-text text-transparent bg-gradient-to-br from-white to-blue-400 text-4xl sm:text-5xl ${
+              className={`bg-clip-text text-transparent bg-gradient-to-br from-white to-blue-400 text-4xl sm:text-5xl ${
                 locale === "en" ? russo.className : changa.className
               }`}
             >
