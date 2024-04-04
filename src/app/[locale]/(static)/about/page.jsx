@@ -31,9 +31,9 @@ const AboutPage = ({ params: { locale } }) => {
               as={nextImage}
               width={300}
               height={300}
-              alt="Connected"
+              alt="Bookshelves"
               loading="lazy"
-              src="/images/svg/connected.svg"
+              src="/images/svg/bookshelves.svg"
               className="md:rtl:mr-28 md:ltr:ml-28 md:mt-0 mt-9"
             />
           </div>
@@ -43,7 +43,7 @@ const AboutPage = ({ params: { locale } }) => {
         <div className="flex justify-center">
           <h1 className="text-2xl font-bold">{t("header")}</h1>
         </div>
-        <div className="mt-14 flex flex-col md:flex-row-reverse border-y border-divider bg-[#080808] backdrop-blur-3xl w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
+        <div className="space-x-28 mt-14 flex flex-col md:flex-row-reverse border-y border-divider bg-[#080808] backdrop-blur-3xl w-full h-auto py-10 md:px-[70px] lg:px-[200px] xl:px-[300px] 2xl:px-[600px]">
           <div className="md:items-center flex w-auto md:w-[400px] sm:px-12 px-6 md:p-0">
             <p className="mt-4 md:mt-0 text-center">{t("intro")}</p>
           </div>
@@ -55,7 +55,7 @@ const AboutPage = ({ params: { locale } }) => {
               alt="Website Builder"
               loading="lazy"
               src="/images/svg/website_builder.svg"
-              className="md:rtl:ml-28 md:ltr:mr-28 mt-9 md:mt-0"
+              className="mt-9 md:mt-0"
             />
           </div>
         </div>
@@ -182,6 +182,7 @@ const AboutPage = ({ params: { locale } }) => {
             as={Link}
             href="https://github.com/abuj4m4l/hassanah"
             type="button"
+            target="_blank"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
