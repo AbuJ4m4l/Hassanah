@@ -1,7 +1,11 @@
 {
   "home": {
     "total_ayahs": "إجمالي الآيات",
-    "surahs": "جميع السور"
+    "surahs": "جميع السور",
+    "revelationType": {
+      "Meccan": "مكية",
+      "Medinan": "مدنية"
+    }
   },
   "signup": {
     "signup": "انشاء حساب جديد",

@@ -122,8 +122,18 @@ const Home = ({ params: { locale } }) => {
               </div>
             </div>
             <p className="text-slate-400 text-medium mt-2">
-              {translateRevelationType(surah.revelationType, locale)} -{" "}
-              {surah.totalAyahs} {t("total_ayahs")}
+              {locale === "ar" ? (
+                <>
+                  {t(`revelationType.${surah.revelationType}`)} -{" "}
+                  {surah.totalAyahs} {t("total_ayahs")}
+                </>
+              ) : (
+                <>
+                  {surah.englishNameTranslation} -{" "}
+                  {t(`revelationType.${surah.revelationType}`)} -
+                  {surah.totalAyahs} {t("total_ayahs")}
+                </>
+              )}
             </p>
           </div>
         ))}

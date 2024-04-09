@@ -1,7 +1,11 @@
 {
   "home": {
     "total_ayahs": "Total Ayahs",
-    "surahs": "All Surahs"
+    "surahs": "All Surahs",
+    "revelationType": {
+      "Meccan": "Meccan",
+      "Medinan": "Medinan"
+    }
   },
   "signup": {
     "signup": "Signup New Account",
