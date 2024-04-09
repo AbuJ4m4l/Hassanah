@@ -140,6 +140,7 @@ const Navbar = ({ locale }) => {
             }
             endContent={<Kbd keys={["command"]}>K</Kbd>}
             type="search"
+            isReadOnly
           />
           <LoginButton AvatarClassName="mt-4" variant="flat" />
         </NavbarContent>
