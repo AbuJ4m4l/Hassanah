@@ -3,6 +3,8 @@
     "total_ayahs": "إجمالي الآيات",
     "surahs": "جميع السور",
     "type_to_search": "اكتب للبحث...",
+    "select_live_channel": "اختر القناة بث المباشر",
+    "select_channel": "اختر القناة",
     "revelationType": {
       "Meccan": "مكية",
       "Medinan": "مدنية"
