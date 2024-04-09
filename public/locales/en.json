@@ -5,6 +5,7 @@
     "type_to_search": "Type to search...",
     "select_live_channel": "Select the live channel",
     "select_channel": "Select The Channel",
+    "live_channel": "Live Channel",
     "revelationType": {
       "Meccan": "Meccan",
       "Medinan": "Medinan"
