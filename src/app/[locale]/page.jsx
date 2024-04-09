@@ -87,10 +87,10 @@ const Home = ({ params: { locale } }) => {
   return (
     <section className="my-8">
       <Divider />
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-4">
         <h1 className="text-2xl font-bold mb-4">{t("surahs")}</h1>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4 px-4 xl:px-[300px]">
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4 px-4 xl:px-[300px]">
         {surahNames.map((surah) => (
           <div
             key={surah.id}
