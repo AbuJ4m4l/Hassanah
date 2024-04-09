@@ -1,9 +1,16 @@
 "use client";
 
-import { Divider, Input, Kbd } from "@nextui-org/react";
+import {
+  Autocomplete,
+  AutocompleteItem,
+  Divider,
+  Input,
+  Kbd,
+} from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import VideoPlayer from "../../components/HlsPlayer";
 
 const Home = ({ params: { locale } }) => {
   const [surahNames, setSurahNames] = useState([]);
@@ -132,6 +139,27 @@ const Home = ({ params: { locale } }) => {
             }
             type="search"
           />
+        </div>
+      </section>
+      <Divider />
+      <section className="my-8 w-[280px] md:w-[400px]">
+        <div className="flex justify-center">
+          <Autocomplete
+            defaultItems={channels}
+            label={t("select_channel")}
+            placeholder={t("select_live_channel")}
+            className="max-w-xs"
+            onValueChange={setChannel}
+          >
+            {(channel) => (
+              <AutocompleteItem value={channel.url} key={channel.value}>
+                {channel.label}
+              </AutocompleteItem>
+            )}
+          </Autocomplete>
+        </div>
+        <div className="flex justify-center">
+          <VideoPlayer src="https://win.holol.com/live/sunnah/playlist.m3u8" />
         </div>
       </section>
       <Divider />
