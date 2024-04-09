@@ -12,7 +12,7 @@ import {
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import VideoPlayer from "../../components/HlsPlayer";
+import HlsPlayer from "../../components/HlsPlayer";
 
 const Home = ({ params: { locale } }) => {
   const [surahNames, setSurahNames] = useState([]);
@@ -167,7 +167,7 @@ const Home = ({ params: { locale } }) => {
               </Select>
             </div>
             <div className="flex justify-center mt-6">
-              <VideoPlayer src={Channel} />
+              <HlsPlayer src={Channel} />
             </div>
           </div>
         </div>
