@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const Home = () => {
+const Home = ({ params: { locale } }) => {
   const [surahNames, setSurahNames] = useState([]);
 
   useEffect(() => {
@@ -11,7 +11,6 @@ const Home = () => {
       const storeName = "surahs";
 
       try {
-        // Open the IndexedDB database
         const request = window.indexedDB.open(dbName, 1);
 
         request.onupgradeneeded = (event) => {
@@ -84,11 +83,21 @@ const Home = () => {
   return (
     <section className="my-8">
       <h2 className="text-2xl font-bold mb-4">Surah Names</h2>
-      <div className="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-4 px-4 xl:px-[300px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4 px-4 xl:px-[300px]">
         {surahNames.map((surah) => (
-          <div key={surah.id} className="bg-[#171717] p-4 rounded-md">
-            {surah.name}
-            <p>{surah.englishName}</p>
+          <div
+            key={surah.id}
+            className="bg-[#171717] p-4 rounded-md flex flex-col"
+          >
+            <div className="flex flex-row">
+              <div className="rtl:ml-2 ltr:mr-2 rounded-full px-4 py-2 bg-[#060606]">
+                {surah.id}
+              </div>
+              <div>{locale === "ar" ? surah.name : surah.englishName}</div>
+            </div>
+            <p className="text-slate-400 text-medium mt-2">
+              {surah.englishNameTranslation}
+            </p>
           </div>
         ))}
       </div>
