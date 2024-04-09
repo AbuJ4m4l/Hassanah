@@ -104,7 +104,7 @@ const Home = ({ params: { locale } }) => {
       };
     });
   }
-  console.log(`channel:`, Channel);
+
   return (
     <>
       <section className="my-8">
