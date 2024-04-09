@@ -6,6 +6,9 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import HlsPlayer from "../../components/HlsPlayer";
 
+export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
+export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
+
 const Home = ({ params: { locale } }) => {
   const [surahNames, setSurahNames] = useState([]);
   const [Channel, setChannel] = useState(
