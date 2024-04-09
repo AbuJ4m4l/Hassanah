@@ -1,10 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Home = ({ params: { locale } }) => {
   const [surahNames, setSurahNames] = useState([]);
-
+  const router = useRouter();
   useEffect(() => {
     const GetData = async () => {
       const dbName = "surah-database";
@@ -88,6 +89,7 @@ const Home = ({ params: { locale } }) => {
           <div
             key={surah.id}
             tabIndex={0}
+            onClick={() => router.push(`/surah/${surah.id}`)}
             className={`cursor-pointer bg-[#171717] hover:bg-[#101010] p-4 rounded-md flex flex-col focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717]`}
           >
             <div className="flex flex-row">
@@ -99,7 +101,7 @@ const Home = ({ params: { locale } }) => {
               </div>
             </div>
             <p className="text-slate-400 text-medium mt-2">
-              {surah.englishNameTranslation}
+              {surah.englishNameTranslation} - {surah.totalAyahs} Ayahs
             </p>
           </div>
         ))}
