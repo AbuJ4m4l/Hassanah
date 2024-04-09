@@ -3,6 +3,8 @@
     "total_ayahs": "Total Ayahs",
     "surahs": "All Surahs",
     "type_to_search": "Type to search...",
+    "select_live_channel": "Select the live channel",
+    "select_channel": "Select The Channel",
     "revelationType": {
       "Meccan": "Meccan",
       "Medinan": "Medinan"
