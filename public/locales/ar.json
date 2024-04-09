@@ -1,7 +1,5 @@
 {
-  "home": {
-    "about_us": "حولنا"
-  },
+  "home": {},
   "signup": {
     "signup": "انشاء حساب جديد",
     "username": "اسم المستخدم",
