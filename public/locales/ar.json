@@ -2,6 +2,7 @@
   "home": {
     "total_ayahs": "إجمالي الآيات",
     "surahs": "جميع السور",
+    "type_to_search": "اكتب للبحث...",
     "revelationType": {
       "Meccan": "مكية",
       "Medinan": "مدنية"

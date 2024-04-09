@@ -1,6 +1,6 @@
 "use client";
 
-import { Divider } from "@nextui-org/react";
+import { Divider, Input, Kbd } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -100,45 +100,80 @@ const Home = ({ params: { locale } }) => {
     }
   };
   return (
-    <section className="my-8">
+    <>
+      <section className="my-8">
+        <div className="flex justify-center">
+          <Input
+            classNames={{
+              base: "max-w-[280px] md:max-w-[500px] h-10",
+              mainWrapper: "h-full",
+              input: "text-small",
+              inputWrapper:
+                "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+            }}
+            placeholder={t("type_to_search")}
+            size="sm"
+            startContent={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-search"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            }
+            type="search"
+          />
+        </div>
+      </section>
       <Divider />
-      <div className="flex justify-center mt-4">
-        <h1 className="text-2xl font-bold mb-4">{t("surahs")}</h1>
-      </div>
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4 px-4 xl:px-[300px]">
-        {surahNames.map((surah) => (
-          <div
-            key={surah.id}
-            tabIndex={0}
-            onClick={() => router.push(`/surah/${surah.id}`)}
-            className={`cursor-pointer bg-[#171717] hover:bg-[#101010] p-4 rounded-md flex flex-col focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717]`}
-          >
-            <div className="flex flex-row">
-              <div className="rtl:ml-2 ltr:mr-2 rounded-full px-4 py-2 bg-[#060606]">
-                {surah.id}
+      <section className="my-8">
+        <div className="flex justify-center mt-4">
+          <h1 className="text-2xl font-bold mb-4">{t("surahs")}</h1>
+        </div>
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4 px-4 xl:px-[300px]">
+          {surahNames.map((surah) => (
+            <div
+              key={surah.id}
+              tabIndex={0}
+              onClick={() => router.push(`/surah/${surah.id}`)}
+              className={`cursor-pointer bg-[#171717] hover:bg-[#101010] p-4 rounded-md flex flex-col focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717]`}
+            >
+              <div className="flex flex-row">
+                <div className="rtl:ml-2 ltr:mr-2 rounded-full px-4 py-2 bg-[#060606]">
+                  {surah.id}
+                </div>
+                <div className="mt-2">
+                  {locale === "ar" ? surah.name : surah.englishName}
+                </div>
               </div>
-              <div className="mt-2">
-                {locale === "ar" ? surah.name : surah.englishName}
-              </div>
+              <p className="text-slate-400 text-medium mt-2">
+                {locale === "ar" ? (
+                  <>
+                    {t(`revelationType.${surah.revelationType}`)} -{" "}
+                    {surah.totalAyahs} {t("total_ayahs")}
+                  </>
+                ) : (
+                  <>
+                    {surah.englishNameTranslation} -{" "}
+                    {t(`revelationType.${surah.revelationType}`)} -
+                    {surah.totalAyahs} {t("total_ayahs")}
+                  </>
+                )}
+              </p>
             </div>
-            <p className="text-slate-400 text-medium mt-2">
-              {locale === "ar" ? (
-                <>
-                  {t(`revelationType.${surah.revelationType}`)} -{" "}
-                  {surah.totalAyahs} {t("total_ayahs")}
-                </>
-              ) : (
-                <>
-                  {surah.englishNameTranslation} -{" "}
-                  {t(`revelationType.${surah.revelationType}`)} -
-                  {surah.totalAyahs} {t("total_ayahs")}
-                </>
-              )}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+    </>
   );
 };
 
