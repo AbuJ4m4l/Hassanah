@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Autocomplete,
-  AutocompleteItem,
-  Divider,
-  Input,
-  Select,
-  SelectItem,
-} from "@nextui-org/react";
+import { Divider, Input, Select, SelectItem } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
