@@ -180,7 +180,13 @@ const Home = ({ params: { locale } }) => {
       <Divider />
       <section className="my-8">
         <div className="flex justify-center mt-4">
-          <h1 className="text-2xl font-bold mb-4">{t("surahs")}</h1>
+          <h1
+            className={`${
+              locale === "en" ? russo.className : changa.className
+            } text-2xl font-bold mb-4`}
+          >
+            {t("surahs")}
+          </h1>
         </div>
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4 px-4 xl:px-[300px]">
           {surahNames.map((surah) => (
