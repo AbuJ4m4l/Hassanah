@@ -21,6 +21,7 @@ import { Button } from "@nextui-org/button";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import LoginButton from "../authentication/loginButton";
+import { Kbd } from "@nextui-org/react";
 
 const Navbar = ({ locale }) => {
   const t = useTranslations("navbar");
@@ -137,6 +138,7 @@ const Navbar = ({ locale }) => {
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
             }
+            endContent={<Kbd keys={["command"]}>K</Kbd>}
             type="search"
           />
           <LoginButton AvatarClassName="mt-4" variant="flat" />
