@@ -35,7 +35,7 @@ const Home = ({ params: { locale } }) => {
             }
             const fetchedData = await response.json();
             await storeData(db, storeName, fetchedData);
-            setSurahNames(fetchedData);
+            setSurahNames(fetchedData.surahs);
           }
         };
 
