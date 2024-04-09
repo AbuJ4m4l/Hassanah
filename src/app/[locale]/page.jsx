@@ -92,20 +92,6 @@ const Home = ({ params: { locale } }) => {
     });
   }
 
-  const translateRevelationType = (revelationType, locale) => {
-    if (locale === "ar") {
-      switch (revelationType) {
-        case "Meccan":
-          return "مكية";
-        case "Medinan":
-          return "مدنية";
-        default:
-          return revelationType;
-      }
-    } else {
-      return revelationType;
-    }
-  };
   return (
     <>
       <section className="my-8">
