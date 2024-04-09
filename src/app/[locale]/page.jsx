@@ -107,6 +107,11 @@ const Home = ({ params: { locale } }) => {
   console.log(`channel:`, Channel);
   return (
     <>
+      <style jsx>{`
+        h1 {
+          @apply ${locale === "en" ? russo.className : changa.className};
+        }
+      `}</style>
       <section className="my-8">
         <div className="flex justify-center">
           <Input
