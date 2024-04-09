@@ -93,7 +93,9 @@ const Home = ({ params: { locale } }) => {
               <div className="rtl:ml-2 ltr:mr-2 rounded-full px-4 py-2 bg-[#060606]">
                 {surah.id}
               </div>
-              <div>{locale === "ar" ? surah.name : surah.englishName}</div>
+              <div className="mt-2">
+                {locale === "ar" ? surah.name : surah.englishName}
+              </div>
             </div>
             <p className="text-slate-400 text-medium mt-2">
               {surah.englishNameTranslation}
