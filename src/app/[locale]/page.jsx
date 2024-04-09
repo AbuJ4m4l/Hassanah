@@ -87,7 +87,8 @@ const Home = ({ params: { locale } }) => {
         {surahNames.map((surah) => (
           <div
             key={surah.id}
-            className="bg-[#171717] p-4 rounded-md flex flex-col"
+            tabIndex={0}
+            className={`cursor-pointer bg-[#171717] hover:bg-[#101010] p-4 rounded-md flex flex-col focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717]`}
           >
             <div className="flex flex-row">
               <div className="rtl:ml-2 ltr:mr-2 rounded-full px-4 py-2 bg-[#060606]">
