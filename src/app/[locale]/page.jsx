@@ -1,14 +1,16 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Home = ({ params: { locale } }) => {
   const [surahNames, setSurahNames] = useState([]);
   const router = useRouter();
+  const t = useTranslations("home");
   useEffect(() => {
     const GetData = async () => {
-      const dbName = "surah-database";
+      const dbName = "localdb";
       const storeName = "surahs";
 
       try {
@@ -83,7 +85,7 @@ const Home = ({ params: { locale } }) => {
   }
   return (
     <section className="my-8">
-      <h2 className="text-2xl font-bold mb-4">Surah Names</h2>
+      <h2 className="text-2xl font-bold mb-4">{t("surahs")}</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4 px-4 xl:px-[300px]">
         {surahNames.map((surah) => (
           <div
@@ -101,7 +103,10 @@ const Home = ({ params: { locale } }) => {
               </div>
             </div>
             <p className="text-slate-400 text-medium mt-2">
-              {surah.englishNameTranslation} - {surah.totalAyahs} Ayahs
+              {locale === "ar"
+                ? surah.englishName
+                : surah.englishNameTranslation}{" "}
+              - {surah.totalAyahs} {t("total_ayahs")}
             </p>
           </div>
         ))}

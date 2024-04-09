@@ -1,6 +1,7 @@
 {
   "home": {
-    "about_us": "About Us"
+    "total_ayahs": "Total Ayahs",
+    "surahs": "All Surahs"
   },
   "signup": {
     "signup": "Signup New Account",
