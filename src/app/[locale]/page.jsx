@@ -84,6 +84,21 @@ const Home = ({ params: { locale } }) => {
       };
     });
   }
+
+  const translateRevelationType = (revelationType, locale) => {
+    if (locale === "ar") {
+      switch (revelationType) {
+        case "Meccan":
+          return "مكية";
+        case "Medinan":
+          return "مدنية";
+        default:
+          return revelationType;
+      }
+    } else {
+      return revelationType;
+    }
+  };
   return (
     <section className="my-8">
       <Divider />
@@ -107,10 +122,8 @@ const Home = ({ params: { locale } }) => {
               </div>
             </div>
             <p className="text-slate-400 text-medium mt-2">
-              {locale === "ar"
-                ? surah.englishName
-                : surah.englishNameTranslation}{" "}
-              - {surah.totalAyahs} {t("total_ayahs")}
+              {translateRevelationType(surah.revelationType, locale)} -{" "}
+              {surah.totalAyahs} {t("total_ayahs")}
             </p>
           </div>
         ))}
