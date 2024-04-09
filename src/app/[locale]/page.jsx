@@ -107,11 +107,6 @@ const Home = ({ params: { locale } }) => {
   console.log(`channel:`, Channel);
   return (
     <>
-      <style jsx>{`
-        h1 {
-          @apply ${locale === "en" ? russo.className : changa.className};
-        }
-      `}</style>
       <section className="my-8">
         <div className="flex justify-center">
           <Input
@@ -148,7 +143,13 @@ const Home = ({ params: { locale } }) => {
       <Divider />
       <section className="my-8">
         <div className="flex justify-center">
-          <h1 className="text-2xl font-bold mb-4">{t("live_channel")}</h1>
+          <h1
+            className={`${
+              locale === "en" ? russo.className : changa.className
+            } text-2xl font-bold mb-4`}
+          >
+            {t("live_channel")}
+          </h1>
         </div>
         <div className="flex justify-center mt-10">
           <div className="w-[280px] md:w-[400px]">
