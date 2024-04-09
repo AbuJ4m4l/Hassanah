@@ -6,6 +6,8 @@ import {
   Divider,
   Input,
   Kbd,
+  Select,
+  SelectItem,
 } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -14,8 +16,23 @@ import VideoPlayer from "../../components/HlsPlayer";
 
 const Home = ({ params: { locale } }) => {
   const [surahNames, setSurahNames] = useState([]);
+  const [Channel, setChannel] = useState(
+    "https://win.holol.com/live/quran/playlist.m3u8"
+  );
   const router = useRouter();
   const t = useTranslations("home");
+  const channels = [
+    {
+      id: 3,
+      name: "قناة القرآن الكريم",
+      url: "https://win.holol.com/live/quran/playlist.m3u8",
+    },
+    {
+      id: 4,
+      name: "قناة السنة النبوية",
+      url: "https://win.holol.com/live/sunnah/playlist.m3u8",
+    },
+  ];
   useEffect(() => {
     const GetData = async () => {
       const dbName = "localdb";
@@ -91,7 +108,7 @@ const Home = ({ params: { locale } }) => {
       };
     });
   }
-
+  console.log(`channel:`, Channel);
   return (
     <>
       <section className="my-8">
@@ -128,24 +145,31 @@ const Home = ({ params: { locale } }) => {
         </div>
       </section>
       <Divider />
-      <section className="my-8 w-[280px] md:w-[400px]">
+      <section className="my-8">
         <div className="flex justify-center">
-          <Autocomplete
-            defaultItems={channels}
-            label={t("select_channel")}
-            placeholder={t("select_live_channel")}
-            className="max-w-xs"
-            onValueChange={setChannel}
-          >
-            {(channel) => (
-              <AutocompleteItem value={channel.url} key={channel.value}>
-                {channel.label}
-              </AutocompleteItem>
-            )}
-          </Autocomplete>
-        </div>
-        <div className="flex justify-center">
-          <VideoPlayer src="https://win.holol.com/live/sunnah/playlist.m3u8" />
+          <div className="w-[280px] md:w-[400px]">
+            <div className="flex justify-center">
+              <Select
+                label={t("select_channel")}
+                placeholder={t("select_live_channel")}
+                className="max-w-xs"
+                value={Channel}
+                onChange={(e) => setChannel(e?.target?.value)}
+                defaultSelectedKeys={[
+                  "https://win.holol.com/live/quran/playlist.m3u8",
+                ]}
+              >
+                {channels.map((channel) => (
+                  <SelectItem value={channel.url} key={channel.url}>
+                    {channel.name}
+                  </SelectItem>
+                ))}
+              </Select>
+            </div>
+            <div className="flex justify-center mt-6">
+              <VideoPlayer src={Channel} />
+            </div>
+          </div>
         </div>
       </section>
       <Divider />

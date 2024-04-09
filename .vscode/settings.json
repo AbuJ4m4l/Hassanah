@@ -2,5 +2,7 @@
     "liveServer.settings.port": 5501,
     "search.useIgnoreFiles": true,
     "git.autofetch": true,
-    "git.postCommitCommand": "sync"
+    "git.postCommitCommand": "sync",
+    "search.useGlobalIgnoreFiles": true,
+    "search.useParentIgnoreFiles": true
 }

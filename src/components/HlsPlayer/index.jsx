@@ -4,7 +4,7 @@ import Hls from "hls.js";
 import Plyr from "plyr";
 import "plyr/dist/plyr.css";
 
-export default function VideoPlayer({ src }) {
+export default function HlsPlayer({ src }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -29,12 +29,7 @@ export default function VideoPlayer({ src }) {
 
   return (
     <>
-      <video data-displaymaxtap ref={videoRef} />
-      <style jsx>{`
-        video {
-          max-width: 100%;
-        }
-      `}</style>
+      <video data-displaymaxtap ref={videoRef} autoPlay />
     </>
   );
 }
