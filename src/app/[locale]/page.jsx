@@ -141,6 +141,8 @@ const Home = ({ params: { locale } }) => {
         </div>
       </section>
       <Divider />
+      <section className="my-8"></section>
+      <Divider />
       <section className="my-8">
         <div className="flex justify-center">
           <h1
