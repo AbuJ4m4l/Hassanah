@@ -2,6 +2,7 @@
   "home": {
     "total_ayahs": "Total Ayahs",
     "surahs": "All Surahs",
+    "type_to_search": "Type to search...",
     "revelationType": {
       "Meccan": "Meccan",
       "Medinan": "Medinan"
