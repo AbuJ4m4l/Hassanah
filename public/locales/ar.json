@@ -5,6 +5,7 @@
     "type_to_search": "اكتب للبحث...",
     "select_live_channel": "اختر القناة بث المباشر",
     "select_channel": "اختر القناة",
+    "live_channel": "قناة بث المباشر",
     "revelationType": {
       "Meccan": "مكية",
       "Medinan": "مدنية"
