@@ -6,11 +6,13 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import HlsPlayer from "../../components/HlsPlayer";
 import { Changa, Russo_One } from "next/font/google";
+import useUserLocation from "../../hooks/useUserLocation";
 
 export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
 export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
 
 const Home = ({ params: { locale } }) => {
+  const { position, error } = useUserLocation();
   const [surahNames, setSurahNames] = useState([]);
   const [Channel, setChannel] = useState(
     "https://win.holol.com/live/quran/playlist.m3u8"
@@ -19,12 +21,15 @@ const Home = ({ params: { locale } }) => {
   const t = useTranslations("home");
   const channels = [
     {
-      id: 3,
+      id: 1,
+      enName: "Quran channel",
       name: "قناة القرآن الكريم",
       url: "https://win.holol.com/live/quran/playlist.m3u8",
     },
     {
-      id: 4,
+      id: 2,
+
+      enName: "Sunna channel",
       name: "قناة السنة النبوية",
       url: "https://win.holol.com/live/sunnah/playlist.m3u8",
     },
@@ -168,7 +173,7 @@ const Home = ({ params: { locale } }) => {
               >
                 {channels.map((channel) => (
                   <SelectItem value={channel.url} key={channel.url}>
-                    {channel.name}
+                    {locale === "ar" ? channel.name : channel.enName}
                   </SelectItem>
                 ))}
               </Select>
