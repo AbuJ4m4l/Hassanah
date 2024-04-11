@@ -8,6 +8,7 @@ import HlsPlayer from "../../components/HlsPlayer";
 import { Changa, Russo_One } from "next/font/google";
 import useUserLocation from "../../hooks/useUserLocation";
 import CountdownTimer from "../../components/CountdownTimer";
+import Link from "next/link";
 
 export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
 export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
