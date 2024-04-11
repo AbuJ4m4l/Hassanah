@@ -164,10 +164,11 @@ const Home = ({ params: { locale } }) => {
                 className="font-semibold text-2xl mt-4"
               />
             </div>
-
-            <Link href="/prayer-times" className="underline">
-              {t("show_more")}
-            </Link>
+            <div className="mt-6">
+              <Link href="/prayer-times" className="underline">
+                {t("show_more")}
+              </Link>
+            </div>
           </div>
         </div>
       </section>
