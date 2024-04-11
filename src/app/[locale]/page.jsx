@@ -94,6 +94,12 @@ const Home = ({ params: { locale } }) => {
         setLocationName(location.name);
 
         const currentDate = new Date();
+        const currentTime = new Date().toLocaleString("en-US", {
+          hour12: false,
+          hour: "numeric",
+          minute: "2-digit",
+          second: "2-digit",
+        });
         const year = currentDate.getFullYear();
         const month = String(currentDate.getMonth() + 1).padStart(2, "0");
         const day = String(currentDate.getDate()).padStart(2, "0");
@@ -103,6 +109,7 @@ const Home = ({ params: { locale } }) => {
           `http://38.242.214.31:3002/api/v1/getPrayerTimesByAddress?address=${position.latitude}, ${position.longitude}&date=${date}`
         );
         const prayerTimes = await fetchPrayerTimes.json();
+        const upcomingPrayer = await getNextPrayer();
       } catch (error) {}
     };
     GetData();
@@ -133,7 +140,7 @@ const Home = ({ params: { locale } }) => {
     )}`;
   }
 
-  function getNextPrayer(currentTime) {
+  function getNextPrayer(currentTime, prayerTimes) {
     const currentMinutes = timeToMinutes(currentTime);
     let nextPrayer = null;
     let nextPrayerMinutes = Infinity;
