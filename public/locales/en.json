@@ -7,6 +7,7 @@
     "select_channel": "Select The Channel",
     "live_channel": "Live Channel",
     "upcoming_prayer": "Upcoming prayer",
+    "show_more": "Show more",
     "prayers": {
       "fajr": "Fajr",
       "sunrise": "Sunrise",
