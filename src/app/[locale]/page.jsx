@@ -109,7 +109,7 @@ const Home = ({ params: { locale } }) => {
       };
     });
   }
-
+  console.log(position);
   return (
     <>
       <section className="my-8">
