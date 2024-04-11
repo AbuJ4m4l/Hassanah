@@ -121,13 +121,6 @@ const Home = ({ params: { locale } }) => {
     GetData();
   }, []);
 
-  const currentTime = new Date().toLocaleString("en-US", {
-    hour12: false,
-    hour: "numeric",
-    minute: "2-digit",
-    second: "2-digit",
-  });
-
   function timeToMinutes(time) {
     const [hours, minutes, seconds] = time.split(/[:.]/, 3);
     const isPM = time.endsWith("PM");
