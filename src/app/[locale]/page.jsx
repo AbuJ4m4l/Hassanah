@@ -222,7 +222,7 @@ const Home = ({ params: { locale } }) => {
                 ) : (
                   <>
                     {surah.englishNameTranslation} -{" "}
-                    {t(`revelationType.${surah.revelationType}`)} -
+                    {t(`revelationType.${surah.revelationType}`)} -{" "}
                     {surah.totalAyahs} {t("total_ayahs")}
                   </>
                 )}
