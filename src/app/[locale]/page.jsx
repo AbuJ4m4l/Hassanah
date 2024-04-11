@@ -113,8 +113,11 @@ const Home = ({ params: { locale } }) => {
         const upcomingPrayer = await getNextPrayer(currentTime, prayerTimes);
         setUpcmoingPrayer(upcomingPrayer.prayer);
         setUpcmoingPrayerRemainingSeconds(upcomingPrayer.remainingSeconds);
-      } catch (error) {}
+      } catch (error) {
+        console.error(error);
+      }
     };
+    GetPrayerTime();
     GetData();
   }, []);
 
