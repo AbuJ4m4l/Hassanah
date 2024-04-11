@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import HlsPlayer from "../../components/HlsPlayer";
 import { Changa, Russo_One } from "next/font/google";
 import useUserLocation from "../../hooks/useUserLocation";
+import CountdownTimer from "../../components/CountdownTimer";
 
 export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
 export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
@@ -147,7 +148,24 @@ const Home = ({ params: { locale } }) => {
       </section>
       <Divider />
       <section className="my-8 flex justify-center">
-        <div className="bg-[#171717] p-10 rounded-large w-[300px] md:w-[600px]"></div>
+        <div className="bg-[#171717] p-10 rounded-large">
+          <div>
+            <div className="flex justify-center">
+              <h1 className="text-center md:text-xl text-large font-medium md:font-bold">
+                {t("upcoming_prayer")}
+                <br />
+                {t("prayers.asr")}
+              </h1>
+            </div>
+            <div className="flex justify-center">
+              <CountdownTimer
+                initialTimeInSeconds={100}
+                className="font-semibold text-2xl mt-4"
+              />
+            </div>
+            <Divider className="my-8" />
+          </div>
+        </div>
       </section>
       <Divider />
       <section className="my-8">

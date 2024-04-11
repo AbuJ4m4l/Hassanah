@@ -1,11 +1,20 @@
 {
   "home": {
     "total_ayahs": "Total Ayahs",
-    "surahs": "All Surahs",
+    "surahs": "Surahs Index",
     "type_to_search": "Type to search...",
     "select_live_channel": "Select the live channel",
     "select_channel": "Select The Channel",
     "live_channel": "Live Channel",
+    "upcoming_prayer": "Upcoming prayer",
+    "prayers": {
+      "fajr": "Fajr",
+      "sunrise": "Sunrise",
+      "duhur": "Duhur",
+      "asr": "Asr",
+      "maghrib": "Maghrib",
+      "isha": "Isha"
+    },
     "revelationType": {
       "Meccan": "Meccan",
       "Medinan": "Medinan"
