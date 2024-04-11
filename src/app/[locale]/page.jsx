@@ -16,6 +16,11 @@ export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
 const Home = ({ params: { locale } }) => {
   const { position, error } = useUserLocation();
   const [surahNames, setSurahNames] = useState([]);
+  const [locationName, setLocationName] = useState(
+    locale === "ar" ? "مكة" : "Makkah"
+  );
+  const [upcomingPrayer, setUpcmoingPrayer] = useState("");
+  const [upcomingPrayerTime, setUpcmoingPrayerTime] = useState(0);
   const [Channel, setChannel] = useState(
     "https://win.holol.com/live/quran/playlist.m3u8"
   );
@@ -80,7 +85,26 @@ const Home = ({ params: { locale } }) => {
         console.error("Error fetching or storing data:", error);
       }
     };
+    const GetPrayerTime = async () => {
+      try {
+        const fetchLocation = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.latitude}&lon=${position.longitude}`
+        );
+        const location = await fetchLocation.json();
+        setLocationName(location.name);
 
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+        const day = String(currentDate.getDate()).padStart(2, "0");
+        const date = `${day}-${month}-${year}`;
+
+        const fetchPrayerTimes = await fetch(
+          `http://38.242.214.31:3002/api/v1/getPrayerTimesByAddress?address=${position.latitude}, ${position.longitude}&date=${date}`
+        );
+        const prayerTimes = await fetchPrayerTimes.json();
+      } catch (error) {}
+    };
     GetData();
   }, []);
 
@@ -111,7 +135,7 @@ const Home = ({ params: { locale } }) => {
       };
     });
   }
-  console.log(position);
+
   return (
     <>
       <section className="my-8">
@@ -153,7 +177,9 @@ const Home = ({ params: { locale } }) => {
           <div>
             <div className="flex justify-center">
               <h1 className="text-center md:text-xl text-large font-medium md:font-bold">
-                {t("upcoming_prayer")}
+                {t("upcoming_prayer", {
+                  city: locationName,
+                })}
                 <br />
                 {t("prayers.asr")}
               </h1>

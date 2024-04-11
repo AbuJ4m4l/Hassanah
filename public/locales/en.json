@@ -6,7 +6,7 @@
     "select_live_channel": "Select the live channel",
     "select_channel": "Select The Channel",
     "live_channel": "Live Channel",
-    "upcoming_prayer": "Upcoming prayer",
+    "upcoming_prayer": "Upcoming prayer in {city}",
     "show_more": "Show more",
     "prayers": {
       "fajr": "Fajr",
