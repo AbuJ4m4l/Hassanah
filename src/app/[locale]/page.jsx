@@ -165,6 +165,9 @@ const Home = ({ params: { locale } }) => {
               />
             </div>
             <Divider className="my-8" />
+            <Link href="/prayer-times" className="underline">
+              {t("show_more")}
+            </Link>
           </div>
         </div>
       </section>
