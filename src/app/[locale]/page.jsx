@@ -20,7 +20,8 @@ const Home = ({ params: { locale } }) => {
     locale === "ar" ? "مكة" : "Makkah"
   );
   const [upcomingPrayer, setUpcmoingPrayer] = useState("");
-  const [upcomingPrayerTime, setUpcmoingPrayerTime] = useState(0);
+  const [upcomingPrayerRemainingSeconds, setUpcmoingPrayerRemainingSeconds] =
+    useState(0);
   const [Channel, setChannel] = useState(
     "https://win.holol.com/live/quran/playlist.m3u8"
   );
@@ -111,6 +112,7 @@ const Home = ({ params: { locale } }) => {
         const prayerTimes = await fetchPrayerTimes.json();
         const upcomingPrayer = await getNextPrayer(currentTime, prayerTimes);
         setUpcmoingPrayer(upcomingPrayer.prayer);
+        setUpcmoingPrayerRemainingSeconds(upcomingPrayer.remainingSeconds);
       } catch (error) {}
     };
     GetData();
