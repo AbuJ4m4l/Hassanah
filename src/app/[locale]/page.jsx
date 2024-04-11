@@ -110,6 +110,7 @@ const Home = ({ params: { locale } }) => {
         );
         const prayerTimes = await fetchPrayerTimes.json();
         const upcomingPrayer = await getNextPrayer(currentTime, prayerTimes);
+        setUpcmoingPrayer(upcomingPrayer.prayer);
       } catch (error) {}
     };
     GetData();
