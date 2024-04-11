@@ -164,7 +164,7 @@ const Home = ({ params: { locale } }) => {
                 className="font-semibold text-2xl mt-4"
               />
             </div>
-            <Divider className="my-8" />
+
             <Link href="/prayer-times" className="underline">
               {t("show_more")}
             </Link>
