@@ -108,6 +108,59 @@ const Home = ({ params: { locale } }) => {
     GetData();
   }, []);
 
+  const currentTime = new Date().toLocaleString("en-US", {
+    hour12: false,
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+
+  function timeToMinutes(time) {
+    const [hours, minutes, seconds] = time.split(/[:.]/, 3);
+    const isPM = time.endsWith("PM");
+    const hour = parseInt(hours);
+    const totalMinutes =
+      ((hour % 12) + (isPM && hour !== 12 ? 12 : 0)) * 60 + parseInt(minutes);
+    return totalMinutes;
+  }
+
+  function minutesToTime(minutes) {
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    return `${String(hours % 24).padStart(2, "0")}:${String(mins).padStart(
+      2,
+      "0"
+    )}`;
+  }
+
+  function getNextPrayer(currentTime) {
+    const currentMinutes = timeToMinutes(currentTime);
+    let nextPrayer = null;
+    let nextPrayerMinutes = Infinity;
+
+    for (const prayer in prayerTimes) {
+      const prayerMinutes = timeToMinutes(prayerTimes[prayer]);
+      if (prayerMinutes > currentMinutes && prayerMinutes < nextPrayerMinutes) {
+        nextPrayer = prayer;
+        nextPrayerMinutes = prayerMinutes;
+      }
+    }
+
+    if (nextPrayer === null) {
+      nextPrayer = "Fajr";
+      nextPrayerMinutes = timeToMinutes(prayerTimes.Fajr) + 24 * 60;
+    }
+
+    const remainingSeconds = (nextPrayerMinutes - currentMinutes) * 60;
+    const nextPrayerTime = minutesToTime(nextPrayerMinutes);
+
+    return {
+      prayer: nextPrayer,
+      time: nextPrayerTime,
+      remainingSeconds: remainingSeconds,
+    };
+  }
+
   async function getAllData(store) {
     return new Promise((resolve, reject) => {
       const request = store.getAll();
