@@ -109,7 +109,7 @@ const Home = ({ params: { locale } }) => {
           `http://38.242.214.31:3002/api/v1/getPrayerTimesByAddress?address=${position.latitude}, ${position.longitude}&date=${date}`
         );
         const prayerTimes = await fetchPrayerTimes.json();
-        const upcomingPrayer = await getNextPrayer(currentTime);
+        const upcomingPrayer = await getNextPrayer(currentTime, prayerTimes);
       } catch (error) {}
     };
     GetData();
