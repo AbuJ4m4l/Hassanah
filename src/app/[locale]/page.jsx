@@ -119,7 +119,7 @@ const Home = ({ params: { locale } }) => {
     };
     GetPrayerTime();
     GetData();
-  }, []);
+  }, [getNextPrayer, position]);
 
   function timeToMinutes(time) {
     const [hours, minutes, seconds] = time.split(/[:.]/, 3);
