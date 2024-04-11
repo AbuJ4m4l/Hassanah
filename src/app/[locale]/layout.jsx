@@ -2,7 +2,7 @@ import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import Navbar from "../../components/Navbar/index.jsx";
 import Footer from "../../components/Footer/index.jsx";
-import { locales } from "../../../navigation";
+import { locales } from "../../../navigation.js";
 import { notFound } from "next/navigation";
 import NextUiProvider from "../../components/Providers/NextUiProvider.jsx";
 import { NextIntlClientProvider } from "next-intl";
