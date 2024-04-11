@@ -4,8 +4,7 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
+  --background-rgb: 0, 0, 0;
 }
 
 .rtl\:ltr:where([dir="rtl"], [dir="rtl"] *) {
@@ -30,9 +29,7 @@ button {
 
 body {
   color: rgb(var(--foreground-rgb)) !important;
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)) !important;
+  background: rgb(var(--background-rgb)) !important;
 }
 
 @layer utilities {
