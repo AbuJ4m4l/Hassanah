@@ -1,4 +1,5 @@
 "use client";
+import { Skeleton } from "@nextui-org/react";
 import Countdown, { zeroPad } from "react-countdown";
 import { Divider, Input, Select, SelectItem } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
@@ -14,7 +15,7 @@ export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
 export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
 
 const Home = ({ params: { locale } }) => {
-  const { position, error } = useUserLocation();
+  const { position, error, isLoading } = useUserLocation();
   const [surahNames, setSurahNames] = useState([]);
   const [locationName, setLocationName] = useState(
     locale === "ar" ? "مكة" : "Makkah"
@@ -209,33 +210,38 @@ const Home = ({ params: { locale } }) => {
       </section>
       <Divider />
       <section className="my-8 flex justify-center">
-        <div className="bg-[#171717] p-10 rounded-large">
-          <div>
-            <div className="flex justify-center">
-              <h1 className="text-center md:text-xl text-large font-medium md:font-bold">
-                {t("upcoming_prayer", {
-                  city: locationName,
-                })}
-                <br />
-                {t(`prayers.${upcomingPrayer}`)}
-              </h1>
-            </div>
-            <div className="flex justify-center">
-              <Countdown
-                autoStart
-                daysInHours
-                zeroPadTime={2}
-                date={new Date(upcomingPrayerTime)}
-                renderer={renderer}
-              />
-            </div>
-            <div className="mt-6">
-              <Link href="/prayer-times" className="underline">
-                {t("show_more")}
-              </Link>
+        <Skeleton
+          className="rounded-large p-2"
+          isLoaded={isLoading === true ? false : true}
+        >
+          <div className="bg-[#171717] p-10 rounded-large">
+            <div>
+              <div className="flex justify-center">
+                <h1 className="text-center md:text-xl text-large font-medium md:font-bold">
+                  {t("upcoming_prayer", {
+                    city: locationName,
+                  })}
+                  <br />
+                  {t(`prayers.${upcomingPrayer}`)}
+                </h1>
+              </div>
+              <div className="flex justify-center">
+                <Countdown
+                  autoStart
+                  daysInHours
+                  zeroPadTime={2}
+                  date={new Date(upcomingPrayerTime)}
+                  renderer={renderer}
+                />
+              </div>
+              <div className="mt-6">
+                <Link href="/prayer-times" className="underline">
+                  {t("show_more")}
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        </Skeleton>
       </section>
       <Divider />
       <section className="my-8">
