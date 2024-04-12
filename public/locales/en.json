@@ -9,12 +9,12 @@
     "upcoming_prayer": "Upcoming prayer in {city}",
     "show_more": "Show more",
     "prayers": {
-      "fajr": "Fajr",
-      "sunrise": "Sunrise",
-      "duhur": "Duhur",
-      "asr": "Asr",
-      "maghrib": "Maghrib",
-      "isha": "Isha"
+      "Fajr": "Fajr",
+      "Sunrise": "Sunrise",
+      "Dhuhr": "Dhuhr",
+      "Asr": "Asr",
+      "Maghrib": "Maghrib",
+      "Isha": "Isha"
     },
     "revelationType": {
       "Meccan": "Meccan",

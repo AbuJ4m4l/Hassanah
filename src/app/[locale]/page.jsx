@@ -1,5 +1,5 @@
 "use client";
-
+import Countdown, { zeroPad } from "react-countdown";
 import { Divider, Input, Select, SelectItem } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 import HlsPlayer from "../../components/HlsPlayer";
 import { Changa, Russo_One } from "next/font/google";
 import useUserLocation from "../../hooks/useUserLocation";
-import CountdownTimer from "../../components/CountdownTimer";
 import Link from "next/link";
+import moment from "moment";
 
 export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
 export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
@@ -19,14 +19,14 @@ const Home = ({ params: { locale } }) => {
   const [locationName, setLocationName] = useState(
     locale === "ar" ? "مكة" : "Makkah"
   );
-  const [upcomingPrayer, setUpcmoingPrayer] = useState("");
-  const [upcomingPrayerRemainingSeconds, setUpcmoingPrayerRemainingSeconds] =
-    useState(0);
+  const [upcomingPrayer, setUpcomingPrayer] = useState("");
+  const [upcomingPrayerTime, setUpcomingPrayerTime] = useState("");
   const [Channel, setChannel] = useState(
     "https://win.holol.com/live/quran/playlist.m3u8"
   );
   const router = useRouter();
   const t = useTranslations("home");
+
   const channels = [
     {
       id: 1,
@@ -93,26 +93,14 @@ const Home = ({ params: { locale } }) => {
         );
         const location = await fetchLocation.json();
         setLocationName(location.name);
-
-        const currentDate = new Date();
-        const currentTime = new Date().toLocaleString("en-US", {
-          hour12: false,
-          hour: "numeric",
-          minute: "2-digit",
-          second: "2-digit",
-        });
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-        const day = String(currentDate.getDate()).padStart(2, "0");
-        const date = `${day}-${month}-${year}`;
-
+        const date = moment().format("YYYY-MM-DD");
         const fetchPrayerTimes = await fetch(
           `http://38.242.214.31:3002/api/v1/getPrayerTimesByAddress?address=${position.latitude}, ${position.longitude}&date=${date}`
         );
         const prayerTimes = await fetchPrayerTimes.json();
-        const upcomingPrayer = await getNextPrayer(currentTime, prayerTimes);
-        setUpcmoingPrayer(upcomingPrayer.prayer);
-        setUpcmoingPrayerRemainingSeconds(upcomingPrayer.remainingSeconds);
+        const prayer = await getUpcomingPrayer(prayerTimes);
+        setUpcomingPrayer(prayer.prayer);
+        setUpcomingPrayerTime(moment(prayer.time, "HH:mm").valueOf());
       } catch (error) {
         console.error(error);
       }
@@ -120,52 +108,6 @@ const Home = ({ params: { locale } }) => {
     GetPrayerTime();
     GetData();
   }, [position]);
-
-  function timeToMinutes(time) {
-    const [hours, minutes, seconds] = time.split(/[:.]/, 3);
-    const isPM = time.endsWith("PM");
-    const hour = parseInt(hours);
-    const totalMinutes =
-      ((hour % 12) + (isPM && hour !== 12 ? 12 : 0)) * 60 + parseInt(minutes);
-    return totalMinutes;
-  }
-
-  function minutesToTime(minutes) {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-    return `${String(hours % 24).padStart(2, "0")}:${String(mins).padStart(
-      2,
-      "0"
-    )}`;
-  }
-
-  function getNextPrayer(currentTime, prayerTimes) {
-    const currentMinutes = timeToMinutes(currentTime);
-    let nextPrayer = null;
-    let nextPrayerMinutes = Infinity;
-
-    for (const prayer in prayerTimes) {
-      const prayerMinutes = timeToMinutes(prayerTimes[prayer]);
-      if (prayerMinutes > currentMinutes && prayerMinutes < nextPrayerMinutes) {
-        nextPrayer = prayer;
-        nextPrayerMinutes = prayerMinutes;
-      }
-    }
-
-    if (nextPrayer === null) {
-      nextPrayer = "Fajr";
-      nextPrayerMinutes = timeToMinutes(prayerTimes.Fajr) + 24 * 60;
-    }
-
-    const remainingSeconds = (nextPrayerMinutes - currentMinutes) * 60;
-    const nextPrayerTime = minutesToTime(nextPrayerMinutes);
-
-    return {
-      prayer: nextPrayer,
-      time: nextPrayerTime,
-      remainingSeconds: remainingSeconds,
-    };
-  }
 
   async function getAllData(store) {
     return new Promise((resolve, reject) => {
@@ -194,7 +136,40 @@ const Home = ({ params: { locale } }) => {
       };
     });
   }
+  function getUpcomingPrayer(prayerTimes) {
+    const now = moment();
+    let upcomingPrayer = null;
+    let upcomingPrayerTime = null;
+    for (const [prayer, time] of Object.entries(prayerTimes)) {
+      const prayerTime = moment(time, "HH:mm");
+      if (
+        prayerTime.isAfter(now) &&
+        (upcomingPrayerTime === null || prayerTime.isBefore(upcomingPrayerTime))
+      ) {
+        upcomingPrayer = prayer;
+        upcomingPrayerTime = prayerTime;
+      }
+    }
+    if (upcomingPrayer === null) {
+      const tomorrowFajr = moment(prayerTimes.Fajr, "HH:mm").add(1, "day");
+      return { prayer: "Fajr", time: tomorrowFajr.format("HH:mm") };
+    }
 
+    return { prayer: upcomingPrayer, time: upcomingPrayerTime.format("HH:mm") };
+  }
+
+  const renderer = ({ hours, minutes, seconds, completed }) => {
+    if (completed) {
+      return <>Completed</>;
+    } else {
+      return (
+        <p className="font-semibold text-2xl mt-4">
+          {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
+        </p>
+      );
+    }
+  };
+  console.log(upcomingPrayerTime);
   return (
     <>
       <section className="my-8">
@@ -240,13 +215,16 @@ const Home = ({ params: { locale } }) => {
                   city: locationName,
                 })}
                 <br />
-                {t("prayers.asr")}
+                {t(`prayers.${upcomingPrayer}`)}
               </h1>
             </div>
             <div className="flex justify-center">
-              <CountdownTimer
-                initialTimeInSeconds={100}
-                className="font-semibold text-2xl mt-4"
+              <Countdown
+                autoStart
+                daysInHours
+                zeroPadTime={2}
+                date={new Date(upcomingPrayerTime)}
+                renderer={renderer}
               />
             </div>
             <div className="mt-6">
