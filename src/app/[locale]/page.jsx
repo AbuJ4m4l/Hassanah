@@ -20,8 +20,8 @@ const Home = ({ params: { locale } }) => {
   const [locationName, setLocationName] = useState(
     locale === "ar" ? "مكة" : "Makkah"
   );
-  const [upcomingPrayer, setUpcomingPrayer] = useState("");
-  const [upcomingPrayerTime, setUpcomingPrayerTime] = useState("");
+  const [upcomingPrayer, setUpcomingPrayer] = useState("Fajr");
+  const [upcomingPrayerTime, setUpcomingPrayerTime] = useState();
   const [Channel, setChannel] = useState(
     "https://win.holol.com/live/quran/playlist.m3u8"
   );
@@ -89,21 +89,25 @@ const Home = ({ params: { locale } }) => {
     };
     const GetPrayerTime = async () => {
       try {
-        const fetchLocation = await fetch(
-          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.latitude}&lon=${position.longitude}`
-        );
-        const location = await fetchLocation.json();
-        setLocationName(
-          location.address.city || location.address.village || location.name
-        );
-        const date = moment().format("YYYY-MM-DD");
-        const fetchPrayerTimes = await fetch(
-          `http://38.242.214.31:3002/api/v1/getPrayerTimesByAddress?address=${position.latitude}, ${position.longitude}&date=${date}`
-        );
-        const prayerTimes = await fetchPrayerTimes.json();
-        const prayer = await getUpcomingPrayer(prayerTimes);
-        setUpcomingPrayer(prayer.prayer);
-        setUpcomingPrayerTime(moment(prayer.time, "HH:mm").valueOf());
+        if (error) {
+          return;
+        } else {
+          const fetchLocation = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.latitude}&lon=${position.longitude}`
+          );
+          const location = await fetchLocation.json();
+          const date = moment().format("YYYY-MM-DD");
+          const fetchPrayerTimes = await fetch(
+            `http://38.242.214.31:3002/api/v1/getPrayerTimesByAddress?address=${position.latitude}, ${position.longitude}&date=${date}`
+          );
+          const prayerTimes = await fetchPrayerTimes.json();
+          const prayer = await getUpcomingPrayer(prayerTimes);
+          setLocationName(
+            location.address.city || location.address.village || location.name
+          );
+          setUpcomingPrayer(prayer.prayer);
+          setUpcomingPrayerTime(moment(prayer.time, "HH:mm").valueOf());
+        }
       } catch (error) {
         console.error(error);
       }
@@ -211,36 +215,52 @@ const Home = ({ params: { locale } }) => {
       <Divider />
       <section className="my-8 flex justify-center">
         <Skeleton
-          className="rounded-large p-2"
+          className="rounded-large"
           isLoaded={isLoading === true ? false : true}
         >
-          <div className="bg-[#171717] p-10 rounded-large">
-            <div>
-              <div className="flex justify-center">
-                <h1 className="text-center md:text-xl text-large font-medium md:font-bold">
-                  {t("upcoming_prayer", {
-                    city: locationName,
-                  })}
-                  <br />
-                  {t(`prayers.${upcomingPrayer}`)}
-                </h1>
-              </div>
-              <div className="flex justify-center">
-                <Countdown
-                  autoStart
-                  daysInHours
-                  zeroPadTime={2}
-                  date={new Date(upcomingPrayerTime)}
-                  renderer={renderer}
-                />
-              </div>
-              <div className="mt-6">
-                <Link href="/prayer-times" className="underline">
-                  {t("show_more")}
-                </Link>
+          {error ? (
+            <div className="bg-[#171717] p-10 rounded-large">
+              <div>
+                <div className="bg-danger px-6 py-2 rounded-large flex justify-center items-center">
+                  <h1 className="text-center md:text-xl text-large font-medium ">
+                    {error}
+                  </h1>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            locationName &&
+            upcomingPrayer &&
+            upcomingPrayerTime && (
+              <div className="bg-[#171717] p-10 rounded-large">
+                <div>
+                  <div className="flex justify-center">
+                    <h1 className="text-center md:text-xl text-large font-medium md:font-bold">
+                      {t("upcoming_prayer", {
+                        city: locationName,
+                      })}
+                      <br />
+                      {t(`prayers.${upcomingPrayer}`)}
+                    </h1>
+                  </div>
+                  <div className="flex justify-center">
+                    <Countdown
+                      autoStart
+                      daysInHours
+                      zeroPadTime={2}
+                      date={new Date(upcomingPrayerTime)}
+                      renderer={renderer}
+                    />
+                  </div>
+                  <div className="mt-6">
+                    <Link href="/prayer-times" className="underline">
+                      {t("show_more")}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )
+          )}
         </Skeleton>
       </section>
       <Divider />
