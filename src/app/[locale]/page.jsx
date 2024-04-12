@@ -92,7 +92,9 @@ const Home = ({ params: { locale } }) => {
           `https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.latitude}&lon=${position.longitude}`
         );
         const location = await fetchLocation.json();
-        setLocationName(location.name);
+        setLocationName(
+          location.address.city || location.address.village || location.name
+        );
         const date = moment().format("YYYY-MM-DD");
         const fetchPrayerTimes = await fetch(
           `http://38.242.214.31:3002/api/v1/getPrayerTimesByAddress?address=${position.latitude}, ${position.longitude}&date=${date}`
