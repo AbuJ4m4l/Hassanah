@@ -43,6 +43,31 @@ const Home = ({ params: { locale } }) => {
       url: "https://win.holol.com/live/sunnah/playlist.m3u8",
     },
   ];
+  const GetPrayerTime = async () => {
+    try {
+      if (error) {
+        return;
+      } else {
+        const fetchLocation = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.latitude}&lon=${position.longitude}`
+        );
+        const location = await fetchLocation.json();
+        const date = moment().format("YYYY-MM-DD");
+        const fetchPrayerTimes = await fetch(
+          `http://38.242.214.31:3002/api/v1/getPrayerTimesByAddress?address=${position.latitude}, ${position.longitude}&date=${date}`
+        );
+        const prayerTimes = await fetchPrayerTimes.json();
+        const prayer = await getUpcomingPrayer(prayerTimes);
+        setLocationName(
+          location.address.city || location.address.village || location.name
+        );
+        setUpcomingPrayer(prayer.prayer);
+        setUpcomingPrayerTime(moment(prayer.time, "HH:mm").valueOf());
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
     const GetData = async () => {
       const dbName = "localdb";
@@ -87,31 +112,7 @@ const Home = ({ params: { locale } }) => {
         console.error("Error fetching or storing data:", error);
       }
     };
-    const GetPrayerTime = async () => {
-      try {
-        if (error) {
-          return;
-        } else {
-          const fetchLocation = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.latitude}&lon=${position.longitude}`
-          );
-          const location = await fetchLocation.json();
-          const date = moment().format("YYYY-MM-DD");
-          const fetchPrayerTimes = await fetch(
-            `http://38.242.214.31:3002/api/v1/getPrayerTimesByAddress?address=${position.latitude}, ${position.longitude}&date=${date}`
-          );
-          const prayerTimes = await fetchPrayerTimes.json();
-          const prayer = await getUpcomingPrayer(prayerTimes);
-          setLocationName(
-            location.address.city || location.address.village || location.name
-          );
-          setUpcomingPrayer(prayer.prayer);
-          setUpcomingPrayerTime(moment(prayer.time, "HH:mm").valueOf());
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
+
     GetPrayerTime();
     GetData();
   }, [position]);
@@ -168,7 +169,7 @@ const Home = ({ params: { locale } }) => {
 
   const renderer = ({ hours, minutes, seconds, completed }) => {
     if (completed) {
-      return <>Completed</>;
+      GetPrayerTime();
     } else {
       return (
         <p className="font-semibold text-2xl mt-4">
