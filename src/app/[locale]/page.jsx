@@ -138,6 +138,7 @@ const Home = ({ params: { locale } }) => {
       };
     });
   }
+
   function getUpcomingPrayer(prayerTimes) {
     const now = moment();
     let upcomingPrayer = null;
@@ -171,7 +172,6 @@ const Home = ({ params: { locale } }) => {
       );
     }
   };
-  console.log(upcomingPrayerTime);
   return (
     <>
       <section className="my-8">
