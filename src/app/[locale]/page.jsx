@@ -283,7 +283,9 @@ const Home = ({ params: { locale } }) => {
                     isSelected={isAutoplayAdhanSelected}
                     onValueChange={setIsAutoplayAdhanSelected}
                   >
-                    {t("autoplay_adhan")}
+                    <span className="rtl:mr-2 ltr:ml-2">
+                      {t("autoplay_adhan")}
+                    </span>
                   </Checkbox>
                 </div>
               </div>
