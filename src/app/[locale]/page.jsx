@@ -1,10 +1,17 @@
 "use client";
 import { Skeleton } from "@nextui-org/react";
 import Countdown, { zeroPad } from "react-countdown";
-import { Divider, Input, Select, SelectItem } from "@nextui-org/react";
+import {
+  Divider,
+  Checkbox,
+  Input,
+  Select,
+  SelectItem,
+  Switch,
+} from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import HlsPlayer from "../../components/HlsPlayer";
 import { Changa, Russo_One } from "next/font/google";
 import useUserLocation from "../../hooks/useUserLocation";
@@ -20,6 +27,7 @@ const Home = ({ params: { locale } }) => {
   const [locationName, setLocationName] = useState(
     locale === "ar" ? "مكة" : "Makkah"
   );
+  const [isAutoplayAdhanSelected, setIsAutoplayAdhanSelected] = useState(true);
   const [upcomingPrayer, setUpcomingPrayer] = useState("Fajr");
   const [upcomingPrayerTime, setUpcomingPrayerTime] = useState();
   const [Channel, setChannel] = useState(
@@ -57,10 +65,18 @@ const Home = ({ params: { locale } }) => {
           `http://38.242.214.31:3002/api/v1/getPrayerTimesByAddress?address=${position.latitude}, ${position.longitude}&date=${date}`
         );
         const prayerTimes = await fetchPrayerTimes.json();
-        const prayer = await getUpcomingPrayer(prayerTimes);
+        const timings = {
+          Fajr: "04:30",
+          Dhuhr: "12:30",
+          Asr: "16:32",
+          Maghrib: "18:21",
+          Isha: "21:00",
+        };
+        const prayer = await getUpcomingPrayer(timings);
         setLocationName(
           location.address.city || location.address.village || location.name
         );
+
         setUpcomingPrayer(prayer.prayer);
         setUpcomingPrayerTime(moment(prayer.time, "HH:mm").valueOf());
       }
@@ -169,7 +185,11 @@ const Home = ({ params: { locale } }) => {
 
   const renderer = ({ hours, minutes, seconds, completed }) => {
     if (completed) {
-      GetPrayerTime();
+      return (
+        <p className="font-semibold text-2xl mt-4 text-danger">
+          {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
+        </p>
+      );
     } else {
       return (
         <p className="font-semibold text-2xl mt-4">
@@ -258,6 +278,13 @@ const Home = ({ params: { locale } }) => {
                       {t("show_more")}
                     </Link>
                   </div>
+                  <Checkbox
+                    className="mt-2"
+                    isSelected={isAutoplayAdhanSelected}
+                    onValueChange={setIsAutoplayAdhanSelected}
+                  >
+                    {t("autoplay_adhan")}
+                  </Checkbox>
                 </div>
               </div>
             )
@@ -302,7 +329,7 @@ const Home = ({ params: { locale } }) => {
         </div>
       </section>
       <Divider />
-      <section className="my-8">
+      <section className="my-8 mx-8">
         <div className="flex justify-center mt-4">
           <h1
             className={`${
