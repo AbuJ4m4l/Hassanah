@@ -1,5 +1,6 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import {
   Link,
   Button,
@@ -9,15 +10,18 @@ import {
   DropdownTrigger,
 } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 
 const WebsiteThemeChanger = ({ className }) => {
   const t = useTranslations("WebsiteThemeChanger");
-  const setDark = () => {
-    localStorage?.setItem("theme", "dark");
-  };
-  const setLight = () => {
-    localStorage?.setItem("theme", "light");
-  };
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
   return (
     <div className={className ?? className}>
       <Dropdown>
@@ -60,11 +64,8 @@ const WebsiteThemeChanger = ({ className }) => {
           variant="solid"
         >
           <DropdownItem
-            className="flex flex-row text-white"
             key="Dark"
-            as={Link}
-            href=""
-            onClick={setDark}
+            onClick={() => setTheme("dark")}
             startContent={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +73,7 @@ const WebsiteThemeChanger = ({ className }) => {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="white"
+                stroke="currentColor"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -86,10 +87,7 @@ const WebsiteThemeChanger = ({ className }) => {
             {t("dark")}
           </DropdownItem>
           <DropdownItem
-            className="flex flex-row text-white"
-            as={Link}
-            href=""
-            onClick={setLight}
+            onClick={() => setTheme("light")}
             key="Light"
             endContent={
               <svg
@@ -98,7 +96,7 @@ const WebsiteThemeChanger = ({ className }) => {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="white"
+                stroke="currentColor"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
