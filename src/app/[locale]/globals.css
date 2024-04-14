@@ -27,32 +27,9 @@ button {
   border: none !important;
 }
 
-body {
-  color: rgb(var(--foreground-rgb)) !important;
-  background: rgb(var(--background-rgb)) !important;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  .chip {
-    transform: translate(50%, 50%);
-  }
-}
-
-@media only screen and (max-width: 380px) {
-  .chip {
-    transform: translate(30%, 50%);
-  }
-}
-
-@media only screen and (max-width: 404px) {
-  .chip {
-    transform: translate(30%, 50%);
   }
 }
 

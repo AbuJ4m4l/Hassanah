@@ -103,7 +103,7 @@ export default async function RootLayout({ children, params: { locale } }) {
         </head>
         <BodyTheme
           dir={direction}
-          className={`overflow-x-hidden selection:bg-primary m-0 p-0 selection:text-white flex flex-col min-h-screen`}
+          className={`text-foreground bg-background overflow-x-hidden selection:bg-primary m-0 p-0 selection:text-white flex flex-col min-h-screen`}
         >
           <Middleware>
             <NextTopLoader
