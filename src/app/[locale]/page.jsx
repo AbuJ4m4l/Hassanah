@@ -1,13 +1,12 @@
 "use client";
-import { Skeleton } from "@nextui-org/react";
 import Countdown, { zeroPad } from "react-countdown";
 import {
   Divider,
+  Skeleton,
   Checkbox,
   Input,
   Select,
   SelectItem,
-  Switch,
 } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -24,12 +23,15 @@ export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
 const Home = ({ params: { locale } }) => {
   const { position, error, isLoading } = useUserLocation();
   const [surahNames, setSurahNames] = useState([]);
+  const timeCounterRef = useRef(null);
   const [locationName, setLocationName] = useState(
     locale === "ar" ? "مكة" : "Makkah"
   );
+  const [playingStatus, setPlayingStatus] = useState("STOPPED");
   const [isAutoplayAdhanSelected, setIsAutoplayAdhanSelected] = useState(true);
-  const [upcomingPrayer, setUpcomingPrayer] = useState("Fajr");
+  const [upcomingPrayer, setUpcomingPrayer] = useState("");
   const [upcomingPrayerTime, setUpcomingPrayerTime] = useState();
+  const [fixedUpcomingPrayerTime, setFixedUpcomingPrayerTime] = useState("");
   const [Channel, setChannel] = useState(
     "https://win.holol.com/live/quran/playlist.m3u8"
   );
@@ -64,14 +66,8 @@ const Home = ({ params: { locale } }) => {
         const fetchPrayerTimes = await fetch(
           `http://38.242.214.31:3002/api/v1/getPrayerTimesByAddress?address=${position.latitude}, ${position.longitude}&date=${date}`
         );
-        const prayerTimes = await fetchPrayerTimes.json();
-        const timings = {
-          Fajr: "04:30",
-          Dhuhr: "12:30",
-          Asr: "16:32",
-          Maghrib: "18:21",
-          Isha: "21:00",
-        };
+        const timings = await fetchPrayerTimes.json();
+
         const prayer = await getUpcomingPrayer(timings);
         setLocationName(
           location.address.city || location.address.village || location.name
@@ -79,11 +75,26 @@ const Home = ({ params: { locale } }) => {
 
         setUpcomingPrayer(prayer.prayer);
         setUpcomingPrayerTime(moment(prayer.time, "HH:mm").valueOf());
+
+        setFixedUpcomingPrayerTime(prayer.time);
       }
     } catch (error) {
       console.error(error);
     }
   };
+  useEffect(() => {
+    setInterval(() => {
+      if (isAutoplayAdhanSelected === true) {
+        const currentTime = moment().format("HH:mm");
+        if (currentTime === fixedUpcomingPrayerTime) {
+          setPlayingStatus("PLAYING");
+          setTimeout(() => {
+            setPlayingStatus("FINISHED");
+          }, 204500);
+        }
+      }
+    }, 1000);
+  });
   useEffect(() => {
     const GetData = async () => {
       const dbName = "localdb";
@@ -165,31 +176,40 @@ const Home = ({ params: { locale } }) => {
     const now = moment();
     let upcomingPrayer = null;
     let upcomingPrayerTime = null;
+
     for (const [prayer, time] of Object.entries(prayerTimes)) {
       const prayerTime = moment(time, "HH:mm");
-      if (
-        prayerTime.isAfter(now) &&
-        (upcomingPrayerTime === null || prayerTime.isBefore(upcomingPrayerTime))
-      ) {
-        upcomingPrayer = prayer;
-        upcomingPrayerTime = prayerTime;
+
+      // Check if the prayer time is in the future
+      if (prayerTime.isAfter(now)) {
+        // If this is the first future prayer time, or it's earlier than the current upcoming prayer time, update the upcoming prayer
+        if (
+          upcomingPrayerTime === null ||
+          prayerTime.isBefore(upcomingPrayerTime)
+        ) {
+          upcomingPrayer = prayer;
+          upcomingPrayerTime = prayerTime;
+        }
       }
     }
+
+    // If no prayer time is found, use the current day's Fajr time if it's in the future, otherwise use the next day's Fajr time
     if (upcomingPrayer === null) {
-      const tomorrowFajr = moment(prayerTimes.Fajr, "HH:mm").add(1, "day");
-      return { prayer: "Fajr", time: tomorrowFajr.format("HH:mm") };
+      const fajrTime = moment(prayerTimes.Fajr, "HH:mm");
+      if (fajrTime.isAfter(now)) {
+        return { prayer: "Fajr", time: tomorrowFajr.format("HH:mm") };
+      }
+      let tomorrowFajr = new Date(fajrTime);
+      tomorrowFajr.setDate(tomorrowFajr.getDate() + 1);
+      return { prayer: "Fajr", time: tomorrowFajr };
     }
 
     return { prayer: upcomingPrayer, time: upcomingPrayerTime.format("HH:mm") };
   }
 
   const renderer = ({ hours, minutes, seconds, completed }) => {
-    if (completed) {
-      return (
-        <p className="font-semibold text-2xl mt-4 text-danger">
-          {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
-        </p>
-      );
+    if (completed && playingStatus === "FINISHED") {
+      GetPrayerTime();
     } else {
       return (
         <p className="font-semibold text-2xl mt-4">
@@ -265,13 +285,19 @@ const Home = ({ params: { locale } }) => {
                     </h1>
                   </div>
                   <div className="flex justify-center">
-                    <Countdown
-                      autoStart
-                      daysInHours
-                      zeroPadTime={2}
-                      date={new Date(upcomingPrayerTime)}
-                      renderer={renderer}
-                    />
+                    {upcomingPrayer ? (
+                      <Countdown
+                        key={new Date(upcomingPrayerTime)}
+                        autoStart
+                        daysInHours
+                        zeroPadTime={2}
+                        date={new Date(upcomingPrayerTime)}
+                        ref={timeCounterRef}
+                        renderer={renderer}
+                      />
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <div className="mt-6">
                     <Link href="/prayer-times" className="underline">
@@ -287,6 +313,11 @@ const Home = ({ params: { locale } }) => {
                       {t("autoplay_adhan")}
                     </span>
                   </Checkbox>
+                  {isAutoplayAdhanSelected && playingStatus === "PLAYING" ? (
+                    <audio autoPlay src="/audios/Ahmad al-Nafees.mp3" />
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
             )
