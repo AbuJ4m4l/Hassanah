@@ -220,47 +220,16 @@ const Home = ({ params: { locale } }) => {
   };
   return (
     <>
-      <section className="my-8">
-        <div className="flex justify-center">
-          <Input
-            classNames={{
-              base: "max-w-[280px] md:max-w-[500px] h-10",
-              mainWrapper: "h-full",
-              input: "text-small",
-              inputWrapper:
-                "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-            }}
-            placeholder={t("type_to_search")}
-            size="sm"
-            startContent={
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-search"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-            }
-            type="search"
-          />
-        </div>
-      </section>
-      <Divider />
       <section className="my-8 flex justify-center">
         <Skeleton
-          className="rounded-large"
+          className="rounded-large p-2"
           isLoaded={isLoading === true ? false : true}
         >
           {error ? (
-            <div className="bg-[#171717] p-10 rounded-large">
+            <div
+              tabIndex={0}
+              className="bg-[#171717] p-10 rounded-large focus:outline-none focus-visible:ring focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717]"
+            >
               <div>
                 <div className="bg-danger px-6 py-2 rounded-large flex justify-center items-center">
                   <h1 className="text-center md:text-xl text-large font-medium ">
@@ -273,7 +242,10 @@ const Home = ({ params: { locale } }) => {
             locationName &&
             upcomingPrayer &&
             upcomingPrayerTime && (
-              <div className="bg-[#171717] p-10 rounded-large">
+              <div
+                tabIndex={0}
+                className="bg-[#171717] p-10 rounded-large focus:outline-none focus-visible:ring focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717]"
+              >
                 <div>
                   <div className="flex justify-center">
                     <h1 className="text-center md:text-xl text-large font-medium md:font-bold">
@@ -378,7 +350,7 @@ const Home = ({ params: { locale } }) => {
               key={surah.id}
               tabIndex={0}
               onClick={() => router.push(`/surah/${surah.id}`)}
-              className={`cursor-pointer bg-[#171717] hover:bg-[#101010] p-4 rounded-md flex flex-col focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717]`}
+              className={`cursor-pointer bg-[#171717] hover:bg-[#101010] p-4 rounded-md flex flex-col focus:outline-none focus-visible:ring focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717]`}
             >
               <div className="flex flex-row">
                 <div className="rtl:ml-2 ltr:mr-2 rounded-full px-4 py-2 bg-[#060606]">
