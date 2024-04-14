@@ -8,6 +8,7 @@
     "live_channel": "Live Channel",
     "upcoming_prayer": "Upcoming prayer in {city}",
     "show_more": "Show more",
+    "autoplay_adhan": "Autoplay Adhan",
     "prayers": {
       "Fajr": "Fajr",
       "Sunrise": "Sunrise",
