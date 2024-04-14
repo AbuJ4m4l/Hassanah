@@ -8,6 +8,7 @@
     "live_channel": "القناة المباشرة",
     "upcoming_prayer": "الصلاة القادمة في {city}",
     "show_more": "أظهر المزيد",
+    "autoplay_adhan": "تشغيل تلقائي للأذان",
     "prayers": {
       "Fajr": "الفجر",
       "Sunrise": "الشروق",
