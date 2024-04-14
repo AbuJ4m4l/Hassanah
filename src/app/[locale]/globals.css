@@ -11,20 +11,12 @@
   direction: ltr;
 }
 
-.btn {
-  @apply font-medium py-1 px-2 rounded transition ease-in-out delay-150 duration-200;
-}
-
 a {
   @apply cursor-pointer;
 }
 
 button {
   @apply select-none cursor-pointer;
-}
-
-.none-border {
-  border: none !important;
 }
 
 @layer utilities {
