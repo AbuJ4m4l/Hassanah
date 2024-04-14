@@ -30,7 +30,7 @@ const Footer = ({ locale }) => {
       <div className="md:hidden flex-row justify-center flex my-[10px]">
         <Link href="https://example.com" className="mx-3">
           <svg
-            stroke="white"
+            stroke="currentColor"
             fill="white"
             strokeWidth="0"
             viewBox="0 0 512 512"
@@ -43,7 +43,7 @@ const Footer = ({ locale }) => {
         </Link>
         <Link href="https://example.com" className="mx-3">
           <svg
-            stroke="white"
+            stroke="currentColor"
             fill="white"
             strokeWidth="0"
             role="img"
@@ -57,7 +57,7 @@ const Footer = ({ locale }) => {
         </Link>
         <Link href="https://example.com" className="mx-3">
           <svg
-            stroke="white"
+            stroke="currentColor"
             fill="white"
             strokeWidth="0"
             viewBox="0 0 512 512"
@@ -134,7 +134,7 @@ const Footer = ({ locale }) => {
           <div className="hidden md:flex md:flex-row">
             <Link href="https://example.com" className="mx-3">
               <svg
-                stroke="white"
+                stroke="currentColor"
                 fill="white"
                 strokeWidth="0"
                 viewBox="0 0 512 512"
@@ -147,7 +147,7 @@ const Footer = ({ locale }) => {
             </Link>
             <Link href="https://example.com" className="mx-3">
               <svg
-                stroke="white"
+                stroke="currentColor"
                 fill="white"
                 strokeWidth="0"
                 viewBox="0 0 448 512"
@@ -160,7 +160,7 @@ const Footer = ({ locale }) => {
             </Link>
             <Link href="https://example.com" className="mx-3">
               <svg
-                stroke="white"
+                stroke="currentColor"
                 fill="white"
                 strokeWidth="0"
                 viewBox="0 0 512 512"
