@@ -13,6 +13,11 @@ const UserForm = ({ locale, tab }) => {
   const { theme } = useTheme();
   return (
     <>
+      <NextSeo
+        title={t("metadata.title")}
+        description={t("metadata.description")}
+        themeColor={theme}
+      />
       <div className="flex flex-col w-full mx-auto items-center">
         <Card className={`max-w-full w-[340px] h-auto`}>
           <CardBody className="overflow-hidden">

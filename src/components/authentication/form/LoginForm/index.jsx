@@ -1,5 +1,7 @@
 "use client";
 
+import { NextSeo } from "next-seo";
+import { useTheme } from "next-themes";
 import { useEffect, useState, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -24,6 +26,7 @@ import GoogleLogin from "../../google.login/index.jsx";
 import FacebookLogin from "../../facebook.login/index.jsx";
 
 const LoginForm = ({ locale }) => {
+  const { theme } = useTheme();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -137,6 +140,11 @@ const LoginForm = ({ locale }) => {
   }, [error?.code, t]);
   return (
     <>
+      <NextSeo
+        title={t("metadata.title")}
+        description={t("metadata.description")}
+        themeColor={theme}
+      />
       <div className="flex justify-center">
         <h1 className="my-4 text-xl">{t("login")}</h1>
       </div>
