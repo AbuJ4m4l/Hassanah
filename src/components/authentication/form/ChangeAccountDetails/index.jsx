@@ -2,7 +2,7 @@
 
 import { Button, Input, Skeleton, useDisclosure } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { auth } from "../../../../lib/firebase";
 import SuccessModal from "./SuccessModal";
 import {
@@ -12,7 +12,6 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import Link from "next/link";
-import ErrorModal from "./ErrorModal";
 
 const ChangeAccountDetailsForm = ({ locale, className }) => {
   const t = useTranslations("changeAccountDetails");
@@ -20,11 +19,6 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
     isOpen: isSuccessModalOpen,
     onOpen: onSuccessModalOpen,
     onOpenChange: onSuccessModalOpenChange,
-  } = useDisclosure();
-  const {
-    isOpen: isErrorModalOpen,
-    onOpen: onErrorModalOpen,
-    onOpenChange: onErrorModalOpenChange,
   } = useDisclosure();
   const [isAccessGranted, setIsAccessGranted] = useState(false);
   const [signInWithEmailAndPassword, _user, SignInLoading, error] =
@@ -42,10 +36,6 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
     JSON.parse(sessionStorage.getItem("user"))?.displayName
   );
   const [password, setPassword] = useState("");
-  const [updatedData, setUpdataData] = useState({
-    email: false,
-    username: false,
-  });
   const isPasswordInvalid = useMemo(() => {
     if (password === "") return true;
     return false;
@@ -81,10 +71,6 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
       }).then(() => {
         onSuccessModalOpen();
         sessionStorage?.setItem("user", JSON.stringify(user));
-      });
-      setUpdataData({
-        email: updateEmailError?.code ? false : true,
-        username: updateProfileError?.code ? false : true,
       });
     } catch (error) {
       console.error(error);
