@@ -1,5 +1,9 @@
 {
   "home": {
+    "metadata": {
+      "title": "حسنة - صفحة الرئيسية",
+      "description": "صفحة الرئيسية لموقع حسنة"
+    },
     "total_ayahs": "آيات",
     "surahs": "فهرس السور",
     "type_to_search": "اكتب للبحث...",

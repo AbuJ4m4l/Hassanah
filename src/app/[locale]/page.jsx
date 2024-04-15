@@ -1,4 +1,5 @@
 "use client";
+import { useTheme } from "next-themes";
 import Countdown, { zeroPad } from "react-countdown";
 import { NextSeo } from "next-seo";
 import { Divider, Skeleton, Checkbox } from "@nextui-org/react";
@@ -14,6 +15,7 @@ export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
 export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
 
 const Home = ({ params: { locale } }) => {
+  const { theme } = useTheme();
   const { position, error, isLoading } = useUserLocation();
   const [surahNames, setSurahNames] = useState([]);
   const timeCounterRef = useRef(null);
@@ -195,6 +197,11 @@ const Home = ({ params: { locale } }) => {
   };
   return (
     <>
+      <NextSeo
+        title={t("metadata.title")}
+        description={t("metadata.description")}
+        themeColor={theme}
+      />
       <section className="my-8 flex justify-center">
         <Skeleton
           className="rounded-large p-2"
