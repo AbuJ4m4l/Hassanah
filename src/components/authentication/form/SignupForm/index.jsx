@@ -33,6 +33,7 @@ const SignupForm = ({ locale }) => {
 
   const [usernameInputError, setUsernameInputError] = useState(false);
   const [userMessage, setUserMessage] = useState("");
+  const { theme } = useTheme();
   const [message, setMessage] = useState("");
   const [createUserWithEmailAndPassword, _user, error] =
     useCreateUserWithEmailAndPassword(auth);
@@ -178,6 +179,11 @@ const SignupForm = ({ locale }) => {
   }, [password, retypePassword]);
   return (
     <>
+      <NextSeo
+        title={t("metadata.title")}
+        description={t("metadata.description")}
+        themeColor={theme}
+      />
       <div className="flex justify-center">
         <h1 className="my-4 text-xl">{t("signup")}</h1>
       </div>
