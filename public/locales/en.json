@@ -1,5 +1,9 @@
 {
   "home": {
+    "metadata": {
+      "title": "Hassanah - Home",
+      "description": "Welcome to Hassanah Website, Your islamic resource"
+    },
     "total_ayahs": "Ayahs",
     "surahs": "Surahs Index",
     "type_to_search": "Type to search...",
