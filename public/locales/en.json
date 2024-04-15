@@ -76,6 +76,10 @@
     "error": "An Error Occurred."
   },
   "login": {
+    "metadata": {
+      "title": "Login - Hassanah",
+      "description": "Log in using Email, Facebook, or Google"
+    },
     "login": "Login to Your Account",
     "email": "Email",
     "password": "Password",
