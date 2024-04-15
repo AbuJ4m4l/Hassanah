@@ -27,7 +27,11 @@
     }
   },
   "signup": {
-    "signup": "Signup New Account",
+    "metadata": {
+      "title": "Create Account - Hassanah",
+      "description": "Create an account using Email, Facebook, or Google"
+    },
+    "signup": "Create New Account",
     "username": "Username",
     "email": "Email",
     "password": "Password",
