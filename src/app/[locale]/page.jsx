@@ -1,17 +1,9 @@
 "use client";
 import Countdown, { zeroPad } from "react-countdown";
-import {
-  Divider,
-  Skeleton,
-  Checkbox,
-  Input,
-  Select,
-  SelectItem,
-} from "@nextui-org/react";
+import { Divider, Skeleton, Checkbox } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import HlsPlayer from "../../components/HlsPlayer";
 import { Changa, Russo_One } from "next/font/google";
 import useUserLocation from "../../hooks/useUserLocation";
 import Link from "next/link";
@@ -32,27 +24,9 @@ const Home = ({ params: { locale } }) => {
   const [upcomingPrayer, setUpcomingPrayer] = useState("");
   const [upcomingPrayerTime, setUpcomingPrayerTime] = useState();
   const [fixedUpcomingPrayerTime, setFixedUpcomingPrayerTime] = useState("");
-  const [Channel, setChannel] = useState(
-    "https://win.holol.com/live/quran/playlist.m3u8"
-  );
   const router = useRouter();
   const t = useTranslations("home");
 
-  const channels = [
-    {
-      id: 1,
-      enName: "Quran channel",
-      name: "قناة القرآن الكريم",
-      url: "https://win.holol.com/live/quran/playlist.m3u8",
-    },
-    {
-      id: 2,
-
-      enName: "Sunna channel",
-      name: "قناة السنة النبوية",
-      url: "https://win.holol.com/live/sunnah/playlist.m3u8",
-    },
-  ];
   const GetPrayerTime = async () => {
     try {
       if (error) {
@@ -212,7 +186,7 @@ const Home = ({ params: { locale } }) => {
       GetPrayerTime();
     } else {
       return (
-        <p className="font-semibold text-2xl mt-4">
+        <p className="font-medium text-2xl mt-4">
           {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
         </p>
       );
@@ -232,7 +206,7 @@ const Home = ({ params: { locale } }) => {
             >
               <div>
                 <div className="bg-danger px-6 py-2 rounded-large flex justify-center items-center">
-                  <h1 className="text-center md:text-xl text-large font-medium ">
+                  <h1 className="text-center md:text-xl text-large font-medium">
                     {error}
                   </h1>
                 </div>
@@ -248,7 +222,7 @@ const Home = ({ params: { locale } }) => {
               >
                 <div>
                   <div className="flex justify-center">
-                    <h1 className="text-center md:text-xl text-large font-medium md:font-bold">
+                    <h1 className="text-center md:text-xl text-large font-medium">
                       {t("upcoming_prayer", {
                         city: locationName,
                       })}
@@ -297,49 +271,12 @@ const Home = ({ params: { locale } }) => {
         </Skeleton>
       </section>
       <Divider />
-      <section className="my-8">
-        <div className="flex justify-center">
-          <h1
-            className={`${
-              locale === "en" ? russo.className : changa.className
-            } text-2xl font-bold mb-4`}
-          >
-            {t("live_channel")}
-          </h1>
-        </div>
-        <div className="flex justify-center mt-10">
-          <div className="w-[280px] md:w-[400px]">
-            <div className="flex justify-center">
-              <Select
-                label={t("select_channel")}
-                placeholder={t("select_live_channel")}
-                className="max-w-xs"
-                value={Channel}
-                onChange={(e) => setChannel(e?.target?.value)}
-                defaultSelectedKeys={[
-                  "https://win.holol.com/live/quran/playlist.m3u8",
-                ]}
-              >
-                {channels.map((channel) => (
-                  <SelectItem value={channel.url} key={channel.url}>
-                    {locale === "ar" ? channel.name : channel.enName}
-                  </SelectItem>
-                ))}
-              </Select>
-            </div>
-            <div className="flex justify-center mt-6">
-              <HlsPlayer src={Channel} />
-            </div>
-          </div>
-        </div>
-      </section>
-      <Divider />
       <section className="my-8 mx-8">
         <div className="flex justify-center mt-4">
           <h1
             className={`${
               locale === "en" ? russo.className : changa.className
-            } text-2xl font-bold mb-4`}
+            } text-2xl mb-4`}
           >
             {t("surahs")}
           </h1>

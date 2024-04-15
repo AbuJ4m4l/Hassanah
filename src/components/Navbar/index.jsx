@@ -11,19 +11,12 @@ import {
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
-import {
-  DropdownItem,
-  DropdownTrigger,
-  Dropdown,
-  DropdownMenu,
-} from "@nextui-org/dropdown";
-import { Button } from "@nextui-org/button";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import LoginButton from "../authentication/loginButton";
 import { Kbd } from "@nextui-org/react";
 
-const Navbar = ({ locale }) => {
+const Navbar = () => {
   const t = useTranslations("navbar");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
@@ -42,70 +35,46 @@ const Navbar = ({ locale }) => {
             <p className="font-bold text-inherit">Hassanah.org</p>
           </NavbarBrand>
           <NavbarContent className="hidden md:flex gap-3">
-            <NavbarItem
-              as={Link}
-              href="/"
-              color="foreground"
-              className="hidden md:block"
-            >
-              {t("home")}
-            </NavbarItem>
-            <NavbarItem
-              as={Link}
-              href="/stories"
-              color="foreground"
-              className="hidden md:block"
-            >
-              {t("stories")}
-            </NavbarItem>
-            <NavbarItem
-              as={Link}
-              href="/hadiths"
-              color="foreground"
-              className="hidden md:block"
-            >
-              {t("hadiths")}
-            </NavbarItem>
-            <NavbarItem className="hidden md:block">
-              <Dropdown>
-                <NavbarItem>
-                  <DropdownTrigger>
-                    <Button
-                      disableRipple
-                      className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                      radius="sm"
-                      variant="light"
-                    >
-                      {t("quran")}
-                    </Button>
-                  </DropdownTrigger>
-                </NavbarItem>
-                <DropdownMenu
-                  aria-label={t("quran")}
-                  className="w-[340px]"
-                  itemClasses={{
-                    base: "gap-4",
-                  }}
-                >
-                  <DropdownItem
-                    className="text-white"
-                    as={Link}
-                    href="/quran"
-                    color="foreground"
-                  >
-                    {t("quran")}
-                  </DropdownItem>
-                  <DropdownItem
-                    className="text-white"
-                    as={Link}
-                    href="/reciters"
-                    color="foreground"
-                  >
-                    {t("reciters")}
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-            </NavbarItem>
+            <li>
+              <NavbarItem
+                as={Link}
+                href="/"
+                color="foreground"
+                className="hidden md:block"
+              >
+                {t("home")}
+              </NavbarItem>
+            </li>
+            <li>
+              <NavbarItem
+                as={Link}
+                href="/stories"
+                color="foreground"
+                className="hidden md:block"
+              >
+                {t("stories")}
+              </NavbarItem>
+            </li>
+            <li>
+              <NavbarItem
+                as={Link}
+                href="/hadiths"
+                color="foreground"
+                className="hidden md:block"
+              >
+                {t("hadiths")}
+              </NavbarItem>
+            </li>
+            <li>
+              <NavbarItem
+                as={Link}
+                href="/quran"
+                color="foreground"
+                className="hidden md:block"
+              >
+                {t("quran")}
+              </NavbarItem>
+            </li>
           </NavbarContent>
         </NavbarContent>
 
@@ -197,35 +166,14 @@ const Navbar = ({ locale }) => {
           >
             {t("hadiths")}
           </NavbarMenuItem>
-          <Dropdown>
-            <NavbarItem>
-              <DropdownTrigger>
-                <Button
-                  disableRipple
-                  className="p-0 bg-transparent data-[hover=true]:bg-transparent text-medium"
-                  radius="sm"
-                  variant="light"
-                >
-                  {t("quran")}
-                </Button>
-              </DropdownTrigger>
-            </NavbarItem>
-            <DropdownMenu
-              aria-label={t("quran")}
-              className="w-[280px]"
-              itemClasses={{
-                base: "gap-4",
-              }}
-              as={Link}
-              href="/quran"
-              color="foreground"
-            >
-              <DropdownItem key="quran">{t("quran")}</DropdownItem>
-              <DropdownItem as={Link} href="/reciters" color="default">
-                {t("reciters")}
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <NavbarMenuItem
+            as={Link}
+            href="/quran"
+            color="foreground"
+            className="hidden md:block"
+          >
+            {t("quran")}
+          </NavbarMenuItem>
           <NavbarMenuItem
             as={Link}
             href="/stories"
