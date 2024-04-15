@@ -317,6 +317,10 @@
     "code_sent": "Verification url was sent"
   },
   "resetPassword": {
+    "metadata": {
+      "title": "Reset Password - Hassanah",
+      "description": "Reset your password account in hassanah."
+    },
     "resetPassword": "Reset Password",
     "email": "Email",
     "enter_your_email": "Enter your email",
