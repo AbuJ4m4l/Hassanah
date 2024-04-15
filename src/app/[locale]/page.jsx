@@ -242,7 +242,7 @@ const Home = ({ params: { locale } }) => {
                         renderer={renderer}
                       />
                     ) : (
-                      ""
+                      <p className="font-medium text-2xl mt-4">00:00:00</p>
                     )}
                   </div>
                   <div className="mt-6">
