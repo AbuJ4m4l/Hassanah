@@ -370,6 +370,10 @@
     }
   },
   "aboutUs": {
+    "metadata": {
+      "title": "Hassanah - About Us",
+      "description": "Gain access to the Quran (with tafseers), Hadiths, and Islamic knowledge on Hassanah platform."
+    },
     "heroSection": {
       "heading": "Hassanah, Your Islamic Resource",
       "text": "Gain access to the Quran (with tafseers), Hadiths, and Islamic knowledge on Hassanah platform."
