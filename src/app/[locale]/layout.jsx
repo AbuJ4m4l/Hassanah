@@ -27,11 +27,11 @@ export default async function RootLayout({ children, params: { locale } }) {
           <link
             rel="icon"
             type="image/x-icon"
-            href="/images/favicon/withBackground/favicon.ico"
+            href="/images/favicon/circled/favicon.ico"
           />
           <link
             rel="apple-touch-icon"
-            href="/images/favicon/withBackground/favicon.ico"
+            href="/images/favicon/circled/favicon.ico"
           />
           <meta
             name="description"

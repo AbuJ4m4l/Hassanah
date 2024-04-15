@@ -1,5 +1,6 @@
 "use client";
 import Countdown, { zeroPad } from "react-countdown";
+import { NextSeo } from "next-seo";
 import { Divider, Skeleton, Checkbox } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
