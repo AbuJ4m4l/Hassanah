@@ -1,7 +1,5 @@
 "use client";
 import nextImage from "next/image";
-import { NextSeo } from "next-seo";
-import { useTheme } from "next-themes";
 import { Button, Image, Link } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { Changa, Russo_One } from "next/font/google";

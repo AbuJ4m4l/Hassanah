@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import {
   Navbar as NextUiNavbar,
   NavbarBrand,
@@ -9,6 +9,7 @@ import {
   NavbarMenu,
   NavbarMenuToggle,
 } from "@nextui-org/navbar";
+//import { Image } from "@nextui-org/image";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
 import { useTranslations } from "next-intl";
@@ -28,19 +29,34 @@ const Navbar = () => {
       >
         <NavbarContent justify="start">
           <NavbarMenuToggle
-            className="md:hidden"
+            className="lg:hidden"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           />
           <NavbarBrand className="mr-4">
-            <p className="font-bold text-inherit">Hassanah.org</p>
+            <Image
+              src="/images/لا اله الا الله White.png"
+              width={80}
+              height={38}
+              alt="لا اله الا الله"
+              loading="lazy"
+              className="dark:block hidden !min-w-[88px] !min-h-[46px]"
+            />
+            <Image
+              src="/images/لا اله الا الله Black.png"
+              width={80}
+              height={38}
+              alt="لا اله الا الله"
+              loading="lazy"
+              className="dark:hidden block !min-w-[88px] !min-h-[46px]"
+            />
           </NavbarBrand>
-          <NavbarContent className="hidden md:flex gap-3">
+          <NavbarContent className="hidden lg:flex gap-3">
             <li>
               <NavbarItem
                 as={Link}
                 href="/"
                 color="foreground"
-                className="hidden md:block"
+                className="hidden lg:block"
               >
                 {t("home")}
               </NavbarItem>
@@ -50,7 +66,7 @@ const Navbar = () => {
                 as={Link}
                 href="/stories"
                 color="foreground"
-                className="hidden md:block"
+                className="hidden lg:block"
               >
                 {t("stories")}
               </NavbarItem>
@@ -60,7 +76,7 @@ const Navbar = () => {
                 as={Link}
                 href="/hadiths"
                 color="foreground"
-                className="hidden md:block"
+                className="hidden lg:block"
               >
                 {t("hadiths")}
               </NavbarItem>
@@ -70,7 +86,7 @@ const Navbar = () => {
                 as={Link}
                 href="/quran"
                 color="foreground"
-                className="hidden md:block"
+                className="hidden lg:block"
               >
                 {t("quran")}
               </NavbarItem>
@@ -81,13 +97,13 @@ const Navbar = () => {
         <NavbarContent as="div" className="items-center" justify="end">
           <Input
             classNames={{
-              base: "max-w-full md:max-w-[10rem] h-10",
+              base: "max-w-full lg:max-w-[10rem] h-10",
               mainWrapper: "h-full",
               input: "text-small",
               inputWrapper:
                 "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
             }}
-            className="hidden md:block"
+            className="hidden lg:block"
             placeholder={t("type_to_search")}
             size="sm"
             startContent={
@@ -118,7 +134,7 @@ const Navbar = () => {
           <NavbarMenuItem>
             <Input
               classNames={{
-                base: "max-w-full md:max-w-[10rem] h-10",
+                base: "max-w-full lg:max-w-[10rem] h-10",
                 mainWrapper: "h-full",
                 input: "text-small",
                 inputWrapper:
@@ -168,9 +184,9 @@ const Navbar = () => {
           </NavbarMenuItem>
           <NavbarMenuItem
             as={Link}
+            className="text-medium"
             href="/quran"
             color="foreground"
-            className="hidden md:block"
           >
             {t("quran")}
           </NavbarMenuItem>
