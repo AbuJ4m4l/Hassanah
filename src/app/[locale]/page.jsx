@@ -16,11 +16,6 @@ export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
 
 const Home = ({ params: { locale } }) => {
   const { position, error, isLoading } = useUserLocation();
-  const {
-    surahNames,
-    isLoading: isSurahNamesLoading,
-    error: surahNamesError,
-  } = useSurahNames();
   const timeCounterRef = useRef(null);
   const [locationName, setLocationName] = useState(
     locale === "ar" ? "مكة" : "Makkah"
