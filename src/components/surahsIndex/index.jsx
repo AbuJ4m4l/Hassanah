@@ -37,7 +37,7 @@ const SurahsIndex = ({ locale }) => {
                       className={`cursor-pointer dark:bg-[#171717] dark:hover:bg-[#101010] bg-[#fff] hover:bg-[#f8f5f5] p-4 rounded-md flex flex-col focus:outline-none focus-visible:ring focus-visible:ring-focus focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#171717] focus-visible:ring-offset-[#f8f5f5]`}
                     >
                       <div className="flex flex-row">
-                        <div className="rtl:ml-2 ltr:mr-2 rounded-full px-4 py-2 bg-[#d0d0d0] dark:bg-[#060606]">
+                        <div className="rtl:ml-2 ltr:mr-2 rounded-full px-4 py-2 bg-[#d0d0d0] !text-white dark:bg-[#060606]">
                           {surah.id}
                         </div>
                         <div className="mt-2">
