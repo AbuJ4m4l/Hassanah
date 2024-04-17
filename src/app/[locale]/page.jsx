@@ -208,7 +208,18 @@ const Home = ({ params: { locale } }) => {
         </Skeleton>
       </section>
       <Divider />
-      <SurahsIndex locale={locale}/>
+      <section className="my-8 mx-8">
+        <div className="flex justify-center mt-4">
+          <h1
+            className={`${
+              locale === "en" ? russo.className : changa.className
+            } text-2xl mb-4`}
+          >
+            {t("surahs")}
+          </h1>
+        </div>
+        <SurahsIndex locale={locale}/>
+      </section>
     </>
   );
 };
