@@ -9,7 +9,6 @@ import {
   NavbarMenu,
   NavbarMenuToggle,
 } from "@nextui-org/navbar";
-//import { Image } from "@nextui-org/image";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
 import { useTranslations } from "next-intl";
