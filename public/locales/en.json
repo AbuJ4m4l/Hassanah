@@ -27,6 +27,14 @@
       "Medinan": "Medinan"
     }
   },
+  "quran": {
+    "revelationType": {
+      "Meccan": "Meccan",
+      "Medinan": "Medinan"
+    },
+    "total_ayahs": "Ayahs",
+    "surahs": "Surahs Index"
+  },
   "signup": {
     "metadata": {
       "title": "Create Account - Hassanah",

@@ -27,6 +27,14 @@
       "Medinan": "مدنية"
     }
   },
+  "quran": {
+    "revelationType": {
+      "Meccan": "مكية",
+      "Medinan": "مدنية"
+    },
+    "total_ayahs": "آيات",
+    "surahs": "فهرس السور"
+  },
   "signup": {
     "metadata": {
       "title": "انشاء حساب - حسنة",
