@@ -5,7 +5,7 @@ export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
 export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
 
 const Quran = ({ params: { locale } }) => {
-  const t = useTranslations("surahs");
+  const t = useTranslations("quran");
   return (
     <>
       <div className="flex justify-center mt-4">
