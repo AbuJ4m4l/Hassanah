@@ -8,13 +8,18 @@ import { Changa, Russo_One } from "next/font/google";
 import useUserLocation from "../../hooks/useUserLocation";
 import Link from "next/link";
 import moment from "moment";
+import useSurahNames from "../../hooks/useSurahNames";
 
 export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
 export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
 
 const Home = ({ params: { locale } }) => {
   const { position, error, isLoading } = useUserLocation();
-  const [surahNames, setSurahNames] = useState([]);
+  const {
+    surahNames,
+    isLoading: isSurahNamesLoading,
+    error: surahNamesError,
+  } = useSurahNames();
   const timeCounterRef = useRef(null);
   const [locationName, setLocationName] = useState(
     locale === "ar" ? "مكة" : "Makkah"
@@ -70,81 +75,8 @@ const Home = ({ params: { locale } }) => {
     }, 1000);
   });
   useEffect(() => {
-    const GetData = async () => {
-      const dbName = "localdb";
-      const storeName = "surahs";
-
-      try {
-        const request = window.indexedDB.open(dbName, 1);
-
-        request.onupgradeneeded = (event) => {
-          const db = event.target.result;
-          db.createObjectStore(storeName, { keyPath: "id" });
-        };
-
-        request.onsuccess = async (event) => {
-          const db = event.target.result;
-          const transaction = db.transaction([storeName], "readonly");
-          const store = transaction.objectStore(storeName);
-          const data = await getAllData(store);
-
-          if (data.length > 0) {
-            setSurahNames(data);
-          } else {
-            const response = await fetch(
-              "http://38.242.214.31:3002/api/v1/surahs/all"
-            );
-            if (!response.ok) {
-              throw new Error("Network response was not ok");
-            }
-            const fetchedData = await response.json();
-            await storeData(db, storeName, fetchedData);
-            setSurahNames(fetchedData.surahs);
-          }
-        };
-
-        request.onerror = (event) => {
-          console.error(
-            "Error opening IndexedDB database:",
-            event.target.error
-          );
-        };
-      } catch (error) {
-        console.error("Error fetching or storing data:", error);
-      }
-    };
-
     GetPrayerTime();
-    GetData();
-  }, [position]);
-
-  async function getAllData(store) {
-    return new Promise((resolve, reject) => {
-      const request = store.getAll();
-      request.onsuccess = () => {
-        resolve(request.result);
-      };
-      request.onerror = (event) => {
-        reject(event.target.error);
-      };
-    });
-  }
-
-  async function storeData(db, storeName, data) {
-    return new Promise((resolve, reject) => {
-      const transaction = db.transaction([storeName], "readwrite");
-      const store = transaction.objectStore(storeName);
-      data.surahs.forEach((item) => {
-        store.put(item);
-      });
-      transaction.oncomplete = () => {
-        resolve();
-      };
-      transaction.onerror = (event) => {
-        reject(event.target.error);
-      };
-    });
-  }
+  });
 
   function getUpcomingPrayer(prayerTimes) {
     const now = moment();
@@ -204,8 +136,12 @@ const Home = ({ params: { locale } }) => {
               tabIndex={0}
               className="bg-[#fff] dark:bg-[#171717] p-10 rounded-large focus:outline-none focus-visible:ring focus-visible:ring-focus focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#171717] focus-visible:ring-offset-[#f8f5f5]"
             >
+              <div className="flex justify-center">
+                <h1>{t("cannot_get_location_to_get_prayer_time")}</h1>
+              </div>
+
               <div>
-                <div className="bg-danger px-6 py-2 rounded-large flex justify-center items-center">
+                <div className="mt-2 bg-danger px-6 py-2 rounded-large flex justify-center items-center">
                   <h1 className="text-center md:text-xl text-large font-medium">
                     {error}
                   </h1>

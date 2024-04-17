@@ -4,6 +4,7 @@
       "title": "حسنة - صفحة الرئيسية",
       "description": "مرحبًا بك في موقع حسنة، موردك الإسلامي"
     },
+    "cannot_get_location_to_get_prayer_time": "لا يمكننا الوصول لموقعك لأخذ تواقيت الصلاة",
     "total_ayahs": "آيات",
     "surahs": "فهرس السور",
     "type_to_search": "اكتب للبحث...",
