@@ -34,19 +34,19 @@ const Navbar = () => {
           <NavbarBrand className="mr-4">
             <Image
               src="/images/لا اله الا الله White.png"
-              width={80}
-              height={38}
+              width={98}
+              height={56}
               alt="لا اله الا الله"
               loading="lazy"
-              className="dark:block hidden !min-w-[88px] !min-h-[46px]"
+              className="dark:block hidden !min-w-[98px] !min-h-[56px]"
             />
             <Image
               src="/images/لا اله الا الله Black.png"
-              width={80}
-              height={38}
+              width={98}
+              height={56}
               alt="لا اله الا الله"
               loading="lazy"
-              className="dark:hidden block !min-w-[88px] !min-h-[46px]"
+              className="dark:hidden block !min-w-[98px] !min-h-[56px]"
             />
           </NavbarBrand>
           <NavbarContent className="hidden lg:flex gap-3">
