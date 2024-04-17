@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import useSurahNames from "../../hooks/useSurahNames";
 
-const SurahsIndex = ({ params: { locale } }) => {
+const SurahsIndex = ({ locale }) => {
   const { surahNames, error, isLoading } = useSurahNames();
   const t = useTranslations("quran");
   return (
