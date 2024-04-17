@@ -245,7 +245,7 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
               </Button>
               <div className="mt-6 flex justify-center">
                 <p>
-                  {t("forget_password")}
+                  {t("forgot_password")}
                   <Link href="/reset-password" className="text-primary">
                     {t("reset_password")}
                   </Link>
@@ -344,7 +344,7 @@ const ChangeAccountDetailsForm = ({ locale, className }) => {
               </Button>
               <div className="mt-6 flex justify-center">
                 <p>
-                  {t("forget_password")}
+                  {t("forgot_password")}
                   <Link href="/reset-password" className="text-primary">
                     {t("reset_password")}
                   </Link>

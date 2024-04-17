@@ -409,5 +409,15 @@
       "description": "Hassanah was created from the Blueteam's dedication to building a valuable digital resource for Muslims worldwide. We began this journey on February 19th, 2024, and are proud to offer Hassanah as an open-source project on GitHub: abuj4m4l/hassanah",
       "description2": " We began this journey on February 19th, 2024, and are proud to offer Hassanah as an open-source project on GitHub repo."
     }
+  },
+  "changeAccountDetails": {
+    "email": "Email",
+    "username": "Username",
+    "sendResetPasswordVerification": "Send Reset Password Verification",
+    "password": "Password",
+    "enter_your_password": "Enter Your Password",
+    "verify_password": "Verify Password",
+    "forgot_password": "Do you forgot password ?",
+    "reset_password": "Reset Password"
   }
 }

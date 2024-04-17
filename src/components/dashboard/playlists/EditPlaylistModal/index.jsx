@@ -51,7 +51,6 @@ const EditPlaylistModal = ({ isOpen, onOpenChange, Playlist }) => {
                 >
                   <SelectItem
                     color="success"
-                    className="!text-white"
                     value="public"
                     startContent={
                       <svg

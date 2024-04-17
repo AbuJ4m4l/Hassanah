@@ -169,7 +169,7 @@ const AboutPage = ({ params: { locale } }) => {
             <h1
               className={`${
                 locale === "en" ? russo.className : changa.className
-              } font-bold bg-clip-text text-transparent bg-gradient-to-br from-white to-blue-400 text-3xl md:text-4xl`}
+              } font-bold bg-clip-text text-transparent bg-gradient-to-br from-blue-50 via-blue-300 to-blue-600 text-3xl md:text-4xl`}
             >
               {t("blueteam.title")}
             </h1>

@@ -49,7 +49,6 @@ const CreateNewPlaylistModal = ({ isOpen, onOpenChange }) => {
                 >
                   <SelectItem
                     color="success"
-                    className="!text-white"
                     value="public"
                     startContent={
                       <svg

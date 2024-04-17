@@ -40,7 +40,6 @@ const AccessDeniedModal = ({ isOpen, onOpenChange }) => {
               <Button
                 href="/signout"
                 as={Link}
-                className="!text-white"
                 color="danger"
               >
                 {t("signout")}

@@ -27,6 +27,7 @@
     "next-seo": "^6.5.0",
     "next-themes": "^0.3.0",
     "nextjs-toploader": "^1.6.10",
+    "nextui-org/react": "nextui-org/react",
     "node-rsa": "^1.1.1",
     "react": "^18",
     "react-countdown": "^2.3.5",

@@ -1,6 +1,4 @@
 "use client";
-import { NextSeo } from "next-seo";
-import { useTheme } from "next-themes";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
@@ -181,11 +179,6 @@ const SignupForm = ({ locale }) => {
   }, [password, retypePassword]);
   return (
     <>
-      <NextSeo
-        title={t("metadata.title")}
-        description={t("metadata.description")}
-        themeColor={theme}
-      />
       <div className="flex justify-center">
         <h1 className="my-4 text-xl">{t("signup")}</h1>
       </div>
