@@ -2,18 +2,12 @@
 import Countdown, { zeroPad } from "react-countdown";
 import { Divider, Skeleton, Checkbox } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { Changa, Russo_One } from "next/font/google";
 import useUserLocation from "../../hooks/useUserLocation";
 import Link from "next/link";
 import moment from "moment";
-import useSurahNames from "../../hooks/useSurahNames";
+
 import SurahsIndex from "../../components/surahsIndex";
-
-export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
-export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
-
 const Home = ({ params: { locale } }) => {
   const { position, error, isLoading } = useUserLocation();
   const timeCounterRef = useRef(null);
@@ -25,7 +19,6 @@ const Home = ({ params: { locale } }) => {
   const [upcomingPrayer, setUpcomingPrayer] = useState("");
   const [upcomingPrayerTime, setUpcomingPrayerTime] = useState();
   const [fixedUpcomingPrayerTime, setFixedUpcomingPrayerTime] = useState("");
-  const router = useRouter();
   const t = useTranslations("home");
 
   const GetPrayerTime = async () => {
@@ -204,16 +197,7 @@ const Home = ({ params: { locale } }) => {
       </section>
       <Divider />
       <section className="my-8 mx-8">
-        <div className="flex justify-center mt-4">
-          <h1
-            className={`${
-              locale === "en" ? russo.className : changa.className
-            } text-2xl mb-4`}
-          >
-            {t("surahs")}
-          </h1>
-        </div>
-        <SurahsIndex locale={locale}/>
+        <SurahsIndex locale={locale} />
       </section>
     </>
   );
