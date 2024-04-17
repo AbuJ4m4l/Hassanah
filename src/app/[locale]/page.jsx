@@ -1,7 +1,5 @@
 "use client";
-import { useTheme } from "next-themes";
 import Countdown, { zeroPad } from "react-countdown";
-import { NextSeo } from "next-seo";
 import { Divider, Skeleton, Checkbox } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -15,7 +13,6 @@ export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
 export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
 
 const Home = ({ params: { locale } }) => {
-  const { theme } = useTheme();
   const { position, error, isLoading } = useUserLocation();
   const [surahNames, setSurahNames] = useState([]);
   const timeCounterRef = useRef(null);
@@ -197,11 +194,6 @@ const Home = ({ params: { locale } }) => {
   };
   return (
     <>
-      <NextSeo
-        title={t("metadata.title")}
-        description={t("metadata.description")}
-        themeColor={theme}
-      />
       <section className="my-8 flex justify-center">
         <Skeleton
           className="rounded-large p-2"
@@ -210,7 +202,7 @@ const Home = ({ params: { locale } }) => {
           {error ? (
             <div
               tabIndex={0}
-              className="bg-[#171717] p-10 rounded-large focus:outline-none focus-visible:ring focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717]"
+              className="bg-[#fff] dark:bg-[#171717] p-10 rounded-large focus:outline-none focus-visible:ring focus-visible:ring-focus focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#171717] focus-visible:ring-offset-[#f8f5f5]"
             >
               <div>
                 <div className="bg-danger px-6 py-2 rounded-large flex justify-center items-center">
@@ -226,7 +218,7 @@ const Home = ({ params: { locale } }) => {
             upcomingPrayerTime && (
               <div
                 tabIndex={0}
-                className="bg-[#171717] p-10 rounded-large focus:outline-none focus-visible:ring focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717]"
+                className="dark:bg-[#171717] bg-[#fff] p-10 rounded-large focus:outline-none focus-visible:ring focus-visible:ring-focus focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#171717] focus-visible:ring-offset-[#f8f5f5]"
               >
                 <div>
                   <div className="flex justify-center">
@@ -295,17 +287,17 @@ const Home = ({ params: { locale } }) => {
               key={surah.id}
               tabIndex={0}
               onClick={() => router.push(`/surah/${surah.id}`)}
-              className={`cursor-pointer bg-[#171717] hover:bg-[#101010] p-4 rounded-md flex flex-col focus:outline-none focus-visible:ring focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-[#171717]`}
+              className={`cursor-pointer dark:bg-[#171717] dark:hover:bg-[#101010] bg-[#fff] hover:bg-[#f8f5f5] p-4 rounded-md flex flex-col focus:outline-none focus-visible:ring focus-visible:ring-focus focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#171717] focus-visible:ring-offset-[#f8f5f5]`}
             >
               <div className="flex flex-row">
-                <div className="rtl:ml-2 ltr:mr-2 rounded-full px-4 py-2 bg-[#060606]">
+                <div className="rtl:ml-2 ltr:mr-2 rounded-full px-4 py-2 bg-[#d0d0d0] dark:bg-[#060606]">
                   {surah.id}
                 </div>
                 <div className="mt-2">
                   {locale === "ar" ? surah.name : surah.englishName}
                 </div>
               </div>
-              <p className="text-slate-400 text-medium mt-2">
+              <p className="text-slate-800 dark:text-slate-400 text-medium mt-2">
                 {locale === "ar" ? (
                   <>
                     {t(`revelationType.${surah.revelationType}`)} -{" "}

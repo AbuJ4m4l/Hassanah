@@ -35,7 +35,7 @@ export default async function RootLayout({ children, params: { locale } }) {
         >
           <Middleware>
             <NextTopLoader
-              color="#0093FD"
+              color="forestgreen"
               initialPosition={0.08}
               crawlSpeed={200}
               height={3}
