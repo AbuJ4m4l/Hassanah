@@ -3,6 +3,10 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import useSurahNames from "../../hooks/useSurahNames";
+import { Changa, Russo_One } from "next/font/google";
+
+export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
+export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
 
 const SurahsIndex = ({ locale }) => {
   const { surahNames, error, isLoading } = useSurahNames();
