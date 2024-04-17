@@ -43,7 +43,7 @@ const LanguageSwitcher = ({ color, variant, location, className }) => {
         </DropdownTrigger>
         <DropdownMenu aria-label="Language switcher" disabledKeys={["Turkish"]}>
           <DropdownItem
-            className="flex flex-row"
+            className="flex flex-row !text-foreground"
             key="Arabic"
             as={Link}
             href={`/ar/${location}`}
@@ -62,7 +62,7 @@ const LanguageSwitcher = ({ color, variant, location, className }) => {
             العربية
           </DropdownItem>
           <DropdownItem
-            className="flex flex-row"
+            className="flex flex-row !text-foreground"
             as={Link}
             href={`/en/${location}`}
             key="English"
@@ -81,7 +81,7 @@ const LanguageSwitcher = ({ color, variant, location, className }) => {
             English
           </DropdownItem>
           <DropdownItem
-            className="flex flex-row"
+            className="flex flex-row !text-foreground"
             as={Link}
             href={`/tr/${location}`}
             key="Turkish"
