@@ -31,7 +31,7 @@ const Footer = ({ locale }) => {
         <Link href="https://example.com" className="mx-3">
           <svg
             stroke="currentColor"
-            fill="white"
+            fill="currentColor"
             strokeWidth="0"
             viewBox="0 0 512 512"
             height="32"
@@ -44,7 +44,7 @@ const Footer = ({ locale }) => {
         <Link href="https://example.com" className="mx-3">
           <svg
             stroke="currentColor"
-            fill="white"
+            fill="currentColor"
             strokeWidth="0"
             role="img"
             viewBox="0 0 24 24"
@@ -58,7 +58,7 @@ const Footer = ({ locale }) => {
         <Link href="https://example.com" className="mx-3">
           <svg
             stroke="currentColor"
-            fill="white"
+            fill="currentColor"
             strokeWidth="0"
             viewBox="0 0 512 512"
             height="32"
@@ -135,7 +135,7 @@ const Footer = ({ locale }) => {
             <Link href="https://example.com" className="mx-3">
               <svg
                 stroke="currentColor"
-                fill="white"
+                fill="currentColor"
                 strokeWidth="0"
                 viewBox="0 0 512 512"
                 height="28"
@@ -148,7 +148,7 @@ const Footer = ({ locale }) => {
             <Link href="https://example.com" className="mx-3">
               <svg
                 stroke="currentColor"
-                fill="white"
+                fill="currentColor"
                 strokeWidth="0"
                 viewBox="0 0 448 512"
                 height="28"
@@ -161,7 +161,7 @@ const Footer = ({ locale }) => {
             <Link href="https://example.com" className="mx-3">
               <svg
                 stroke="currentColor"
-                fill="white"
+                fill="currentColor"
                 strokeWidth="0"
                 viewBox="0 0 512 512"
                 height="28"
