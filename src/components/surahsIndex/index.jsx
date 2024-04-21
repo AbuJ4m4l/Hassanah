@@ -26,7 +26,7 @@ const SurahsIndex = ({ locale }) => {
         {surahNames.map((surah) => (
           <>
             <div>
-              <Link className="text-foreground" href={`/surah/${surah.id}`}>
+              <Link className="text-foreground" href={`/${surah.id}`}>
                 <div
                   key={surah.id}
                   tabIndex={0}
