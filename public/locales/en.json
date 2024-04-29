@@ -430,6 +430,9 @@
     "reset_password": "Reset Password"
   },
   "surah": {
-    "page": "Pages"
+    "page": "Pages",
+    "reading": "Reading",
+    "translation": "Translation",
+    "listening": "Listening"
   }
 }
