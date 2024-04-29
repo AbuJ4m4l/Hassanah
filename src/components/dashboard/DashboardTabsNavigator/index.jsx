@@ -61,6 +61,7 @@ const DashboardTabsNavigator = ({ locale }) => {
           <div className="flex w-full flex-col">
             <Tabs
               radius="full"
+              color="primary"
               aria-label="Options"
               selectedKey={selected}
               onSelectionChange={setSelected}
