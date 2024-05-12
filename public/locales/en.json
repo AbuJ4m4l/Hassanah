@@ -433,6 +433,14 @@
     "page": "Pages",
     "reading": "Reading",
     "translation": "Translation (Coming soon)",
-    "listening": "Listening"
+    "listening": "Listening",
+    "play_audio": "Play Audio",
+    "pause_audio": "Pause Audio",
+    "play": "Play",
+    "pause": "Pause",
+    "volume": "Volume",
+    "previous_surah": "Previous Surah",
+    "next_surah": "Next Surah",
+    "more": "More"
   }
 }

@@ -433,6 +433,14 @@
     "page": "صفحات",
     "reading": "قراءة",
     "translation": "ترجمة ( قريبا )",
-    "listening": "استماع"
+    "listening": "استماع",
+    "play_audio": "تشغيل صوت",
+    "pause_audio": "إيقاف صوت",
+    "play": "تشغيل",
+    "pause": "إيقاف",
+    "volume": "صوت",
+    "previous_surah": "سورة سابقة",
+    "next_surah": "سورة القادمة",
+    "more": "المزيد"
   }
 }
