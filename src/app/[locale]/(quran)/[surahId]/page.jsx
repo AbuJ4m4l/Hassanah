@@ -184,7 +184,7 @@ const Surah = ({ params: { surahId, locale } }) => {
             </div>
           </div>
         </Tab>
-        <Tab key={1} title={t("translation")}>
+        <Tab isDisabled key={1} title={t("translation")}>
           {" "}
           <div className="flex justify-center mt-6">
             <h1 className={`${surah_names.className} text-5xl`}>
