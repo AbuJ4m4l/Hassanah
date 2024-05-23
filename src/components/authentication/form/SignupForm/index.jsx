@@ -21,6 +21,7 @@ import {
 import { auth } from "../../../../lib/firebase";
 import GoogleLogin from "../../google.login";
 import FacebookLogin from "../../facebook.login";
+import { useTheme } from "next-themes";
 
 const SignupForm = ({ locale }) => {
   const [showPassword, setShowPassword] = useState(false);

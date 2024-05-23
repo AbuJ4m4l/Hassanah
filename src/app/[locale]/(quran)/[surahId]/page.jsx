@@ -12,6 +12,13 @@ import {
   Tab,
   Tabs,
   Tooltip,
+  useDisclosure,
+  ModalFooter,
+  Button,
+  ModalBody,
+  ModalHeader,
+  Modal,
+  ModalContent,
 } from "@nextui-org/react";
 import Link from "next/link";
 const surah_names = localFont({
@@ -39,6 +46,7 @@ export const russo = Russo_One({ weight: ["400"], subsets: ["latin"] });
 export const changa = Changa({ weight: ["600"], subsets: ["arabic"] });
 
 const Surah = ({ params: { surahId, locale } }) => {
+  const [isPlayerShown, setIsPlayerShown] = useState(false);
   const [volume, setVolume] = useState(0.6);
   const [progress, setProgress] = useState(0);
   const playerRef = useRef(null);
@@ -172,11 +180,14 @@ const Surah = ({ params: { surahId, locale } }) => {
           </div>
           <div
             className="flex justify-center rtl:mr-4 ltr:ml-4 absolute text-primary cursor-pointer"
-            onClick={() => setIsAudioPlaying(!isAudioPlaying)}
+            onClick={() => {
+              setIsAudioPlaying(!isAudioPlaying);
+              setIsPlayerShown(isAudioPlaying === true ? true : false);
+            }}
           >
-            {isAudioPlaying === true ? (
+            {isPlayerShown === true ? (
               <>
-                {t("pause_audio")}{" "}
+                {t("hide_player")}{" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -187,15 +198,15 @@ const Surah = ({ params: { surahId, locale } }) => {
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="feather feather-pause"
+                  class="feather feather-eye-off"
                 >
-                  <rect x="6" y="4" width="4" height="16"></rect>
-                  <rect x="14" y="4" width="4" height="16"></rect>
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
                 </svg>
               </>
             ) : (
               <>
-                {t("play_audio")}{" "}
+                {t("show_player")}{" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -246,214 +257,222 @@ const Surah = ({ params: { surahId, locale } }) => {
               ))}
             </div>
           </div>
-          {isAudioPlaying === true ? (
-            <ReactPlayer
-              volume={volume}
-              onProgress={handleProgress}
-              ref={playerRef}
-              url={`${
-                JSON.parse(currentReciter).folder_url
-              }${convertToThreeDigits(surahId)}.mp3`}
-              playing={isAudioPlaying}
-            />
+
+          {isPlayerShown === true ? (
+            <>
+              <ReactPlayer
+                volume={volume}
+                onProgress={handleProgress}
+                ref={playerRef}
+                url={`${
+                  JSON.parse(currentReciter).folder_url
+                }${convertToThreeDigits(surahId)}.mp3`}
+                playing={isAudioPlaying}
+              />
+              <div className="py-4 flex bottom-0 bg-white dark:bg-[#171717] w-full fixed z-50 justify-center">
+                <input
+                  step="any"
+                  type="range"
+                  max={0.999999}
+                  min={0}
+                  value={progress}
+                  onChange={(e) => {
+                    const seekValue = parseFloat(e.target.value);
+                    playerRef?.current?.seekTo(seekValue);
+                  }}
+                  className="-top-2 flex absolute w-full"
+                />
+                <div
+                  className="space-x-4 flex flex-row"
+                  style={{ direction: "ltr" }}
+                >
+                  <div className="rtl:ml-4">
+                    <Tooltip content={t("more")}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-more-horizontal"
+                      >
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="19" cy="12" r="1"></circle>
+                        <circle cx="5" cy="12" r="1"></circle>
+                      </svg>
+                    </Tooltip>
+                  </div>
+                  <div>
+                    <Popover placement="top" color="foreground">
+                      <Tooltip content={t("volume")}>
+                        <PopoverTrigger>
+                          {volume > 0.5 ? (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="feather feather-volume-2"
+                            >
+                              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                            </svg>
+                          ) : volume === 0 ? (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="feather feather-volume-x"
+                            >
+                              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                              <line x1="23" y1="9" x2="17" y2="15"></line>
+                              <line x1="17" y1="9" x2="23" y2="15"></line>
+                            </svg>
+                          ) : (
+                            volume <= 0.5 && (
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="feather feather-volume-1"
+                              >
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                              </svg>
+                            )
+                          )}
+                        </PopoverTrigger>
+                      </Tooltip>
+                      <PopoverContent>
+                        <input
+                          type="range"
+                          min={0}
+                          max={1}
+                          step="any"
+                          className="w-[100px]"
+                          value={volume}
+                          onChange={handleVolume}
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+                  <div>
+                    <Tooltip content={t("previous_surah")}>
+                      <Link
+                        href={`/${
+                          parseInt(surahId) === 1 ? 1 : parseInt(surahId) - 1
+                        }`}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="feather feather-skip-back"
+                        >
+                          <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                          <line x1="5" y1="19" x2="5" y2="5"></line>
+                        </svg>
+                      </Link>
+                    </Tooltip>
+                  </div>
+                  <div onClick={() => setIsAudioPlaying(!isAudioPlaying)}>
+                    {isAudioPlaying === false ? (
+                      <Tooltip content={t("play")}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="feather feather-play"
+                        >
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                      </Tooltip>
+                    ) : (
+                      <Tooltip content={t("pause")}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="feather feather-pause"
+                        >
+                          <rect x="6" y="4" width="4" height="16"></rect>
+                          <rect x="14" y="4" width="4" height="16"></rect>
+                        </svg>
+                      </Tooltip>
+                    )}
+                  </div>
+                  <div>
+                    <Tooltip content={t("next_surah")}>
+                      <Link
+                        href={`/${
+                          parseInt(surahId) === 114
+                            ? 114
+                            : parseInt(surahId) + 1
+                        }`}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="feather feather-skip-forward"
+                        >
+                          <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                          <line x1="19" y1="5" x2="19" y2="19"></line>
+                        </svg>
+                      </Link>
+                    </Tooltip>
+                  </div>
+                </div>
+              </div>
+            </>
           ) : (
             ""
           )}
-          <div className="py-4 flex bottom-0 bg-white dark:bg-[#171717] w-full fixed z-50 justify-center">
-            <input
-              step="any"
-              type="range"
-              max={0.999999}
-              min={0}
-              value={progress}
-              onChange={(e) => {
-                const seekValue = parseFloat(e.target.value);
-                playerRef?.current?.seekTo(seekValue);
-              }}
-              className="-top-2 flex absolute w-full"
-            />
-            <div className="space-x-4 flex flex-row">
-              <div className="rtl:ml-4">
-                <Tooltip content={t("more")}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="feather feather-more-horizontal"
-                  >
-                    <circle cx="12" cy="12" r="1"></circle>
-                    <circle cx="19" cy="12" r="1"></circle>
-                    <circle cx="5" cy="12" r="1"></circle>
-                  </svg>
-                </Tooltip>
-              </div>
-              <div>
-                <Popover placement="top" color="foreground">
-                  <PopoverTrigger>
-                    <Tooltip content={t("volume")}>
-                      {volume > 0.5 ? (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-volume-2"
-                        >
-                          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                        </svg>
-                      ) : volume === 0 ? (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          class="feather feather-volume-x"
-                        >
-                          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                          <line x1="23" y1="9" x2="17" y2="15"></line>
-                          <line x1="17" y1="9" x2="23" y2="15"></line>
-                        </svg>
-                      ) : (
-                        volume <= 0.5 && (
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="feather feather-volume-1"
-                          >
-                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                          </svg>
-                        )
-                      )}
-                    </Tooltip>
-                  </PopoverTrigger>
-                  <PopoverContent>
-                    <input
-                      type="range"
-                      min={0}
-                      max={1}
-                      step="any"
-                      className="w-[100px]"
-                      value={volume}
-                      onChange={handleVolume}
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div>
-              <div>
-                <Tooltip content={t("previous_surah")}>
-                  <Link
-                    href={`/${
-                      parseInt(surahId) === 1 ? 1 : parseInt(surahId) - 1
-                    }`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="feather feather-skip-back"
-                    >
-                      <polygon points="19 20 9 12 19 4 19 20"></polygon>
-                      <line x1="5" y1="19" x2="5" y2="5"></line>
-                    </svg>
-                  </Link>
-                </Tooltip>
-              </div>
-              <div onClick={() => setIsAudioPlaying(!isAudioPlaying)}>
-                {isAudioPlaying === false ? (
-                  <Tooltip content={t("pause")}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="feather feather-play"
-                    >
-                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                    </svg>
-                  </Tooltip>
-                ) : (
-                  <Tooltip content={t("play")}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="feather feather-pause"
-                    >
-                      <rect x="6" y="4" width="4" height="16"></rect>
-                      <rect x="14" y="4" width="4" height="16"></rect>
-                    </svg>
-                  </Tooltip>
-                )}
-              </div>
-              <div>
-                <Tooltip content={t("next_surah")}>
-                  <Link
-                    href={`/${
-                      parseInt(surahId) === 114 ? 114 : parseInt(surahId) + 1
-                    }`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="feather feather-skip-forward"
-                    >
-                      <polygon points="5 4 15 12 5 20 5 4"></polygon>
-                      <line x1="19" y1="5" x2="19" y2="19"></line>
-                    </svg>
-                  </Link>
-                </Tooltip>
-              </div>
-            </div>
-          </div>
         </Tab>
         <Tab isDisabled key={1} title={t("translation")}>
           {" "}

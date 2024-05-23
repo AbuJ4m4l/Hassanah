@@ -22,6 +22,7 @@ import {
 } from "@nextui-org/react";
 import GoogleLogin from "../../google.login/index.jsx";
 import FacebookLogin from "../../facebook.login/index.jsx";
+import { useTheme } from "next-themes";
 
 const LoginForm = ({ locale }) => {
   const { theme } = useTheme();
